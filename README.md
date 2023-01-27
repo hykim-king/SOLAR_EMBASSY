@@ -1,5 +1,5 @@
 # SOLAR_EMBASSY
-에이콘 프로젝트
+에이콘 아카데미 프로젝트 1조
 
 ### 1. 주제
 #### SOLAR EMBASSY
