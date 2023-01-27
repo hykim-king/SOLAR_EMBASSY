@@ -1,5 +1,5 @@
 # SOLAR_EMBASSY
-아이콘 프로젝트
+에이콘 프로젝트
 
 ### 1. 주제
 #### SOLAR EMBASSY
