@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.ReplyImageMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.ReplyImage">
+            <id property="replyImageNo" column="reply_image_no" jdbcType="INTEGER"/>
+            <result property="replyNo" column="reply_no" jdbcType="VARCHAR"/>
+            <result property="imagePath" column="image_path" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        reply_image_no,reply_no,image_path
+    </sql>
+</mapper>

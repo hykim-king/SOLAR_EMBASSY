@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.PlanetImageMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.PlanetImage">
+            <id property="planetImageNo" column="planet_image_no" jdbcType="INTEGER"/>
+            <result property="planetNo" column="planet_no" jdbcType="INTEGER"/>
+            <result property="imagePath" column="image_path" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        planet_image_no,planet_no,image_path
+    </sql>
+</mapper>

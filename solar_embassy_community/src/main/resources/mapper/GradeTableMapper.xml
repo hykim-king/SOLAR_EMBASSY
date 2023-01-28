@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.GradeTableMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.GradeTable">
+            <id property="userLevel" column="user_level" jdbcType="INTEGER"/>
+            <result property="grade" column="grade" jdbcType="VARCHAR"/>
+            <result property="totalExp" column="total_exp" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_level,grade,total_exp
+    </sql>
+</mapper>
