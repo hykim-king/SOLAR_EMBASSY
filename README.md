@@ -1,11 +1,11 @@
 ![포스터](https://github.com/hykim-king/SOLAR_EMBASSY/blob/main/doc/dada9d7f3e680642dbb5b1ddd803c59e.jpeg)  
 
 # 0. 목차:link:  
-[1.팀 소개](#1-팀소개)  
-[2. Project 목표](#2-Project목표)   
-[3. Project 기획](#3-Project기획)  
-[4. Project 설계](#4-Project설계)  
-[5. 기능 시연](#5-기능시연)  
+[1.팀 소개](#1-팀-소개)  
+[2. Project 목표](#2-Project-목표)   
+[3. Project 기획](#3-Project-기획)  
+[4. Project 설계](#4-Project-설계)  
+[5. 기능 시연](#5-기능-시연)  
     
 # 1-팀 소개 
 팀원: 김민환, 김성범, 김유석, 문현희, 안성현, 윤한성, 정승연, 정효빈
