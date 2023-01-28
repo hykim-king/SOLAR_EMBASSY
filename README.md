@@ -1,4 +1,4 @@
-![포스터](https://github.com/hykim-king/SOLAR_EMBASSY/blob/main/doc/dada9d7f3e680642dbb5b1ddd803c59e.jpeg)  
+![포스터](doc/Solar_Embassy_Main_Logo.jpeg)
 
 # 0. 목차:link:  
 [1.팀 소개](#1-팀-소개)  
