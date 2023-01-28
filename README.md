@@ -1,4 +1,4 @@
-![포스터](https://github.com/MOONHYUNHEE/markdown_20230127/blob/main/doc/%EC%BA%A1%EC%B2%982.jpg)  
+![포스터](https://github.com/hykimking/SOLAR_EMBASSY/blob/main/doc/dada9d7f3e680642dbb5b1ddd803c59e.jpeg)  
 # 0. 목차:link:  
 [1.팀 소개](#1-팀소개)  
 [2. Project 목표](#2-Project목표)   
