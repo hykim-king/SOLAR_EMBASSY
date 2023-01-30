@@ -5,23 +5,28 @@
     <title>Document</title>
 
     <style>
-        #container{
-            /* background-color: red; */
-            /* height: 400px; */
+        *{
+        margin:0;
+        padding:0;
+       }
+
+       #container{
+            background-color: black;
             width : 1920px;
-            margin : 20px auto ;
+            margin : 0 auto ;
+            border : 4px solid red;
         }
 
         header {
             /* width: 100%; */
-            height: 600px;
+            height: 445px;
             background-color: green;
             text-align: center;
         }
 
         #img1 {
-            width: 1320px;
-            height: 500px;
+            width: 1200px;
+            height: 355px;   
         }
 
         #img2 {
@@ -31,66 +36,74 @@
 
         #left-sidebar {
             background-color: blue;
-            width: 300px;
-            height: 2100px;   
+            width: 361px;
+            height: 1340px;   
             float : left; 
         }
 
         #contents {
             background-color: gold;
-            width: 1320px;
-            height: 2100px;   
+            width: 1200px;
+            height: 1340px;   
             float : left;             
         }
 
         #contents #content1{
             background-color: gray;
-            height: 100px;
+            width: 1200px;
+            height: 77px;
             
         }
 
         #contents #content2 {
             background-color: purple;
-            height: 330px;
-            text-align: center;
+            width: 1200px;
+            height: 270px;
+            display: flex;
         }
 
         #contents #content3 {
             background-color: navy;
-            height: 400px;
+            width: 1200px;
+            height: 280px;
             display: flex;
-            
         }
 
         #contents #content3 #sub1 {
             background-color: skyblue;
-            height: 400px;
-            width: 850px;
+            height: 260px;
+            width: 760px;
+            margin-top: 10px;
         }
 
         #contents #content3 #sub2 {
             background-color: brown;
-            height: 400px;
-            width: 470px;
+            height: 260px;
+            width: 420px;
+            margin-top: 16px;
+            margin-left: 20px;
         }
 
         #contents #content4 {
             background: #121212;
-            height: 600px;
+            height: 355px;
             display: flex;
             
         }
 
         #contents #content4 #sub3 {
             background-color: indigo;
-            width: 660px;
-            height: 600px;
+            width: 590px;
+            height: 330px;
+            margin-top: 10px;
         }
 
         #contents #content4 #sub4 {
             background-color: pink;
-            height: 600px;
-            width: 660px;
+            width: 590px;
+            height: 330px;
+            margin-top: 10px;
+            margin-left: 20px;
         }
 
         #contents #content5 {
@@ -101,26 +114,30 @@
 
         #contents #content5 #sub5 {
             background-color: pink;
-            width: 660px;
-            height: 600px;
+            width: 590px;
+            margin-top: 10px;
+            height: 330px;
         }
 
         #contents #content5 #sub6 {
             background-color: indigo;
-            height: 600px;
-            width: 660px;
+            width: 590px;
+            height: 330px;
+            margin-top: 10px;
+            margin-left: 20px;
         }
 
         #right-sidebar {
             background-color: red;
-            width: 300px;
-            height: 2100px;   
-            float : left;             
+            width: 361px;
+            height: 1340px;
+            float: right;
+            display : flex;
         }
 
         footer {
             background-color: yellowgreen;
-            height: 300px;   
+            height: 120px;   
             clear : left;              
         }
 
@@ -129,8 +146,8 @@
 <body>
     <div id="container"> 
         <header>
-            <h1>메인이미지</h1> 
-            <img id="img1" src="/img/solar_embassy_main.png" alt="">
+            <h1>메인이미지</h1>
+            <a href="/"><img id="img1" src="/img/solar_embassy_main.png" alt=""></a>
         </header>
 
         <aside id="left-sidebar">
@@ -165,11 +182,6 @@
             <h2> 푸터 </h2>
         </footer>
     </div>
-
-
-
-
-
 
 
 
