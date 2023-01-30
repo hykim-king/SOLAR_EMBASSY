@@ -1,0 +1,102 @@
+#container{
+    width : 1920px;
+    margin: 20px auto;
+}
+
+header {
+    height: 600px;
+    background-color: green;
+    text-align: center;
+}
+
+#img1 {
+    width: 1320px;
+    height: 500px;
+}
+
+#left-sidebar {
+    background-color: blue;
+    width: 300px;
+    height: 2100px;
+    float : left;
+}
+
+#right-sidebar {
+    background-color: red;
+    width: 300px;
+    height: 2100px;
+    float : left;
+}
+
+#contents {
+    background-color: gold;
+    width: 1320px;
+    height: 2100px;
+    float: left;
+    text-align: center;
+}
+
+#contents #content1{
+    background-color: gray;
+    width: 1320px;
+    height: 100px;
+    margin-top: 40px;
+}
+
+#contents #content2{
+    background-color: brown;
+    width: 1320px;
+    height: 500px;
+    display: flex;
+    margin-top: 40px;
+}
+
+#contents #content3 {
+    background-color: black;
+    width: 1320px;
+    height: 100px;
+    display: flex;
+    margin-top: 40px;
+}
+
+#contents #content4 {
+    height: 560px;
+    display: flex;
+    margin-top: 40px;
+}
+
+#contents #content4 #sub1 {
+    background-color: navy;
+    width: 660px;
+    height: 580px;
+}
+
+#contents #content4 #sub2 {
+    background-color: dodgerblue;
+    width: 660px;
+    height: 580px;
+}
+
+#contents #content5 {
+    height: 560px;
+    display: flex;
+    margin-top: 40px;
+}
+
+#contents #content5 #sub3 {
+    background-color: hotpink;
+    width: 660px;
+    height: 580px;
+}
+
+#contents #content5 #sub4 {
+    background-color: darkmagenta;
+    width: 660px;
+    height: 580px;
+}
+
+footer {
+    background-color: yellowgreen;
+    height: 300px;
+    clear : left;
+}
