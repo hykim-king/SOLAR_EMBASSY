@@ -2,176 +2,49 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Document</title>
-
-    <style>
-        #container{
-            /* background-color: red; */
-            /* height: 400px; */
-            width : 1920px;
-            margin : 20px auto ;
-        }
-
-        header {
-            /* width: 100%; */
-            height: 600px;
-            background-color: green;
-            text-align: center;
-        }
-
-        #img1 {
-            width: 1320px;
-            height: 500px;
-        }
-
-        #img2 {
-            height: 100%;
-            width: 100%;
-        }
-
-        #left-sidebar {
-            background-color: blue;
-            width: 300px;
-            height: 2100px;   
-            float : left; 
-        }
-
-        #contents {
-            background-color: gold;
-            width: 1320px;
-            height: 2100px;   
-            float : left;             
-        }
-
-        #contents #content1{
-            background-color: gray;
-            height: 100px;
-            
-        }
-
-        #contents #content2 {
-            background-color: purple;
-            height: 330px;
-            text-align: center;
-        }
-
-        #contents #content3 {
-            background-color: navy;
-            height: 400px;
-            display: flex;
-            
-        }
-
-        #contents #content3 #sub1 {
-            background-color: skyblue;
-            height: 400px;
-            width: 850px;
-        }
-
-        #contents #content3 #sub2 {
-            background-color: brown;
-            height: 400px;
-            width: 470px;
-        }
-
-        #contents #content4 {
-            background: #121212;
-            height: 600px;
-            display: flex;
-            
-        }
-
-        #contents #content4 #sub3 {
-            background-color: indigo;
-            width: 660px;
-            height: 600px;
-        }
-
-        #contents #content4 #sub4 {
-            background-color: pink;
-            height: 600px;
-            width: 660px;
-        }
-
-        #contents #content5 {
-            height: 600px;
-            width: 1320px;
-            display: flex;
-        }
-
-        #contents #content5 #sub5 {
-            background-color: pink;
-            width: 660px;
-            height: 600px;
-        }
-
-        #contents #content5 #sub6 {
-            background-color: indigo;
-            height: 600px;
-            width: 660px;
-        }
-
-        #right-sidebar {
-            background-color: red;
-            width: 300px;
-            height: 2100px;   
-            float : left;             
-        }
-
-        footer {
-            background-color: yellowgreen;
-            height: 300px;   
-            clear : left;              
-        }
-
-    </style>
 </head>
 <body>
-    <div id="container"> 
-        <header>
-            <h1>메인이미지</h1> 
-            <img id="img1" src="/img/solar_embassy_main.png" alt="">
-        </header>
+<div id="container">
+    <header>
+        <h1>메인이미지</h1>
+        <img id="img1" src="img/solar_embassy_main.png" alt="">
+    </header>
 
-        <aside id="left-sidebar">
-            <h1> 사이드바</h1>
-        </aside>
+    <aside id="left-sidebar">
+        <h1> 사이드바</h1>
+    </aside>
 
-        <section id="contents">
-            <div id="content1"></div>
-            <div id="content2">
-                <img id="img2" src="/img/solar_main.png" alt="">
-            </div>
-            <div id="content3">
-                <div id="sub1"></div>
-                <div id="sub2"></div>
-            </div>
-            <div id="content4">
-                <div id="sub3"></div>
-                <div id="sub4"></div>
-            </div>
-            <div id="content5">
-                <div id="sub5"></div>
-                <div id="sub6"></div>
-            </div>
-        </section>
-
-
-        <aside id="right-sidebar">
-            <h1> 사이드바</h1>
-        </aside>
-
-        <footer>
-            <h2> 푸터 </h2>
-        </footer>
-    </div>
+    <section id="contents">
+        <div id="content1"></div>
+        <div id="content2">
+            <img id="img2" src="./img/solar_main.png" alt="">
+        </div>
+        <div id="content3">
+            <div id="sub1"></div>
+            <div id="sub2"></div>
+        </div>
+        <div id="content4">
+            <div id="sub3"></div>
+            <div id="sub4"></div>
+        </div>
+        <div id="content5">
+            <div id="sub5"></div>
+            <div id="sub6"></div>
+        </div>
+    </section>
 
 
+    <aside id="right-sidebar">
+        <h1> 사이드바</h1>
+    </aside>
 
-
-
-
-
-
+    <footer>
+        <h2> 푸터 </h2>
+    </footer>
+</div>
 </body>
 </html>
