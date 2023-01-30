@@ -1,0 +1,163 @@
+create database solar_embassy;
+
+create table if not exists admin
+(
+    admin_id    varchar(20) not null
+        primary key,
+    admin_level int         null,
+    department  varchar(10) null
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists galaxy
+(
+    galaxy_no  int          not null
+        primary key,
+    theme      varchar(100) not null,
+    birth_date date         not null
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists grade_table
+(
+    user_level int         not null
+        primary key,
+    grade      varchar(50) null,
+    total_exp  int         not null
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists user
+(
+    user_id         varchar(100)                        not null
+        primary key,
+    user_name       varchar(20)                         not null,
+    passwords       varchar(15)                         not null,
+    email           varchar(50)                         null,
+    phone           varchar(13)                         null,
+    admin_id        varchar(20)                         null,
+    reg_date        timestamp default CURRENT_TIMESTAMP null,
+    last_login_time timestamp                           null,
+    state           int                                 null,
+    points          int                                 null,
+    exp             int                                 null,
+    user_level      int                                 null,
+    grade           int                                 null,
+    gender          int                                 null,
+    location        int                                 null,
+    hobby           varchar(200)                        null,
+    birth           date                                null,
+    constraint FK_admin_TO_user
+        foreign key (admin_id) references admin (admin_id)
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists letter
+(
+    letter_no     int          not null
+        primary key,
+    sender_id     varchar(100) not null,
+    receiver_id   varchar(100) not null,
+    title         varchar(100) not null,
+    contents      longtext     not null,
+    sent_date     timestamp    not null,
+    read_date     timestamp    null,
+    receive_state int          null,
+    receiver_del  int          null,
+    sender_del    int          null,
+    constraint FK_user_TO_letter
+        foreign key (sender_id) references user (user_id),
+    constraint FK_user_TO_letter2
+        foreign key (receiver_id) references user (user_id)
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists planet
+(
+    planet_no int          not null
+        primary key,
+    title     varchar(100) not null,
+    user_id   varchar(100) not null,
+    contents  longtext     not null,
+    post_date datetime     not null,
+    likes     int          null,
+    dislikes  int          null,
+    galaxy_no int          null,
+    views     int          null,
+    state     int          null,
+    constraint FK_galaxy_TO_planet
+        foreign key (galaxy_no) references galaxy (galaxy_no),
+    constraint FK_user_TO_planet
+        foreign key (user_id) references user (user_id)
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists planet_image
+(
+    planet_image_no int          not null
+        primary key,
+    planet_no       int          not null,
+    image_path      varchar(200) not null,
+    constraint FK_planet_TO_planet_image
+        foreign key (planet_no) references planet (planet_no)
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists reply
+(
+    reply_no    varchar(100) not null
+        primary key,
+    planet_no   int          not null,
+    fk_reply_no varchar(100) null,
+    user_id     varchar(100) not null,
+    contents    varchar(100) not null,
+    post_time   timestamp    not null,
+    likes       int          null,
+    dislikes    int          null,
+    state       int          null,
+    constraint FK_planet_TO_reply
+        foreign key (planet_no) references planet (planet_no),
+    constraint FK_reply_TO_reply
+        foreign key (fk_reply_no) references reply (reply_no),
+    constraint FK_user_TO_reply
+        foreign key (user_id) references user (user_id)
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists reply_image
+(
+    reply_image_no int          not null
+        primary key,
+    reply_no       varchar(100) not null,
+    image_path     varchar(100) not null,
+    constraint FK_reply_TO_reply_image
+        foreign key (reply_no) references reply (reply_no)
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists user_blacklist
+(
+    blacklist_no int          not null
+        primary key,
+    user_id      varchar(100) not null,
+    user_id2     varchar(100) null,
+    state        int          null,
+    update_time  timestamp    not null,
+    constraint FK_user_TO_user_blacklist
+        foreign key (user_id) references user (user_id),
+    constraint FK_user_TO_user_blacklist2
+        foreign key (user_id2) references user (user_id)
+)
+    collate = utf8mb4_0900_ai_ci;
+
+create table if not exists user_image
+(
+    user_image_no int          not null
+        primary key,
+    user_id       varchar(100) not null,
+    image_path    varchar(100) not null,
+    constraint FK_user_TO_user_image
+        foreign key (user_id) references user (user_id)
+)
+    collate = utf8mb4_0900_ai_ci;
+
