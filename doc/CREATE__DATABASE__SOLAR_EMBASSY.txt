@@ -161,3 +161,113 @@ create table if not exists user_image
 )
     collate = utf8mb4_0900_ai_ci;
 
+
+create table business
+(
+    bu_id        varchar(40) not null,
+    bu_passwords varchar(15) not null,
+    email        varchar(50) null,
+    bu_phone     varchar(16) not null,
+    bu_name      varchar(20) not null,
+    cr_num       varchar(20) not null,
+    bu_title     varchar(60) not null,
+    bu_address   varchar(80) not null,
+    bu_code      int         not null,
+    img_no       int         null,
+    primary key (bu_id, bu_phone),
+    CONSTRAINT  UNIQUE (bu_title),
+    CONSTRAINT  UNIQUE (bu_address)
+
+);
+
+create table bu_img
+(
+    img_path int not null,
+    img_no   int auto_increment
+        primary key
+);
+
+create table room
+(
+    ro_no    int auto_increment
+        primary key,
+    bu_id    varchar(40) not null,
+    bu_phone varchar(16) not null,
+    img_no   int         null,
+    ro_count varchar(20) not null,
+    ro_name  varchar(50) not null,
+    ro_price varchar(40) not null,
+    checkin  datetime    not null,
+    checkout datetime    not null,
+    ro_info  longtext    null,
+    constraint room_ibfk_1
+        foreign key (bu_id, bu_phone) references business (bu_id, bu_phone)
+            on update cascade on delete cascade,
+        foreign key (img_no) references bu_img (img_no)
+            on update cascade on delete cascade
+
+);
+
+create table booking
+(
+    bo_num     int auto_increment
+        primary key,
+    bo_date    timestamp    null,
+    bu_id      varchar(100) not null,
+    bu_phone   varchar(16)  not null,
+    bu_title   varchar(60)  not null,
+    bu_address varchar(80)  not null,
+    ro_name    varchar(50)  not null,
+    ro_no      int          not null,
+    user_name  varchar(20)  not null,
+    user_id    varchar(100) not null,
+    user_phone varchar(16)  not null,
+    checkin    datetime     not null,
+    checkout   datetime     not null,
+    status     int          null,
+    payment    varchar(255) not null,
+    price      int          not null,
+    reg_date   timestamp    not null,
+    bu_check   varchar(100) not null,
+    constraint booking_ibfk_1
+        foreign key (bu_id, bu_phone) references business (bu_id, bu_phone)
+            on update cascade on delete cascade,
+    constraint booking_ibfk_2
+        foreign key (ro_no) references room (ro_no)
+            on update cascade on delete cascade,
+    constraint booking_ibfk_3
+        foreign key (user_id) references user (user_id)
+            on update cascade on delete cascade
+);
+
+create table  reserved           
+(
+    bo_num int not null,
+    ro_no  int not null,
+    primary key (bo_num, ro_no),
+    constraint reserved_ibfk_1
+        foreign key (bo_num) references booking (bo_num)
+            on update cascade on delete cascade,
+    constraint reserved_ibfk_2
+        foreign key (ro_no) references room (ro_no)
+            on update cascade on delete cascade
+);
+
+create table  review         
+(
+    re_num        int          not null
+        primary key,
+    bo_num        int          not null,
+    user_id       varchar(100) not null,
+    post_date     timestamp    not null,
+    contents      longtext     not null,
+    state         int          null,
+    likes         int          null,
+    content_reply longtext     null,
+    constraint review_ibfk_1
+        foreign key (bo_num) references booking (bo_num)
+            on update cascade on delete cascade,
+    constraint review_ibfk_2
+        foreign key (user_id) references user (user_id)
+            on update cascade on delete cascade
+);
