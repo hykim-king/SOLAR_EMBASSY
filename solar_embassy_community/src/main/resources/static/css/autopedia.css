@@ -37,18 +37,57 @@ header {
 }
 
 #contents #content1{
-    background-color: gray;
+    background-color: violet;
     width: 1320px;
-    height: 100px;
+    height: 80px;
     margin-top: 40px;
+    display: flex;
+}
+
+#contents #content1 #btn {
+    float: left;
+    margin: 30px;
+    text-decoration: none;
+}
+
+#contents #content1 #btn #autogalaxy a {
+    padding-left: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#contents #content1 #btn #autopedia a {
+    padding-left: 30px;
+    color: #fff;
+    text-decoration: none;
 }
 
 #contents #content2{
-    background-color: brown;
+    background-color: white;
     width: 1320px;
     height: 500px;
     display: flex;
     margin-top: 40px;
+}
+
+#contents #content2 #autobrand {
+    margin-top: 20px;
+    display: flex;
+    float: left;
+}
+
+#contents #content2 #autobrand span {
+    margin-left: 30px;
+}
+
+#contents #content2 #autobrand span a {
+    text-decoration: none;
+    color: #000;
+}
+
+#contents #content2 #autobrand a img {
+    width: 30px;
+    height: 30px;
 }
 
 #contents #content3 {
@@ -69,12 +108,14 @@ header {
     background-color: navy;
     width: 660px;
     height: 580px;
+    border-radius: 10px;
 }
 
 #contents #content4 #sub2 {
     background-color: dodgerblue;
     width: 660px;
     height: 580px;
+    border-radius: 10px;
 }
 
 #contents #content5 {
@@ -87,12 +128,14 @@ header {
     background-color: hotpink;
     width: 660px;
     height: 580px;
+    border-radius: 10px;
 }
 
 #contents #content5 #sub4 {
     background-color: darkmagenta;
     width: 660px;
     height: 580px;
+    border-radius: 10px;
 }
 
 footer {
