@@ -24,12 +24,36 @@
             <result property="birth" column="birth" jdbcType="DATE"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        user_id,user_name,passwords,
-        email,phone,admin_id,
-        reg_date,last_login_time,state,
-        points,exp,user_level,
-        grade,gender,location,
-        hobby,birth
-    </sql>
+
+    <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.User">
+        SELECT * FROM USER WHERE user_id=#{userID} AND passwords=#{passwords}
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM solar_embassy.user where user_id=#{user_id}
+    </delete>
+
+    <select id="findById" resultType="com.community.solar_embassy.dto.User">
+        SELECT * FROM solar_embassy.user where user_id=#{user_id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO solar_embassy.user
+            (user_id, user_name, passwords,
+             email, phone, admin_id,
+             gender, location, hobby, birth) VALUES
+                (#{userId},#{userName},#{passwords},#{email},#{phone},#{adminId},#{gender},#{location},#{hobby},#{birth})
+    </insert>
+
+    <update id="update">
+        UPDATE solar_embassy.user
+        SET user_name=#{userName},
+            passwords=#{passwords},
+            email=#{email},
+            phone=#{phone},
+            location=#{location},
+            hobby=#{hobby}
+        WHERE user_id=#{userId}
+    </update>
+
 </mapper>
