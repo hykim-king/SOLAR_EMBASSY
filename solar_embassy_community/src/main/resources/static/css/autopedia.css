@@ -66,21 +66,22 @@ header {
     background-color: white;
     width: 1320px;
     height: 500px;
-    display: flex;
     margin-top: 40px;
+    font-size: small;
 }
 
 #contents #content2 #autobrand {
-    margin-top: 20px;
+    width: 1320px;
     display: flex;
-    float: left;
+    flex-wrap: wrap;
 }
 
-#contents #content2 #autobrand span {
-    margin-left: 30px;
+#contents #content2 #autobrand div {
+    margin: 10px;
+    padding: 10px;
 }
 
-#contents #content2 #autobrand span a {
+#contents #content2 #autobrand div a {
     text-decoration: none;
     color: #000;
 }
