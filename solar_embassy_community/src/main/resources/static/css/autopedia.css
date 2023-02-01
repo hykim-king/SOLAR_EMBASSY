@@ -1,0 +1,31 @@
+#contents #content1 #btn #autogalaxy a {
+    padding-left: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#contents #content1 #btn #autopedia a {
+    padding-left: 30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#contents #content2 #autobrand {
+    margin-top: 20px;
+    display: flex;
+    float: left;
+}
+
+#contents #content2 #autobrand span {
+    margin-left: 30px;
+}
+
+#contents #content2 #autobrand span a {
+    text-decoration: none;
+    color: #000;
+}
+
+#contents #content2 #autobrand a img {
+    width: 30px;
+    height: 30px;
+}

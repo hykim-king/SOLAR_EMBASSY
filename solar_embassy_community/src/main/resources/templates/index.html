@@ -1,189 +1,98 @@
-<!DOCTYPE html>
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-
-    <style>
-        *{
-        margin:0;
-        padding:0;
-       }
-
-       #container{
-            background-color: black;
-            width : 1920px;
-            margin : 0 auto ;
-            border : 4px solid red;
-        }
-
-        header {
-            /* width: 100%; */
-            height: 445px;
-            background-color: green;
-            text-align: center;
-        }
-
-        #img1 {
-            width: 1200px;
-            height: 355px;   
-        }
-
-        #img2 {
-            height: 100%;
-            width: 100%;
-        }
-
-        #left-sidebar {
-            background-color: blue;
-            width: 361px;
-            height: 1340px;   
-            float : left; 
-        }
-
-        #contents {
-            background-color: gold;
-            width: 1200px;
-            height: 1340px;   
-            float : left;             
-        }
-
-        #contents #content1{
-            background-color: gray;
-            width: 1200px;
-            height: 77px;
-            
-        }
-
-        #contents #content2 {
-            background-color: purple;
-            width: 1200px;
-            height: 270px;
-            display: flex;
-        }
-
-        #contents #content3 {
-            background-color: navy;
-            width: 1200px;
-            height: 280px;
-            display: flex;
-        }
-
-        #contents #content3 #sub1 {
-            background-color: skyblue;
-            height: 260px;
-            width: 760px;
-            margin-top: 10px;
-        }
-
-        #contents #content3 #sub2 {
-            background-color: brown;
-            height: 260px;
-            width: 420px;
-            margin-top: 16px;
-            margin-left: 20px;
-        }
-
-        #contents #content4 {
-            background: #121212;
-            height: 355px;
-            display: flex;
-            
-        }
-
-        #contents #content4 #sub3 {
-            background-color: indigo;
-            width: 590px;
-            height: 330px;
-            margin-top: 10px;
-        }
-
-        #contents #content4 #sub4 {
-            background-color: pink;
-            width: 590px;
-            height: 330px;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-
-        #contents #content5 {
-            height: 600px;
-            width: 1320px;
-            display: flex;
-        }
-
-        #contents #content5 #sub5 {
-            background-color: pink;
-            width: 590px;
-            margin-top: 10px;
-            height: 330px;
-        }
-
-        #contents #content5 #sub6 {
-            background-color: indigo;
-            width: 590px;
-            height: 330px;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-
-        #right-sidebar {
-            background-color: red;
-            width: 361px;
-            height: 1340px;
-            float: right;
-            display : flex;
-        }
-
-        footer {
-            background-color: yellowgreen;
-            height: 120px;   
-            clear : left;              
-        }
-
-    </style>
+    <title>SOLAR EMBASSY</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <div id="container"> 
-        <header>
-            <h1>메인이미지</h1>
-            <a href="/"><img id="img1" src="/img/solar_embassy_main.png" alt=""></a>
-        </header>
+<div id="container">
+    <header>
+        <h6>메인이미지</h6>
+        <a href="/">
+            <img id="img1" src="/img/solar_embassy_main.png" alt="">
+        </a>
+        <div id="login_btn">
+            <a href="./user/login.do">Login</a>
+        </div>
+    </header>
 
-        <aside id="left-sidebar">
-            <h1> 사이드바</h1>
-        </aside>
+    <!--검색-->
+    <form>
+        <div id="searchs"><input type="text" id="search-bar" placeholder="검색어를 입력하세요.">
+            <button type="button" id="btn">검색</button>
+        </div>
+    </form>
 
-        <section id="contents">
-            <div id="content1"></div>
-            <div id="content2">
-                <img id="img2" src="/img/solar_main.png" alt="">
-            </div>
-            <div id="content3">
-                <div id="sub1"></div>
-                <div id="sub2"></div>
-            </div>
-            <div id="content4">
-                <div id="sub3"></div>
-                <div id="sub4"></div>
-            </div>
-            <div id="content5">
-                <div id="sub5"></div>
-                <div id="sub6"></div>
-            </div>
-        </section>
+    <aside id="left-sidebar">
+        <h1> 사이드바</h1>
+    </aside>
+
+    <section id="contents">
+
+        <div id="content1">
+            <nav>
+                <div class="nav_container">
+                    <ul>
+                        <li class="nav-bar"><h3><a href="#">우주의 중심</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">태양계 소식</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">주제별 갤럭시</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">마이너 갤럭시</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">스타 콜로세움</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">태양계 놀이터</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">아이콘 샵</a></h3></li>
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+
+        <div id="content2">
+            <img id="img2" src="/img/solar_main.png" alt="">
+            <a id="autopedia_door" href="/galaxy/autopedia.do">자동차</a>
+            <!-- <h3>컨텐츠 img영역</h3> -->
+        </div>
+
+        <div id="content3">
+            <div id="sub1"><h3>최근 생선된 플래닛</h3></div>
+            <div id="sub2"><h3>분류별 플래닛 </h3></div>
+        </div>
+
+        <div id="content4">
+            <div id="sub3"><h3>플래닛 board1</h3></div>
+            <div id="sub4"><h3>플래닛 board2</h3></div>
+        </div>
+
+        <div id="content5">
+            <div id="sub5"><h3>플래닛 board3</h3></div>
+            <div id="sub6"><h3>플래닛 board4</h3></div>
+        </div>
+
+        <div id="content6">
+            <div id="sub7"><h3>플래닛 board5</h3></div>
+        </div>
+
+        <div id="content7">
+            <div id="sub8"><h3>플래닛 board6</h3></div>
+        </div>
+    </section>
 
 
-        <aside id="right-sidebar">
-            <h1> 사이드바</h1>
-        </aside>
+    <aside id="right-sidebar">
+        <h1> 임시 사이드바</h1>
+    </aside>
 
-        <footer>
-            <h2> 푸터 </h2>
-        </footer>
-    </div>
+    <footer id="footer">
+        <p>
+        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
+                href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+        <p>
+        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+    </footer>
+</div>
 
-
-
+</div>
 </body>
 </html>
