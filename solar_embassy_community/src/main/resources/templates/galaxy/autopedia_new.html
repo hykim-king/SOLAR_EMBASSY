@@ -1,0 +1,127 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SOLAR EMBASSY</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/autopedia.css">
+</head>
+<body>
+<div id="container">
+    <header>
+        <h6>메인이미지</h6>
+        <a href="/">
+            <img id="img1" src="/img/solar_embassy_main.png" alt="">
+        </a>
+        <div id="login_btn">
+            <a href="./user/login.do">Login</a>
+        </div>
+    </header>
+
+    <!--검색-->
+    <form>
+        <div id="searchs"><input type="text" id="search-bar" placeholder="검색어를 입력하세요.">
+            <button type="button" id="btn">검색</button>
+        </div>
+    </form>
+
+    <aside id="left-sidebar">
+        <h1> 사이드바</h1>
+    </aside>
+
+    <section id="contents">
+
+        <div id="content1">
+            <nav>
+                <div class="nav_container">
+                    <ul>
+                        <li class="nav-bar"><h3><a href="#">자동차 갤럭시</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">자동차 백과</a></h3></li>
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+
+        <div id="content2">
+            <div id="autobrand">
+                <div><a href="#"><img src="/img/autopedia/hyundai.png" alt=""><br>현대</a></div>
+                <div><a href="#"><img src="/img/autopedia/kia.png" alt=""><br>기아</a></div>
+                <div><a href="#"><img src="/img/autopedia/genesis.jpg" alt=""><br>제네시스</a></div>
+                <div><a href="#"><img src="/img/autopedia/Chevrolet.png" alt=""><br>쉐보레</a></div>
+                <div><a href="#"><img src="/img/autopedia/ssangyong.png" alt=""><br>쌍용</a></div>
+                <div><a href="#"><img src="/img/autopedia/benz.jpg" alt=""><br>벤츠</a></div>
+                <div><a href="#"><img src="/img/autopedia/BMW.png" alt=""><br>BMW</a></div>
+                <div><a href="#"><img src="/img/autopedia/audi.jpg" alt=""><br>아우디</a></div>
+                <div><a href="#"><img src="/img/autopedia/volkswagen.png" alt=""><br>폭스바겐</a></div>
+                <div><a href="#"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></div>
+                <div><a href="#"><img src="/img/autopedia/toyota.png" alt=""><br>토요타</a></div>
+                <div><a href="#"><img src="/img/autopedia/RS.png" alt=""><br>르노삼성</a></div>
+                <div><a href="#"><img src="/img/autopedia/lexus.png" alt=""><br>렉서스</a></div>
+                <div><a href="#"><img src="/img/autopedia/nissan.jpg" alt=""><br>닛산</a></div>
+                <div><a href="#"><img src="/img/autopedia/infinity.png" alt=""><br>인피니티</a></div>
+                <div><a href="#"><img src="/img/autopedia/honda.png" alt=""><br>혼다</a></div>
+                <div><a href="#"><img src="/img/autopedia/cadillac.jpg" alt=""><br>캐딜락</a></div>
+                <div><a href="#"><img src="/img/autopedia/jeep.png" alt=""><br>지프</a></div>
+                <div><a href="#"><img src="/img/autopedia/Ford.jpg" alt=""><br>포드</a></div>
+                <div><a href="#"><img src="/img/autopedia/lincoln.png" alt=""><br>링컨</a></div>
+                <div><a href="#"><img src="/img/autopedia/TESLA.webp" alt=""><br>테슬라</a></div>
+                <div><a href="#"><img src="/img/autopedia/ferrari.png" alt=""><br>페라리</a></div>
+                <div><a href="#"><img src="/img/autopedia/LandRover.png" alt=""><br>랜드로버</a></div>
+                <div><a href="#"><img src="/img/autopedia/fiat.jpg" alt=""><br>피아트</a></div>
+                <div><a href="#"><img src="/img/autopedia/maserati.png" alt=""><br>마세라티</a></div>
+                <div><a href="#"><img src="/img/autopedia/volvo.png" alt=""><br>볼보</a></div>
+                <div><a href="#"><img src="/img/autopedia/Polestar.png" alt=""><br>폴스타</a></div>
+                <div><a href="#"><img src="/img/autopedia/Jaguar.png" alt=""><br>재규어</a></div>
+                <div><a href="#"><img src="/img/autopedia/mini.png" alt=""><br>미니</a></div>
+                <div><a href="#"><img src="/img/autopedia/Bentley.png" alt=""><br>벤틀리</a></div>
+                <div><a href="#"><img src="/img/autopedia/mclaren.svg" alt=""><br>맥라렌</a></div>
+                <div><a href="#"><img src="/img/autopedia/lamborghini.png" alt=""><br>람보르기니</a></div>
+                <div><a href="#"><img src="/img/autopedia/bugatti.png" alt=""><br>부가티</a></div>
+                <div><a href="#"><img src="/img/autopedia/citroen.png" alt=""><br>시트로엥</a></div>
+            </div>
+        </div>
+
+        <div id="content3">
+            <div id="sub1"><h3>최근 생선된 플래닛</h3></div>
+            <div id="sub2"><h3>분류별 플래닛 </h3></div>
+        </div>
+
+        <div id="content4">
+            <div id="sub3"><h3>플래닛 board1</h3></div>
+            <div id="sub4"><h3>플래닛 board2</h3></div>
+        </div>
+
+        <div id="content5">
+            <div id="sub5"><h3>플래닛 board3</h3></div>
+            <div id="sub6"><h3>플래닛 board4</h3></div>
+        </div>
+
+        <div id="content6">
+            <div id="sub7"><h3>플래닛 board5</h3></div>
+        </div>
+
+        <div id="content7">
+            <div id="sub8"><h3>플래닛 board6</h3></div>
+        </div>
+    </section>
+
+
+    <aside id="right-sidebar">
+        <h1> 임시 사이드바</h1>
+    </aside>
+
+    <footer id="footer">
+        <p>
+        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
+                href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+        <p>
+        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+    </footer>
+</div>
+
+</div>
+</body>
+</html>
