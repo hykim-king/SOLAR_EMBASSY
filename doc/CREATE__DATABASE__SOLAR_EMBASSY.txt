@@ -7,16 +7,15 @@ create table if not exists admin
     admin_level int         null,
     department  varchar(10) null
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists galaxy
 (
     galaxy_no  int          not null
         primary key,
     theme      varchar(100) not null,
-    birth_date date         not null
+    birth_date date         not null,
+    state      int          null
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists grade_table
 (
@@ -25,32 +24,31 @@ create table if not exists grade_table
     grade      varchar(50) null,
     total_exp  int         not null
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists user
 (
-    user_id         varchar(100)                        not null
+    user_id         varchar(20)                         not null
         primary key,
     user_name       varchar(20)                         not null,
-    passwords       varchar(15)                         not null,
-    email           varchar(50)                         null,
-    phone           varchar(13)                         null,
+    passwords       varchar(20)                         not null,
+    email           varchar(320)                        not null,
+    hp              varchar(12)                         not null,
+    tell            varchar(12)                         null,
     admin_id        varchar(20)                         null,
-    reg_date        timestamp default CURRENT_TIMESTAMP null,
+    reg_date        timestamp default CURRENT_TIMESTAMP not null,
     last_login_time timestamp                           null,
+    update_time     timestamp                           null,
     state           int                                 null,
-    points          int                                 null,
+    point_1         int                                 null,
+    point_2         int                                 null,
     exp             int                                 null,
     user_level      int                                 null,
     grade           int                                 null,
-    gender          int                                 null,
-    location        int                                 null,
-    hobby           varchar(200)                        null,
-    birth           date                                null,
+    birth           timestamp                           null,
+    profile_image_no int                                null,
     constraint FK_admin_TO_user
         foreign key (admin_id) references admin (admin_id)
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists letter
 (
@@ -60,8 +58,8 @@ create table if not exists letter
     receiver_id   varchar(100) not null,
     title         varchar(100) not null,
     contents      longtext     not null,
-    sent_date     timestamp    not null,
-    read_date     timestamp    null,
+    sent_time     timestamp    not null,
+    read_time     timestamp    null,
     receive_state int          null,
     receiver_del  int          null,
     sender_del    int          null,
@@ -70,16 +68,18 @@ create table if not exists letter
     constraint FK_user_TO_letter2
         foreign key (receiver_id) references user (user_id)
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists planet
 (
     planet_no int          not null
         primary key,
     title     varchar(100) not null,
-    user_id   varchar(100) not null,
+    planet_type int        not null,
+    user_id   varchar(20)  not null,
     contents  longtext     not null,
-    post_date datetime     not null,
+    post_time   timestamp  not null,
+    update_time timestamp  null,
+    update_id varchar(20)  null,
     likes     int          null,
     dislikes  int          null,
     galaxy_no int          null,
@@ -90,18 +90,17 @@ create table if not exists planet
     constraint FK_user_TO_planet
         foreign key (user_id) references user (user_id)
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists planet_image
 (
-    planet_image_no int          not null
+    planet_image_no varchar(255) not null
         primary key,
     planet_no       int          not null,
-    image_path      varchar(200) not null,
+    image_path      varchar(255) not null,
+    post_time        timestamp    not null,
     constraint FK_planet_TO_planet_image
         foreign key (planet_no) references planet (planet_no)
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists reply
 (
@@ -109,9 +108,10 @@ create table if not exists reply
         primary key,
     planet_no   int          not null,
     fk_reply_no varchar(100) null,
-    user_id     varchar(100) not null,
+    user_id     varchar(20) not null,
     contents    varchar(100) not null,
     post_time   timestamp    not null,
+    update_time timestamp    null,
     likes       int          null,
     dislikes    int          null,
     state       int          null,
@@ -122,7 +122,6 @@ create table if not exists reply
     constraint FK_user_TO_reply
         foreign key (user_id) references user (user_id)
 )
-    collate = utf8mb4_0900_ai_ci;
 
 create table if not exists reply_image
 (
@@ -130,46 +129,45 @@ create table if not exists reply_image
         primary key,
     reply_no       varchar(100) not null,
     image_path     varchar(100) not null,
+    post_time      timestamp    not null,
     constraint FK_reply_TO_reply_image
         foreign key (reply_no) references reply (reply_no)
 )
-    collate = utf8mb4_0900_ai_ci;
 
-create table if not exists user_blacklist
+create table if not exists user_block
 (
-    blacklist_no int          not null
+    block_no     int auto-increment not null
         primary key,
-    user_id      varchar(100) not null,
-    user_id2     varchar(100) null,
-    state        int          null,
-    update_time  timestamp    not null,
+    user_id      varchar(20)  not null,
+    block_obj_id    varchar(20)  not null,
+    reason       varchar(255) null,
+    post_time    timestamp    not null,
+    update_time  timestamp    null,
     constraint FK_user_TO_user_blacklist
         foreign key (user_id) references user (user_id),
     constraint FK_user_TO_user_blacklist2
         foreign key (user_id2) references user (user_id)
 )
-    collate = utf8mb4_0900_ai_ci;
 
-create table if not exists user_image
+create table if not exists profile_image
 (
-    user_image_no int          not null
+    profile_image_no int       not null
         primary key,
-    user_id       varchar(100) not null,
+    user_id       varchar(20)  not null,
     image_path    varchar(100) not null,
+    post_time     timestamp    not null,
     constraint FK_user_TO_user_image
         foreign key (user_id) references user (user_id)
 )
-    collate = utf8mb4_0900_ai_ci;
-
 
 create table business
 (
     bu_id        varchar(40) not null,
     bu_passwords varchar(15) not null,
-    email        varchar(50) null,
+    email        varchar(320)null,
     bu_phone     varchar(16) not null,
     bu_name      varchar(20) not null,
-    cr_num       varchar(20) not null,
+    cr_num       varchar(10) not null,
     bu_title     varchar(60) not null,
     bu_address   varchar(80) not null,
     bu_code      int         not null,
@@ -220,7 +218,7 @@ create table booking
     ro_name    varchar(50)  not null,
     ro_no      int          not null,
     user_name  varchar(20)  not null,
-    user_id    varchar(100) not null,
+    user_id    varchar(20) not null,
     user_phone varchar(16)  not null,
     checkin    datetime     not null,
     checkout   datetime     not null,
@@ -258,7 +256,7 @@ create table  review
     re_num        int          not null
         primary key,
     bo_num        int          not null,
-    user_id       varchar(100) not null,
+    user_id       varchar(20) not null,
     post_date     timestamp    not null,
     contents      longtext     not null,
     state         int          null,
