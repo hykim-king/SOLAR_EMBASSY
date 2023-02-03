@@ -186,6 +186,7 @@ create table bu_img
 );
 
 create table room
+
 (
     ro_no    int auto_increment
         primary key,
@@ -198,13 +199,16 @@ create table room
     checkin  datetime    not null,
     checkout datetime    not null,
     ro_info  longtext    null,
+    constraint img_no
+        foreign key (img_no) references bu_img (img_no),
     constraint room_ibfk_1
         foreign key (bu_id, bu_phone) references business (bu_id, bu_phone)
-            on update cascade on delete cascade,
-        foreign key (img_no) references bu_img (img_no)
             on update cascade on delete cascade
-
 );
+
+create index bu_id
+    on room (bu_id, bu_phone);
+
 
 create table booking
 (
