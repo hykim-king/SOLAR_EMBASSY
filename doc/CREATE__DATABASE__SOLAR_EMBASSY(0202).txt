@@ -77,7 +77,7 @@ create table if not exists notice -- 공지 테이블
     title         varchar(100) not null,
     contents      longtext     not null,
     post_time     timestamp    not null,
-    constraint FK_user_TO_letter
+    constraint FK_notice_user_admin
         foreign key (user_id) references user (user_id)
 );
 -- 임시
