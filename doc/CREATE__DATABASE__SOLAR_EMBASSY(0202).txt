@@ -168,7 +168,7 @@ create table if not exists user_block
     constraint FK_user_TO_user_blacklist
         foreign key (user_id) references user (user_id),
     constraint FK_user_TO_user_blacklist2
-        foreign key (user_id2) references user (user_id)
+        foreign key (block_obj_id) references user (user_id)
 );
 
 create table if not exists profile_image
