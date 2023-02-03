@@ -85,7 +85,7 @@ create table if not exists attend_check
 (
     check_day   int        not null
         primary key,
-    point       int        not null,
+    point       int        not null
 );
 -- 임시
 
