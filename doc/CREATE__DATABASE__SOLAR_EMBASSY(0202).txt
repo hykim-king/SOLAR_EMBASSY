@@ -13,7 +13,7 @@ create table if not exists galaxy
     galaxy_no  int          not null
         primary key,
     theme      varchar(100) not null,
-    birth_date date         not null,
+    birth      date         not null,
     state      int          null
 );
 
