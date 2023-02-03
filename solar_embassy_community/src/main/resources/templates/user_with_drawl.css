@@ -1,0 +1,214 @@
+html, body {
+    background-color: #5B8FB9;
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container { /*메인 컨테이너*/
+    /* background-color: black; */
+    width: 1920px;
+    margin: 0 auto;
+}
+
+header { /*헤더*/
+    /* width: 100%; */
+    height: 415px;
+    background-color: black;
+    text-align: center;
+    position: relative;
+
+}
+
+header > #login_btn {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.50);
+    right: 0;
+    bottom: 0;
+}
+header > #login_btn>a {
+    text-align: center;
+    padding: 10px;
+    width: 300px;
+    height: 100px;
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+}
+
+
+#img1 { /*메인 이미지*/
+    width: 1200px;
+    height: 355px;
+}
+
+#img2 { /*컨텐츠 이미지*/
+    height: 100%;
+    width: 100%;
+}
+
+#left-sidebar { /*좌측 사이드바*/
+    background-color: #5164AA;
+    width: 360px;
+    height: 77px;
+    float: left;
+}
+
+#contents { /*메인 컨테이너*/
+    background-color: #5B8FB9;
+    width: 1200px;
+    height: 100%;
+    float: left;
+}
+
+#contents #content1 { /*NAV BAR 메인 메뉴*/
+    background-color: #BF7AF6;
+    width: 1200px;
+    height: 77px;
+}
+#contents #content1 .nav_container>ul{ /*NAV BAR 메인 메뉴*/
+    background-color: #BF7AF6;
+    width: 100%;
+    list-style: none;
+}
+#contents #content1 .nav_container>ul>li{ /*NAV BAR 메인 메뉴*/
+    float: left;
+    width: 150px;
+    padding: 0 10px;
+    height: 100%;
+    border-right: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#contents #content1 .nav_container>ul>li>h3>a{ /*NAV BAR 메인 메뉴*/
+    height: 77px;
+    line-height: 100%;
+    text-decoration: none;
+    color: white;
+}
+#right-sidebar {
+    background-color: #5164AA;
+    width: 360px;
+    height: 77px;
+    float: left;
+}
+
+.modifycontainer{ /* 회원 탈퇴 관리 페이지 */
+    height: 800px;
+    background: #cf95ff;
+    border: 1px solid rgb(255, 255, 255);
+}
+.account-withdrawal{ /* 회원 탈퇴 text */
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.a-warning{ /* 회원 탈퇴전 경고문 a는 account 약자입니다*/ 
+    margin-top: 15px;
+    padding-left: 38px;
+    height: 200px;
+    font-size:15px ;
+}
+.auh{/* 탈퇴전 이유와 희망사항 인풋 창 start*/
+    border: 1px solid #ffffff;
+}
+.auh-t{ 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.a-user-hope{
+    height: 300px;
+    margin-left: 15px;
+}
+.a-user-hope2{
+    position: absolute;
+    bottom: 6%;
+    left: 50%;
+}
+.a-user-hope3{
+    margin-top: 15px;
+    width: 500px;
+    border: 1px solid #000;
+    height:150px;
+    background: #ffffff;
+    border-radius: 15px;
+}
+.a-user-hope3-1{
+    margin-top: 5px;
+    margin-left: 5px;
+    border-style: none;
+    width:300px;
+}
+.a-user-hope4{ /* 탈퇴전 이유와 희망사항 인풋 창 end*/
+    margin-top: 15px;
+    text-align: end;
+}   
+.a-agree{ /* 탈퇴동의 start */
+    margin-top: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    color: #ffffff;
+    text-align: center;
+}
+.a-btn{
+    margin-top: 10px;
+    text-align: center;
+}
+.a-confirm{ 
+    position: absolute;
+    left: 43%;
+    width: 100px;
+    height: 35px;
+    box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
+}
+.a-cancell{ /* 탈퇴동의 end */
+    position: absolute;
+    left: 52%;
+    width: 100px;
+    height: 35px;
+    box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
+}
+
+#searchs { /*검색창의 공간*/
+    width: 1920px;
+    height: 30px;
+    /* background-color: lightcoral; */
+    position: absolute;
+}
+
+#search-bar { /*검색입력 칸*/
+    width: 260px;
+    height: 30px;
+    font-size: 11px;
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    transform: translate(-64%, -110%);
+    border-radius: 5px;
+}
+
+#btn { /*검색 버튼*/
+    width: 40px;
+    height: 30px;
+    font-size: 11px;
+    position: absolute;
+    margin: 0;
+    left: 56%;
+    float: left;
+    transform: translate(-55%, -110%);
+    border-radius: 5px;
+}
+
+#footer { /*footer 영역*/
+    background-color: Black;
+    width: 1920px;
+    height: 120px;
+    clear: left;
+    position: absolute;
+    text-align: center;
+    transform: translate(0%, 1720%);
+    display: block;
+}
