@@ -1,10 +1,84 @@
-#contents #content2 #autobrand {
-    margin-top: 20px;
+#container{
+    width : 1920px;
+    margin: 20px auto;
+}
+
+header {
+    height: 600px;
+    background-color: green;
+    text-align: center;
+}
+
+#img1 {
+    width: 1320px;
+    height: 500px;
+}
+
+#left-sidebar {
+    background-color: blue;
+    width: 300px;
+    height: 2100px;
+    float : left;
+}
+
+#right-sidebar {
+    background-color: red;
+    width: 300px;
+    height: 2100px;
+    float : left;
+}
+
+#contents {
+    background-color: gold;
+    width: 1320px;
+    height: 2100px;
+    float: left;
+    text-align: center;
+}
+
+#contents #content1{
+    background-color: violet;
+    width: 1320px;
+    height: 80px;
+    margin-top: 40px;
     display: flex;
 }
 
+#contents #content1 #btn {
+    float: left;
+    margin: 30px;
+    text-decoration: none;
+}
+
+#contents #content1 #btn #autogalaxy a {
+    padding-left: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#contents #content1 #btn #autopedia a {
+    padding-left: 30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#contents #content2{
+    background-color: white;
+    width: 1320px;
+    height: 500px;
+    margin-top: 40px;
+    font-size: small;
+}
+
+#contents #content2 #autobrand {
+    width: 1320px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #contents #content2 #autobrand div {
-    margin-left: 30px;
+    margin: 10px;
+    padding: 10px;
 }
 
 #contents #content2 #autobrand div a {
@@ -15,4 +89,58 @@
 #contents #content2 #autobrand a img {
     width: 30px;
     height: 30px;
+}
+
+#contents #content3 {
+    background-color: black;
+    width: 1320px;
+    height: 100px;
+    display: flex;
+    margin-top: 40px;
+}
+
+#contents #content4 {
+    height: 560px;
+    display: flex;
+    margin-top: 40px;
+}
+
+#contents #content4 #sub1 {
+    background-color: navy;
+    width: 660px;
+    height: 580px;
+    border-radius: 10px;
+}
+
+#contents #content4 #sub2 {
+    background-color: dodgerblue;
+    width: 660px;
+    height: 580px;
+    border-radius: 10px;
+}
+
+#contents #content5 {
+    height: 560px;
+    display: flex;
+    margin-top: 40px;
+}
+
+#contents #content5 #sub3 {
+    background-color: hotpink;
+    width: 660px;
+    height: 580px;
+    border-radius: 10px;
+}
+
+#contents #content5 #sub4 {
+    background-color: darkmagenta;
+    width: 660px;
+    height: 580px;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: yellowgreen;
+    height: 300px;
+    clear : left;
 }

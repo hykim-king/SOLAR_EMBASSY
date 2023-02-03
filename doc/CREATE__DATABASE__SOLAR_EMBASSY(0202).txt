@@ -269,3 +269,36 @@ create table  review
         foreign key (user_id) references user (user_id)
             on update cascade on delete cascade
 );
+
+-- 제조사
+CREATE TABLE `COMPANY` (
+	`COM_NO`     INT         NOT NULL, -- 제조사번호
+	`COM_NAME`   VARCHAR(20) NOT NULL, -- 제조사이름
+	`ADDRESS`    VARCHAR(30) NULL,     -- 소재지
+	`PACOM`      VARCHAR(20) NULL,     -- 모기업
+	`FOUND_DATE` DATE        NULL,     -- 창립일
+	`FOUNDERS`   VARCHAR(20) NULL,     -- 창립자
+	`CEO`        VARCHAR(20) NULL,     -- 대표
+	`INDUSTRIES` VARCHAR(30) NULL,     -- 업종
+	`SLOGAN`     VARCHAR(20) NULL,     -- 슬로건
+	`CONTENT`    LONGTEXT    NULL      -- 상세내용
+);
+
+-- 제품
+CREATE TABLE `AUTO` (
+	`AUTO_NO`      INT         NOT NULL, -- 제품번호
+	`AUTO_NAME`    VARCHAR(20) NOT NULL, -- 모델명
+	`CODE_NAME`    VARCHAR(20) NOT NULL, -- 코드명
+	`COM`          VARCHAR(20) NULL,     -- 제조사
+	`AUTO_TYPE`    VARCHAR(10) NULL,     -- 차종
+	`RELEASE_DATE` DATE        NULL,     -- 출시일
+	`SEAT`         INT         NULL,     -- 승차인원
+	`MPG`          DOUBLE      NULL,     -- 복합연비
+	`ENGINE`       VARCHAR(10) NULL      -- 엔진
+);
+
+-- 백과 이미지
+CREATE TABLE `AUTO_IMG` (
+	`AUTO_IMG_NO`   INT          NOT NULL, -- 이미지 번호
+	`AUTO_IMG_PATH` VARCHAR(255) NULL      -- 이미지 경로
+);
