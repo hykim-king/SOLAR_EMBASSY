@@ -13,16 +13,10 @@ create table if not exists galaxy
     galaxy_no  int          not null
         primary key,
     theme      varchar(100) not null,
-<<<<<<< HEAD
     birth_time timestamp    not null,
     state      int          null,
-
-)
-=======
-    birth_date date         not null,
-    state      int          null
 );
->>>>>>> main
+
 
 create table if not exists grade_table
 (
