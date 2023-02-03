@@ -13,8 +13,9 @@ create table if not exists galaxy
     galaxy_no  int          not null
         primary key,
     theme      varchar(100) not null,
-    birth_date date         not null,
-    state      int          null
+    birth_time timestamp    not null,
+    state      int          null,
+
 )
 
 create table if not exists grade_table
