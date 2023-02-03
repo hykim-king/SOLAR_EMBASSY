@@ -46,8 +46,6 @@ create table if not exists user
     grade           int                                 null,
     birth           timestamp                           null,
     profile_image_no int                                null,
-    attend-series   int                                 null,
-    attend-series   int                                 null,
     constraint FK_admin_TO_user
         foreign key (admin_id) references admin (admin_id)
 );
