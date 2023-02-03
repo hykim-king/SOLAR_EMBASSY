@@ -158,7 +158,7 @@ create table if not exists reply_image
 
 create table if not exists user_block
 (
-    block_no     int auto-increment not null
+    block_no     int          not null
         primary key,
     user_id      varchar(20)  not null,
     block_obj_id    varchar(20)  not null,
