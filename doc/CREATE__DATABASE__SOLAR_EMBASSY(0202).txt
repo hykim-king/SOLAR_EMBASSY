@@ -46,6 +46,8 @@ create table if not exists user
     grade           int                                 null,
     birth           timestamp                           null,
     profile_image_no int                                null,
+    attend-series   int                                 null,
+    attend-series   int                                 null,
     constraint FK_admin_TO_user
         foreign key (admin_id) references admin (admin_id)
 )
@@ -68,6 +70,26 @@ create table if not exists letter
     constraint FK_user_TO_letter2
         foreign key (receiver_id) references user (user_id)
 )
+
+create table if not exists notice -- 공지 테이블
+(
+    notice_no     int          not null
+        primary key,
+    user_id       varchar(100) not null,  -- 작성자는 관리자
+    title         varchar(100) not null,
+    contents      longtext     not null,
+    post_time     timestamp    not null,
+    constraint FK_user_TO_letter
+        foreign key (user_id) references user (user_id),
+)
+-- 임시
+create table if not exists attend_check
+(
+    check_day   int        not null
+        primary key,
+    point       int        not null,
+)
+-- 임시
 
 create table if not exists planet
 (
