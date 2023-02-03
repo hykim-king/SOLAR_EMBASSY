@@ -79,14 +79,14 @@ create table if not exists notice -- 공지 테이블
     post_time     timestamp    not null,
     constraint FK_user_TO_letter
         foreign key (user_id) references user (user_id),
-)
+);
 -- 임시
 create table if not exists attend_check
 (
     check_day   int        not null
         primary key,
     point       int        not null,
-)
+);
 -- 임시
 
 create table if not exists planet
