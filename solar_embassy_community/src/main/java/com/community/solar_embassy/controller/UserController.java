@@ -9,4 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     @GetMapping("login.do")
     public void login(){}
+    @GetMapping("withdrawl.do")
+    public void withdrawal(){}
 }
