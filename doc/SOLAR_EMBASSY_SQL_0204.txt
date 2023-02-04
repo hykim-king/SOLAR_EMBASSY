@@ -37,41 +37,41 @@ create table business
 
 create table company
 (
-    COM_NO     int         not null comment '제조사 번호'
+    com_no     int         not null comment '제조사 번호'
         primary key,
-    COM_NAME   varchar(20) not null comment '제조사 이름',
-    ADDRESS    varchar(30) null comment '소재지',
-    PACOM      varchar(20) null comment '모기업',
-    FOUND_DATE date        null comment '창립일',
-    FOUNDERS   varchar(20) null comment '창립자',
-    CEO        varchar(20) null comment '대표',
-    INDUSTRIES varchar(30) null comment '업종',
-    SLOGAN     varchar(20) null comment '슬로건',
-    CONTENT    longtext    null comment '상세내용'
+    com_name   varchar(20) not null comment '제조사 이름',
+    address    varchar(30) null comment '소재지',
+    pacom      varchar(20) null comment '모기업',
+    found_date date        null comment '창립일',
+    founders   varchar(20) null comment '창립자',
+    ceo        varchar(20) null comment '대표',
+    industries varchar(30) null comment '업종',
+    slogan     varchar(20) null comment '슬로건',
+    content    longtext    null comment '상세내용'
 );
 
 create table auto
 (
-    AUTO_NO      int         not null comment '제품번호'
+    auto_no      int         not null comment '제품번호'
         primary key,
-    AUTO_NAME    varchar(20) not null comment '모델명',
-    CODE_NAME    varchar(20) not null comment '코드명',
-    COM          int         null comment '제조사번호',
-    AUTO_TYPE    varchar(10) null comment '차종',
-    RELEASE_DATE date        null comment '출시일',
-    SEAT         int         null comment '승차인원',
-    MPG          double      null comment '복합연비',
-    A_ENGINE     varchar(10) null comment '엔진',
+    auto_name    varchar(20) not null comment '모델명',
+    code_name    varchar(20) not null comment '코드명',
+    com          int         null comment '제조사번호',
+    auto_type    varchar(10) null comment '차종',
+    release_date date        null comment '출시일',
+    seat         int         null comment '승차인원',
+    mpg          double      null comment '복합연비',
+    a_engine     varchar(10) null comment '엔진',
     constraint auto_company_COM_NO_fk
         foreign key (COM) references company (COM_NO)
 );
 
 create table auto_img
 (
-    AUTO_IMG_NO   int          not null comment '제품 이미지 번호'
+    auto_img_no   int          not null comment '제품 이미지 번호'
         primary key,
-    AUTO_IMG_PATH varchar(255) null comment '제품 이미지 경로',
-    AUTO_NO       int          not null comment '제품 번호',
+    auto_img_path varchar(255) null comment '제품 이미지 경로',
+    auto_no       int          not null comment '제품 번호',
     constraint auto_img_auto_AUTO_NO_fk
         foreign key (AUTO_NO) references auto (AUTO_NO)
 );
@@ -82,7 +82,7 @@ create table galaxy
         primary key,
     update_time timestamp                           null comment '게시판 수정시간',
     user_id     varchar(20)                         null comment '게시판 등록자',
-    updator_id  varchar(20)                         null comment '게시판 수정한 사람',
+    updater_id  varchar(20)                         null comment '게시판 수정한 사람',
     gal_name    varchar(100)                        not null comment '게시판 이름',
     reg_time    timestamp default CURRENT_TIMESTAMP not null comment '게시판 등록일',
     state       int       default 1                 null comment '게시판 상태(0:비활성,1:활성)'
@@ -150,7 +150,7 @@ create table users
     e_point         int                                 null comment '포인트(에너지)',
     exp             int                                 null comment '경험치',
     user_level      int                                 null comment '회원 레벨',
-    birth           timestamp                           null comment '회원 생년월일',
+    birth           date                                null comment '회원 생년월일',
     profile_img_no  int                                 null comment '선택한 프로필 이미지 번호',
     constraint FK_admin_TO_user
         foreign key (admin_id) references admin (admin_id),
@@ -168,7 +168,7 @@ create table board
     contents    longtext      not null comment '게시글 내용',
     post_time   timestamp     not null comment '게시글 등록시간',
     update_time timestamp     null comment '게시글 수정시간',
-    updator_id  varchar(20)   null comment '게시글 변경한 사람',
+    updater_id  varchar(20)   null comment '게시글 변경한 사람',
     likes       int           null comment '추천수',
     dislikes    int           null comment '비추천수',
     galaxy_no   int           null comment '게시판 번호',
@@ -248,7 +248,7 @@ create table planet_img
 
 create table profile_img
 (
-    profile_img_no  int          not null comment '프로질 이미지 번호'
+    profile_img_no  int          not null comment '프로필 이미지 번호'
         primary key,
     user_id         varchar(20)  not null comment '작성자 ID',
     img_path        varchar(100) not null comment '프로필 이미지 경로',

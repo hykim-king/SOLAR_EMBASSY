@@ -27,5 +27,13 @@ public class UserController {
     @GetMapping("signup_business.do")
     public void signup_business() {
     }
+    @GetMapping("rocket.do")
+    public void rocket(){}
+    @GetMapping("next.do")
+    public void next(){}
+    @GetMapping("next_2.do")
+    public void next_2(){}
+    @GetMapping("next_3.do")
+    public void next_3(){}
 
 }
