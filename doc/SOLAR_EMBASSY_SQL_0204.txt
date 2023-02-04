@@ -1,0 +1,346 @@
+create table admin
+(
+    admin_id    varchar(20)                         not null comment '관리자 아이디'
+        primary key,
+    reg_time    timestamp default CURRENT_TIMESTAMP null comment '관리자 등록 시간',
+    admin_level int                                 null comment '관리자 등급',
+    department  varchar(10)                         null comment '관리자 부서',
+    update_time timestamp                           null comment '관리자 정보 수정시간'
+);
+
+create table bu_img
+(
+    img_path        int          not null,
+    origin_img_name varchar(255) null comment '원본 이미지명',
+    img_no          int auto_increment
+        primary key
+);
+
+create table business
+(
+    bu_id        varchar(40)  not null,
+    bu_passwords varchar(15)  not null,
+    email        varchar(320) null,
+    bu_phone     varchar(16)  not null,
+    bu_name      varchar(20)  not null,
+    cr_num       varchar(10)  not null,
+    bu_title     varchar(60)  not null,
+    bu_address   varchar(80)  not null,
+    bu_code      int          not null,
+    img_no       int          null,
+    primary key (bu_id, bu_phone),
+    constraint bu_address
+        unique (bu_address),
+    constraint bu_title
+        unique (bu_title)
+);
+
+create table company
+(
+    COM_NO     int         not null comment '제조사 번호'
+        primary key,
+    COM_NAME   varchar(20) not null comment '제조사 이름',
+    ADDRESS    varchar(30) null comment '소재지',
+    PACOM      varchar(20) null comment '모기업',
+    FOUND_DATE date        null comment '창립일',
+    FOUNDERS   varchar(20) null comment '창립자',
+    CEO        varchar(20) null comment '대표',
+    INDUSTRIES varchar(30) null comment '업종',
+    SLOGAN     varchar(20) null comment '슬로건',
+    CONTENT    longtext    null comment '상세내용'
+);
+
+create table auto
+(
+    AUTO_NO      int         not null comment '제품번호'
+        primary key,
+    AUTO_NAME    varchar(20) not null comment '모델명',
+    CODE_NAME    varchar(20) not null comment '코드명',
+    COM          int         null comment '제조사번호',
+    AUTO_TYPE    varchar(10) null comment '차종',
+    RELEASE_DATE date        null comment '출시일',
+    SEAT         int         null comment '승차인원',
+    MPG          double      null comment '복합연비',
+    A_ENGINE     varchar(10) null comment '엔진',
+    constraint auto_company_COM_NO_fk
+        foreign key (COM) references company (COM_NO)
+);
+
+create table auto_img
+(
+    AUTO_IMG_NO   int          not null comment '제품 이미지 번호'
+        primary key,
+    AUTO_IMG_PATH varchar(255) null comment '제품 이미지 경로',
+    AUTO_NO       int          not null comment '제품 번호',
+    constraint auto_img_auto_AUTO_NO_fk
+        foreign key (AUTO_NO) references auto (AUTO_NO)
+);
+
+create table galaxy
+(
+    galaxy_no   int                                 not null comment '게시판 번호'
+        primary key,
+    update_time timestamp                           null comment '게시판 수정시간',
+    user_id     varchar(20)                         null comment '게시판 등록자',
+    updator_id  varchar(20)                         null comment '게시판 수정한 사람',
+    gal_name    varchar(100)                        not null comment '게시판 이름',
+    reg_time    timestamp default CURRENT_TIMESTAMP not null comment '게시판 등록일',
+    state       int       default 1                 null comment '게시판 상태(0:비활성,1:활성)'
+)
+    comment '게시판';
+
+create table grade_img
+(
+    grade           varchar(50)  not null comment '등급'
+        primary key,
+    img_path        varchar(255) null comment '등급 이미지 경로',
+    origin_img_name varchar(255) null comment '원본 이미지명'
+)
+    comment '등급 이미지';
+
+create table grade_table
+(
+    user_level int         not null comment '회원 레벨'
+        primary key,
+    grade      varchar(50) null comment '회원 등급',
+    total_exp  int         not null comment '레벨업 필요경험치',
+    constraint grade_table_grade_img_grade_fk
+        foreign key (grade) references grade_img (grade)
+);
+
+create table room
+(
+    ro_no    int auto_increment
+        primary key,
+    bu_id    varchar(40)  not null,
+    bu_phone varchar(16)  not null,
+    img_no   int          null,
+    img_name varchar(255) null,
+    ro_count varchar(20)  not null,
+    ro_name  varchar(50)  not null,
+    ro_price varchar(40)  not null,
+    checkin  datetime     not null,
+    checkout datetime     not null,
+    ro_info  longtext     null,
+    constraint img_no
+        foreign key (img_no) references bu_img (img_no),
+    constraint room_ibfk_1
+        foreign key (bu_id, bu_phone) references business (bu_id, bu_phone)
+            on update cascade on delete cascade
+);
+
+create index bu_id
+    on room (bu_id, bu_phone);
+
+create table users
+(
+    user_id         varchar(20)                         not null comment '유저 아이디'
+        primary key,
+    nickname        varchar(20)                         not null comment '유저 닉네임(본명, 실명 아님)',
+    passwords       varchar(20)                         not null comment '비밀번호 최소 8글자, 최대 20글자',
+    email           varchar(320)                        not null comment '이메일 주소',
+    hp              varchar(12)                         null comment '유선 연락처',
+    tell            varchar(12)                         null comment '휴대전화 연락처',
+    admin_id        varchar(20)                         null comment '관리자 아이디(일반회원 : null)',
+    reg_date        timestamp default CURRENT_TIMESTAMP not null comment '회원가입일',
+    last_login_time timestamp                           null comment '최근로그인시간',
+    update_time     timestamp                           null comment '회원정보 수정시간',
+    state           int                                 null comment '회원 활동상태(0:정지, 1:활동,-1:탈퇴,-2:추방)',
+    c_point         int                                 null comment '포인트(사탕)',
+    e_point         int                                 null comment '포인트(에너지)',
+    exp             int                                 null comment '경험치',
+    user_level      int                                 null comment '회원 레벨',
+    birth           timestamp                           null comment '회원 생년월일',
+    profile_img_no  int                                 null comment '선택한 프로필 이미지 번호',
+    constraint FK_admin_TO_user
+        foreign key (admin_id) references admin (admin_id),
+    constraint users_grade_table_user_level_fk
+        foreign key (user_level) references grade_table (user_level)
+);
+
+create table board
+(
+    board_no    int           not null comment '게시글 번호'
+        primary key,
+    title       varchar(100)  not null comment '게시글 제목',
+    board_tag   int           not null comment '게시글 세부 분류',
+    user_id     varchar(20)   not null comment '작성자 ID',
+    contents    longtext      not null comment '게시글 내용',
+    post_time   timestamp     not null comment '게시글 등록시간',
+    update_time timestamp     null comment '게시글 수정시간',
+    updator_id  varchar(20)   null comment '게시글 변경한 사람',
+    likes       int           null comment '추천수',
+    dislikes    int           null comment '비추천수',
+    galaxy_no   int           null comment '게시판 번호',
+    views       int           null comment '조회수',
+    state       int default 1 null comment '게시글 상태(0:비활성,1:활성,-1:신고,-2:삭제)',
+    constraint FK_galaxy_TO_planet
+        foreign key (galaxy_no) references galaxy (galaxy_no),
+    constraint FK_user_TO_planet
+        foreign key (user_id) references users (user_id)
+)
+    comment '게시글';
+
+create table booking
+(
+    bo_num     int auto_increment
+        primary key,
+    bo_date    timestamp    null,
+    bu_id      varchar(100) not null,
+    bu_phone   varchar(16)  not null,
+    bu_title   varchar(60)  not null,
+    bu_address varchar(80)  not null,
+    ro_name    varchar(50)  not null,
+    ro_no      int          not null,
+    user_name  varchar(20)  not null,
+    user_id    varchar(20)  not null,
+    user_phone varchar(16)  not null,
+    checkin    datetime     not null,
+    checkout   datetime     not null,
+    state      int          null,
+    payment    varchar(255) not null,
+    price      int          not null,
+    reg_date   timestamp    not null,
+    bu_check   varchar(100) not null,
+    constraint booking_ibfk_1
+        foreign key (bu_id, bu_phone) references business (bu_id, bu_phone)
+            on update cascade on delete cascade,
+    constraint booking_ibfk_2
+        foreign key (ro_no) references room (ro_no)
+            on update cascade on delete cascade,
+    constraint booking_ibfk_3
+        foreign key (user_id) references users (user_id)
+            on update cascade on delete cascade
+);
+
+create table letter
+(
+    letter_no     int           not null comment '쪽지 번호'
+        primary key,
+    sender_id     varchar(20)   not null comment '보내는 사람',
+    receiver_id   varchar(20)   not null comment '받는 사람',
+    title         varchar(100)  not null comment '쪽지 제목',
+    contents      longtext      not null comment '쪽지 내용',
+    sent_time     timestamp     not null comment '보낸 시간',
+    read_time     timestamp     null comment '읽은 시간',
+    receive_state int default 0 null comment '읽은 상태(0:읽지않음,1:읽음)',
+    receiver_del  int           null comment '받은 쪽지 삭제(0:삭제안함,1:삭제)',
+    sender_del    int           null comment '보낸 쪽지 삭제(0:삭제안함,1:삭제)',
+    constraint letter_user_user_id_fk
+        foreign key (receiver_id) references users (user_id),
+    constraint letter_user_user_id_user_id_fk
+        foreign key (sender_id) references users (user_id)
+)
+    comment '쪽지';
+
+create table planet_img
+(
+    planet_img_no   varchar(255) not null comment '게시글 이미지 번호'
+        primary key,
+    planet_no       int          not null comment '게시글 번호',
+    image_path      varchar(255) not null comment '게시글 이미지 경로',
+    origin_img_name varchar(255) null comment '원본 이미지명',
+    post_time       timestamp    not null comment '게시글 이미지 등록 시간',
+    constraint FK_planet_TO_planet_image
+        foreign key (planet_no) references board (board_no)
+)
+    comment '게시글 이미지(최대 몇개)';
+
+create table profile_img
+(
+    profile_img_no  int          not null comment '프로질 이미지 번호'
+        primary key,
+    user_id         varchar(20)  not null comment '작성자 ID',
+    img_path        varchar(100) not null comment '프로필 이미지 경로',
+    origin_img_name varchar(255) null comment '원본 이미지명',
+    post_time       timestamp    not null comment '프로필 이미지 등록 시간',
+    constraint FK_user_TO_user_image
+        foreign key (user_id) references users (user_id)
+)
+    comment '프로필 이미지';
+
+create table reply
+(
+    reply_no        varchar(100)                        not null comment '댓글 번호'
+        primary key,
+    planet_no       int                                 not null comment '게시글 번호',
+    fk_reply_no     varchar(100)                        null comment '대댓글을 단 댓글 번호',
+    user_id         varchar(20)                         not null comment '작성자 ID',
+    contents        varchar(100)                        not null comment '댓글 내용',
+    post_time       timestamp default CURRENT_TIMESTAMP not null comment '댓글 등록 시간',
+    update_time     timestamp                           null comment '댓글 수정 시간',
+    likes           int                                 null comment '댓글 좋아요',
+    dislikes        int                                 null comment '댓글 싫어요',
+    state           int       default 1                 null comment '댓글 상태(0:비활성,1:활성,-1:신고,-2:삭제)',
+    img_path        varchar(255)                        null comment '댓글 이미지 경로',
+    origin_img_name varchar(255)                        null comment '원본 이미지 명',
+    constraint FK_planet_TO_reply
+        foreign key (planet_no) references board (board_no),
+    constraint FK_reply_TO_reply
+        foreign key (fk_reply_no) references reply (reply_no),
+    constraint FK_user_TO_reply
+        foreign key (user_id) references users (user_id)
+)
+    comment '댓글';
+
+create table reserved
+(
+    bo_num int not null,
+    ro_no  int not null,
+    primary key (bo_num, ro_no),
+    constraint reserved_ibfk_1
+        foreign key (bo_num) references booking (bo_num)
+            on update cascade on delete cascade,
+    constraint reserved_ibfk_2
+        foreign key (ro_no) references room (ro_no)
+            on update cascade on delete cascade
+);
+
+create table review
+(
+    re_num        int         not null
+        primary key,
+    bo_num        int         not null,
+    user_id       varchar(20) not null,
+    post_date     timestamp   not null,
+    contents      longtext    not null,
+    state         int         null,
+    likes         int         null,
+    content_reply longtext    null,
+    constraint review_ibfk_1
+        foreign key (bo_num) references booking (bo_num)
+            on update cascade on delete cascade,
+    constraint review_ibfk_2
+        foreign key (user_id) references users (user_id)
+            on update cascade on delete cascade
+);
+
+create table user_attend_check
+(
+    day_no      int auto_increment comment '~일차 출석체크'
+        primary key,
+    user_id     varchar(20) not null comment '출첵회원 ID',
+    check_state int         null comment '출첵 여부(0 : 안함, 1: 함)',
+    check_time  timestamp   null comment '출첵한 날짜',
+    c_point     int         null comment '지급하는 사탕',
+    e_point     int         null comment '지급하는 에너지',
+    constraint user_attend_check_user_user_id_fk
+        foreign key (user_id) references users (user_id)
+);
+
+create table user_block
+(
+    block_no     int                                 not null comment '차단 번호'
+        primary key,
+    user_id      varchar(20)                         not null comment '차단 주체',
+    block_obj_id varchar(20)                         not null comment '차단 대상',
+    reason       varchar(255)                        null comment '차단 사유',
+    post_time    timestamp default CURRENT_TIMESTAMP not null comment '차단 등록일',
+    update_time  timestamp                           null comment '차단 사유 수정일',
+    constraint FK_user_TO_user_blacklist
+        foreign key (user_id) references users (user_id),
+    constraint FK_user_TO_user_blacklist2
+        foreign key (block_obj_id) references users (user_id)
+)
+    comment '차단목록';
+
