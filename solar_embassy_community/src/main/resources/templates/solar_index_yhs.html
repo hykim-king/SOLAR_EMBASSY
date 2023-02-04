@@ -1,0 +1,442 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>SOLAR EMBASSY</title>
+
+<!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
+<!--    <script src="/uikit/js/uikit.js"></script>-->
+<!--    <script src="/uikit/js/uikit-icons.js"></script>-->
+
+<style>
+    *{margin:0; padding:0;}
+
+    html,body{
+        background-color: #5B8FB9;
+        height: 100%;
+        max-width: 1920px;
+        margin : 0 auto ;
+    }
+    ul{list-style: none;}
+    a{text-decoration: none; color: white;}
+
+       #container{                                      /*메인 컨테이너*/
+           width : 1920px;
+           background-color: #5B8FB9;
+           margin : 0 auto ;
+           position:relative;
+           transform: translate(0,0);
+        }
+
+        header {                                      /*헤더*/
+            width: 100%;
+            height: 415px;
+            background-color: black;
+            text-align: center;
+            margin : 0 auto ;
+            position:relative;
+    }
+        #img1 {                         /*메인 서비스 이미지*/
+            width: 1200px;
+            position:absolute;
+            transform:translate(-50%,0%);
+            height: 355px;
+        }
+
+        #topline{                                       /*검색창, 로그인의 공간*/
+            width: 100%;
+            height: 50px;
+            position: relative;
+            background-color: black;
+        }
+
+        #search-bar{                                       /*검색입력 칸*/
+            width: 240px;
+            height: 40px;
+            font-size: 11px;
+            position: absolute;
+            float: left;
+            transform: translate(720px, -10px);
+            margin: 0;
+            border-radius: 5px;
+        }
+
+        #btn{                                      /*검색 버튼*/
+            width: 60px;
+            height: 40px;
+            font-size: 11px;
+            color: white;
+            position: absolute;
+            margin: 0;
+            float: left;
+            transform: translate(960px,-10px);
+            border-radius: 5px;
+            background-color: #364959;
+    }
+
+        #login{                                      /*로그인 공간 */
+            width: 300px;
+            height: 40px;
+            position: absolute;
+            transform: translate(1260px, 10px);
+            background-color: #333125;
+            border-radius: 5px;
+         }
+
+        .logbtn{                                      /*로그인 공간 안의 버튼 3개.*/
+            margin:  10px 0 0 10px;
+            width: 80px;
+            height: 20px;
+            color: white;
+            font-size: 11px;
+            border-radius: 5px;
+            background-color: #364959;
+            border: 2px solid #0D3360;
+        }
+
+        #left-sidebar {                                      /*좌측 사이드바*/
+            background-color: #5164AA;
+            width: 360px;
+            height: 80px;
+            position: absolute;
+            float: top;
+            transform: translate(0,60%);
+        }
+
+        #contents {                                      /*메인 컨테이너*/
+            width: 1200px;
+            background-color: #5B8FB9;
+            margin-left: 360px;
+            float: left;
+            position: absolute;
+            transform: translate(0,48px);
+        }
+        #contents #content1{                                      /*NAV BAR 메인 메뉴 공간.*/
+            background-color: #826BCE;
+            width: 1200px;
+            height: 80px;
+            float: top;
+            position: relative;
+            transform: translate(0,0);
+        }
+
+        #menu_wrap{                 /*Nav bar 크기*/
+            width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .top_menu{                 /*Nav bar 각 메뉴*/
+            padding:0;
+            margin: 0 auto;
+            width: 200px;
+            height: 100%;
+            background-color: #645CBB;
+            float: left;
+            text-align: center;
+            font: 20px/100px'';
+            transition-duration: 0.3s;
+        }
+
+    .sub_menu{                  /*드롭 다운 위치*/
+        margin-top: 10px;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        background-color: #A084DC;
+        transition-duration: 0.3s;
+    }
+
+    .sub_menu>li{               /*드롭다운 하위메뉴*/
+        width: 100%;
+        height: 80px;
+        border-bottom: 1px solid #0d6efd;
+        box-sizing: border-box;
+        font: 18px/80px '';
+    }
+
+    .top_menu.top_menu:hover{       /*하위 메뉴 hover*/
+        font: 18px/70px '';
+        height: 100%;
+        background-color: #BFACE2;
+    }
+
+    .top_menu:hover>.sub_menu{          /*하위 메뉴 늘어나는 길이 hover*/
+        height: 320px;
+    }
+
+    .sub_menu>li:hover{                 /*하위 메뉴 각 항목 hover*/
+        background-color: #EBC7E6;
+        transition-duration: 0.5s;
+    }
+
+        #right-sidebar {
+            background-color: #5164AA;
+            width: 360px;
+            height: 80px;
+            position: absolute;
+            transform: translate(1200px,-80px);
+            float: top;
+        }
+
+        #img2 {height: 100%;
+                width: 100%;}               /*컨텐츠 이미지*/
+
+        #contents #content2 {                                      /*컨텐츠 이미지가 삽입되는 구역*/
+            background-color: purple;
+            width: 1200px;
+            height: 270px;
+            display: flex;
+        }
+
+        #contents #content3 {                                      /*인기 플래닛 표시구역*/
+            background-color: #5B8FB9;
+            width: 1200px;
+            height: 280px;
+            display: flex;
+        }
+
+        #contents #content3 #sub1 {                                      /*최근 생성된 플래닛 구역*/
+            background-color: #A3C7D6;
+            height: 260px;
+            width: 760px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        #contents #content3 #sub2 {                                      /*분류별 플래닛*/
+            background-color: #A3C7D6;
+            height: 260px;
+            width: 420px;
+            margin-top: 10px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+
+        #contents #content4 {                                      /*표시 플래닛 1,2의 구역*/
+            background: #5B8FB9;
+            height: 355px;
+            display: flex;
+            border-radius: 5px;
+
+        }
+
+        #contents #content4 #sub3 {                                      /*플래닛1*/
+            background-color: #A6DFFF;
+            width: 590px;
+            height: 330px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        #contents #content4 #sub4 {                                      /*플래닛2*/
+            background-color: #A6DFFF;
+            width: 590px;
+            height: 330px;
+            margin-top: 10px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+
+        #contents #content5 {                                      /*표시 플래닛 3, 4의 구역*/
+            height: 360px;
+            width: 100%;
+            display: flex;
+            border-radius: 5px;
+        }
+
+        #contents #content5 #sub5 {                                      /*플래닛3*/
+            background-color: #A6DFFF;
+            width: 590px;
+            height: 330px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        #contents #content5 #sub6 {                                      /*플래닛5*/
+            background-color: #A6DFFF;
+            width: 590px;
+            height: 330px;
+            margin-top: 10px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+
+        #contents #content6 {                                      /*표시 플래닛 5의 구역*/
+            height: 360px;
+            width: 100%;
+            display: flex;
+        }
+
+        #contents #content6 #sub7 {                                      /*플래닛 5*/
+            background-color: #A6DFFF;
+            width: 1200px;
+            height: 330px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        #contents #content7 {                                      /*표시 플래닛 6의 구역*/
+            height: 360px;
+            width: 100%;
+            display: flex;
+        }
+
+        #contents #content7 #sub8 {                                      /*플래닛 6*/
+            background-color: #A6DFFF;
+            width: 1200px;
+            height: 330px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+
+
+        #footer{                                      /*footer 영역*/
+            background-color: Black;
+            width: 1920px;
+            height: 140px;
+            clear : left;
+            float: bottom;
+            position: absolute;
+            text-align: center;
+            transform: translate(0,2115px);
+            color: white;
+            font: 18px/60px '';
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container"> 
+        <header>
+            <h6>메인이미지</h6> 
+            <img id="img1" src="#" alt="">
+        </header>
+
+        <div id="topline">
+        <form>
+        <!--검색-->
+        <div id="search">
+            <input type="text" id="search-bar" placeholder="검색어를 입력하세요.">
+            <button type="button" id="btn">검색</button></div>
+        </form>
+
+        <!--로그인-->
+        <form>
+            <div id="login">
+                <button class="logbtn" type="button">로그인</button>
+                <button class="logbtn" type="button">ID/PW 찾기</button>
+                <button class="logbtn" type="button">회원가입</button>
+            </div>
+        </form>
+            <aside id="left-sidebar">
+                <h1> 사이드바</h1>
+            </aside>
+
+        <section id="contents">
+            <div id="content1">
+                <ul id="menu_wrap">
+
+                    <li class="top_menu">
+                        <a href="#">메인 메뉴</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">메인 홈</a></li>
+                            <li><a href="#">마이 페이지</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">태양계 소식지</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이용정책</a></li>
+                            <li><a href="#">이벤트 안내</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">주제별 갤럭시</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">스포츠</a></li>
+                            <li><a href="#">문학</a></li>
+                            <li><a href="#">문화</a></li>
+                            <li><a href="#">게임</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">마이너 갤럭시</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">유머</a></li>
+                            <li><a href="#">취미</a></li>
+                            <li><a href="#">여행</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">태양계 놀이터</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">외계인 잡기</a></li>
+                            <li><a href="#">행성 맞추기</a></li>
+                            <li><a href="#">개발중</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">스타 콜로세움</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">맞짱 게시판</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <aside id="right-sidebar">
+                <h1> 임시 사이드바</h1>
+            </aside>
+
+            <div id="content2">
+                <img id="img2" src="#" alt="">
+                <!-- <h3>컨텐츠 img영역</h3> -->
+            </div>
+
+            <div id="content3">
+                <div id="sub1"><h3>최근 생선된 플래닛</h3></div>
+                <div id="sub2"><h3>분류별 플래닛 </h3></div>
+            </div>
+
+            <div id="content4">
+                <div id="sub3"><h3>플래닛 board1</h3></div>
+                <div id="sub4"><h3>플래닛 board2</h3></div>
+            </div>
+
+            <div id="content5">
+            <div id="sub5"><h3>플래닛 board3</h3></div>
+                <div id="sub6"><h3>플래닛 board4</h3></div>
+            </div> 
+
+            <div id="content6">
+                <div id="sub7"><h3>플래닛 board5</h3></div>
+            </div>    
+
+            <div id="content7">
+                <div id="sub8"><h3>플래닛 board6</h3></div>
+            </div>    
+        </section>
+
+
+            <footer id="footer">
+            <p><h3> <a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+            <p><h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+          </footer>
+        </div>
+
+    </div>
+</body>
+</html>
