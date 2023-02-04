@@ -171,7 +171,7 @@ create table board
     updater_id  varchar(20)   null comment '게시글 변경한 사람',
     likes       int           null comment '추천수',
     dislikes    int           null comment '비추천수',
-    galaxy_no   int           null comment '게시판 번호',
+    galaxy_no   int           not null comment '게시판 번호',
     views       int           null comment '조회수',
     state       int default 1 null comment '게시글 상태(0:비활성,1:활성,-1:신고,-2:삭제)',
     constraint FK_galaxy_TO_planet
