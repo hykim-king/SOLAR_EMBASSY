@@ -10,6 +10,21 @@ create table admin
     update_time timestamp                           null
 );
 
+create table company
+(
+    com_no     int         not null,
+    com_name   varchar(20) not null,
+    address    varchar(30) null,
+    pacom      varchar(20) null,
+    found_date date        null,
+    founders   varchar(20) null,
+    ceo        varchar(20) null,
+    industries varchar(30) null,
+    slogan     varchar(20) null,
+    content    longtext    null,
+    primary key (com_no, com_name)
+);
+
 create table auto
 (
     auto_no      int         not null,
@@ -23,7 +38,7 @@ create table auto
     auto_engine  varchar(10) null,
     primary key (auto_no, auto_name, code_name),
     constraint auto_company_com_no_fk
-        foreign key (com) references solar_embassy.company (com_no)
+        foreign key (com) references company (com_no)
             on update cascade on delete cascade
 );
 
@@ -39,8 +54,6 @@ create table auto_img
         foreign key (auto_no) references solar_embassy.auto (auto_no)
             on update cascade on delete cascade
 );
-
-
 
 create table bu_img
 (
@@ -73,20 +86,7 @@ create table business
     primary key (cr_num, bu_tell)
 );
 
-create table company
-(
-    com_no     int         not null,
-    com_name   varchar(20) not null,
-    address    varchar(30) null,
-    pacom      varchar(20) null,
-    found_date date        null,
-    founders   varchar(20) null,
-    ceo        varchar(20) null,
-    industries varchar(30) null,
-    slogan     varchar(20) null,
-    content    longtext    null,
-    primary key (com_no, com_name)
-);
+
 
 create table grade_img
 (
