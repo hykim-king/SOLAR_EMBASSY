@@ -15,22 +15,32 @@ create table auto
     auto_no      int         not null,
     auto_name    varchar(20) not null,
     code_name    varchar(20) not null,
-    com          varchar(20) null,
+    com          int         not null,
     auto_type    varchar(10) null,
     release_date date        null,
     seat         int         null,
     mpg          double      null,
-    engine       varchar(10) null,
-    primary key (auto_no, auto_name, code_name)
+    auto_engine  varchar(10) null,
+    primary key (auto_no, auto_name, code_name),
+    constraint auto_company_com_no_fk
+        foreign key (com) references solar_embassy.company (com_no)
+            on update cascade on delete cascade
 );
 
-create table auto_img
+
+create table solar_embassy.auto_img
 (
     auto_img_no     int          not null
         primary key,
+    auto_no         int          not null,
     auto_img_path   varchar(255) null,
-    source_img_name varchar(255) null
+    source_img_name varchar(255) null,
+    constraint auto_img_auto_auto_no_fk
+        foreign key (auto_no) references solar_embassy.auto (auto_no)
+            on update cascade on delete cascade
 );
+
+
 
 create table bu_img
 (
