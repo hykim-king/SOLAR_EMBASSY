@@ -1,185 +1,48 @@
+create database solar_embassy;
+
 create table admin
 (
-	admin_id    varchar(20)                         not null
+    admin_id    varchar(20)                         not null
         primary key,
-	admin_level int                                 null,
-    	department  varchar(10)                         null,
-    	reg_time    timestamp default CURRENT_TIMESTAMP null,
-    	update_time timestamp                           null
+    admin_level int                                 null,
+    department  varchar(10)                         null,
+    reg_time    timestamp default CURRENT_TIMESTAMP null,
+    update_time timestamp                           null
 );
-create table grade_img
+
+create table auto
 (
-	grade           varchar(50)  not null
-		primary key,
-	img_path        varchar(255) null,
-	origin_img_name varchar(255) null
+    auto_no      int         not null,
+    auto_name    varchar(20) not null,
+    code_name    varchar(20) not null,
+    com          varchar(20) null,
+    auto_type    varchar(10) null,
+    release_date date        null,
+    seat         int         null,
+    mpg          double      null,
+    engine       varchar(10) null,
+    primary key (auto_no, auto_name, code_name)
 );
-create table grade
+
+create table auto_img
 (
-	user_level int         not null
+    auto_img_no     int          not null
         primary key,
-	grade      varchar(50) not null,
-	total_exp  int         not null,
-	constraint grade_table_grade_img_grade_fk
-		foreign key (grade) references grade_img (grade)
+    auto_img_path   varchar(255) null,
+    source_img_name varchar(255) null
 );
-create table users
+
+create table bu_img
 (
-	user_id         varchar(20)                         not null
-		primary key,
-	nickname        varchar(20)                         not null,
-	passwords       varchar(20)                         not null,
-    	email           varchar(320)                        not null,
-    	hp              varchar(12)                         null,
-   	tell            varchar(12)                         null,
-    	admin_id        varchar(20)                         null,
-    	reg_date        timestamp default CURRENT_TIMESTAMP not null,
-	last_login_time timestamp                           null,
-	update_time     timestamp                           null,
-	state           int                                 null,
-	c_point         int                                 null,
-	e_point         int                                 null,
-	exp             int                                 null,
-	user_level      int                                 null,
-	birth           date                                null,
-	profile_img_no  int                                 null,
-	constraint FK_admin_TO_user
-		foreign key (admin_id) references admin (admin_id),
-	constraint users_grade_table_user_level_fk
-		foreign key (user_level) references grade(user_level)
-);
-create table profile_img
-(
-    profile_img_no  int          not null
+    bu_img_no       int auto_increment
         primary key,
-    user_id         varchar(20)  not null,
     img_path        varchar(100) not null,
-    origin_img_name varchar(255) null,
-	save_img_name	varchar(255) null,
+    source_img_name varchar(255) null,
+    save_img_name   varchar(255) null,
     post_time       timestamp    not null,
-	update_time		timestamp    null,
-    constraint FK_user_TO_user_image
-        foreign key (user_id) references users (user_id)
+    update_time     timestamp    null
 );
-create table user_attend_check
-(
-    day_no      int auto_increment	not null 
-        primary key,
-    user_id     varchar(20) not null,
-    check_state int         null,
-    check_time  timestamp   null,
-    c_point     int         null,
-    e_point     int         null,
-    constraint user_attend_check_user_user_id_fk
-        foreign key (user_id) references users (user_id)
-);
-create table galaxy
-(
-    	galaxy_no   int                                 not null
-        primary key,
-	admin_id     varchar(20)                        not null,
-	gal_name    varchar(100)                        not null,
-	reg_time    timestamp default CURRENT_TIMESTAMP not null,
-	updater_id  varchar(20)                         null,
-    	update_time timestamp                           null,
-    	state       int       default 1                 null,
-	constraint galaxy_admin_admin_id_fk
-        foreign key (admin_id) references users (admin_id)
-);
-create table board
-(
-    board_no    int           not null
-        primary key,
-    galaxy_no   int           not null,
-    user_id     varchar(20)   not null,
-    board_tag   int           not null,
-    title       varchar(100)  not null,
-    contents    longtext      not null,
-    post_time   timestamp     not null,
-    updater_id  varchar(20)   null,
-    update_time timestamp     null,
-    state       int default 1 null,
-    likes       int           null,
-    dislikes    int           null,
-    views       int           null,
-    constraint FK_galaxy_TO_planet
-        foreign key (galaxy_no) references galaxy (galaxy_no)
-            on delete cascade,
-    constraint FK_user_TO_planet
-        foreign key (user_id) references users (user_id)
-            on delete cascade
-);
-create table board_img
-(
-    board_img_no    varchar(255) not null
-        primary key,
-    board_no        int          not null,
-    image_path      varchar(255) not null,
-    origin_img_name varchar(255) null,
-    post_time       timestamp    not null,
-    constraint FK_planet_TO_planet_image
-        foreign key (board_no) references board (board_no)
-            on delete cascade
-);
-create table reply
-(
-    reply_no        varchar(100)                        not null
-        primary key,
-    board_no        int                                 not null,
-    user_id         varchar(20)                         not null,
-    fk_reply_no     varchar(100)                        null,
-    contents        varchar(100)                        not null,
-    post_time       timestamp default CURRENT_TIMESTAMP not null,
-    update_time     timestamp                           null,
-    likes           int                                 null,
-    dislikes        int                                 null,
-    state           int       default 1                 null,
-    img_path        varchar(255)                        null,
-    origin_img_name varchar(255)                        null,
-    constraint FK_planet_TO_reply
-        foreign key (board_no) references board (board_no)
-            on delete cascade,
-    constraint FK_reply_TO_reply
-        foreign key (fk_reply_no) references reply (reply_no)
-            on delete cascade,
-    constraint FK_user_TO_reply
-        foreign key (user_id) references users (user_id)
-            on delete cascade
-);
-create table letter
-(
-    letter_no     int           not null
-        primary key,
-    sender_id     varchar(20)   not null,
-    receiver_id   varchar(20)   not null,
-    title         varchar(100)  not null,
-    contents      longtext      not null,
-    sent_time     timestamp     not null,
-    read_time     timestamp     null,
-    receive_state int default 0 null,
-    receiver_del  int           null,
-    sender_del    int           null,
-    constraint letter_user_user_id_fk
-        foreign key (receiver_id) references users (user_id),
-    constraint letter_user_user_id_user_id_fk
-        foreign key (sender_id) references users (user_id)
-);
-create table user_block
-(
-    block_no     int                                 not null
-        primary key,
-    user_id      varchar(20)                         not null,
-    block_obj_id varchar(20)                         not null,
-    reason       varchar(255)                        null,
-    post_time    timestamp default CURRENT_TIMESTAMP not null,
-    update_time  timestamp                           null,
-    constraint FK_user_TO_user_blacklist
-        foreign key (user_id) references users (user_id)
-            on delete cascade,
-    constraint FK_user_TO_user_blacklist2
-        foreign key (block_obj_id) references users (user_id)
-            on delete cascade
-);
+
 create table business
 (
     cr_num          varchar(10)  not null,
@@ -199,17 +62,39 @@ create table business
     update_time     timestamp    null,
     primary key (cr_num, bu_tell)
 );
-create table bu_img
+
+create table company
 (
-    bu_img_no       int auto_increment
-        primary key,
-    img_path        varchar(100) not null,
-    source_img_name varchar(255) null,
-    save_img_name   varchar(255) null,
-    post_time       timestamp    not null,
-    update_time     timestamp    null
+    com_no     int         not null,
+    com_name   varchar(20) not null,
+    address    varchar(30) null,
+    pacom      varchar(20) null,
+    found_date date        null,
+    founders   varchar(20) null,
+    ceo        varchar(20) null,
+    industries varchar(30) null,
+    slogan     varchar(20) null,
+    content    longtext    null,
+    primary key (com_no, com_name)
 );
 
+create table grade_img
+(
+    grade           varchar(50)  not null
+        primary key,
+    img_path        varchar(255) null,
+    origin_img_name varchar(255) null
+);
+
+create table grade
+(
+    user_level int         not null
+        primary key,
+    grade      varchar(50) not null,
+    total_exp  int         not null,
+    constraint grade_table_grade_img_grade_fk
+        foreign key (grade) references grade_img (grade)
+);
 
 create table room
 (
@@ -236,9 +121,47 @@ create table room
 
 create index room_business_bu_tell_fk
     on room (bu_tell);
-create index room_business_bu_tell_fk
-    on room (bu_tell);
-	
+
+create table users
+(
+    user_id         varchar(20)                         not null
+        primary key,
+    nickname        varchar(20)                         not null,
+    passwords       varchar(20)                         not null,
+    email           varchar(320)                        not null,
+    hp              varchar(12)                         null,
+    tell            varchar(12)                         null,
+    admin_id        varchar(20)                         null,
+    reg_date        timestamp default CURRENT_TIMESTAMP not null,
+    last_login_time timestamp                           null,
+    update_time     timestamp                           null,
+    state           int                                 null,
+    c_point         int                                 null,
+    e_point         int                                 null,
+    exp             int                                 null,
+    user_level      int                                 null,
+    birth           date                                null,
+    profile_img_no  int                                 null,
+    constraint FK_admin_TO_user
+        foreign key (admin_id) references admin (admin_id),
+    constraint users_grade_user_level_fk
+        foreign key (user_level) references grade (user_level)
+);
+
+create table attend_check
+(
+    day_no      int auto_increment
+        primary key,
+    user_id     varchar(20) not null,
+    check_state int         null,
+    check_time  timestamp   null,
+    c_point     int         null,
+    e_point     int         null,
+    constraint user_attend_check_user_user_id_fk
+        foreign key (user_id) references users (user_id)
+            on delete cascade
+);
+
 create table booking
 (
     bo_no         int auto_increment
@@ -272,6 +195,118 @@ create table booking
         foreign key (user_id) references users (user_id)
             on delete cascade
 );
+
+create table galaxy
+(
+    galaxy_no   int                                 not null
+        primary key,
+    admin_id    varchar(20)                         not null,
+    gal_name    varchar(100)                        not null,
+    reg_time    timestamp default CURRENT_TIMESTAMP not null,
+    updater_id  varchar(20)                         null,
+    update_time timestamp                           null,
+    state       int       default 1                 null,
+    constraint galaxy_admin_admin_id_fk
+        foreign key (admin_id) references users (admin_id)
+);
+
+create table board
+(
+    board_no    int           not null
+        primary key,
+    galaxy_no   int           not null,
+    user_id     varchar(20)   not null,
+    board_tag   int           not null,
+    title       varchar(100)  not null,
+    contents    longtext      not null,
+    post_time   timestamp     not null,
+    updater_id  varchar(20)   null,
+    update_time timestamp     null,
+    state       int default 1 null,
+    likes       int           null,
+    dislikes    int           null,
+    views       int           null,
+    constraint FK_galaxy_TO_planet
+        foreign key (galaxy_no) references galaxy (galaxy_no)
+            on delete cascade,
+    constraint FK_user_TO_planet
+        foreign key (user_id) references users (user_id)
+            on delete cascade
+);
+
+create table board_img
+(
+    board_img_no    varchar(255) not null
+        primary key,
+    board_no        int          not null,
+    image_path      varchar(255) not null,
+    origin_img_name varchar(255) null,
+    post_time       timestamp    not null,
+    constraint FK_planet_TO_planet_image
+        foreign key (board_no) references board (board_no)
+            on delete cascade
+);
+
+create table letter
+(
+    letter_no     int           not null
+        primary key,
+    sender_id     varchar(20)   not null,
+    receiver_id   varchar(20)   not null,
+    title         varchar(100)  not null,
+    contents      longtext      not null,
+    sent_time     timestamp     not null,
+    read_time     timestamp     null,
+    receive_state int default 0 null,
+    receiver_del  int           null,
+    sender_del    int           null,
+    constraint letter_user_user_id_fk
+        foreign key (receiver_id) references users (user_id),
+    constraint letter_user_user_id_user_id_fk
+        foreign key (sender_id) references users (user_id)
+);
+
+create table profile_img
+(
+    profile_img_no  int          not null
+        primary key,
+    user_id         varchar(20)  not null,
+    img_path        varchar(100) not null,
+    origin_img_name varchar(255) null,
+    save_img_name   varchar(255) null,
+    post_time       timestamp    not null,
+    update_time     timestamp    null,
+    constraint FK_user_TO_user_image
+        foreign key (user_id) references users (user_id)
+            on delete cascade
+);
+
+create table reply
+(
+    reply_no        varchar(100)                        not null
+        primary key,
+    board_no        int                                 not null,
+    user_id         varchar(20)                         not null,
+    fk_reply_no     varchar(100)                        null,
+    contents        varchar(100)                        not null,
+    post_time       timestamp default CURRENT_TIMESTAMP not null,
+    update_time     timestamp                           null,
+    likes           int                                 null,
+    dislikes        int                                 null,
+    state           int       default 1                 null,
+    img_path        varchar(255)                        null,
+    origin_img_name varchar(255)                        null,
+    constraint FK_planet_TO_reply
+        foreign key (board_no) references board (board_no)
+            on delete cascade,
+    constraint FK_reply_TO_reply
+        foreign key (fk_reply_no) references reply (reply_no)
+            on delete cascade,
+    constraint FK_user_TO_reply
+        foreign key (user_id) references users (user_id)
+            on delete cascade
+);
+
 create table reserved
 (
     bo_no         int       not null,
@@ -286,6 +321,7 @@ create table reserved
         foreign key (ro_no) references room (ro_no)
             on update cascade on delete cascade
 );
+
 create table review
 (
     re_no             int auto_increment
@@ -306,34 +342,21 @@ create table review
     constraint review_users_user_id_fk
         foreign key (user_id) references users (user_id)
 );
-create table auto
+
+create table user_block
 (
-    auto_no      int         not null,
-    auto_name    varchar(20) not null,
-    code_name    varchar(20) not null,
-    com          varchar(20) null,
-    auto_type    varchar(10) null,
-    release_date date        null,
-    seat         int         null,
-    mpg          double      null,
-    engine       varchar(10) null
+    block_no     int                                 not null
+        primary key,
+    user_id      varchar(20)                         not null,
+    block_obj_id varchar(20)                         not null,
+    reason       varchar(255)                        null,
+    post_time    timestamp default CURRENT_TIMESTAMP not null,
+    update_time  timestamp                           null,
+    constraint FK_user_TO_user_blacklist
+        foreign key (user_id) references users (user_id)
+            on delete cascade,
+    constraint FK_user_TO_user_blacklist2
+        foreign key (block_obj_id) references users (user_id)
+            on delete cascade
 );
-create table auto_img
-(
-    auto_img_no     int          not null,
-    auto_img_path   varchar(255) null,
-    source_img_name varchar(255) null
-);
-create table company
-(
-    com_no     int         not null,
-    com_name   varchar(20) not null,
-    address    varchar(30) null,
-    pacom      varchar(20) null,
-    found_date date        null,
-    founders   varchar(20) null,
-    ceo        varchar(20) null,
-    industries varchar(30) null,
-    slogan     varchar(20) null,
-    content    longtext    null
-);
+
