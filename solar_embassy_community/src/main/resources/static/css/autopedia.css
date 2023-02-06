@@ -77,8 +77,9 @@ header {
 }
 
 #contents #content2 #autobrand div {
-    margin: 10px;
-    padding: 10px;
+    width: 100px;
+    height: 100px;
+    margin-top: 5px;
 }
 
 #contents #content2 #autobrand div a {
@@ -89,6 +90,27 @@ header {
 #contents #content2 #autobrand a img {
     width: 30px;
     height: 30px;
+}
+
+#contents #content2 #autotype {
+    width: 1320px;
+}
+#contents #content2 #autotype dl{
+    display: flex;
+}
+#contents #content2 #autotype dl dt{
+    width: 100px;
+}
+
+#contents #content2 #autotype ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
+}
+#contents #content2 #autotype ul li {
+    width: 180px;
+    justify-items: left;
 }
 
 #contents #content3 {
