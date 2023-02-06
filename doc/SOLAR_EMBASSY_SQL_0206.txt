@@ -1,5 +1,3 @@
-create database solar_embassy;
-
 create table admin
 (
     admin_id    varchar(20)                         not null
@@ -8,6 +6,37 @@ create table admin
     department  varchar(10)                         null,
     reg_time    timestamp default CURRENT_TIMESTAMP null,
     update_time timestamp                           null
+);
+
+create table bu_img
+(
+    bu_img_no       int auto_increment
+        primary key,
+    img_path        varchar(100)                        not null,
+    source_img_name varchar(255)                        null,
+    save_img_name   varchar(255)                        null,
+    post_time       timestamp default CURRENT_TIMESTAMP not null,
+    update_time     timestamp                           null
+);
+
+create table business
+(
+    cr_num          varchar(10)                         not null,
+    bu_tell         varchar(12)                         not null,
+    bu_id           varchar(20)                         not null,
+    bu_passwords    varchar(20)                         not null,
+    bu_name         varchar(20)                         not null,
+    email           varchar(320)                        null,
+    bu_title        varchar(255)                        not null,
+    bu_address      varchar(80)                         not null,
+    bu_code         int                                 not null,
+    cr_img_no       int                                 not null,
+    img_path        varchar(100)                        not null,
+    source_img_name varchar(255)                        not null,
+    save_img_name   varchar(255)                        not null,
+    reg_date        timestamp default CURRENT_TIMESTAMP not null,
+    update_time     timestamp                           null,
+    primary key (cr_num, bu_tell)
 );
 
 create table company
@@ -42,7 +71,6 @@ create table auto
             on update cascade on delete cascade
 );
 
-
 create table auto_img
 (
     auto_img_no     int          not null
@@ -51,42 +79,9 @@ create table auto_img
     auto_img_path   varchar(255) null,
     source_img_name varchar(255) null,
     constraint auto_img_auto_auto_no_fk
-        foreign key (auto_no) references solar_embassy.auto (auto_no)
+        foreign key (auto_no) references auto (auto_no)
             on update cascade on delete cascade
 );
-
-create table bu_img
-(
-    bu_img_no       int auto_increment
-        primary key,
-    img_path        varchar(100) not null,
-    source_img_name varchar(255) null,
-    save_img_name   varchar(255) null,
-    post_time       timestamp    not null,
-    update_time     timestamp    null
-);
-
-create table business
-(
-    cr_num          varchar(10)  not null,
-    bu_tell         varchar(12)  not null,
-    bu_id           varchar(20)  not null,
-    bu_passwords    varchar(20)  not null,
-    bu_name         varchar(20)  not null,
-    email           varchar(320) null,
-    bu_title        varchar(255) not null,
-    bu_address      varchar(80)  not null,
-    bu_code         int          not null,
-    cr_img_no       int          not null,
-    img_path        varchar(100) not null,
-    source_img_name varchar(255) not null,
-    save_img_name   varchar(255) not null,
-    reg_date        timestamp    not null,
-    update_time     timestamp    null,
-    primary key (cr_num, bu_tell)
-);
-
-
 
 create table grade_img
 (
@@ -110,17 +105,18 @@ create table room
 (
     ro_no       int auto_increment
         primary key,
-    cr_num      varchar(10) not null,
-    bu_tell     varchar(12) not null,
-    bu_img_no   int         not null,
-    ro_count    varchar(20) not null,
-    ro_name     varchar(50) not null,
-    ro_price    varchar(40) not null,
-    checkin     timestamp   not null,
-    checkout    timestamp   not null,
-    ro_info     longtext    null,
-    updater_id  varchar(20) null,
-    update_date timestamp   null,
+    cr_num      varchar(10)                         not null,
+    bu_tell     varchar(12)                         not null,
+    bu_img_no   int                                 not null,
+    ro_count    varchar(20)                         not null,
+    ro_name     varchar(50)                         not null,
+    ro_price    varchar(40)                         not null,
+    checkin     timestamp                           not null,
+    checkout    timestamp                           not null,
+    ro_info     longtext                            null,
+    post_time   timestamp default CURRENT_TIMESTAMP null,
+    updater_id  varchar(20)                         null,
+    update_time timestamp                           null,
     constraint bu_img_no
         foreign key (bu_img_no) references bu_img (bu_img_no)
             on delete cascade,
@@ -176,25 +172,25 @@ create table booking
 (
     bo_no         int auto_increment
         primary key,
-    cr_num        varchar(10)  not null,
-    bu_tell       varchar(12)  not null,
-    ro_no         int          not null,
-    user_id       varchar(20)  not null,
-    bu_address    varchar(80)  not null,
-    rd_start_date timestamp    not null,
-    rd_end_date   timestamp    not null,
-    user_name     varchar(20)  not null,
-    user_phone    varchar(12)  not null,
-    bo_date       timestamp    not null,
-    ckeckin       timestamp    not null,
-    checkout      timestamp    not null,
-    payment       varchar(255) not null,
-    price         varchar(40)  not null,
-    reg_date      timestamp    not null,
-    state         int          null,
-    bu_check      varchar(100) not null,
-    updater_id    varchar(20)  null,
-    update_date   timestamp    null,
+    cr_num        varchar(10)                         not null,
+    bu_tell       varchar(12)                         not null,
+    ro_no         int                                 not null,
+    user_id       varchar(20)                         not null,
+    bu_address    varchar(80)                         not null,
+    rd_start_date timestamp                           not null,
+    rd_end_date   timestamp                           not null,
+    user_name     varchar(20)                         not null,
+    user_phone    varchar(12)                         not null,
+    bo_date       timestamp                           not null,
+    ckeckin       timestamp                           not null,
+    checkout      timestamp                           not null,
+    payment       varchar(255)                        not null,
+    price         varchar(40)                         not null,
+    reg_date      timestamp default CURRENT_TIMESTAMP not null,
+    state         int                                 null,
+    bu_check      varchar(100)                        not null,
+    updater_id    varchar(20)                         null,
+    update_date   timestamp                           null,
     constraint booking_business_cr_num_bu_tell_fk
         foreign key (cr_num, bu_tell) references business (cr_num, bu_tell)
             on delete cascade,
@@ -222,20 +218,20 @@ create table galaxy
 
 create table board
 (
-    board_no    int           not null
+    board_no    int                                 not null
         primary key,
-    galaxy_no   int           not null,
-    user_id     varchar(20)   not null,
-    board_tag   int           not null,
-    title       varchar(100)  not null,
-    contents    longtext      not null,
-    post_time   timestamp     not null,
-    updater_id  varchar(20)   null,
-    update_time timestamp     null,
-    state       int default 1 null,
-    likes       int           null,
-    dislikes    int           null,
-    views       int           null,
+    galaxy_no   int                                 not null,
+    user_id     varchar(20)                         not null,
+    board_tag   int                                 not null,
+    title       varchar(100)                        not null,
+    contents    longtext                            not null,
+    post_time   timestamp default CURRENT_TIMESTAMP not null,
+    updater_id  varchar(20)                         null,
+    update_time timestamp                           null,
+    state       int       default 1                 null,
+    likes       int                                 null,
+    dislikes    int                                 null,
+    views       int                                 null,
     constraint FK_galaxy_TO_planet
         foreign key (galaxy_no) references galaxy (galaxy_no)
             on delete cascade,
@@ -246,12 +242,12 @@ create table board
 
 create table board_img
 (
-    board_img_no    varchar(255) not null
+    board_img_no    varchar(255)                        not null
         primary key,
-    board_no        int          not null,
-    image_path      varchar(255) not null,
-    origin_img_name varchar(255) null,
-    post_time       timestamp    not null,
+    board_no        int                                 not null,
+    image_path      varchar(255)                        not null,
+    origin_img_name varchar(255)                        null,
+    post_time       timestamp default CURRENT_TIMESTAMP not null,
     constraint FK_planet_TO_planet_image
         foreign key (board_no) references board (board_no)
             on delete cascade
@@ -259,17 +255,17 @@ create table board_img
 
 create table letter
 (
-    letter_no     int           not null
+    letter_no     int                                 not null
         primary key,
-    sender_id     varchar(20)   not null,
-    receiver_id   varchar(20)   not null,
-    title         varchar(100)  not null,
-    contents      longtext      not null,
-    sent_time     timestamp     not null,
-    read_time     timestamp     null,
-    receive_state int default 0 null,
-    receiver_del  int           null,
-    sender_del    int           null,
+    sender_id     varchar(20)                         not null,
+    receiver_id   varchar(20)                         not null,
+    title         varchar(100)                        not null,
+    contents      longtext                            not null,
+    sent_time     timestamp default CURRENT_TIMESTAMP not null,
+    read_time     timestamp                           null,
+    receive_state int       default 0                 null,
+    receiver_del  int                                 null,
+    sender_del    int                                 null,
     constraint letter_user_user_id_fk
         foreign key (receiver_id) references users (user_id),
     constraint letter_user_user_id_user_id_fk
@@ -278,14 +274,14 @@ create table letter
 
 create table profile_img
 (
-    profile_img_no  int          not null
+    profile_img_no  int                                 not null
         primary key,
-    user_id         varchar(20)  not null,
-    img_path        varchar(100) not null,
-    origin_img_name varchar(255) null,
-    save_img_name   varchar(255) null,
-    post_time       timestamp    not null,
-    update_time     timestamp    null,
+    user_id         varchar(20)                         not null,
+    img_path        varchar(100)                        not null,
+    origin_img_name varchar(255)                        null,
+    save_img_name   varchar(255)                        null,
+    post_time       timestamp default CURRENT_TIMESTAMP not null,
+    update_time     timestamp                           null,
     constraint FK_user_TO_user_image
         foreign key (user_id) references users (user_id)
             on delete cascade
@@ -319,10 +315,10 @@ create table reply
 
 create table reserved
 (
-    bo_no         int       not null,
-    ro_no         int       not null,
-    bo_ckeck_date timestamp not null,
-    update_date   timestamp null,
+    bo_no         int                                 not null,
+    ro_no         int                                 not null,
+    bo_ckeck_date timestamp default CURRENT_TIMESTAMP not null,
+    update_date   timestamp                           null,
     primary key (bo_no, ro_no),
     constraint reserved_ibfk_1
         foreign key (bo_no) references booking (bo_no)
@@ -336,21 +332,22 @@ create table review
 (
     re_no             int auto_increment
         primary key,
-    bo_no             int         not null,
-    user_id           varchar(20) not null,
-    post_date         timestamp   not null,
-    contents          longtext    not null,
-    state             int         null,
-    likes             int         null,
-    post_time         timestamp   not null,
-    update_time       timestamp   null,
-    content_reply     longtext    null,
-    reply_post_date   timestamp   null,
-    reply_update_date timestamp   null,
+    bo_no             int                                 not null,
+    user_id           varchar(20)                         not null,
+    contents          longtext                            not null,
+    state             int                                 null,
+    likes             int                                 null,
+    post_time         timestamp default CURRENT_TIMESTAMP not null,
+    update_time       timestamp                           null,
+    content_reply     longtext                            null,
+    reply_post_date   timestamp                           null,
+    reply_update_date timestamp                           null,
     constraint review_booking_bo_no_fk
-        foreign key (bo_no) references booking (bo_no),
+        foreign key (bo_no) references booking (bo_no)
+            on delete cascade,
     constraint review_users_user_id_fk
         foreign key (user_id) references users (user_id)
+            on delete cascade
 );
 
 create table user_block
