@@ -3,9 +3,9 @@ create table admin
 	admin_id    varchar(20)                         not null
         primary key,
 	admin_level int                                 null,
-    department  varchar(10)                         null,
-    reg_time    timestamp default CURRENT_TIMESTAMP null,
-    update_time timestamp                           null
+    	department  varchar(10)                         null,
+    	reg_time    timestamp default CURRENT_TIMESTAMP null,
+    	update_time timestamp                           null
 );
 create table grade_img
 (
@@ -29,11 +29,11 @@ create table users
 		primary key,
 	nickname        varchar(20)                         not null,
 	passwords       varchar(20)                         not null,
-    email           varchar(320)                        not null,
-    hp              varchar(12)                         null,
+    	email           varchar(320)                        not null,
+    	hp              varchar(12)                         null,
    	tell            varchar(12)                         null,
-    admin_id        varchar(20)                         null,
-    reg_date        timestamp default CURRENT_TIMESTAMP not null,
+    	admin_id        varchar(20)                         null,
+    	reg_date        timestamp default CURRENT_TIMESTAMP not null,
 	last_login_time timestamp                           null,
 	update_time     timestamp                           null,
 	state           int                                 null,
@@ -75,14 +75,14 @@ create table user_attend_check
 );
 create table galaxy
 (
-    galaxy_no   int                                 not null
+    	galaxy_no   int                                 not null
         primary key,
 	admin_id     varchar(20)                        not null,
 	gal_name    varchar(100)                        not null,
 	reg_time    timestamp default CURRENT_TIMESTAMP not null,
 	updater_id  varchar(20)                         null,
-    update_time timestamp                           null,
-    state       int       default 1                 null,
+    	update_time timestamp                           null,
+    	state       int       default 1                 null,
 	constraint galaxy_admin_admin_id_fk
         foreign key (admin_id) references users (admin_id)
 );
