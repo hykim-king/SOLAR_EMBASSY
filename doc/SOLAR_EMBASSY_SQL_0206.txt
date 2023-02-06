@@ -28,7 +28,7 @@ create table auto
 );
 
 
-create table solar_embassy.auto_img
+create table auto_img
 (
     auto_img_no     int          not null
         primary key,
