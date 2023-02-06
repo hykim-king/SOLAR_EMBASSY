@@ -46,7 +46,7 @@ create table users
 	constraint FK_admin_TO_user
 		foreign key (admin_id) references admin (admin_id),
 	constraint users_grade_table_user_level_fk
-		foreign key (user_level) references grade_table (user_level)
+		foreign key (user_level) references grade(user_level)
 );
 create table profile_img
 (
