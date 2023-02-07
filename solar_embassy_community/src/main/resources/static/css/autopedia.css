@@ -50,6 +50,12 @@ header {
     text-decoration: none;
 }
 
+#contents #content1 #btn #main a {
+    padding-left: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
 #contents #content1 #btn #autogalaxy a {
     padding-left: 10px;
     color: #fff;
@@ -114,11 +120,38 @@ header {
 }
 
 #contents #content3 {
-    background-color: black;
+    background-color: aqua;
     width: 1320px;
     height: 100px;
-    display: flex;
     margin-top: 40px;
+}
+
+#contents #content3 form div {
+    padding: 25px;
+    width: 1320px;
+    height: 100px;
+    border: 1px solid #000;
+}
+
+#contents #content3 #type {
+    height: 30px;
+    font-size: 11px;
+    margin: 0;
+}
+
+#contents #content3 #searcher {
+    width: 500px;
+    height: 30px;
+    font-size: 11px;
+    margin: 0;
+}
+#contents #content3 button {
+    width: 60px;
+    height: 30px;
+    font-size: 11px;
+    color: white;
+    margin: 0;
+    background-color: #364959;
 }
 
 #contents #content4 {
