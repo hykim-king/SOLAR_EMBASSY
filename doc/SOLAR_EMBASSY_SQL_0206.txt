@@ -369,14 +369,14 @@ create table user_block
 
 create table popular_search
 (
-    ps_no       int          not null
+    ps_no       int                                 not null
         primary key,
-    user_id     varchar(20)  not null,
-    cr_num      varchar(10)  not null,
-    bu_tell     varchar(12)  not null,
-    ps_keyword  varchar(100) not null,
-    ps_datetime timestamp    not null,
-    ps_ip       varchar(50)  null,
+    user_id     varchar(20)                         not null,
+    cr_num      varchar(10)                         not null,
+    bu_tell     varchar(12)                         not null,
+    ps_keyword  varchar(100)                        not null,
+    ps_datetime timestamp default CURRENT_TIMESTAMP null,
+    ps_ip       varchar(50)                         null,
     constraint popular_search__fk
         foreign key (cr_num, bu_tell) references business (cr_num, bu_tell)
             on update cascade on delete cascade,
