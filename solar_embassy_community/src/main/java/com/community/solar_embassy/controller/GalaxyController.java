@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/galaxy")
 public class GalaxyController {
-    @GetMapping("/autopedia.do")
+    @GetMapping("autopedia.do")
     public void autopedia(){}
 }

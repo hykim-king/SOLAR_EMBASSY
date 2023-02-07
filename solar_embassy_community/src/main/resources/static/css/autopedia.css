@@ -102,6 +102,7 @@ header {
     overflow: hidden;
     background-color: #A084DC;
     transition-duration: 0.3s;
+
 }
 
 .sub_menu>li{
@@ -159,7 +160,11 @@ header {
 }
 
 #contents #content2 #autotype {
+<<<<<<< HEAD
     width: 1200px;
+=======
+    width: 1320px;
+>>>>>>> 101a1b3878fa43d72355207232f04acbedafc4bd
 }
 #contents #content2 #autotype dl{
     display: flex;
