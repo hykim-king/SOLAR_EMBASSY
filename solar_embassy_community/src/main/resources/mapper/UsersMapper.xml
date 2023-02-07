@@ -24,7 +24,6 @@
             <result property="profileImgNo" column="profile_img_no" jdbcType="INTEGER"/>
     </resultMap>
 
-<<<<<<< HEAD:solar_embassy_community/src/main/resources/mapper/UsersMapper.xml
     <sql id="Base_Column_List">
         user_id,nickname,passwords,
         email,hp,tell,
@@ -33,22 +32,21 @@
         e_point,exp,user_level,
         birth,profile_img_no
     </sql>
-=======
 
-    <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.User">
-        SELECT * FROM USER WHERE user_id=#{userID} AND passwords=#{passwords}
+    <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM USERS WHERE user_id=#{userID} AND passwords=#{passwords}
     </select>
 
     <delete id="deleteById">
-        DELETE FROM solar_embassy.user where user_id=#{user_id}
+        DELETE FROM solar_embassy.users where user_id=#{user_id}
     </delete>
 
-    <select id="findById" resultType="com.community.solar_embassy.dto.User">
-        SELECT * FROM solar_embassy.user where user_id=#{user_id}
+    <select id="findById" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM solar_embassy.users where user_id=#{user_id}
     </select>
 
     <insert id="insert">
-        INSERT INTO solar_embassy.user
+        INSERT INTO solar_embassy.users
             (user_id, user_name, passwords,
              email, phone, admin_id,
              gender, location, hobby, birth) VALUES
@@ -56,7 +54,7 @@
     </insert>
 
     <update id="update">
-        UPDATE solar_embassy.user
+        UPDATE solar_embassy.users
         SET user_name=#{userName},
             passwords=#{passwords},
             email=#{email},
@@ -66,5 +64,4 @@
         WHERE user_id=#{userId}
     </update>
 
->>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863:solar_embassy_community/src/main/resources/mapper/UserMapper.xml
 </mapper>
