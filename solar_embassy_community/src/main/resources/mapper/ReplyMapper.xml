@@ -6,19 +6,23 @@
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Reply">
             <id property="replyNo" column="reply_no" jdbcType="VARCHAR"/>
-            <result property="planetNo" column="planet_no" jdbcType="INTEGER"/>
-            <result property="fkReplyNo" column="fk_reply_no" jdbcType="VARCHAR"/>
+            <result property="boardNo" column="board_no" jdbcType="INTEGER"/>
             <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="fkReplyNo" column="fk_reply_no" jdbcType="VARCHAR"/>
             <result property="contents" column="contents" jdbcType="VARCHAR"/>
             <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
             <result property="likes" column="likes" jdbcType="INTEGER"/>
             <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
             <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="imgPath" column="img_path" jdbcType="VARCHAR"/>
+            <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        reply_no,planet_no,fk_reply_no,
-        user_id,contents,post_time,
-        likes,dislikes,state
+        reply_no,board_no,user_id,
+        fk_reply_no,contents,post_time,
+        update_time,likes,dislikes,
+        state,img_path,origin_img_name
     </sql>
 </mapper>

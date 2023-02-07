@@ -8,9 +8,12 @@
             <id property="adminId" column="admin_id" jdbcType="VARCHAR"/>
             <result property="adminLevel" column="admin_level" jdbcType="INTEGER"/>
             <result property="department" column="department" jdbcType="VARCHAR"/>
+            <result property="regTime" column="reg_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        admin_id,admin_level,department
+        admin_id,admin_level,department,
+        reg_time,update_time
     </sql>
 </mapper>

@@ -24,16 +24,25 @@ public class UserController {
     @GetMapping("signup_normal.do")
     public void signup_normal() {
     }
+
     @GetMapping("signup_business.do")
     public void signup_business() {
     }
+
     @GetMapping("rocket.do")
-    public void rocket(){}
+    public void rocket() {
+    }
+
     @GetMapping("next.do")
-    public void next(){}
+    public void next() {
+    }
+
     @GetMapping("next_2.do")
-    public void next_2(){}
+    public void next_2() {
+    }
+
     @GetMapping("next_3.do")
-    public void next_3(){}
+    public void next_3() {
+    }
 
 }

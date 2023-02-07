@@ -1,5 +1,5 @@
 package com.community.solar_embassy.service;
 
-public interface AdminService  {
+public interface AdminService {
 
 }

@@ -1,14 +1,24 @@
 package com.community.solar_embassy.dto;
 
+import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 
-import java.util.Date;
 @Data
-public class Galaxy  {
+public class Galaxy implements Serializable {
     private Integer galaxyNo;
 
-    private String theme;
+    private String adminId;
 
-    private Date birthDate;
+    private String galName;
 
+    private Date regTime;
+
+    private String updaterId;
+
+    private Date updateTime;
+
+    private Integer state;
+
+    private static final long serialVersionUID = 1L;
 }
