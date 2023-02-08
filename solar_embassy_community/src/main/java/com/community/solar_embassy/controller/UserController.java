@@ -49,4 +49,7 @@ public class UserController {
     public void search(){
     }
 
+    @GetMapping("find_id.do")
+    public void find_id(){
+    }
 }
