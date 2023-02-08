@@ -45,4 +45,8 @@ public class UserController {
     public void next_3() {
     }
 
+    @GetMapping("search.do")
+    public void search(){
+    }
+
 }
