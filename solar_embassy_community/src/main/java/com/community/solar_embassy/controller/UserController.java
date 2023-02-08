@@ -23,30 +23,32 @@ public class UserController {
                       @SessionAttribute(required = false) String redirectUri) {
         String referer = req.getHeader("referer");
         if (redirectUri == null && !(referer.equals("http://localhost:8888/") || referer.equals("http://localhost:8888/user/login.do"))) {
-            session.setAttribute("redirectUri",referer);
+            session.setAttribute("redirectUri", referer);
         }
     }
+
     @PostMapping("/login.do")
     public String login(
             @RequestParam(name = "user_id") String userId,
             String pw,
             HttpSession session,
-            @SessionAttribute(required = false) String redirectUri){
-        Users user=usersService.login(userId,pw);
-        session.setAttribute("loginUser",user);
-        if(user==null){
-            session.setAttribute("msg","아이디나 비밀번호를 확인하세요!");
+            @SessionAttribute(required = false) String redirectUri) {
+        Users user = usersService.login(userId, pw);
+        session.setAttribute("loginUser", user);
+        if (user == null) {
+            session.setAttribute("msg", "아이디나 비밀번호를 확인하세요!");
             return "redirect:/user/login.do";
-        }else{
-            if(redirectUri==null){
+        } else {
+            if (redirectUri == null) {
                 return "redirect:/";
             }
             session.removeAttribute("redirectUri");
-            return "redirect:"+redirectUri;
+            return "redirect:" + redirectUri;
         }
     }
+
     @GetMapping("/logout.do")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.removeAttribute("loginUser");
         return "redirect:/";
     }
@@ -81,6 +83,14 @@ public class UserController {
 
     @GetMapping("next_3.do")
     public void next_3() {
+    }
+
+    @GetMapping("my_page.do")
+    public void my_page(HttpSession session) {
+    }
+
+    @GetMapping("user_black.do")
+    public void user_black(HttpSession session) {
     }
 
 }
