@@ -92,5 +92,7 @@ public class UserController {
     @GetMapping("user_black.do")
     public void user_black(HttpSession session) {
     }
+    @GetMapping("search.do")
+    public void search(HttpSession session){}
 
 }
