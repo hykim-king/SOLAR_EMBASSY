@@ -147,6 +147,7 @@ header {
     width: 100px;
     height: 100px;
     margin-top: 5px;
+    text-align: center;
 }
 
 #contents #content2 #autobrand div a {
@@ -157,14 +158,11 @@ header {
 #contents #content2 #autobrand div a img {
     width: 30px;
     height: 30px;
+    object-fit: contain;
 }
 
 #contents #content2 #autotype {
-<<<<<<< HEAD
     width: 1200px;
-=======
-    width: 1320px;
->>>>>>> 101a1b3878fa43d72355207232f04acbedafc4bd
 }
 #contents #content2 #autotype dl{
     display: flex;
@@ -225,37 +223,97 @@ header {
 }
 
 #contents #content4 #sub1 {
-    background-color: navy;
-    width: 660px;
-    height: 580px;
+    background-color: darkviolet;
+    width: 600px;
+    height: 500px;
     border-radius: 10px;
+    margin-right: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#contents #content4 #sub1 ul {
+    background-color: #fff;
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#contents #content4 #sub1 ul img {
+    width: 250px;
+    height: 150px;
+    object-fit: contain;
 }
 
 #contents #content4 #sub2 {
-    background-color: dodgerblue;
-    width: 660px;
-    height: 580px;
+    background-color: darkviolet;
+    width: 600px;
+    height: 500px;
     border-radius: 10px;
+}
+
+#contents #content4 #sub2 ul {
+    background-color: #fff;
+    width: 540px;
+    height: 460px;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: left;
+}
+
+#contents #content4 #sub2 ul img {
+    width: 540px;
+    height: 400px;
+    object-fit: contain;
 }
 
 #contents #content5 {
     height: 560px;
     display: flex;
-    margin-top: 40px;
 }
 
 #contents #content5 #sub3 {
-    background-color: hotpink;
-    width: 660px;
-    height: 580px;
+    background-color: darkviolet;
+    width: 600px;
+    height: 500px;
     border-radius: 10px;
+    margin-right: 40px;
+}
+
+#contents #content5 #sub3 ul {
+    background-color: #fff;
+    width: 540px;
+    height: 460px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#contents #content5 #sub3 ul img {
+    width: 540px;
+    height: 400px;
+    object-fit: contain;
 }
 
 #contents #content5 #sub4 {
-    background-color: darkmagenta;
-    width: 660px;
-    height: 580px;
+    background-color: darkviolet;
+    width: 600px;
+    height: 500px;
     border-radius: 10px;
+}
+
+#contents #content5 #sub4 ul {
+    background-color: #fff;
+    width: 540px;
+    height: 460px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#contents #content5 #sub4 ul img {
+    width: 540px;
+    height: 400px;
+    object-fit: contain;
 }
 
 #footer{
