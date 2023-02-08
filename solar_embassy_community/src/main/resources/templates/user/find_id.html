@@ -4,7 +4,7 @@
     <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
     <!--    <script src="/uikit/js/uikit.js"></script>-->
     <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
-    <link rel="stylesheet" href="/css/withdrawal.css">
+    <link rel="stylesheet" href="/css/find_id.css">
 </head>
 <body>
 <div id="container">
@@ -98,57 +98,47 @@
             <aside id="right-sidebar">
                 <h1> 임시 사이드바</h1>
             </aside>
-            <div class="modifycontainer">
-                <h1 class="account-withdrawal" style="color: rgb(255, 255, 255);">
-                    회원탈퇴
+            <div class="find_id_container">
+                <h1 class="find_id_text" style="color: rgb(0, 0, 0);">
+                    아이디찾기
                 </h1>
-                <div class="a-warning">
-                    <ul>
-                        <li>회원 탈퇴 시 주의사항 안내</li>
-                        <li>회원 탈퇴 시 홈페이지 및 접속이 제한됩니다. </li>
-                        <li>회원 가입 시 입력하신 개인 정보 및 결제 정보 등은 즉시 파기되며 복구하실 수 없습니다.</li>
-                        <li>탈퇴 시 계정 내 구매한 모든 상품 및 화폐가 삭제되므로 탈퇴 전 잔여 화폐에 대한 환불을 신청해 주시기 바랍니다.</li>
-                        <li>회원 탈퇴를 하더라도 사용 중인 소환사명을 즉시 재생성하실 수 없으며 최대 10일 정도 기간이 소요될 수 있습니다.</li>
-                        <li>소셜 계정과 연결되어 있는 경우 본 절차는 회원 탈퇴 절차이며 계정을 분리하는 절차가 아닌 점 주의해 주시기 바랍니다.</li>
-                        <li>소셜 계정 (Google/Apple/Facebook)으로 동기화 한 이력이 있는 경우 회원 탈퇴 시 외부 계정을 통해 구매하셨던 모든 상품도 함께 삭제되므로 주의해
-                            주시기 바랍니다.</li>
-                        <li>탈퇴 후 해당 외부 계정으로 솔라엠버시 서비스에 다시 접속하시더라도 과거 상품들은 복구되지 않는 점 다시 한번 양지해 주시기 바랍니다.</li>
-                        <p style="color: red;">※ 계정 로그인 기록은 최근 30일까지의 기록만 제공됩니다</p>
-                    </ul>
-                </div>
-                <div class="auh">
-                    <div class="a-user-hope">
-                        <form action="">
-                            <div class="auh-t">탈퇴 사유 탈퇴 사유를 알려주시면, 더 나은 서비스에 도움이 됩니다.<br></div>
-                            <input type="radio"> 운영진에 대응이 불만족스러워서<br></input>
-                            <input type="radio"> 원하는 서비스를 찾을 수 없어서<br></input>
-                            <input type="radio"> 원하는 정보가 부족해서<br></input>
-                            <input type="radio"> 유저가 마음에 안 들어서<br></input>
-                            <input type="radio"> 기능적 문제가 발생해서<br></input>
-                            <input type="radio"> 재가입 하기 위해서<br></input>
-                        </form>
-                    </div>
-                    <div class="a-user-hope2">
-                        해당사항이 없다면 직접 작성해주세요.<br>
-                        <div class="a-user-hope3">
-                            <input type="text" class="a-user-hope3-1" value="사이트 접속 빈도수가 낮아서 탈퇴"></input>
+                <div class="find_id_container2">
+                    <div class="find_id_content">
+                        <h2>아이디 찾을 방법을 선택 해 주세요</h2>
+                        <div class="find_id_content_2">
+                            <span style="font-weight: bold; font-size: 24px;">○ 회원 정보에 등록한 휴대전화로 인증 </span>
+                            <p style="font-size: 16px;"> 회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받으실 수 있습니다.</p>
+                            <div class="find_id_input">
+                                <form action="" method="POST">
+                                    <label for="name">이름</label>
+                                    <input type="text" name="name" id="name" value=""><br>
+                                   
+                                    <label for="phone">휴대전화</label>
+                                    <input type="text" name="phone" id="phone" value=""><button class="confirm_btn">인증받기</button><br>
+                                   
+                                    <label for="confirm">인증번호</label>
+                                    <input type="text" name="confirm" id="confirm" value=""><button class="confirm_btn">인증확인</button><br>
+                                    
+                                    <div class="warning">휴대폰 번호로 전송 된 인증번호 4자리(혹은 6자리)를 입력해주세요.<button class="reconfirm">인증재전송</button></div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="a-user-hope4">
-                            16자 내외<br>
+                        <div class="find_id_content_3">
+                            <div class="find_id_content_3-1" style=" font-size: 20px;">○ 본인 이메일로 인증 [회원가입시 작성된 이메일로 전송] </div>
+                            <form action="" method="POST">
+                                <label for="email" class="find_id_content_3-2">본인확인 이메일로 인증(%유저이메일%@%이메일주소%.com) <!-- 이부분 유저 이메일 for 문 돌려야함 -->
+                                <button id="email">이메일로 전송</button></label>
+                            </form>
                         </div>
+                        <div class="find_id_content_4">
+                            <form action="" method="POST">
+                                <button id="cancle">취소</button>
+                                <div class="justspace"></div>
+                                <button id="service_center">고객센터</button>
+                            </form>
+                        </div>
+
                     </div>
-                </div>
-                <div class="a-agree">
-                    ※ 사용중인 아이디는 탈퇴할 경우 재사용 및 복구가 불가능하니 신중하게 선택하시기 바랍니다.<br>
-                    탈퇴 후에도 게시판에 작성한 게시글 및 댓글은 그대로 남아 있습니다.<br>
-                    삭제를 원하는 게시글이 있다면 반드시 탈퇴 전에 삭제하여 주시기 바랍니다.<br>
-                    탈퇴 후에는 회원 본인 여부를 확인할 수 있는 방법이 없기 때문에, 게시글을 임의로 삭제해 드릴 수 없습니다.<br><br>
-                    <p style="color: red;">정말 탈퇴하시겠습니까?<br>
-                        안내 사항을 모두 확인하였으며, 이에 동의합니다. <input type="checkbox"></p>
-                </div>
-                <div class="a-btn">
-                    <button class="a-confirm" type="submit" onclick="">회원탈퇴</button>
-                    <button class="a-cancell" type="submit" onclick="">취소</button>
                 </div>
             </div>
         </section>
