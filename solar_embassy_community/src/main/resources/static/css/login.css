@@ -135,7 +135,7 @@ a {
     margin-top: 20px;
 }
 
-.login input[type=email],
+.login input[type=text],
 .login input[type=password] {
     width: 100%;
     padding: 15px;
@@ -145,7 +145,7 @@ a {
     padding-left: 30px;
 }
 
-.login input[type=email]:hover,
+.login input[type=text]:hover,
 .login input[type=password]:hover {
     border: 1px solid dodgerblue;
     box-shadow: 0 0 5px dodgerblue;

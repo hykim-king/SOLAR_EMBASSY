@@ -2,7 +2,7 @@
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{/layout}"> -->
 
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>SOLAR EMBASSY</title>
@@ -33,9 +33,17 @@ layout:decorate="~{/layout}"> -->
         <!--로그인-->
         <form>
             <div id="login">
-                <button class="logbtn" type="button" onclick="location.href='/user/login.do'" style="cursor:pointer">로그인</button>
+                <button th:if="${session.loginUser!=null}" class="logbtn" type="button" onclick="javascript:void(0)" th:text="${session.loginUser.nickname}"></button>
+                <button th:if="${session.loginUser==null}" class="logbtn" type="button"
+                        onclick="location.href='/user/login.do'" style="cursor:pointer">로그인
+                </button>
+                <button th:if="${session.loginUser!=null}" class="logbtn" type="button"
+                        onclick="location.href='/user/logout.do'" style="cursor:pointer">로그아웃
+                </button>
                 <button class="logbtn" type="button">ID/PW 찾기</button>
-                <button class="logbtn" type="button" onclick="location.href='/user/signup.do'" style="cursor:pointer">회원가입</button>
+                <button class="logbtn" type="button" onclick="location.href='/user/signup.do'" style="cursor:pointer">
+                    회원가입
+                </button>
             </div>
         </form>
         <aside id="left-sidebar">
@@ -138,10 +146,12 @@ layout:decorate="~{/layout}"> -->
 
         <footer id="footer">
             <p>
+            </p>
             <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
-                    href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+                    href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
             <p>
-            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+            </p>
+            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
         </footer>
     </div>
 

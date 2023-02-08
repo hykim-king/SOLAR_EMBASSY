@@ -64,10 +64,11 @@ header {                                      /*헤더*/
 }
 
 #login{                                      /*로그인 공간 */
-    width: 300px;
+    width: max-content;
     height: 40px;
     position: absolute;
-    transform: translate(1260px, 10px);
+    right: 360px;
+    bottom: 10px;
     background-color: #333125;
     border-radius: 5px;
 }

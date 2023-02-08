@@ -17,11 +17,11 @@
         <img src="/img/solar_embassy_logo.png" alt="">
     </a>
 </div>
-<form class="login">
-    <span>Email</span>
-    <input type="email" placeholder="Email Address">
+<form class="login" method="POST">
+    <span>User ID</span>
+    <input type="text" placeholder="ID" name="user_id">
     <span>Password</span>
-    <input type="password" placeholder="Password">
+    <input type="password" placeholder="Password"name="pw">
     <p>
         <label>
             <input type="checkbox"> Keep me Logged in
@@ -29,7 +29,7 @@
         <a href="">Forgot Your Password</a>
     </p>
 
-    <button class="btn">Log in</button>
+    <button class="btn" onclick="location.href='/user/login.do'">Log in</button>
 </form>
 
 
