@@ -1,0 +1,127 @@
+.find_id_container{ /* 아이디 찾기 관리 페이지 */
+    height: 1050px;
+    background: #78b7eac4;
+    border: 1px solid rgb(0, 0, 0);
+}
+.find_id_text{ /* 아이디 찾기 text */
+    margin-top: 25px;
+    margin-left: 40px;
+}
+.find_id_container2{ /* 그냥 네모 박스*/
+    border: 1px solid #000;
+    background: linear-gradient(180deg, #DBF0FF 0%, #FFFFFF 100%);
+    margin-left:50px;
+    margin-right:50px;
+    margin-top: 15px;
+    padding-left: 30px;
+    height: 920px;
+    font-size:15px ;
+}
+.find_id_content{ /* 아이디 찾기 내용 start */
+    margin-top:20px;
+    margin-right: 30px;
+}
+.find_id_content_2{
+    margin-top:20px;
+    padding-top: 25px;
+    height: 400px;
+    border: 1px solid #000;
+}
+.find_id_content_2 span{
+    margin-left:20px;
+}
+.find_id_content_2 p{ /* 아이디 찾기 내용 end */
+    margin-top:10px;
+    margin-left:34px;
+}
+.find_id_input{ /* 아이디 찾기 인풋란 start */
+    margin-top: 20px;
+    margin-left:64px;
+    font-size: 20px;
+
+}
+.find_id_input input#name{
+    margin-left:40px;
+}
+.find_id_input input  {
+    margin-top: 20px;
+    margin-right: 15px;
+    width: 200px;
+    height: 30px;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: inset -2px -3px 2px rgba(0, 0, 0, 0.356);
+}
+.find_id_input input#confirm  {
+    margin-bottom: 20px;
+}
+
+.confirm_btn{
+    background-color: #5164AA;
+    color:#ffff;
+    width: 100px;
+    height: 30px;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: inset -2px -3px 2px rgba(0, 0, 0, 0.356);
+}
+
+.warning{
+    font-size: 10px;
+    color:red;
+    display: inline;
+    position: absolute;
+    left:130px;
+}
+.reconfirm{ /* 아이디 찾기 인풋란 end */
+    margin-left: 15px;
+    width: 100px;
+    color: #4B0FF3;
+    background: #A3C7D6;
+    border-style: none;
+    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+.find_id_content_3{ /* 이메일로 찾기 인증 인풋란 start */
+    margin-top: 25px;
+    padding-top: 25px;
+    height: 100px;
+    border: 1px solid #000;
+}
+.find_id_content_3-1{
+    margin-left: 15px;
+}
+.find_id_content_3-2{
+    display: block;
+    margin-left: 44px;
+    margin-top: 5px;
+}
+
+.find_id_content_3-2 button{ /* 이메일로 찾기 인증 인풋란 end */
+    margin-left: 5px;
+    height: 28px;
+    width: 95px;
+    border-style: none;
+    background: #5164AA;
+    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color:white;
+}
+.find_id_content_4{ /* 취소버튼 start */
+    margin-top: 200px;
+    text-align: center;
+}
+.find_id_content_4 button{
+    background: #D9D9D9;
+    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color:#000;
+    border-style: none;
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+}
+.justspace{ /* 취소버튼 end */
+    display: inline;
+    margin:auto 20px;
+}

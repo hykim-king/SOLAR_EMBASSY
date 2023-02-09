@@ -2,16 +2,11 @@
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{/layout}"> -->
 
-<<<<<<< HEAD
 <html lang="ko">
-=======
-<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
->>>>>>> origin
 <head>
     <meta charset="UTF-8">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
           crossorigin="anonymous">
@@ -233,7 +228,6 @@ layout:decorate="~{/layout}"> -->
 
         #user_info_btn { /*유저 정보 버튼 칸*/
             width: 100%;
-            margin-bottom: ;
             display: flex;
             position: relative;
             border-bottom: 3px solid #663399;
@@ -309,23 +303,11 @@ layout:decorate="~{/layout}"> -->
         }
 
     </style>
-=======
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
-    <!--원본 css-->
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/pw_check.css">
-    <title>SOLAR EMBASSY</title>
->>>>>>> origin
 </head>
 <body>
 <div id="SE_container">
     <header id="SE_header">
         <h6>메인이미지</h6>
-<<<<<<< HEAD
         <img id="SE_img1" src="../../static/img/solar_embassy_main.png" alt="">
     </header>
 
@@ -438,21 +420,6 @@ layout:decorate="~{/layout}"> -->
                 <h1> 기능없는상태</h1>
             </aside>
 
-=======
-        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'">
-    </header>
-
-    <div id="SE_topline">
-        <!--검색과 로그인 + 왼쪽 사이드-->
-        <th:block th:insert="/searchAndLogin"></th:block>
-        <!--검색과 로그인 end-->
-        <div id="SE_contents" style="z-index:2">
-            <!--메뉴 + 오른쪽 사이드-->
-            <th:block th:insert="/menuAndAside"></th:block>
-            <!--메뉴 end-->
-
-            <!--여기부터-->
->>>>>>> origin
             <div id="user_info">
                 <div id="user_info_btn">
                     <div id="user_info_btn1">
@@ -476,12 +443,7 @@ layout:decorate="~{/layout}"> -->
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">비밀번호</span>
                                         <input type="text" class="form-control rounded-end" aria-label="Username">
-<<<<<<< HEAD
                                         <span><button type="submit" class="btn btn-info btn-lg mt-1 ms-3 fs-5">확인</button></span>
-=======
-                                        <span><button type="submit"
-                                                      class="btn btn-info btn-lg mt-1 ms-3 fs-5" onclick="location.href='/user/user_info_modify.do'">확인</button></span>
->>>>>>> origin
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-secondary btn-lg mt-1 ms-3">취소</button>
@@ -494,7 +456,6 @@ layout:decorate="~{/layout}"> -->
             </div>
 
 
-<<<<<<< HEAD
         </section>
 
 
@@ -507,29 +468,6 @@ layout:decorate="~{/layout}"> -->
         </footer>
     </div>
 
-=======
-            <!--여기까지-->
-
-        </div>
-        <section id="SE_contents2">
-            <div id="SE_banner1"><h1>배너자리</h1></div>
-        </section>
-
-        <section id="SE_contents3">
-            <div id="SE_banner2"><h1>배너자리</h1></div>
-        </section>
-        <footer id="SE_footer">
-            <p>
-            </p>
-            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-            <p>
-            </p>
-            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-        </footer>
-
-    </div>
->>>>>>> origin
 </div>
 </body>
 </html>
