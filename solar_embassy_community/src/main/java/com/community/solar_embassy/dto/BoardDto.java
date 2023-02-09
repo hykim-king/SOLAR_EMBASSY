@@ -1,11 +1,11 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
-public class Board implements Serializable {
+public class BoardDto{
     private Integer boardNo;
 
     private Integer galaxyNo;
@@ -32,5 +32,4 @@ public class Board implements Serializable {
 
     private Integer views;
 
-    private static final long serialVersionUID = 1L;
 }
