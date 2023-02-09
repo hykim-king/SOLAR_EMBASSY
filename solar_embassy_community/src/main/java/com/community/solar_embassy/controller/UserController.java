@@ -95,4 +95,7 @@ public class UserController {
     @GetMapping("search.do")
     public void search(HttpSession session){}
 
+    @GetMapping("find_id.do")
+    public void find_id(){}
+
 }
