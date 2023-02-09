@@ -1,51 +1,3 @@
-<<<<<<< HEAD
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    background-color: #5B8FB9;
-    height: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-}
-
-ul {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-#container { /*메인 컨테이너*/
-    width: 1920px;
-    background-color: #5B8FB9;
-    margin: 0 auto;
-    position: relative;
-    transform: translate(0, 0);
-}
-
-header { /*헤더*/
-    width: 100%;
-    height: 415px;
-    background-color: black;
-    text-align: center;
-    margin: 0 auto;
-    position: relative;
-}
-
-#img1 { /*메인 서비스 이미지*/
-    width: 1200px;
-    position: absolute;
-    transform: translate(-50%, 0%);
-    height: 355px;
-}
-
-#topline { /*검색창, 로그인의 공간*/
-=======
 *{margin:0; padding:0;}
 
 html,body{
@@ -81,58 +33,10 @@ header {                                      /*헤더*/
 }
 
 #topline{                                       /*검색창, 로그인의 공간*/
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     width: 100%;
     height: 50px;
     position: relative;
     background-color: black;
-<<<<<<< HEAD
-}
-
-#search-bar { /*검색입력 칸*/
-    width: 240px;
-    height: 40px;
-    font-size: 11px;
-    position: absolute;
-    float: left;
-    transform: translate(720px, -10px);
-    margin: 0;
-    border-radius: 5px;
-}
-
-#btn { /*검색 버튼*/
-    width: 60px;
-    height: 40px;
-    font-size: 11px;
-    color: white;
-    position: absolute;
-    margin: 0;
-    float: left;
-    transform: translate(960px, -10px);
-    border-radius: 5px;
-    background-color: #364959;
-}
-
-#login { /*로그인 공간 */
-    width: 300px;
-    height: 40px;
-    position: absolute;
-    transform: translate(1260px, 10px);
-    background-color: #333125;
-    border-radius: 5px;
-}
-
-.logbtn { /*로그인 공간 안의 버튼 3개.*/
-    margin: 10px 0 0 10px;
-    width: 80px;
-    height: 20px;
-    color: white;
-    font-size: 11px;
-    border-radius: 5px;
-    background-color: #364959;
-    border: 2px solid #0D3360;
-=======
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
 }
 
 #search-bar{                                       /*검색입력 칸*/
@@ -185,38 +89,15 @@ header {                                      /*헤더*/
     height: 80px;
     position: absolute;
     float: top;
-<<<<<<< HEAD
-    transform: translate(0, 60%);
-}
-
-#contents { /*메인 컨테이너*/
-=======
     transform: translate(0,60%);
 }
 
 #contents {                                      /*메인 컨테이너*/
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     width: 1200px;
     background-color: #5B8FB9;
     margin-left: 360px;
     float: left;
     position: absolute;
-<<<<<<< HEAD
-    transform: translate(0, 48px);
-}
-
-#contents #content1 { /*NAV BAR 메인 메뉴 공간.*/
-    background-color: #826BCE;
-    width: 1200px;
-    height: 80px;
-    float: top;
-    position: relative;
-    transform: translate(0, 0);
-}
-
-#menu_wrap { /*Nav bar 크기*/
-    width: 1200px;
-=======
     transform: translate(0,48px);
 }
 #contents #content1{                                      /*NAV BAR 메인 메뉴 공간.*/
@@ -230,37 +111,23 @@ header {                                      /*헤더*/
 
 #menu_wrap{                 /*Nav bar 크기*/
     width: 1200px;
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     height: 100%;
     margin: 0 auto;
 }
 
-<<<<<<< HEAD
-.top_menu { /*Nav bar 각 메뉴*/
-    padding: 0;
-=======
 .top_menu{                 /*Nav bar 각 메뉴*/
     padding:0;
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     margin: 0 auto;
     width: 200px;
     height: 100%;
     background-color: #645CBB;
     float: left;
     text-align: center;
-<<<<<<< HEAD
-    font: 20px/100px '';
-    transition-duration: 0.3s;
-}
-
-.sub_menu { /*드롭 다운 위치*/
-=======
     font: 20px/100px'';
     transition-duration: 0.3s;
 }
 
 .sub_menu{                  /*드롭 다운 위치*/
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     margin-top: 10px;
     width: 100%;
     height: 0;
@@ -269,11 +136,7 @@ header {                                      /*헤더*/
     transition-duration: 0.3s;
 }
 
-<<<<<<< HEAD
-.sub_menu > li { /*드롭다운 하위메뉴*/
-=======
 .sub_menu>li{               /*드롭다운 하위메뉴*/
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     width: 100%;
     height: 80px;
     border-bottom: 1px solid #0d6efd;
@@ -281,29 +144,17 @@ header {                                      /*헤더*/
     font: 18px/80px '';
 }
 
-<<<<<<< HEAD
-.top_menu.top_menu:hover { /*하위 메뉴 hover*/
-=======
 .top_menu.top_menu:hover{       /*하위 메뉴 hover*/
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     font: 18px/70px '';
     height: 100%;
     background-color: #BFACE2;
 }
 
-<<<<<<< HEAD
-.top_menu:hover > .sub_menu { /*하위 메뉴 늘어나는 길이 hover*/
-    height: 320px;
-}
-
-.sub_menu > li:hover { /*하위 메뉴 각 항목 hover*/
-=======
 .top_menu:hover>.sub_menu{          /*하위 메뉴 늘어나는 길이 hover*/
     height: 320px;
 }
 
 .sub_menu>li:hover{                 /*하위 메뉴 각 항목 hover*/
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     background-color: #EBC7E6;
     transition-duration: 0.5s;
 }
@@ -313,114 +164,77 @@ header {                                      /*헤더*/
     width: 360px;
     height: 80px;
     position: absolute;
-<<<<<<< HEAD
-    transform: translate(1200px, -80px);
-    float: top;
-}
-
-.modifycontainer { /* 회원 탈퇴 관리 페이지 */
-=======
     transform: translate(1200px,-80px);
     float: top;
 }
 .modifycontainer{ /* 회원 탈퇴 관리 페이지 */
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     height: 800px;
     background: #cf95ff;
     border: 1px solid rgb(255, 255, 255);
 }
-
-.account-withdrawal { /* 회원 탈퇴 text */
+.account-withdrawal{ /* 회원 탈퇴 text */
     margin-top: 20px;
     margin-left: 10px;
 }
-<<<<<<< HEAD
-
-.a-warning { /* 회원 탈퇴전 경고문 a는 account 약자입니다*/
-=======
 .a-warning{ /* 회원 탈퇴전 경고문 a는 account 약자입니다*/
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     margin-top: 15px;
     padding-left: 38px;
     height: 200px;
-    font-size: 15px;
+    font-size:15px ;
 }
-
-.auh { /* 탈퇴전 이유와 희망사항 인풋 창 start*/
+.auh{/* 탈퇴전 이유와 희망사항 인풋 창 start*/
     border: 1px solid #ffffff;
 }
-<<<<<<< HEAD
-
-.auh-t {
-=======
 .auh-t{
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
-.a-user-hope {
+.a-user-hope{
     height: 300px;
     margin-left: 15px;
 }
-
-.a-user-hope2 {
+.a-user-hope2{
     position: absolute;
     bottom: 30%;
     left: 50%;
 }
-
-.a-user-hope3 {
+.a-user-hope3{
     margin-top: 15px;
     width: 500px;
     border: 1px solid #000;
-    height: 150px;
+    height:150px;
     background: #ffffff;
     border-radius: 15px;
 }
-
-.a-user-hope3-1 {
+.a-user-hope3-1{
     margin-top: 5px;
     margin-left: 5px;
     border-style: none;
-    width: 300px;
+    width:300px;
 }
-
-.a-user-hope4 { /* 탈퇴전 이유와 희망사항 인풋 창 end*/
+.a-user-hope4{ /* 탈퇴전 이유와 희망사항 인풋 창 end*/
     margin-top: 15px;
     text-align: end;
 }
-<<<<<<< HEAD
-
-.a-agree { /* 탈퇴동의 start */
-=======
 .a-agree{ /* 탈퇴동의 start */
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     margin-top: 10px;
     font-family: 'Inter';
     font-style: normal;
     color: #ffffff;
     text-align: center;
 }
-
-.a-btn {
+.a-btn{
     margin-top: 10px;
     text-align: center;
 }
-<<<<<<< HEAD
-
-.a-confirm {
-=======
 .a-confirm{
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     position: absolute;
     left: 43%;
     width: 100px;
     height: 35px;
     box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
 }
-
-.a-cancell { /* 탈퇴동의 end */
+.a-cancell{ /* 탈퇴동의 end */
     position: absolute;
     left: 52%;
     width: 100px;
@@ -428,17 +242,6 @@ header {                                      /*헤더*/
     box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
 }
 
-<<<<<<< HEAD
-#footer { /*footer 영역*/
-    background-color: Black;
-    width: 1920px;
-    height: 140px;
-    clear: left;
-    float: bottom;
-    position: absolute;
-    text-align: center;
-    transform: translate(0, 2115px);
-=======
 #footer{                                      /*footer 영역*/
     background-color: Black;
     width: 1920px;
@@ -448,7 +251,6 @@ header {                                      /*헤더*/
     position: absolute;
     text-align: center;
     transform: translate(0,2115px);
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
     color: white;
     font: 18px/60px '';
 }

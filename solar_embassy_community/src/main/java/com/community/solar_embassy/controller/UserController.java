@@ -85,7 +85,6 @@ public class UserController {
     public void next_3() {
     }
 
-<<<<<<< HEAD
     @GetMapping("my_page.do")
     public void my_page(HttpSession session) {
     }
@@ -96,13 +95,8 @@ public class UserController {
     @GetMapping("search.do")
     public void search(HttpSession session){}
 
-=======
-    @GetMapping("search.do")
-    public void search(){
-    }
 
     @GetMapping("find_id.do")
     public void find_id(){
     }
->>>>>>> e070165cb29559e0be11548c25a8d5f80a3420cf
 }
