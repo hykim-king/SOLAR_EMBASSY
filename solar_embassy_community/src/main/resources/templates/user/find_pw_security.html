@@ -1,0 +1,139 @@
+<head>
+    <meta charset="UTF-8">
+    <title>SOLAR EMBASSY</title>
+    <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
+    <!--    <script src="/uikit/js/uikit.js"></script>-->
+    <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
+    <link rel="stylesheet" href="/css/find_pw_security.css">
+</head>
+<body>
+<div id="container">
+    <header>
+        <h6>메인이미지</h6>
+        <a href="/">
+            <img id="img1" src="/img/solar_embassy_main.png" alt="">
+        </a>
+    </header>
+
+    <div id="topline">
+        <form>
+            <!--검색-->
+            <div id="search">
+                <input type="text" id="search-bar" placeholder="검색어를 입력하세요.">
+                <button type="button" id="btn">검색</button>
+            </div>
+        </form>
+
+        <!--로그인-->
+        <form>
+            <div id="login">
+                <button class="logbtn" type="button" onclick="location.href='/user/login.do'" style="cursor:pointer">로그인</button>
+                <button class="logbtn" type="button">ID/PW 찾기</button>
+                <button class="logbtn" type="button" onclick="location.href='/user/signup.do'" style="cursor:pointer">회원가입</button>
+            </div>
+        </form>
+        <aside id="left-sidebar">
+            <h1> 사이드바</h1>
+        </aside>
+
+        <section id="contents">
+            <div id="content1">
+                <ul id="menu_wrap">
+                    <li class="top_menu">
+                        <a href="#">메인 메뉴</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">메인 홈</a></li>
+                            <li><a href="#">마이 페이지</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">태양계 소식지</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이용정책</a></li>
+                            <li><a href="#">이벤트 안내</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">주제별 갤럭시</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">스포츠</a></li>
+                            <li><a href="#">문학</a></li>
+                            <li><a href="#">문화</a></li>
+                            <li><a href="#">게임</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">마이너 갤럭시</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">유머</a></li>
+                            <li><a href="#">취미</a></li>
+                            <li><a href="#">여행</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">태양계 놀이터</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">외계인 잡기</a></li>
+                            <li><a href="#">행성 맞추기</a></li>
+                            <li><a href="#">개발중</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">스타 콜로세움</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">맞짱 게시판</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <aside id="right-sidebar">
+                <h1> 임시 사이드바</h1>
+            </aside>
+            <div class="find_pw_security_container">
+                <h1 class="find_pw_security_text" style="color: rgb(0, 0, 0);">
+                    비밀번호 찾기
+                    <span style="font-size: 16px; color: #FF0000;">01.아이디입력</span><span style="font-size: 16px;">>02.본인 확인>03.비밀번호 재설정 (임시 비밀번호 전송.)</span>
+                </h1>
+                <div class="find_pw_security_container2">
+                    <img id="SE_log_1" src="/img/Solar-Embassy_No_1.png" alt="" onclick="location.href='/'">
+                    <div class="find_pw_security_content">
+                        <span style="font-size: 20px; font-weight:bold;">비밀번호를 찾기 위해 <span style="color:#14F30F">아이디</span>를 입력해주세요.</span>
+                        <div class="find_pw_security_input">
+                            <form action="">   
+                                <label for="next"></label>
+                                <input type="text" name="next" id="next" value="  ID를 입력하세요."><button class="next_btn">다음</button><br>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="find_pw_security_content_3">
+                        <div class="find_pw_security_content_3-1" style="font-size: 20px; font-weight:bold;">아이디가 기억이 나지 않는다면 <span style="color:#14F30F">아이디 찾기</span>로 이동하세요.</div>
+                    </div>
+                    <div class="find_pw_security_content_4">
+                        <form action="" method="POST">
+                            <button id="cancle">취소</button>
+                            <div class="justspace"></div>
+                            <button id="service_center">고객센터</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            <p>
+            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
+                    href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+            <p>
+            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

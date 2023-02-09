@@ -99,4 +99,11 @@ public class UserController {
     @GetMapping("find_id.do")
     public void find_id(){
     }
+    @GetMapping("find_pw.do")
+    public void find_pw(){
+    }
+
+    @GetMapping("find_pw_security.do")
+    public void find_pw_security(){
+    }
 }
