@@ -92,10 +92,25 @@ public class UserController {
     @GetMapping("user_black.do")
     public void user_black(HttpSession session) {
     }
+
     @GetMapping("search.do")
-    public void search(HttpSession session){}
+    public void search(HttpSession session) {
+    }
 
     @GetMapping("find_id.do")
-    public void find_id(){}
+    public void find_id() {
+    }
+
+    @GetMapping("pw_check.do")
+    public void pw_check(HttpServletRequest req, HttpSession session,
+                                   @SessionAttribute(required = false) String redirectUri) {
+        String referer = req.getHeader("referer");
+        if (redirectUri == null && !(referer.equals("http://localhost:8888/") || referer.equals("http://localhost:8888/user/login.do"))) {
+            session.setAttribute("redirectUri", referer);
+        }
+    }
+
+    @GetMapping("user_info_modify.do")
+    public void user_info_modify(){}
 
 }

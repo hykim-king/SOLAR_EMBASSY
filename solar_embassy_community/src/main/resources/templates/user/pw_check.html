@@ -14,6 +14,7 @@ layout:decorate="~{/layout}"> -->
             crossorigin="anonymous"></script>
     <!--원본 css-->
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/pw_check.css">
     <title>SOLAR EMBASSY</title>
 </head>
 <body>
@@ -33,60 +34,43 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 end-->
 
             <!--여기부터-->
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
-            </div>
-
-            <div id="SE_content3">
-                <div id="SE_sub1"><a href=""><h3>최근 생성 된 플래닛</h3></a></div>
-
-                <div id="SE_sub2">                      <!--분류별 플래닛-->
-                    <ul class="SE_sub2_title" style="z-index:1">
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">잡담</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">일상</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">고민</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">유머</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">여행</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">코딩</a>
-                        </li>
-                    </ul>
+            <div id="user_info">
+                <div id="user_info_btn">
+                    <div id="user_info_btn1">
+                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3 ">회원 정보 수정</button>
+                    </div>
+                    <div id="user_info_btn2">
+                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3">차단 목록 관리</button>
+                    </div>
+                    <div id="user_info_btn3">
+                        <button type="button" class="btn btn-outline-danger col-12 mt-5 ms-4 fs-3">회원 탈퇴</button>
+                    </div>
                 </div>
+                <div id="user_info_bgc1">
+                    <div id="user_info_bgc2">
+                        <div id="pw_check" class="">
+                            <div class="">
+                                <h3>비밀번호를 입력해 주시기 바랍니다.</h3>
+                            </div>
+                            <div>
+                                <div class="input-group input-group-lg my-4">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">비밀번호</span>
+                                        <input type="text" class="form-control rounded-end" aria-label="Username">
+                                        <span><button type="submit"
+                                                      class="btn btn-info btn-lg mt-1 ms-3 fs-5" onclick="location.href='/user/user_info_modify.do'">확인</button></span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-secondary btn-lg mt-1 ms-3">취소</button>
 
-                <div id="SE_content4">
-                    <div id="SE_sub3"><h3>플래닛 board1</h3></div>
-                    <div id="SE_sub4"><h3>플래닛 board2</h3></div>
-                </div>
-
-                <div id="SE_content5">
-                    <div id="SE_sub5"><h3>플래닛 board3</h3></div>
-                    <div id="SE_sub6"><h3>플래닛 board4</h3></div>
-                </div>
-
-                <div id="SE_content6">
-                    <div id="SE_sub7"><h3>플래닛 board5</h3></div>
-                </div>
-
-                <div id="SE_content7">
-                    <div id="SE_sub8"><h3>플래닛 board6</h3></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
+
             <!--여기까지-->
 
         </div>

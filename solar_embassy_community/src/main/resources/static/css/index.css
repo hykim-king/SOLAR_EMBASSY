@@ -213,7 +213,7 @@ input[id="menuicon"]:checked + label + div {
 
 #SE_contents { /*메인 컨테이너*/
     width: 1200px;
-    height: max-content;
+    height: 2110px;
     margin: 0;
     padding-bottom: 100px;
     background-color: rgb(100, 144, 180);
