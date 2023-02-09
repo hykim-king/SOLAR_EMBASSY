@@ -1,35 +1,66 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="/css/login.css">
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="/css/login.css">
+
+
+  <style>
+
+    .sns_login_btn {
+
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 10px;
+
+    }
+
+
+  </style>
+
 </head>
 <body>
 <div class="bg"></div>
 <div class="star-field">
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
 </div>
 <div id="logo">
-    <a href="/">
-        <img src="/img/solar_embassy_logo.png" alt="">
-    </a>
+  <a href="/">
+    <img src="/img/solar_embassy_logo.png" alt="">
+  </a>
 </div>
-<form class="login">
-    <span>Email</span>
-    <input type="email" placeholder="Email Address">
-    <span>Password</span>
-    <input type="password" placeholder="Password">
-    <p>
-        <label>
-            <input type="checkbox"> Keep me Logged in
-        </label>
-        <a href="">Forgot Your Password</a>
-    </p>
+<form action="/user/login.do" class="login" method="POST">
 
-    <button class="btn">Log in</button>
+  <h1> Login </h1>
+
+  <span></span>
+  <input type="text" placeholder="id" name="user_id">
+  <span></span>
+  <input type="password" placeholder="Password" name="pw">
+
+  <div class="sns_login_btn">
+    <img src="/img/sns_login_btn_1.png" alt="">
+    <img src="/img/sns_login_btn_2.png" alt="">
+    <img src="/img/sns_login_btn_3.png" alt="">
+    <img src="/img/sns_login_btn_4.png" alt="">
+    <img src="/img/sns_login_btn_5.png" alt="">
+
+  </div>
+  <p>
+    <label>
+      <input type="checkbox"> 자동 로그인
+    </label>
+
+    <a href=""> 고객센터 </a>
+    <a href=""> 비밀번호찾기 | </a>
+    <a href=""> 회원가입 | </a>
+  </p>
+
+  <button class="btn" type="submit">Log in</button>
 </form>
 
 

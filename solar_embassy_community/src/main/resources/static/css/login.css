@@ -116,9 +116,14 @@ a {
 
 .login {
     border: 1px solid #eee;
-    width: 800px;
+    width: 500px;
     padding: 25px;
-    background-color: rgba(245, 245, 245, 0.21);
+    /*background-color: rgba(245, 245, 245, 0.21); 8C82C3*/
+
+    background-image: url("../img/bora_2.png");
+
+    /*background-color: #8C82C3;*/
+
     border-radius: 5px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.212);
     box-sizing: border-box;
@@ -135,7 +140,7 @@ a {
     margin-top: 20px;
 }
 
-.login input[type=email],
+.login input[type=text],
 .login input[type=password] {
     width: 100%;
     padding: 15px;
@@ -145,7 +150,7 @@ a {
     padding-left: 30px;
 }
 
-.login input[type=email]:hover,
+.login input[type=text]:hover,
 .login input[type=password]:hover {
     border: 1px solid dodgerblue;
     box-shadow: 0 0 5px dodgerblue;
@@ -179,9 +184,11 @@ a {
 }
 
 .btn {
-    width: 300px;
+    width: 153px;
     padding: 10px;
-    background-color: #2991b1;
+    /*background-color: #2991b1;*/
+    background-image: url("../img/bora_button.png");
+
     color: #fff;
     border-radius: 5px;
     border: none;
@@ -206,4 +213,11 @@ a {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+h1 {
+    color:white;
+    text-align: center;
+    margin-bottom: 77px;
+
 }

@@ -1,0 +1,369 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SOLAR EMBASSY</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/9cfcd50243.js" crossorigin="anonymous"></script>
+
+    <style>
+        html, body {
+            background-color: #5B8FB9;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container { /*메인 컨테이너*/
+            /* background-color: black; */
+            width: 1920px;
+            margin: 0 auto;
+        }
+
+        header { /*헤더*/
+            /* width: 100%; */
+            height: 415px;
+            background-color: black;
+            text-align: center;
+            position: relative;
+
+        }
+
+        header > #login_btn {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.50);
+            right: 0;
+            bottom: 0;
+        }
+        header > #login_btn>a {
+            text-align: center;
+            padding: 10px;
+            width: 300px;
+            height: 100px;
+            font-size: 30px;
+            text-decoration: none;
+            color: white;
+        }
+
+
+        #img1 { /*메인 이미지*/
+            width: 1200px;
+            height: 355px;
+        }
+
+        #img2 { /*컨텐츠 이미지*/
+            height: 100%;
+            width: 100%;
+        }
+
+        #left-sidebar { /*좌측 사이드바*/
+            background-color: #5164AA;
+            width: 360px;
+            height: 77px;
+            float: left;
+        }
+
+        #contents { /*메인 컨테이너*/
+            background-color: #5B8FB9;
+            width: 1200px;
+            height: 100%;
+            float: left;
+        }
+
+        #contents #content1 { /*NAV BAR 메인 메뉴*/
+            background-color: #BF7AF6;
+            width: 1200px;
+            height: 77px;
+        }
+        #contents #content1 .nav_container>ul{ /*NAV BAR 메인 메뉴*/
+            background-color: #BF7AF6;
+            width: 100%;
+            list-style: none;
+        }
+        #contents #content1 .nav_container>ul>li{ /*NAV BAR 메인 메뉴*/
+            float: left;
+            width: 150px;
+            padding: 0 10px;
+            height: 100%;
+            border-right: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #contents #content1 .nav_container>ul>li>h3>a{ /*NAV BAR 메인 메뉴*/
+            height: 77px;
+            line-height: 100%;
+            text-decoration: none;
+            color: white;
+        }
+        /*내부 검색 바 */
+        .search {
+            background-color: #5B8FB9;
+            width: 1200px;
+            height: 50px;
+            display: flex;
+        }
+        .select_search{
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 25px;
+
+        }
+        .keyword {
+            width: 826px;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 25px;
+        }
+        input::placeholder {
+            color: deepskyblue;
+            font-style: italic;
+            text-align: center;
+        }
+        .booking-button{
+            width: 150px;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 25px;
+        }
+        /*이벤트 */
+        .section1{
+            background-color: #5B8FB9;
+            width: 1190px;
+            height: 500px;
+            margin-top: 10px;
+            border-style: solid;
+            border-color: cornsilk;
+        }
+
+        *{margin:0;padding:0;}
+        ul,li{list-style:none; width: 1190px}
+        .slide{width: 1190px; height:500px;overflow:hidden;position:relative;}
+        .slide ul{width:calc(1190px * 4);display:flex;transition:1s;}
+        .slide li{width:calc(100% / 4);height:300px;}
+        .slide li:nth-child(1){background:#ffa;}
+        .slide li:nth-child(2){background:#faa;}
+        .slide li:nth-child(3){background:#afa;}
+        .slide li:nth-child(4){background:#aaf;}
+        .slide li>img{width: 1190px; height: 300px}
+        .slide_text{
+            margin-top: 40px;
+            text-align: center;
+        }
+        .slide h1{text-align: center}
+        .slide input{display:none;}
+        .slide .bullet{position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:10;}
+        .slide .bullet label{width:10px;height:10px;border-radius:10px;border:2px solid #666;display:inline-block;background:#fff;font-size:0;transition:0.5s;cursor:pointer;}
+        /* 슬라이드 조작 */
+        #pos1:checked ~ ul{margin-left:0;}
+        #pos2:checked ~ ul{margin-left:-100%;}
+        #pos3:checked ~ ul{margin-left:-200%;}
+        #pos4:checked ~ ul{margin-left:-300%;}
+        /* bullet 조작 */
+        #pos1:checked ~ .bullet label:nth-child(1),
+        #pos2:checked ~ .bullet label:nth-child(2),
+        #pos3:checked ~ .bullet label:nth-child(3),
+        #pos4:checked ~ .bullet label:nth-child(4){background:#666;}
+
+        /* 캠핑 스타*/
+        .section2 {
+            background: #5B8FB9;
+            height: 500px;
+            display: flex;
+            border-radius: 5px;
+        }
+        /*.section2 #sub1_title { !*캠핑스타 구역*!*/
+        /*    background-color: #A3C7D6;*/
+        /*    height: 30px;*/
+        /*    width: 1200px;*/
+        /*    margin-top: 10px;*/
+        /*}*/
+        #sub2_menu{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: #2196F3;
+            margin-top: 40px;
+        }
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+
+        /*.section2 #sub2 { !*최근 생성된 플래닛 구역*!*/
+        /*    background-color: #A3C7D6;*/
+        /*    height: 260px;*/
+        /*    width: 760px;*/
+        /*    margin-top: 10px;*/
+        /*    border-radius: 5px;*/
+        /*}*/
+
+        #right-sidebar {
+            background-color: #5164AA;
+            width: 360px;
+            height: 77px;
+            float: left;
+        }
+
+        #searchs { /*검색창의 공간*/
+            width: 1920px;
+            height: 30px;
+            /* background-color: lightcoral; */
+            position: absolute;
+        }
+
+        #search-bar { /*검색입력 칸*/
+            width: 260px;
+            height: 30px;
+            font-size: 11px;
+            position: absolute;
+            margin: 0;
+            left: 50%;
+            transform: translate(-64%, -110%);
+            border-radius: 5px;
+        }
+
+        #btn { /*검색 버튼*/
+            width: 40px;
+            height: 30px;
+            font-size: 11px;
+            position: absolute;
+            margin: 0;
+            left: 56%;
+            float: left;
+            transform: translate(-55%, -110%);
+            border-radius: 5px;
+        }
+
+        #footer { /*footer 영역*/
+            background-color: Black;
+            width: 1920px;
+            height: 120px;
+            clear: left;
+            position: absolute;
+            text-align: center;
+            transform: translate(0%, 1720%);
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <header>
+        <h6>메인이미지</h6>
+        <a href="/">
+            <img id="img1" src="/img/solar_embassy_main.png" alt="">
+        </a>
+        <div id="login_btn">
+            <a href="./user/login.do">Login</a>
+        </div>
+    </header>
+
+    <!--검색-->
+    <form>
+        <div id="searchs"><input type="text" id="search-bar" placeholder="검색어를 입력하세요.">
+            <button type="button" id="btn">검색</button>
+        </div>
+    </form>
+
+    <aside id="left-sidebar">
+        <h1> 사이드바</h1>
+    </aside>
+
+    <section id="contents">
+
+        <div id="content1">
+            <nav>
+                <div class="nav_container">
+                    <ul>
+                        <li class="nav-bar"><h3><a href="#">우주의 중심</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">태양계 소식</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">주제별 갤럭시</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">마이너 갤럭시</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">스타 콜로세움</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">태양계 놀이터</a></h3></li>
+                        <li class="nav-bar"><h3><a href="#">아이콘 샵</a></h3></li>
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+        <!-- 내부 검색 바 -->
+        <form action="" class="search">
+            <select class="select_search" name="which_search">
+                <option id="c_all" value="">캠핑 전체</option>
+                <option id="c_event" value="">캠핑 이벤트</option>
+                <option id="c_star" value="">캠핑 스타</option>
+                <option id="c_magazine" value="">캠핑 Magazine</option>
+            </select>
+            <input class="keyword" type="text" name="search" value="" autocomplete="off" placeholder="캠핑 관련 검색하는 곳입니다.">
+            <button class="booking-button" type="button" name="click" value="">캠핑장 예약</button>
+        </form>
+<!--        이벤트 -->
+        <div class="section1">
+            <div class="slide">
+                <input type="radio" name="pos" id="pos1" checked>
+                <input type="radio" name="pos" id="pos2">
+                <input type="radio" name="pos" id="pos3">
+                <input type="radio" name="pos" id="pos4">
+                <ul>
+                    <li>
+                        <img src="/static/img/camping/camping1.png" alt="">
+                        <div class="slide_text">
+                            <h3 style="text-align: left">event</h3>
+                            <h1>봄 대비전</h1>
+                            <p>다가오는 봄 캠핑을 준비하자</p>
+                        </div>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <p class="bullet">
+                    <label for="pos1">1</label>
+                    <label for="pos2">2</label>
+                    <label for="pos3">3</label>
+                    <label for="pos4">4</label>
+                </p>
+            </div>
+        </div>
+        <div class="section2">
+            <div id="sub1_title"><h2>캠핑스타</h2></div>
+            <div class="grid-container" id="sub2_menu">
+                <div class="grid-item">사진</div>
+                <div class="grid-item">제목</div>
+                <div class="grid-item">내용</div>
+                <div class="grid-item">작성자</div>
+                <div class="grid-item">작성일</div>
+                <div class="grid-item">수정자</div>
+                <div class="grid-item">수정일</div>
+            </div>
+        </div>
+    </section>
+
+
+    <aside id="right-sidebar">
+        <h1> 임시 사이드바</h1>
+    </aside>
+
+    <footer id="footer">
+        <p>
+        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
+                href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+        <p>
+        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+    </footer>
+</div>
+</body>
+</html>
