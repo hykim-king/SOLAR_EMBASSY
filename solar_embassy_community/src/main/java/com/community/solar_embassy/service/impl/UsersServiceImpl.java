@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UsersServiceImpl
-        implements UsersService {
+public class UsersServiceImpl implements UsersService {
 
     private UsersMapper usersMapper;
 
@@ -19,6 +18,11 @@ public class UsersServiceImpl
     @Override
     public Users login(String userId, String pw) {
         return usersMapper.findByUserIdAndPw(userId, pw);
+    }
+
+    @Override
+    public int signup_normal(Users users) {
+        return usersMapper.insert(users);
     }
 }
 

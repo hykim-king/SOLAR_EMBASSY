@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UsersMapper {
     Users findByUserIdAndPw(String userId, String pw);
 
+    int insert(Users users);
 }
 
 

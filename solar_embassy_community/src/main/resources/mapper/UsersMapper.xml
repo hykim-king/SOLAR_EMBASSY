@@ -24,14 +24,13 @@
             <result property="profileImgNo" column="profile_img_no" jdbcType="INTEGER"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        user_id,nickname,passwords,
-        email,hp,tell,
-        admin_id,reg_date,last_login_time,
-        update_time,state,c_point,
-        e_point,exp,user_level,
-        birth,profile_img_no
-    </sql>
+
+    <insert id="insert">
+        insert INTO solar_embassy.users
+            (user_id,  passwords, hp, nickname, email) VALUES
+                (#{userId}, #{passwords}, #{hp}, #{nickname}, #{email})
+    </insert>
+
     <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.Users">
         SELECT * FROM USERS WHERE user_id=#{userId} AND passwords=#{pw}
     </select>
