@@ -74,7 +74,7 @@ public class UserController {
             e.printStackTrace();
         }
         if (signup_normal > 0){
-            return "redirect:/user/login.do";
+            return "redirect:/user/rocket.do";
         } else {
             return "redirect:/user/signup_normal.do";
         }

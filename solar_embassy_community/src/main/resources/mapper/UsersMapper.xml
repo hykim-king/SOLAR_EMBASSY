@@ -27,8 +27,8 @@
 
     <insert id="insert">
         insert INTO solar_embassy.users
-            (user_id,  passwords, hp, nickname, email) VALUES
-                (#{userId}, #{passwords}, #{hp}, #{nickname}, #{email})
+            (user_id,  passwords,  nickname, email) VALUES
+                (#{userId}, #{passwords}, #{nickname}, #{email})
     </insert>
 
     <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.Users">
