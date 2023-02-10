@@ -99,8 +99,11 @@ public class UserController {
     @GetMapping("find_id.do")
     public void find_id(){
     }
-    @GetMapping("find_id_result.do")
-    public void find_id_result(){
+    @GetMapping("find_id_result_phone.do")
+    public void find_id_result_phone(){
+    }
+    @GetMapping("find_id_result_email.do")
+    public void find_id_result_email(){
     }
     @GetMapping("find_pw.do")
     public void find_pw(){
