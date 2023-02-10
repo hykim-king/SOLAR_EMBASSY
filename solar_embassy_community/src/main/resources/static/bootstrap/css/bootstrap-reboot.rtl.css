@@ -1,4 +1,5 @@
 /*!
+<<<<<<< HEAD
  * Bootstrap Reboot v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
@@ -73,6 +74,14 @@
   --bs-highlight-bg: #fff3cd;
 }
 
+=======
+ * Bootstrap Reboot v5.0.2 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
+ */
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 *,
 *::before,
 *::after {
@@ -87,6 +96,7 @@
 
 body {
   margin: 0;
+<<<<<<< HEAD
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -94,6 +104,14 @@ body {
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
+=======
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -101,11 +119,23 @@ body {
 hr {
   margin: 1rem 0;
   color: inherit;
+<<<<<<< HEAD
   border: 0;
   border-top: 1px solid;
   opacity: 0.25;
 }
 
+=======
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+}
+
+hr:not([size]) {
+  height: 1px;
+}
+
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 h6, h5, h4, h3, h2, h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -162,7 +192,12 @@ p {
   margin-bottom: 1rem;
 }
 
+<<<<<<< HEAD
 abbr[title] {
+=======
+abbr[title],
+abbr[data-bs-original-title] {
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
   -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
@@ -218,8 +253,13 @@ small {
 }
 
 mark {
+<<<<<<< HEAD
   padding: 0.1875em;
   background-color: var(--bs-highlight-bg);
+=======
+  padding: 0.2em;
+  background-color: #fcf8e3;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 }
 
 sub,
@@ -239,11 +279,19 @@ sup {
 }
 
 a {
+<<<<<<< HEAD
   color: var(--bs-link-color);
   text-decoration: underline;
 }
 a:hover {
   color: var(--bs-link-hover-color);
+=======
+  color: #0d6efd;
+  text-decoration: underline;
+}
+a:hover {
+  color: #0a58ca;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -255,8 +303,15 @@ pre,
 code,
 kbd,
 samp {
+<<<<<<< HEAD
   font-family: var(--bs-font-monospace);
   font-size: 1em;
+=======
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+  direction: ltr ;
+  unicode-bidi: bidi-override;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 }
 
 pre {
@@ -274,7 +329,11 @@ pre code {
 
 code {
   font-size: 0.875em;
+<<<<<<< HEAD
   color: var(--bs-code-color);
+=======
+  color: #d63384;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
   word-wrap: break-word;
 }
 a > code {
@@ -282,15 +341,27 @@ a > code {
 }
 
 kbd {
+<<<<<<< HEAD
   padding: 0.1875rem 0.375rem;
   font-size: 0.875em;
   color: var(--bs-body-bg);
   background-color: var(--bs-body-color);
   border-radius: 0.25rem;
+=======
+  padding: 0.2rem 0.4rem;
+  font-size: 0.875em;
+  color: #fff;
+  background-color: #212529;
+  border-radius: 0.2rem;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 }
 kbd kbd {
   padding: 0;
   font-size: 1em;
+<<<<<<< HEAD
+=======
+  font-weight: 700;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 }
 
 figure {
@@ -369,8 +440,13 @@ select:disabled {
   opacity: 1;
 }
 
+<<<<<<< HEAD
 [list]:not([type=date]):not([type=datetime-local]):not([type=month]):not([type=week]):not([type=time])::-webkit-calendar-picker-indicator {
   display: none !important;
+=======
+[list]::-webkit-calendar-picker-indicator {
+  display: none;
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
 }
 
 button,
@@ -452,12 +528,20 @@ legend + * {
   padding: 0;
 }
 
+<<<<<<< HEAD
 ::-webkit-file-upload-button {
   font: inherit;
   -webkit-appearance: button;
 }
 
 ::file-selector-button {
+=======
+::file-selector-button {
+  font: inherit;
+}
+
+::-webkit-file-upload-button {
+>>>>>>> dfb3e29c6e88d465bf4e178909db2e2065f01863
   font: inherit;
   -webkit-appearance: button;
 }
