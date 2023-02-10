@@ -20,7 +20,10 @@
         <button class="SE_logbtn" type="button" th:if="${session.loginUser==null}"
                 onclick="location.href='/user/signup.do'">회원가입
         </button>
-        <button class="SE_logbtn" type="button" onclick="location.href='/user/find_id.do'">ID/PW 찾기</button>
+        <button class="SE_logbtn" type="button" >
+            <span onclick="location.href='/user/find_id.do'">ID</span>/
+            <span onclick="location.href='/user/find_pw_security.do'">PW</span> 찾기
+        </button>
     </div>
 </form>
 <aside id="SE_left-sidebar">
