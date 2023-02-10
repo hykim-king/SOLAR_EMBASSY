@@ -4,7 +4,7 @@
     <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
     <!--    <script src="/uikit/js/uikit.js"></script>-->
     <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
-    <link rel="stylesheet" href="/css/find_id.css">
+    <link rel="stylesheet" href="/css/find_id_result.css">
 </head>
 <body>
 <div id="container">
@@ -39,7 +39,6 @@
         <section id="contents">
             <div id="content1">
                 <ul id="menu_wrap">
-
                     <li class="top_menu">
                         <a href="#">메인 메뉴</a>
                         <ul class="sub_menu">
@@ -98,51 +97,25 @@
             <aside id="right-sidebar">
                 <h1> 임시 사이드바</h1>
             </aside>
-            <div class="find_id_container">
-                <h1 class="find_id_text" style="color: rgb(0, 0, 0);">
-                    아이디찾기
+            <div class="find_id_result_container">
+                
+                <h1 class="find_id_result_text" style="color: rgb(0, 0, 0);">
+                    아이디 찾기 결과
                 </h1>
-                <div class="find_id_container2">
-                    <div class="find_id_content">
-                        <h2>아이디 찾을 방법을 선택 해 주세요</h2>
-                        <div class="find_id_content_2">
-                            <span style="font-weight: bold; font-size: 24px;">○ 회원 정보에 등록한 휴대전화로 인증 </span>
-                            <p style="font-size: 16px;"> 회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받으실 수 있습니다.</p>
-                            <div class="find_id_input">
-                                <form action="" method="POST">
-                                    <label for="name">이름</label>
-                                    <input type="text" name="name" id="name" value=""><br>
-                                   
-                                    <label for="phone">휴대전화</label>
-                                    <input type="text" name="phone" id="phone" value=""><button class="confirm_btn">인증받기</button><br>
-                                   
-                                    <label for="confirm">인증번호</label>
-                                    <input type="text" name="confirm" id="confirm" value=""><button class="confirm_btn">인증확인</button><br>
-                                    
-                                    <div class="warning">휴대폰 번호로 전송 된 인증번호 4자리(혹은 6자리)를 입력해주세요.<button class="reconfirm">인증재전송</button></div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="find_id_content_3">
-                            <div class="find_id_content_3-1" style=" font-size: 20px;">○ 본인 이메일로 인증 [회원가입시 작성된 이메일로 전송] </div>
-                            <form action="" method="POST">
-                                <label for="email" class="find_id_content_3-2">본인확인 이메일로 인증(%유저이메일%@%이메일주소%.com) <!-- 이부분 유저 이메일 for 문 돌려야함 -->
-                                <button id="email">이메일로 전송</button></label>
-                            </form>
-                        </div>
-                        <div class="next">
-                            <button>다음</button>
-                        </div>
-                        
-
-                        <div class="find_id_content_4">
-                            <form action="" method="POST">
-                                <button id="cancle">취소</button>
-                                <div class="justspace"></div>
-                                <button id="service_center">고객센터</button>
-                            </form>
-                        </div>
+                
+                <div class="find_id_result_container2">
+                    <div class="find_id_result_content">
+                        {%user%}님의 아이디는 {%user.id%} 입니다.
                     </div>
+                    
+                    <div class="find_id_result_container_3">
+                        <form action="" method="POST">
+                            <button id="cancle">확인</button>
+                            <div class="justspace"></div>
+                            <button id="service_center">고객센터</button>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
         </section>

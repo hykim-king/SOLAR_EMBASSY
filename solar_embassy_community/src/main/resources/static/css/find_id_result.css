@@ -1,7 +1,7 @@
 *{margin:0; padding:0;}
 
 html,body{
-    background-color: #5B8FB9;
+    background-color: #ffffff;
     height: 100%;
     max-width: 1920px;
     margin : 0 auto ;
@@ -167,109 +167,53 @@ header {                                      /*헤더*/
     transform: translate(1200px,-80px);
     float: top;
 }
-.modifycontainer{ /* 회원 탈퇴 관리 페이지 */
-    height: 1000px;
-    background:#C3C0EB;
-    border: 1px solid rgb(255, 255, 255);
-}
-.account-withdrawal{ /* 회원 탈퇴 text */
-    margin-top: 20px;
-    margin-left: 10px;
-}
-.a-warning{ /* 회원 탈퇴전 경고문 a는 account 약자입니다*/
-    border-style: none;
-    margin-left: 28px;
-    margin-bottom: 30px;
-    width:1100px;
-    margin-top: 15px;
-    padding-left: 38px;
-    height: 200px;
-    font-size:15px ;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 30px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-}
-.a-warning ul{
-    margin-left: 15px;
-}
-.auh{/* 탈퇴전 이유와 희망사항 인풋 창 start*/
-    border: 1px solid #ffffff;
-}
-.auh-t{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.auh-r{
-    height: 250px;
-    border-style: none;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-.auh-r input{
-    margin-left: 10px;
-    margin-top: 14px;
+
+
+.find_id_result_container{ /* 아이디 찾은 결과 페이지 */
+    height: 1050px;
+    background: #b9e0ffc4;
+    border: 1px solid rgb(0, 0, 0);
 }
 
-.a-user-hope{
-    height: 300px;
-    margin-left: 15px;
+.find_id_result_text{ /* 비번찾기 안내문 */
+    margin-top: 25px;
+    margin-left: 40px;
 }
-.a-user-hope2{
-    position: absolute;
-    bottom: 37%;
-    left: 50%;
-}
-.a-user-hope3{
-    margin-top: 15px;
-    width: 500px;
+
+.find_id_result_container2{ /* 그냥 네모 박스*/
     border: 1px solid #000;
-    height:150px;
-    background: #ffffff;
-    border-radius: 15px;
-}
-.a-user-hope3-1{
-    margin-top: 5px;
-    margin-left: 5px;
-    border-style: none;
-    width:300px;
-}
-.a-user-hope4{ /* 탈퇴전 이유와 희망사항 인풋 창 end*/
+    background: linear-gradient(180deg, #DBF0FF 0%, #FFFFFF 100%);
+    margin-left:50px;
+    margin-right:50px;
     margin-top: 15px;
-    text-align: end;
+    height: 920px;
+    font-size:15px ;
 }
-.a-agree{ /* 탈퇴동의 start */
-    margin-top: 10px;
-    font-family: 'Inter';
-    font-style: normal;
-    color: #ffffff;
+
+.find_id_result_content{ /*  사용자 아이디 찾은 결과창 */
+    margin-top: 110px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.find_id_result_container_3{ /* 취소버튼 start */
+    margin-top: 350px;
     text-align: center;
 }
-.a-btn{
-    margin-top: 10px;
-    text-align: center;
-}
-.a-cancell{ /* 탈퇴동의 end */
-    position: absolute;
-    border-style: none;
-    margin-top: 40px;
-    left: 40%;
-    width: 70px;
-    height: 40px;
-    box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
+.find_id_result_container_3 button{
+    background: #D9D9D9;
+    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-}
-.a-confirm{
-    border-radius: 5px;
+    color:#000;
     border-style: none;
-    margin-top: 40px;
-    background: #FF0D0D;
-    position: absolute;
-    left: 52%;
-    width: 70px;
+    width: 100px;
     height: 40px;
-    box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+}
+.justspace{ /* 취소버튼 end */
+    display: inline;
+    margin:auto 20px;
 }
 
 #footer{                                      /*footer 영역*/

@@ -276,8 +276,25 @@ header {                                      /*헤더*/
     border-radius: 5px;
     color:white;
 }
+
+
+.next{ /* 다음버튼 start */
+    margin-top: 50px;
+    margin-left: 460px;
+}
+
+.next button{ /* 다음버튼 end */
+    width:100px;
+    height:30px;
+    color:white;
+    border-style: none;
+    background: #5164AA;
+    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
 .find_id_content_4{ /* 취소버튼 start */
-    margin-top: 200px;
+    margin-top: 100px;
     text-align: center;
 }
 .find_id_content_4 button{
