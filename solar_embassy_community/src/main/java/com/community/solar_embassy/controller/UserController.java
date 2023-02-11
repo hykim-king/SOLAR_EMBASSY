@@ -63,24 +63,30 @@ public class UserController {
     }
 
     @GetMapping("signup_normal.do")
-    public String signup_normal() {
+    public String signup_normal(
+    ) {
         return "/user/signup/signup_normal";
     }
+
     @PostMapping("signup_normal.do")
-    public String signup_normal(Users users){
+    public String signup_normal(Users users,
+                                @RequestParam(name = "passwords_check") String passwords_check) {
         int signup_normal = 0;
-        try{
-            signup_normal = usersService.signup_normal(users);
-        } catch (Exception e){
-            e.printStackTrace();
+        if (users.getPasswords().equals(passwords_check) && !users.getUserId().equals("")) {
+            try {
+                signup_normal = usersService.signup_normal(users);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        if (signup_normal > 0){
+        if (signup_normal > 0) {
             return "redirect:/user/rocket.do";
         } else {
             return "redirect:/user/signup_normal.do";
         }
 
     }
+
     @GetMapping("signup_business.do")
     public String signup_business() {
         return "/user/signup/signup_business";
@@ -122,26 +128,30 @@ public class UserController {
     public String find_id() {
         return "/user/find/find_id";
     }
+
     @GetMapping("find_id_result_phone.do")
-    public String find_id_result_phone(){
+    public String find_id_result_phone() {
         return "/user/find/find_id_result_phone";
     }
+
     @GetMapping("find_id_result_email.do")
-    public String find_id_result_email(){
+    public String find_id_result_email() {
         return "/user/find/find_id_result_email";
     }
+
     @GetMapping("find_pw.do")
-    public String find_pw(){
+    public String find_pw() {
         return "/user/find/find_pw";
     }
 
     @GetMapping("find_pw_security.do")
-    public String find_pw_security(){
+    public String find_pw_security() {
         return "/user/find/find_pw_security";
     }
+
     @GetMapping("pw_check.do")
     public void pw_check(HttpServletRequest req, HttpSession session,
-                                   @SessionAttribute(required = false) String redirectUri) {
+                         @SessionAttribute(required = false) String redirectUri) {
         String referer = req.getHeader("referer");
         if (redirectUri == null && !(referer.equals("http://localhost:8888/") || referer.equals("http://localhost:8888/user/login.do"))) {
             session.setAttribute("redirectUri", referer);
@@ -149,6 +159,7 @@ public class UserController {
     }
 
     @GetMapping("user_info_modify.do")
-    public void user_info_modify(){}
+    public void user_info_modify() {
+    }
 
 }
