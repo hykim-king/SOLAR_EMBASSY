@@ -1,0 +1,284 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/my_page.css">
+    <title>SOLAR EMBASSY</title>
+</head>
+<body>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
+
+            <!--여기부터-->
+            <div id="my_page">
+                <div id="my_page_btn">
+                    <div>
+                        <button type="button" class="btn btn-outline-dark col-12 mx-auto mt-5 ms-4 fs-3">전체 보기</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-dark col-12 mx-auto mt-2 ms-4 fs-3">내가 쓴 글</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-dark col-12 mx-auto mt-2 ms-4 fs-3">내가 쓴 댓글
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-dark col-12 mx-auto mt-2 ms-4 fs-3">좋아요 한 글
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-dark col-12 mx-auto mt-2 ms-4 fs-3"
+                                onclick="location.href='/user/pw_check.do'">내 정보 수정
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-dark col-12 mx-auto mt-2 ms-4 fs-3"
+                                onclick="location.href='/user/user_black.do'">차단 목록
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-danger col-12 mx-auto mt-2 ms-4 fs-3"
+                                onclick="location.href='/user/withdrawal.do'">회원 탈퇴
+                        </button>
+                    </div>
+                </div>
+                <div id="my_page_table">
+                    <table class="table table-light">
+                        <colgroup>
+                            <col style="width:15%">
+                            <col style="width:12%">
+                            <col style="width:41%">
+                            <col style="width:14%">
+                            <col style="width:8%">
+                            <col style="width:8%">
+                        </colgroup>
+                        <h4><strong>내가 쓴 글</strong></h4>
+                        <thead class="table-primary">
+                        <tr>
+                            <th scope="col" class="text-center">갤럭시 이름</th>
+                            <th scope="col" class="text-center">글 번호</th>
+                            <th scope="col" class="text-start">제목(댓글수)</th>
+                            <th scope="col" class="text-center">작성 일자</th>
+                            <th scope="col" class="text-center">조회수</th>
+                            <th scope="col" class="text-center">추천수</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-light">
+                        <colgroup>
+                            <col style="width:15%">
+                            <col style="width:12%">
+                            <col style="width:41%">
+                            <col style="width:14%">
+                            <col style="width:8%">
+                            <col style="width:8%">
+                        </colgroup>
+                        <h4><strong>내가 쓴 댓글</strong></h4>
+                        <thead class="table-primary">
+                        <tr>
+                            <th scope="col" class="text-center">갤럭시 이름</th>
+                            <th scope="col" class="text-center">글 번호</th>
+                            <th scope="col" class="text-start">제목(댓글수)</th>
+                            <th scope="col" class="text-center">작성 일자</th>
+                            <th scope="col" class="text-center">조회수</th>
+                            <th scope="col" class="text-center">추천수</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-light">
+                        <colgroup>
+                            <col style="width:15%">
+                            <col style="width:12%">
+                            <col style="width:41%">
+                            <col style="width:14%">
+                            <col style="width:8%">
+                            <col style="width:8%">
+                        </colgroup>
+                        <h4><strong>좋아요 한 글</strong></h4>
+                        <thead class="table-primary">
+                        <tr>
+                            <th scope="col" class="text-center">갤럭시 이름</th>
+                            <th scope="col" class="text-center">글 번호</th>
+                            <th scope="col" class="text-start">제목(댓글수)</th>
+                            <th scope="col" class="text-center">작성 일자</th>
+                            <th scope="col" class="text-center">조회수</th>
+                            <th scope="col" class="text-center">추천수</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">자동차 갤럭시</th>
+                            <td class="text-center">125342</td>
+                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
+                            <td class="text-center">2023-02-03</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">300</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <!--여기까지-->
+        </div>
+
+
+        <section id="SE_contents2">
+            <div id="SE_banner1"><h1>배너자리</h1></div>
+        </section>
+
+        <section id="SE_contents3">
+            <div id="SE_banner2"><h1>배너자리</h1></div>
+        </section>
+
+        <footer id="SE_footer">
+            <p>
+            </p>
+            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+                <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+            <p>
+            </p>
+            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+        </footer>
+
+    </div>
+</div>
+</body>
+</html>
