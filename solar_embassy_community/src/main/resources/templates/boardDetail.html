@@ -53,7 +53,7 @@
 <script>
   $(document).ready(function(){
     $('#list').on("click",function(){
-      location.href="/board/openBoardList";
+      location.href="/board/boardList.do";
     });
 
     $('#edit').on("click",function(){
@@ -65,7 +65,7 @@
 
     $('#delete').on("click",function(){
       var frm = $('#frm')[0];
-      frm.action = "/board/deleteBoard";
+      frm.action = "/board/boardDetail";
       frm.submit();
     });
   });
