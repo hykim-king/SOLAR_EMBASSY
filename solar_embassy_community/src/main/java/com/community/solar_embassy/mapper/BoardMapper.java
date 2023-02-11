@@ -10,7 +10,7 @@ import java.util.List;
 public interface BoardMapper {
 
     List<BoardDto> selectBoardList() throws Exception;
-    void insertBoard(BoardDto board) throws Exception;
+    int insertBoard(BoardDto board) throws Exception;
     void updateViews(int board_no) throws Exception;
     BoardDto selectBoardDetail(int board_no) throws Exception;
     void updateBoard(BoardDto board) throws Exception;
