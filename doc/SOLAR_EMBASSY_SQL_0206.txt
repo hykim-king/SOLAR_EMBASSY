@@ -56,7 +56,7 @@ create table company
 
 create table auto
 (
-    auto_no      int         not null,
+    auto_no      int auto_increment  ,
     auto_name    varchar(20) not null,
     code_name    varchar(20) not null,
     com          int         not null,
