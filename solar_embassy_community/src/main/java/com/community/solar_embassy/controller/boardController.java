@@ -2,12 +2,10 @@ package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.BoardDto;
 import com.community.solar_embassy.service.BoardService;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Locale;
@@ -23,7 +21,7 @@ public class boardController {
     public String boardList(Locale locale, Model model) throws Exception {
         List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         model.addAttribute("list", list);
-        return "/boardList";
+        return "boardList";
     }
 
     @GetMapping("/boardWrite.do")
