@@ -32,7 +32,7 @@
         e_point,exp,user_level,
         birth,profile_img_no
     </sql>
-    <insert id="insert">
+    <insert id="insert" parameterType="Users">
         insert INTO solar_embassy.users
             (user_id,  passwords,  nickname, email) VALUES
             (#{userId}, #{passwords}, #{nickname}, #{email})
