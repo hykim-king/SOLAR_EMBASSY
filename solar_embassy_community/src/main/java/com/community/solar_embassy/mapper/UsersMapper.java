@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface UsersMapper extends CRUD<Users,String>{
-    Users findByUserIdAndPw(String userId, String pw);
+    Users findByUserIdAndPw(String userId, String passwords);
     List<Users> findAll();
     List<Users> findPaging(PagingDto paging);
     int deleteById(String id);
