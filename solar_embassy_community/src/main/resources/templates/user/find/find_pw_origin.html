@@ -4,16 +4,11 @@
     <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
     <!--    <script src="/uikit/js/uikit.js"></script>-->
     <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
-    <link rel="stylesheet" href="/css/find_pw_security.css">
+    <link rel="stylesheet" href="/css/find_pw.css">
 </head>
 <body>
 <div id="container">
-    <header>
-        <h6>메인이미지</h6>
-        <a href="/">
-            <img id="img1" src="/img/solar_embassy_main.png" alt="">
-        </a>
-    </header>
+    <th:block th:insert="/mainImg"></th:block>
 
     <div id="topline">
         <form>
@@ -97,32 +92,59 @@
             <aside id="right-sidebar">
                 <h1> 임시 사이드바</h1>
             </aside>
-            <div class="find_pw_security_container">
-                <h1 class="find_pw_security_text" style="color: rgb(0, 0, 0);">
+            <div class="find_pw_container">
+                <h1 class="find_pw_text" style="color: rgb(0, 0, 0);">
                     비밀번호 찾기
                     <span style="font-size: 16px; color: #FF0000;">01.아이디입력</span><span style="font-size: 16px;">>02.본인 확인>03.비밀번호 재설정 (임시 비밀번호 전송.)</span>
                 </h1>
-                <div class="find_pw_security_container2">
-                    <img id="SE_log_1" src="/img/Solar-Embassy_No_1.png" alt="" onclick="location.href='/'">
-                    <div class="find_pw_security_content">
-                        <span style="font-size: 20px; font-weight:bold;">비밀번호를 찾기 위해 <span style="color:#14F30F">아이디</span>를 입력해주세요.</span>
-                        <div class="find_pw_security_input">
-                            <form action="/user/find_pw.do">
-                                <label for="next"></label>
-                                <input type="text" name="next" id="next" value="  ID를 입력하세요."><button class="next_btn">다음</button><br>
-                            </form>
+                <div class="find_pw_container2">
+                    <div class="find_pw_content">
+                        <span style="font-size: 24px; font-weight:bold;">비밀번호를 찾기 위해 다음과 같은 인증 수단이 필요합니다. 인증 수단을 선택해주세요.</span>
+                        
+                        <div class="find_pw_input">
+                            
+                            <div class="find_pw_inputText">
+                                <span style="font-weight: bold;"> ○ 회원 정보에 등록된 휴대전화로 인증 (% User_Phone_Number %) </span>
+                                <button>인증받기</button>
+                            </div>
+                            
+                            <div class="find_pw_input_area">
+                                <form action="">   
+                                    
+                                    <label for="confirm">인증번호</label>
+                                    <input type="text" name="confirm" id="confirm" value="  ID를 입력하세요."><button class="confirm_btn">인증확인</button><br>
+
+                                    <div class="warning">휴대폰 번호로 전송 된 인증번호 4자리(혹은 6자리)를 입력해주세요.<button class="reconfirm">인증재전송</button></div>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="find_pw_security_content_3">
-                        <div class="find_pw_security_content_3-1" style="font-size: 20px; font-weight:bold;">아이디가 기억이 나지 않는다면 <span style="color:#14F30F">아이디 찾기</span>로 이동하세요.</div>
+
+                    <div class="find_pw_content_3">
+                        <div class="find_pw_content_3-1" style=" font-size: 20px;">○ 회원 정보에 등록된 이메일로 임시 비밀번호 전송 </div>
+                        <form action="" method="POST">
+                            <label for="email" class="find_pw_content_3-2">본인확인 이메일로 인증(%유저이메일%@%이메일주소%.com) <!-- 이부분 유저 이메일 for 문 돌려야함 -->
+                            <button id="email">이메일로 전송</button></label>
+                        </form>
                     </div>
-                    <div class="find_pw_security_content_4">
+                    
+                    <div class="next">
+                        <button>다음</button>
+                    </div>
+                    
+                    <div class="find_pw_content_4">
+                        <div class="find_pw_content_4-1" style="font-size: 20px; font-weight:bold;">아이디가 기억이 나지 않는다면 <span style="color:#14F30F">아이디 찾기</span>로 이동하세요.</div>
+                    </div>
+
+                    <div class="find_pw_content_5">
                         <form action="" method="POST">
                             <button id="cancle">취소</button>
                             <div class="justspace"></div>
                             <button id="service_center">고객센터</button>
                         </form>
                     </div>
+                    
                 </div>
             </div>
         </section>

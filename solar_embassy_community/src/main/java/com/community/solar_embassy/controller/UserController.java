@@ -58,11 +58,13 @@ public class UserController {
     }
 
     @GetMapping("signup.do")
-    public void signup() {
+    public String signup() {
+        return "/user/signup/signup";
     }
 
     @GetMapping("signup_normal.do")
-    public void signup_normal() {
+    public String signup_normal() {
+        return "/user/signup/signup_normal";
     }
     @PostMapping("signup_normal.do")
     public String signup_normal(Users users){
@@ -75,28 +77,33 @@ public class UserController {
         if (signup_normal > 0){
             return "redirect:/user/rocket.do";
         } else {
-            return "redirect:/user/signup_normal.do";
+            return "redirect:/user/signup/signup_normal.do";
         }
 
     }
     @GetMapping("signup_business.do")
-    public void signup_business() {
+    public String signup_business() {
+        return "/user/signup/signup_business";
     }
 
     @GetMapping("rocket.do")
-    public void rocket() {
+    public String rocket() {
+        return "/user/signup/rocket";
     }
 
     @GetMapping("next.do")
-    public void next() {
+    public String next() {
+        return "/user/signup/next";
     }
 
     @GetMapping("next_2.do")
-    public void next_2() {
+    public String next_2() {
+        return "/user/signup/next_2";
     }
 
     @GetMapping("next_3.do")
-    public void next_3() {
+    public String next_3() {
+        return "/user/signup/next_3";
     }
 
     @GetMapping("my_page.do")
@@ -112,14 +119,25 @@ public class UserController {
     }
 
     @GetMapping("find_id.do")
-    public void find_id() {
+    public String find_id() {
+        return "/user/find/find_id";
+    }
+    @GetMapping("find_id_result_phone.do")
+    public String find_id_result_phone(){
+        return "/user/find/find_id_result_phone";
+    }
+    @GetMapping("find_id_result_email.do")
+    public String find_id_result_email(){
+        return "/user/find/find_id_result_email";
     }
     @GetMapping("find_pw.do")
-    public void find_pw(){
+    public String find_pw(){
+        return "/user/find/find_pw";
     }
 
     @GetMapping("find_pw_security.do")
-    public void find_pw_security(){
+    public String find_pw_security(){
+        return "/user/find/find_pw_security";
     }
     @GetMapping("pw_check.do")
     public void pw_check(HttpServletRequest req, HttpSession session,

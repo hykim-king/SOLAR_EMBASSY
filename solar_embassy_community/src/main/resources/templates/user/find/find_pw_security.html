@@ -14,6 +14,7 @@ layout:decorate="~{/layout}"> -->
             crossorigin="anonymous"></script>
     <!--원본 css-->
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/find_pw_security.css">
     <title>SOLAR EMBASSY</title>
 </head>
 <body>
@@ -29,59 +30,33 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 end-->
 
             <!--여기부터-->
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
-            </div>
-
-            <div id="SE_content3">
-                <div id="SE_sub1"><a href=""><h3>최근 생성 된 플래닛</h3></a></div>
-
-                <div id="SE_sub2">                      <!--분류별 플래닛-->
-                    <ul class="SE_sub2_title" style="z-index:1">
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">잡담</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">일상</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">고민</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">유머</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">여행</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">코딩</a>
-                        </li>
-                    </ul>
+            <div class="find_pw_security_container">
+                <h1 class="find_pw_security_text" style="color: rgb(0, 0, 0);">
+                    비밀번호 찾기
+                    <span style="font-size: 16px; color: #FF0000;">01.아이디입력</span><span style="font-size: 16px;">>02.본인 확인>03.비밀번호 재설정 (임시 비밀번호 전송.)</span>
+                </h1>
+                <div class="find_pw_security_container2">
+                    <img id="SE_log_1" src="/img/Solar-Embassy_No_1.png" alt="" onclick="location.href='/'">
+                    <div class="find_pw_security_content">
+                        <span style="font-size: 20px; font-weight:bold;">비밀번호를 찾기 위해 <span style="color:#14F30F">아이디</span>를 입력해주세요.</span>
+                        <div class="find_pw_security_input">
+                            <form action="/user/find_pw.do">
+                                <label for="next"></label>
+                                <input type="text" name="next" id="next" value="  ID를 입력하세요."><button class="next_btn">다음</button><br>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="find_pw_security_content_3">
+                        <div class="find_pw_security_content_3-1" style="font-size: 20px; font-weight:bold;">아이디가 기억이 나지 않는다면 <span style="color:#14F30F">아이디 찾기</span>로 이동하세요.</div>
+                    </div>
+                    <div class="find_pw_security_content_4">
+                        <form action="" method="POST">
+                            <button id="cancle">취소</button>
+                            <div class="justspace"></div>
+                            <button id="service_center">고객센터</button>
+                        </form>
+                    </div>
                 </div>
-
-                <div id="SE_content4">
-                    <div id="SE_sub3"><h3>플래닛 board1</h3></div>
-                    <div id="SE_sub4"><h3>플래닛 board2</h3></div>
-                </div>
-
-                <div id="SE_content5">
-                    <div id="SE_sub5"><h3>플래닛 board3</h3></div>
-                    <div id="SE_sub6"><h3>플래닛 board4</h3></div>
-                </div>
-
-                <div id="SE_content6">
-                    <div id="SE_sub7"><h3>플래닛 board5</h3></div>
-                </div>
-
-                <div id="SE_content7">
-                    <div id="SE_sub8"><h3>플래닛 board6</h3></div>
-                </div>
-
             </div>
             <!--여기까지-->
 
