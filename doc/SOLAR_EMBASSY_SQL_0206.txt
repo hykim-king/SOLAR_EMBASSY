@@ -218,7 +218,7 @@ create table galaxy
 
 create table board
 (
-    board_no    int                                 not null
+    board_no    int auto_increment
         primary key,
     galaxy_no   int                                 not null,
     user_id     varchar(20)                         not null,
@@ -248,9 +248,8 @@ create table board_img
     image_path      varchar(255)                        not null,
     origin_img_name varchar(255)                        null,
     post_time       timestamp default CURRENT_TIMESTAMP not null,
-    constraint FK_planet_TO_planet_image
+    constraint board_img_board_board_no_fk
         foreign key (board_no) references board (board_no)
-            on delete cascade
 );
 
 create table letter
@@ -302,15 +301,14 @@ create table reply
     state           int       default 1                 null,
     img_path        varchar(255)                        null,
     origin_img_name varchar(255)                        null,
-    constraint FK_planet_TO_reply
-        foreign key (board_no) references board (board_no)
-            on delete cascade,
     constraint FK_reply_TO_reply
         foreign key (fk_reply_no) references reply (reply_no)
             on delete cascade,
     constraint FK_user_TO_reply
         foreign key (user_id) references users (user_id)
-            on delete cascade
+            on delete cascade,
+    constraint reply_board_board_no_fk
+        foreign key (board_no) references board (board_no)
 );
 
 create table reserved
