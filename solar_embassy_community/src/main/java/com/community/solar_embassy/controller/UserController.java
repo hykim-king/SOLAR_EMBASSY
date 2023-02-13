@@ -87,22 +87,6 @@ public class UserController {
 
     }
 
-    @PostMapping("signup_normal.do")
-    public String signup_normal(Users users){
-        int signup_normal = 0;
-        try{
-            signup_normal = usersService.signup_normal(users);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        if (signup_normal > 0){
-            return "redirect:/user/rocket.do";
-        } else {
-            return "redirect:/user/signup_normal.do";
-        }
-
-    }
-
     @GetMapping("signup_business.do")
     public String signup_business() {
         return "/user/signup/signup_business";
