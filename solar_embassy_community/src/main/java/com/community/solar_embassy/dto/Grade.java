@@ -11,5 +11,7 @@ public class Grade implements Serializable {
 
     private Integer totalExp;
 
+    private GradeImg gradeImg;
+
     private static final long serialVersionUID = 1L;
 }

@@ -39,4 +39,8 @@ public class Users {
 
     private Integer profileImgNo;
 
+    private Admin admin;
+
+    private Grade grade;
+
 }
