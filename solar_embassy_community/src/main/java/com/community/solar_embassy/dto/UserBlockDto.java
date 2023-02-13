@@ -5,14 +5,14 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class BuImg implements Serializable {
-    private Integer buImgNo;
+public class UserBlockDto implements Serializable {
+    private Integer blockNo;
 
-    private String imgPath;
+    private String userId;
 
-    private String sourceImgName;
+    private String blockObjId;
 
-    private String saveImgName;
+    private String reason;
 
     private Date postTime;
 

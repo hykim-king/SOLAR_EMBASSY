@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class PopularSearch implements Serializable {
+public class PopularSearchDto implements Serializable {
     private Integer psNo;
 
     private String userId;

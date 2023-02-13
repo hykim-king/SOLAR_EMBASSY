@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.community.solar_embassy.mapper.CompanyMapper">
 
-    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Company">
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.CompanyDto">
             <id property="comNo" column="com_no" jdbcType="INTEGER"/>
             <id property="comName" column="com_name" jdbcType="VARCHAR"/>
             <result property="address" column="address" jdbcType="VARCHAR"/>

@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Business implements Serializable {
+public class BusinessDto implements Serializable {
     private String crNum;
 
     private String buTell;

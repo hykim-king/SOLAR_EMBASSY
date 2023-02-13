@@ -1,7 +1,6 @@
 <!-- xmlns:th="http://www.thymeleaf.org"
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{/layout}"> -->
-
 <html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -13,16 +12,117 @@ layout:decorate="~{/layout}"> -->
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
     <!--원본 css-->
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/index.css">`
+    <link rel="stylesheet" href="/css/main_banner.css">`
+
     <title>SOLAR EMBASSY</title>
+<!--    <style>-->
+<!--        .SE_background {-->
+<!--            width : 1920px;-->
+<!--            height : 465px;-->
+<!--            /*background-image: url("../img/solar_bgi_004.png");*/-->
+<!--            /*background-image: url("../img/solar_bgi_010.png");*/-->
+<!--            background-image: url("./img/solar_bgi_010.png");-->
+<!--            /*top: 100px;*/-->
+<!--            /* bottom : 50px; */-->
+<!--            background-color: black;-->
+<!--            position: relative;-->
+<!--        }-->
+<!--        .SE_inner {-->
+<!--            position: absolute;-->
+<!--            left: 0;-->
+<!--            bottom: 0px;-->
+<!--            /* width: 300px; */-->
+<!--            /* height: 370px; */-->
+<!--            /* width: 10%; */-->
+<!--            /* height: 10%; */-->
+<!--            /* background-color: green; */-->
+<!--            /* background-image: url("../img/solar_bgi_002.png"); */-->
+<!--            /* border-radius: 50%; */-->
+<!--        }-->
+<!--        .SE_outter-1,-->
+<!--        .SE_outter-2,-->
+<!--        .SE_inner {-->
+<!--            position: absolute;-->
+<!--            left: 100px;-->
+<!--            bottom: 0;-->
+<!--        }-->
+<!--        .SE_outter-1 {-->
+<!--            /* animation: bounce-up 2s ease-out infinite; */-->
+<!--            animation: SE_bounce-up 2s ;-->
+
+<!--        }-->
+<!--        .SE_outter-2 {-->
+<!--            /* animation: bounce-down 2s ease-in infinite; */-->
+<!--            animation: SE_bounce-down 2s ;-->
+<!--        }-->
+<!--        .SE_inner {-->
+<!--            /* animation: progress 2s linear infinite; */-->
+<!--            animation: progress 2s ;-->
+<!--        }-->
+<!--        @keyframes SE_bounce-up {-->
+<!--            /* 0%  { bottom: 0 }-->
+<!--            20%{ bottom: 300px }-->
+<!--            20.1%{ bottom: 0 }-->
+<!--            35%{ bottom: 120px }-->
+<!--            35.1%  { bottom: 0 }-->
+<!--            45%{ bottom: 30px }-->
+<!--            45.1%  { bottom: 0 }-->
+<!--            100%{ bottom: 0px } */-->
+<!--            0%  { bottom: 0 }-->
+<!--            20%{ bottom: 0px }-->
+<!--            20.1%{ bottom: 0 }-->
+<!--            35%{ bottom: 30px }-->
+<!--            35.1%  { bottom: 0 }-->
+<!--            45%{ bottom: 90px }-->
+<!--            45.1%  { bottom: 0 }-->
+<!--            100%{ bottom: 150px }-->
+<!--        }-->
+<!--        @keyframes SE_bounce-down {-->
+<!--            /* 0%  { bottom: 300px }-->
+<!--            20%  { bottom: 0 }-->
+<!--            20.1%  { bottom: 300px }-->
+<!--            35%  { bottom: 180px }-->
+<!--            35.1%  { bottom: 300px }-->
+<!--            45%  { bottom: 270px }-->
+<!--            45.1%  { bottom: 300px }-->
+<!--            100%{ bottom: 300px } */-->
+<!--            /* 0%  { bottom: 300px }-->
+<!--            20%  { bottom: 300px }-->
+<!--            20.1%  { bottom: 270px }-->
+<!--            35%  { bottom: 300px }-->
+<!--            35.1%  { bottom: 180px }-->
+<!--            45%  { bottom: 300px }-->
+<!--            45.1%  { bottom: 0px }-->
+<!--            100%{ bottom: 300px } */-->
+<!--        }-->
+<!--        @keyframes progress {-->
+<!--            0%  { left: 0 }-->
+<!--        // 20% { left: 50px }-->
+<!--        // 40% { left: 100px }-->
+<!--        // 60% { left: 150px }-->
+<!--        // 80% { left: 200px }-->
+<!--        100%{ left: 500px }-->
+<!--        }-->
+<!--    </style>-->
 </head>
 <body>
 <div id="SE_container">
     <header id="SE_header">
-        <h6>메인이미지</h6>
-        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'" style="cursor: pointer">
+<!--        <h6>메인이미지</h6>-->
+<!--        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'" style="cursor: pointer">-->
+        <div class="SE_header_div">
+            <div class="SE_background">
+                <!--                <img src="../img/solar_bgi_001.png"  width="700" alt="">-->
+                <div class="SE_outter-1">
+                    <div class="SE_outter-2">
+                        <div class="SE_inner">
+                            <img src="./img/solar_bgi_002.png"  width="200" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
     </header>
-
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
@@ -31,69 +131,53 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
-
             <!--여기부터-->
             <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
             </div>
-
             <div id="SE_content3">
                 <div id="SE_sub1"><a href=""><h3>최근 생성 된 플래닛</h3></a></div>
-
                 <div id="SE_sub2">                      <!--분류별 플래닛-->
                     <ul class="SE_sub2_title" style="z-index:1">
-
                         <li class="SE_sub2_menu">
                             <a class="bp1" href="#">잡담</a>
                         </li>
-
                         <li class="SE_sub2_menu">
                             <a class="bp1" href="#">일상</a>
                         </li>
-
                         <li class="SE_sub2_menu">
                             <a class="bp1" href="#">고민</a>
                         </li>
-
                         <li class="SE_sub2_menu">
                             <a class="bp1" href="#">유머</a>
                         </li>
-
                         <li class="SE_sub2_menu">
                             <a class="bp1" href="#">여행</a>
                         </li>
-
                         <li class="SE_sub2_menu">
                             <a class="bp1" href="#">코딩</a>
                         </li>
                     </ul>
                 </div>
-
                 <div id="SE_content4">
                     <div id="SE_sub3"><h3>플래닛 board1</h3></div>
                     <div id="SE_sub4"><h3>플래닛 board2</h3></div>
                 </div>
-
                 <div id="SE_content5">
                     <div id="SE_sub5"><h3>플래닛 board3</h3></div>
                     <div id="SE_sub6"><h3>플래닛 board4</h3></div>
                 </div>
-
                 <div id="SE_content6">
                     <div id="SE_sub7"><h3>플래닛 board5</h3></div>
                 </div>
-
                 <div id="SE_content7">
                     <div id="SE_sub8"><h3>플래닛 board6</h3></div>
                 </div>
-
             </div>
             <!--여기까지-->
-
         </div>
         <section id="SE_contents2">
             <div id="SE_banner1"><h1>배너자리</h1></div>
         </section>
-
         <section id="SE_contents3">
             <div id="SE_banner2"><h1>배너자리</h1></div>
         </section>
@@ -106,7 +190,6 @@ layout:decorate="~{/layout}"> -->
             </p>
             <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
         </footer>
-
     </div>
 </div>
 </body>

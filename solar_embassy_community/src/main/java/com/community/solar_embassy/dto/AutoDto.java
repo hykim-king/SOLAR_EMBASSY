@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Auto implements Serializable {
+public class AutoDto implements Serializable {
     private Integer autoNo;
 
     private String autoName;

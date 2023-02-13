@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Company implements Serializable {
+public class CompanyDto implements Serializable {
     private Integer comNo;
 
     private String comName;

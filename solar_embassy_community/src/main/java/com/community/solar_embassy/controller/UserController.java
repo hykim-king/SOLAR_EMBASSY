@@ -1,6 +1,6 @@
 package com.community.solar_embassy.controller;
 
-import com.community.solar_embassy.dto.Users;
+import com.community.solar_embassy.dto.UsersDto;
 import com.community.solar_embassy.service.UsersService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private UsersService usersService;
+
 
     public UserController(UsersService usersService) {
         this.usersService = usersService;
@@ -33,7 +34,7 @@ public class UserController {
             String pw,
             HttpSession session,
             @SessionAttribute(required = false) String redirectUri) {
-        Users user = usersService.login(userId, pw);
+        UsersDto user = usersService.login(userId, pw);
         session.setAttribute("loginUser", user);
         if (user == null) {
             session.setAttribute("msg", "아이디나 비밀번호를 확인하세요!");
@@ -58,45 +59,58 @@ public class UserController {
     }
 
     @GetMapping("signup.do")
-    public void signup() {
+    public String signup() {
+        return "/user/signup";
     }
 
     @GetMapping("signup_normal.do")
-    public void signup_normal() {
+    public String signup_normal(
+    ) {
+        return "/user/signup/signup_normal";
     }
+
     @PostMapping("signup_normal.do")
-    public String signup_normal(Users users){
+    public String signup_normal(UsersDto users,
+                                @RequestParam(name = "passwords_check") String passwords_check) {
         int signup_normal = 0;
-        try{
-            signup_normal = usersService.signup_normal(users);
-        } catch (Exception e){
-            e.printStackTrace();
+        if (users.getPasswords().equals(passwords_check) && !users.getUserId().equals("")) {
+            try {
+                signup_normal = usersService.signup_normal(users);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        if (signup_normal > 0){
+        if (signup_normal > 0) {
             return "redirect:/user/rocket.do";
         } else {
             return "redirect:/user/signup_normal.do";
         }
 
     }
+
     @GetMapping("signup_business.do")
-    public void signup_business() {
+    public String signup_business() {
+        return "/user/signup/signup_business";
     }
 
     @GetMapping("rocket.do")
-    public void rocket() {
+    public String rocket() {
+        return "/user/signup/rocket";
     }
 
     @GetMapping("next.do")
-    public void next() {
+    public String next() {
+        return "/user/signup/next";
     }
 
     @GetMapping("next_2.do")
-    public void next_2() {
+    public String next_2() {
+        return "/user/signup/next_2";
     }
 
     @GetMapping("next_3.do")
-    public void next_3() {
+    public String next_3() {
+        return "/user/signup/next_3";
     }
 
     @GetMapping("my_page.do")
@@ -111,19 +125,39 @@ public class UserController {
     public void search(HttpSession session) {
     }
 
+//    @GetMapping("find_id.do")
+//    public void find_id() {
+//
+//    }
+
     @GetMapping("find_id.do")
-    public void find_id() {
+    public String find_id() {
+        return "/user/find_id";
     }
+
+    @GetMapping("find_id_result_phone.do")
+    public String find_id_result_phone() {
+        return "/user/find/find_id_result_phone";
+    }
+
+    @GetMapping("find_id_result_email.do")
+    public String find_id_result_email() {
+        return "/user/find/find_id_result_email";
+    }
+
     @GetMapping("find_pw.do")
-    public void find_pw(){
+    public String find_pw() {
+        return "/user/find/find_pw";
     }
 
     @GetMapping("find_pw_security.do")
-    public void find_pw_security(){
+    public String find_pw_security() {
+        return "/user/find/find_pw_security";
     }
+
     @GetMapping("pw_check.do")
     public void pw_check(HttpServletRequest req, HttpSession session,
-                                   @SessionAttribute(required = false) String redirectUri) {
+                         @SessionAttribute(required = false) String redirectUri) {
         String referer = req.getHeader("referer");
         if (redirectUri == null && !(referer.equals("http://localhost:8888/") || referer.equals("http://localhost:8888/user/login.do"))) {
             session.setAttribute("redirectUri", referer);
@@ -131,6 +165,7 @@ public class UserController {
     }
 
     @GetMapping("user_info_modify.do")
-    public void user_info_modify(){}
+    public void user_info_modify() {
+    }
 
 }

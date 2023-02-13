@@ -9,11 +9,9 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
-
 @SpringBootApplication
 public class SolarEmbassyApplication {
     public static void main(String[] args) {
-
         SpringApplication.run(SolarEmbassyApplication.class, args);
     }
 }

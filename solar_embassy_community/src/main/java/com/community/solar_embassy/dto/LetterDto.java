@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Letter implements Serializable {
+public class LetterDto implements Serializable {
     private Integer letterNo;
 
     private String senderId;

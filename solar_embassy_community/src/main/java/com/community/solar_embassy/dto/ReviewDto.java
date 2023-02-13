@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Review implements Serializable {
+public class ReviewDto implements Serializable {
     private Integer reNo;
 
     private Integer boNo;

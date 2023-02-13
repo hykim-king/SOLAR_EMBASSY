@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Room implements Serializable {
+public class RoomDto implements Serializable {
     private Integer roNo;
 
     private String crNum;

@@ -5,14 +5,16 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Admin implements Serializable {
-    private String adminId;
+public class BuImgDto implements Serializable {
+    private Integer buImgNo;
 
-    private Integer adminLevel;
+    private String imgPath;
 
-    private String department;
+    private String sourceImgName;
 
-    private Date regTime;
+    private String saveImgName;
+
+    private Date postTime;
 
     private Date updateTime;
 

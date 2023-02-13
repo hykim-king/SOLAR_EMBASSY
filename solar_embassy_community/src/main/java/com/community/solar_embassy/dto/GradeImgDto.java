@@ -4,7 +4,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class GradeImg implements Serializable {
+public class GradeImgDto implements Serializable {
     private String grade;
 
     private String imgPath;

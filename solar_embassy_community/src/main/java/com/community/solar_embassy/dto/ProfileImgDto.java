@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class ProfileImg implements Serializable {
+public class ProfileImgDto implements Serializable {
     private Integer profileImgNo;
 
     private String userId;

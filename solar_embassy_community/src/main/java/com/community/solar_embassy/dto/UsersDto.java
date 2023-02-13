@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Users implements Serializable {
+public class UsersDto implements Serializable {
     private String userId;
 
     private String nickname;

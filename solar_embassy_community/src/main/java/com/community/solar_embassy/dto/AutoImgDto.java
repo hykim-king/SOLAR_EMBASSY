@@ -4,7 +4,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class AutoImg implements Serializable {
+public class AutoImgDto implements Serializable {
     private Integer autoImgNo;
 
     private Integer autoNo;

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 @Data
-public class AttendCheck implements Serializable {
+public class AttendCheckDto implements Serializable {
     private Integer dayNo;
 
     private String userId;

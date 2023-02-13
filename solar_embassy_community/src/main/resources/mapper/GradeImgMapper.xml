@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.community.solar_embassy.mapper.GradeImgMapper">
 
-    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.GradeImg">
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.GradeImgDto">
             <id property="grade" column="grade" jdbcType="VARCHAR"/>
             <result property="imgPath" column="img_path" jdbcType="VARCHAR"/>
             <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>

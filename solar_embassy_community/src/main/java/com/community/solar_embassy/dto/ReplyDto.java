@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Reply implements Serializable {
+public class ReplyDto implements Serializable {
     private String replyNo;
 
     private Integer boardNo;

@@ -20,6 +20,9 @@ a {
     display: block;
 }
 
+
+
+
 #SE_container { /*메인 컨테이너*/
     width: 1920px;
     background-color: #5B8FB9;
@@ -28,13 +31,38 @@ a {
     transform: translate(0, 0);
 }
 
-#SE_header { /*헤더*/
+/*#SE_header { !*헤더*!*/
+/*    width: 100%;*/
+/*    height: 250px;*/
+/*    background-color: black;*/
+/*    text-align: center;*/
+/*    margin: 0 auto;*/
+/*    position: relative;*/
+/*}*/
+
+#SE_header {                                      /*헤더*/
     width: 100%;
-    height: 250px;
+    width : 1920px;
+    height : 465px;
     background-color: black;
-    text-align: center;
-    margin: 0 auto;
-    position: relative;
+    /*text-align: center;*/
+    /*margin : 0 auto ;*/
+    /*position:relative;*/
+
+    display: flex;
+    justify-content: center;
+}
+
+.SE_header_div {
+    width : 1920px;
+    height : 465px;
+
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+
+
 }
 
 #SE_img1 { /*메인 서비스 이미지*/

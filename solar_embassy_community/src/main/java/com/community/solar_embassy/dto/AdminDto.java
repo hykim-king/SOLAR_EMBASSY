@@ -5,20 +5,16 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Galaxy implements Serializable {
-    private Integer galaxyNo;
-
+public class AdminDto implements Serializable {
     private String adminId;
 
-    private String galName;
+    private Integer adminLevel;
+
+    private String department;
 
     private Date regTime;
 
-    private String updaterId;
-
     private Date updateTime;
-
-    private Integer state;
 
     private static final long serialVersionUID = 1L;
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class Grade implements Serializable {
+public class GradeDto implements Serializable {
     private Integer userLevel;
 
     private String grade;

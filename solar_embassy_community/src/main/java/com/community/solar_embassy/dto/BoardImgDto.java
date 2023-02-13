@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class BoardImg implements Serializable {
+public class BoardImgDto implements Serializable {
     private String boardImgNo;
 
     private Integer boardNo;

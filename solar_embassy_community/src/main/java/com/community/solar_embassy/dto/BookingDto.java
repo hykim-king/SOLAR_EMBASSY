@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Booking implements Serializable {
+public class BookingDto implements Serializable {
     private Integer boNo;
 
     private String crNum;
