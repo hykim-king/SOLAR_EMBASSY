@@ -1,109 +1,42 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>SOLAR EMBASSY</title>
-    <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
-    <!--    <script src="/uikit/js/uikit.js"></script>-->
-    <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/withdrawal.css">
+    <title>SOLAR EMBASSY</title>
 </head>
 <body>
-<div id="container">
-    <header>
-        <h6>메인이미지</h6>
-        <a href="/">
-            <img id="img1" src="/img/solar_embassy_main.png" alt="">
-        </a>
-    </header>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
 
-    <div id="topline">
-        <form>
-            <!--검색-->
-            <div id="search">
-                <input type="text" id="search-bar" placeholder="검색어를 입력하세요.">
-                <button type="button" id="btn">검색</button>
-            </div>
-        </form>
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
 
-        <!--로그인-->
-        <form>
-            <div id="login">
-                <button class="logbtn" type="button" onclick="location.href='/user/login.do'" style="cursor:pointer">로그인</button>
-                <button class="logbtn" type="button">ID/PW 찾기</button>
-                <button class="logbtn" type="button" onclick="location.href='/user/signup.do'" style="cursor:pointer">회원가입</button>
-            </div>
-        </form>
-        <aside id="left-sidebar">
-            <h1> 사이드바</h1>
-        </aside>
-
-        <section id="contents">
-            <div id="content1">
-                <ul id="menu_wrap">
-
-                    <li class="top_menu">
-                        <a href="#">메인 메뉴</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">메인 홈</a></li>
-                            <li><a href="#">마이 페이지</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="top_menu">
-                        <a href="#">태양계 소식지</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">이용정책</a></li>
-                            <li><a href="#">이벤트 안내</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="top_menu">
-                        <a href="#">주제별 갤럭시</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">스포츠</a></li>
-                            <li><a href="#">문학</a></li>
-                            <li><a href="#">문화</a></li>
-                            <li><a href="#">게임</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="top_menu">
-                        <a href="#">마이너 갤럭시</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">유머</a></li>
-                            <li><a href="#">취미</a></li>
-                            <li><a href="#">여행</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="top_menu">
-                        <a href="#">태양계 놀이터</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">외계인 잡기</a></li>
-                            <li><a href="#">행성 맞추기</a></li>
-                            <li><a href="#">개발중</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="top_menu">
-                        <a href="#">스타 콜로세움</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">개발중</a></li>
-                            <li><a href="#">개발중</a></li>
-                            <li><a href="#">맞짱 게시판</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <aside id="right-sidebar">
-                <h1> 임시 사이드바</h1>
-            </aside>
+            <!--여기부터-->
             <div class="modifycontainer">
                 <h1 class="account-withdrawal" style="color: rgb(255, 255, 255);">
                     회원탈퇴
                 </h1>
                 <div class="a-warning">
-                    <ul style="list-style-type: disc; font-size: 14px;">
+                    <ul>
                         <li>회원 탈퇴 시 주의사항 안내</li>
                         <li>회원 탈퇴 시 홈페이지 및 접속이 제한됩니다. </li>
                         <li>회원 가입 시 입력하신 개인 정보 및 결제 정보 등은 즉시 파기되며 복구하실 수 없습니다.</li>
@@ -120,14 +53,12 @@
                     <div class="a-user-hope">
                         <form action="">
                             <div class="auh-t">탈퇴 사유 탈퇴 사유를 알려주시면, 더 나은 서비스에 도움이 됩니다.<br></div>
-                            <div class="auh-r">
-                                <input type="radio"> 운영진에 대응이 불만족스러워서<br></input>
-                                <input type="radio"> 원하는 서비스를 찾을 수 없어서<br></input>
-                                <input type="radio"> 원하는 정보가 부족해서<br></input>
-                                <input type="radio"> 유저가 마음에 안 들어서<br></input>
-                                <input type="radio"> 기능적 문제가 발생해서<br></input>
-                                <input type="radio"> 재가입 하기 위해서<br></input>
-                            </div>
+                            <input type="radio"> 운영진에 대응이 불만족스러워서<br></input>
+                            <input type="radio"> 원하는 서비스를 찾을 수 없어서<br></input>
+                            <input type="radio"> 원하는 정보가 부족해서<br></input>
+                            <input type="radio"> 유저가 마음에 안 들어서<br></input>
+                            <input type="radio"> 기능적 문제가 발생해서<br></input>
+                            <input type="radio"> 재가입 하기 위해서<br></input>
                         </form>
                     </div>
                     <div class="a-user-hope2">
@@ -153,14 +84,26 @@
                     <button class="a-cancell" type="submit" onclick="">취소</button>
                 </div>
             </div>
+            <!--여기까지-->
+
+        </div>
+        <section id="SE_contents2">
+            <div id="SE_banner1"><h1>배너자리</h1></div>
         </section>
-        <footer id="footer">
+
+        <section id="SE_contents3">
+            <div id="SE_banner2"><h1>배너자리</h1></div>
+        </section>
+        <footer id="SE_footer">
             <p>
-            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
-                    href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+            </p>
+            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+                <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
             <p>
-            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+            </p>
+            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
         </footer>
+
     </div>
 </div>
 </body>
