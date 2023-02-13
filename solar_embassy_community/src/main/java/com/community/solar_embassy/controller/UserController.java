@@ -157,6 +157,9 @@ public class UserController {
             session.setAttribute("redirectUri", referer);
         }
     }
+    @GetMapping("user_info_add.do")
+    public void user_info_add() {
+    }
 
     @GetMapping("user_info_modify.do")
     public void user_info_modify() {
