@@ -242,7 +242,7 @@ input[id="menuicon"]:checked + label + div {top:80px;}
 
 /*컨텐츠 이미지가 삽입되는 구역*/
 #SE_contents #SE_content2 {
-    background-image:url("/img/contents_IMG.png"); /*이미지 여기에 삽입*/
+    background-image:url("../img/contents_IMG.png"); /*이미지 여기에 삽입*/
     width: 1200px;
     height: 270px;
     position: relative;
