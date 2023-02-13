@@ -16,7 +16,6 @@ public interface UsersMapper extends CRUD<Users,String>{
     Users findById(String id);
     int insert(Users users);
     int update(Users dto);
-
 }
 
 
