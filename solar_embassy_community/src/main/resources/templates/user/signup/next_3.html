@@ -8,30 +8,28 @@
 
     <style>
         .next_container {
-            width: 600px;
-            height: 400px;
-            /* background: #000; */
-
-            background-image: url(/img/next_1.jpg);
+            width: 900px;
+            height: 600px;
+            background: #000 url(/img/next_3.jpg);
             background-size: cover;
-
-            color: #fff;
-
             opacity: 0.5;
-
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
             text-align: center;
-
+            color: white
         }
 
-        .next {
+        .next3 {
             width: 100px;
             opacity: 0;
-
+        }
+        .next_container>button{
+            width: 300px;
+            height: 130px;
+            font-size: 30px;
+            font-weight: bolder;
         }
     </style>
 </head>
@@ -45,35 +43,25 @@
     <div class="layer"></div>
 
 
-    <form action="/user/next_2.do">
+    <form action="/">
         <div class="next_container">
-            <img src="/img/next_1.jpg" alt="next" class="next">
+            <img src="/img/next_3.jpg" alt="next" class="next3">
 
-            <h2> 대기권을 무사히 빠져나와 우주공간에 도착 하였고, </h2>
-            <h2> 우주선이 무사히 분리 성공 되었습니다. </h2>
-            <h2> 이제부터 행성 이동이 가능합니다. </h2>
-            <h2> 원하는 갤럭시를 선택하세요 !!! </h2>
 
-            <br> <br> <br> <br> <br> <br> <br> <br>
-
+            <h2> 대상 행성에 도착 하여 탐사 행성에 기지를 건설하였습니다. </h2>
+            <h2> 활동을 시작하면 사령탑에서 최초의 우주 식량을 배급합니다. </h2>
+            <br><br><br><br><br><br><br><br>
 
             <button type="submit" value="submitt">
-                축구 갤럭시
+                가입인사<br>글쓰기로 가기
             </button>
             <button type="submit" value="submitt">
-                유머 갤럭시
+                글 안쓰고<br>메인으로 가기
             </button>
-            <button type="submit" value="submitt">
-                식물 갤럭시
-            </button>
-            <div onclick="location.href='/galaxy/autopedia.do'">
-                자동차 갤럭시
-            </div>
 
         </div>
 
     </form>
 </div>
-
 </body>
 </html>

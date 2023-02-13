@@ -32,7 +32,22 @@
         e_point,exp,user_level,
         birth,profile_img_no
     </sql>
+    <insert id="insert" parameterType="com.community.solar_embassy.dto.Users">
+        insert INTO users
+            (user_id,  passwords,  nickname, email) VALUES
+            (#{userId}, #{passwords}, #{nickname}, #{email})
+    </insert>
+
+
     <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.Users">
-        SELECT * FROM USERS WHERE user_id=#{userId} AND passwords=#{pw}
+        SELECT * FROM USERS WHERE user_id=#{userId} AND passwords=#{passwords}
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM solar_embassy.users where user_id=#{user_id}
+    </delete>
+
+    <select id="findById" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM solar_embassy.users where user_id=#{user_id}
     </select>
 </mapper>

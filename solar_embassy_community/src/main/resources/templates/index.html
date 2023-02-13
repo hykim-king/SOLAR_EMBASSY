@@ -18,11 +18,7 @@ layout:decorate="~{/layout}"> -->
 </head>
 <body>
 <div id="SE_container">
-    <header id="SE_header">
-        <h6>메인이미지</h6>
-        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'">
-    </header>
-
+    <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
@@ -32,82 +28,115 @@ layout:decorate="~{/layout}"> -->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
 
+            <!--여기부터-->
+            <div id="SE_content2">  <!--컨텐츠 img영역. CSS SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+                <div class="s1"><a class="ss1" href="#">항목1</a></div>
+                <div class="s2"><a class="ss2" href="#">항목2</a></div>
+                <div class="s3"><a class="ss3" href="#">항목3</a></div>
+                <div class="s4"><a class="ss4" href="#">항목4</a></div>
+                <div class="s5"><a class="ss5" href="#">항목5</a></div>
+                <div class="s6"><a class="ss6" href="#">항목6</a></div>
 
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
             </div>
 
             <div id="SE_content3">
-                <div id="SE_sub1"><a href=""><h3>최근 생성 된 플래닛</h3></a></div>
+                <div id="SE_BEST_list">
+                    <div id="SE_BEST_list_title"><a class="SE_board_title" href="#">인기 BEST</a></div>
 
-                <div id="SE_sub2">                      <!--분류별 플래닛-->
-                    <ul class="SE_sub2_title" style="z-index:1">
+                    <div id="SE_thumbnails"> <!--컨텐츠 제목-->
+                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
+                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
+                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
+                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
+                    </div>
 
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">잡담</a>
-                        </li>
+                </div>
 
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">일상</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">고민</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">유머</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">여행</a>
-                        </li>
-
-                        <li class="SE_sub2_menu">
-                            <a class="bp1" href="#">코딩</a>
-                        </li>
-                    </ul>
+                <div id="SE_sub2">
+                    <div class="SE_ranking_title"><a class="SE_board_title" href="#">오늘의 HOT GALAXY </a> | <a class="SE_board_title" href="#"> 실시간 HOT PLANET</a></div>
+                    <div class="SE_ranking"></div>
                 </div>
 
                 <div id="SE_content4">
-                    <div id="SE_sub3"><h3>플래닛 board1</h3></div>
-                    <div id="SE_sub4"><h3>플래닛 board2</h3></div>
+                    <div id="SE_sub3">
+                        <div class="SE_new_post_title"><a class="SE_board_title" href="">최근 생성 된 게시판</a></div>
+                        <div class="SE_new_post"></div>
+                    </div>
+
+                    <div id="SE_sub4">
+                        <ul class="SE_sub4_title">
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">잡담</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">일상</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">고민</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">유머</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">여행</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">코딩</a>
+                            </li>
+                        </ul>
+                        <div class="SE_sub4_content"></div>
+                    </div>
                 </div>
 
                 <div id="SE_content5">
-                    <div id="SE_sub5"><h3>플래닛 board3</h3></div>
-                    <div id="SE_sub6"><h3>플래닛 board4</h3></div>
+                    <div id="SE_sub5">
+                        <div class="SE_board1_title"><a class="SE_board_title" href="">임시 게시판 1호</a></div>
+                        <div class="SE_board1"></div>
+                    </div>
+
+                    <div id="SE_sub6">
+                        <div class="SE_board2_title"><a class="SE_board_title" href="">임시 게시판 2호</a></div>
+                        <div class="SE_board2"></div>
+                    </div>
                 </div>
 
                 <div id="SE_content6">
-                    <div id="SE_sub7"><h3>플래닛 board5</h3></div>
+                    <div id="SE_sub7">
+                        <div class="SE_board3_title"><a class="SE_board_title" href="">임시 게시판 3호</a></div>
+                        <div class="SE_board3"></div>
+                    </div>
                 </div>
 
                 <div id="SE_content7">
-                    <div id="SE_sub8"><h3>플래닛 board6</h3></div>
+                    <div id="SE_sub8">
+                        <div class="SE_board4_title"><a class="SE_board_title" href="">임시 게시판 4호</a></div>
+                        <div class="SE_board4"></div>
+                    </div>
                 </div>
+                <!--여기까지-->
 
             </div>
+            <section id="SE_contents2">
+                <div id="SE_banner1"><h1>배너자리</h1></div>
+            </section>
+
+            <section id="SE_contents3">
+                <div id="SE_banner2"><h1>배너자리</h1></div>
+            </section>
+            <footer id="SE_footer">
+                <p>
+                </p>
+                <p><h3> <a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+                <p><h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+            </footer>
+
         </div>
-
-
-        <section id="SE_contents2">
-            <div id="SE_banner1"><h1>배너자리</h1></div>
-        </section>
-
-        <section id="SE_contents3">
-            <div id="SE_banner2"><h1>배너자리</h1></div>
-        </section>
-
-        <footer id="SE_footer">
-            <p>
-            </p>
-            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-            <p>
-            </p>
-            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-        </footer>
-
     </div>
 </div>
 </body>

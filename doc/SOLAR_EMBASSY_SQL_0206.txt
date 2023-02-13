@@ -56,7 +56,7 @@ create table company
 
 create table auto
 (
-    auto_no      int         not null,
+    auto_no      int auto_increment  ,
     auto_name    varchar(20) not null,
     code_name    varchar(20) not null,
     com          int         not null,
@@ -73,7 +73,7 @@ create table auto
 
 create table auto_img
 (
-    auto_img_no     int          not null
+    auto_img_no     int auto_increment
         primary key,
     auto_no         int          not null,
     auto_img_path   varchar(255) null,
@@ -93,7 +93,7 @@ create table grade_img
 
 create table grade
 (
-    user_level int         not null
+    user_level int auto_increment
         primary key,
     grade      varchar(50) not null,
     total_exp  int         not null,
@@ -204,7 +204,7 @@ create table booking
 
 create table galaxy
 (
-    galaxy_no   int                                 not null
+    galaxy_no   int auto_increment
         primary key,
     admin_id    varchar(20)                         not null,
     gal_name    varchar(100)                        not null,
@@ -218,7 +218,7 @@ create table galaxy
 
 create table board
 (
-    board_no    int                                 not null
+    board_no    int auto_increment
         primary key,
     galaxy_no   int                                 not null,
     user_id     varchar(20)                         not null,
@@ -242,20 +242,19 @@ create table board
 
 create table board_img
 (
-    board_img_no    varchar(255)                        not null
+    board_img_no    int auto_increment
         primary key,
     board_no        int                                 not null,
     image_path      varchar(255)                        not null,
     origin_img_name varchar(255)                        null,
     post_time       timestamp default CURRENT_TIMESTAMP not null,
-    constraint FK_planet_TO_planet_image
+    constraint board_img_board_board_no_fk
         foreign key (board_no) references board (board_no)
-            on delete cascade
 );
 
 create table letter
 (
-    letter_no     int                                 not null
+    letter_no     int  auto_increment
         primary key,
     sender_id     varchar(20)                         not null,
     receiver_id   varchar(20)                         not null,
@@ -274,7 +273,7 @@ create table letter
 
 create table profile_img
 (
-    profile_img_no  int                                 not null
+    profile_img_no  int auto_increment
         primary key,
     user_id         varchar(20)                         not null,
     img_path        varchar(100)                        not null,
@@ -289,11 +288,11 @@ create table profile_img
 
 create table reply
 (
-    reply_no        varchar(100)                        not null
+    reply_no        int auto_increment
         primary key,
     board_no        int                                 not null,
     user_id         varchar(20)                         not null,
-    fk_reply_no     varchar(100)                        null,
+    fk_reply_no     int                                 null,
     contents        varchar(100)                        not null,
     post_time       timestamp default CURRENT_TIMESTAMP not null,
     update_time     timestamp                           null,
@@ -302,15 +301,14 @@ create table reply
     state           int       default 1                 null,
     img_path        varchar(255)                        null,
     origin_img_name varchar(255)                        null,
-    constraint FK_planet_TO_reply
-        foreign key (board_no) references board (board_no)
-            on delete cascade,
     constraint FK_reply_TO_reply
         foreign key (fk_reply_no) references reply (reply_no)
             on delete cascade,
     constraint FK_user_TO_reply
         foreign key (user_id) references users (user_id)
-            on delete cascade
+            on delete cascade,
+    constraint reply_board_board_no_fk
+        foreign key (board_no) references board (board_no)
 );
 
 create table reserved
@@ -352,7 +350,7 @@ create table review
 
 create table user_block
 (
-    block_no     int                                 not null
+    block_no     int  auto_increment
         primary key,
     user_id      varchar(20)                         not null,
     block_obj_id varchar(20)                         not null,
@@ -369,7 +367,7 @@ create table user_block
 
 create table popular_search
 (
-    ps_no       int                                 not null
+    ps_no       int  auto_increment
         primary key,
     user_id     varchar(20)                         not null,
     cr_num      varchar(10)                         not null,

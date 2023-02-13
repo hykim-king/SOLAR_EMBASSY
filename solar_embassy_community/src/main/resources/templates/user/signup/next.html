@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <style>
+        .next_container {
+            width: 600px;
+            height: 400px;
+            background-image: url(/img/next_1.jpg);
+            background-size: cover;
+            color: #fff;
+            opacity: 0.5;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .next {
+            width: 100px;
+            opacity: 0;
+        }
+
+        .next_container > h2 {
+            text-shadow: 0px 0px 5px black;
+        }
+
+        .next_container > button {
+            border: 2px solid white;
+            background-color: #272727;
+            opacity: 1;
+            color: white;
+            font-weight: bold;
+        }
+        .next_container > button:hover {
+            background-color: #ffffff;
+            opacity: 1;
+            color: #272727;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+
+
+    <form action="/user/next_2.do">
+        <div class="next_container">
+            <img src="/img/next_1.jpg" alt="next" class="next">
+
+            <h2> 대기권을 무사히 빠져나와 우주공간에 도착 하였고, </h2>
+            <h2> 우주선이 무사히 분리 성공 되었습니다. </h2>
+            <h2> 이제부터 행성 이동을 시작합니다. </h2>
+            <br> <br> <br>
+            <button class="btn" type="submit" value="submit">워프 시작</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

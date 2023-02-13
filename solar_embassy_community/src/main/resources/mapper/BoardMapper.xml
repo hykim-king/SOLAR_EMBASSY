@@ -4,27 +4,93 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.community.solar_embassy.mapper.BoardMapper">
 
-    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Board">
-            <id property="boardNo" column="board_no" jdbcType="INTEGER"/>
-            <result property="galaxyNo" column="galaxy_no" jdbcType="INTEGER"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="boardTag" column="board_tag" jdbcType="INTEGER"/>
-            <result property="title" column="title" jdbcType="VARCHAR"/>
-            <result property="contents" column="contents" jdbcType="VARCHAR"/>
-            <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
-            <result property="updaterId" column="updater_id" jdbcType="VARCHAR"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="state" column="state" jdbcType="INTEGER"/>
-            <result property="likes" column="likes" jdbcType="INTEGER"/>
-            <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
-            <result property="views" column="views" jdbcType="INTEGER"/>
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.BoardDto">
+        <id property="boardNo" column="board_no" jdbcType="INTEGER"/>
+        <result property="galaxyNo" column="galaxy_no" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="boardTag" column="board_tag" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="contents" column="contents" jdbcType="VARCHAR"/>
+        <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
+        <result property="updaterId" column="updater_id" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="likes" column="likes" jdbcType="INTEGER"/>
+        <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
+        <result property="views" column="views" jdbcType="INTEGER"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        board_no,galaxy_no,user_id,
-        board_tag,title,contents,
-        post_time,updater_id,update_time,
-        state,likes,dislikes,
-        views
-    </sql>
+    <!--    <sql id="Base_Column_List">-->
+    <!--        board_no,galaxy_no,user_id,-->
+    <!--        board_tag,title,contents,-->
+    <!--        post_time,updater_id,update_time,-->
+    <!--        state,likes,dislikes,-->
+    <!--        views-->
+    <!--    </sql>-->
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT *
+        FROM BOARD
+    </select>
+    <!--게시글 목록-->
+    <select id="selectBoardList" resultMap="BaseResultMap">
+		<![CDATA[
+        SELECT *
+        FROM board
+        WHERE state = 1
+        ORDER BY board_no DESC
+        ]]>
+   </select>
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="boardNo" keyColumn="board_no"
+            parameterType="com.community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        INSERT INTO board(galaxy_no,
+                          board_tag,
+                          title,
+                          contents,
+                          post_time,
+                          user_id)
+        VALUES ('1',
+                '1',
+                #{title},
+                #{contents},
+                NOW(),
+                'user1')
+        ]]>
+   </insert>
+    <update id="updateViews" parameterType="int">
+        <![CDATA[
+        UPDATE board
+        SET views = views + 1
+        WHERE board_no = #{board_no}
+        ]]>
+    </update>
+    <select id="selectBoardDetail" parameterType="int" resultType="com.community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        SELECT board_no, title, contents, views, DATE_FORMAT(post_time, '%Y.%m.%d %H:%i:%s') as post_time, user_id
+        FROM board
+        WHERE board_no = #{board_no}
+          AND state = '1'
+        ]]>
+    </select>
+    <!--수정, 삭제-->
+    <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        UPDATE t_board
+        SET title    = #{title},
+            contents = #{contents},
+            userId   = 'user1',
+            postTime = NOW()
+        WHERE board_no = #{boardId}
+        ]]>
+    </update>
+
+    <update id="deleteBoard" parameterType="int">
+        <![CDATA[
+        UPDATE board
+        SET is_deleted = 'y',
+            userId     = 'user1',
+            postTime   = NOW()
+        WHERE board_id = #{board_no}
+        ]]>
+</update>
 </mapper>

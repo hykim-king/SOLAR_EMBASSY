@@ -12,6 +12,8 @@ public class Auto implements Serializable {
 
     private String codeName;
 
+    private String comName;
+
     private Integer com;
 
     private String autoType;
@@ -25,4 +27,5 @@ public class Auto implements Serializable {
     private String autoEngine;
 
     private static final long serialVersionUID = 1L;
+
 }
