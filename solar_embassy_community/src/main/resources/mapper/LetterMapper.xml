@@ -10,8 +10,8 @@
             <result property="receiverId" column="receiver_id" jdbcType="VARCHAR"/>
             <result property="title" column="title" jdbcType="VARCHAR"/>
             <result property="contents" column="contents" jdbcType="VARCHAR"/>
-            <result property="sentDate" column="sent_date" jdbcType="TIMESTAMP"/>
-            <result property="readDate" column="read_date" jdbcType="TIMESTAMP"/>
+            <result property="sentTime" column="sent_time" jdbcType="TIMESTAMP"/>
+            <result property="readTime" column="read_time" jdbcType="TIMESTAMP"/>
             <result property="receiveState" column="receive_state" jdbcType="INTEGER"/>
             <result property="receiverDel" column="receiver_del" jdbcType="INTEGER"/>
             <result property="senderDel" column="sender_del" jdbcType="INTEGER"/>
@@ -19,8 +19,8 @@
 
     <sql id="Base_Column_List">
         letter_no,sender_id,receiver_id,
-        title,contents,sent_date,
-        read_date,receive_state,receiver_del,
+        title,contents,sent_time,
+        read_time,receive_state,receiver_del,
         sender_del
     </sql>
 </mapper>

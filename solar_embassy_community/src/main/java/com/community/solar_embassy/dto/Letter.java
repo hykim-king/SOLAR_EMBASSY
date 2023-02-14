@@ -1,10 +1,11 @@
 package com.community.solar_embassy.dto;
 
+import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 
-import java.util.Date;
 @Data
-public class Letter   {
+public class Letter implements Serializable {
     private Integer letterNo;
 
     private String senderId;
@@ -15,9 +16,9 @@ public class Letter   {
 
     private String contents;
 
-    private Date sentDate;
+    private Date sentTime;
 
-    private Date readDate;
+    private Date readTime;
 
     private Integer receiveState;
 
@@ -25,4 +26,5 @@ public class Letter   {
 
     private Integer senderDel;
 
+    private static final long serialVersionUID = 1L;
 }

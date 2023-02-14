@@ -1,0 +1,127 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    <title>SOLAR EMBASSY</title>
+</head>
+<body>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
+
+            <!--여기부터-->
+            <div id="signup_main">
+                <h1>서비스 회원가입</h1>
+                <div id="signup_intro">
+                    <p>약관에 읽어보신 후, 솔라 엠버시(Solar Embassy)이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</p>
+                    <div id="signup_rule1title">
+                        <h2>1.솔라 엠버시 이용약관(필수)</h2>
+                        <div id="signup_rule1">
+                            <p>여러분을 환영합니다.<br>
+                                솔라 엠버시에 가입하여 다양한 서비스를 즐겨보세요.<br>
+                                솔라 엠버시는 www.solaremassy.com을 비롯한 도메인의 웹사이트 및 응용프로그램(어플리케이션, 앱)을 통해 정보 검색, 다른 이용자와의
+                                커뮤니케이션,
+                                콘텐츠 제공, 상품 쇼핑 등 여러분의 생활에 편리함을 더할 수 있는 다양한 서비스를 제공하고 있습니다.<br>
+
+                                여러분은 PC, 휴대폰 등 인터넷 이용이 가능한 각종 단말기를 통해 각양각색의 서비스를 자유롭게 이용하실 수 있으며, 개별 서비스들의 구체적인 내용은
+                                각 서비스 상의 안내, 공지사항, 웹고객센터(이하 ‘고객센터’) 도움말 등에서 쉽게 확인하실 수 있습니다.<br>
+                            <div id="singup_rule1check">
+
+                                해당 약관을 모두 숙지했으며, 동의합니다.<input type="checkbox" id="rule1_agree">
+                            </div>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div id="signup_rule2title">
+                        <h2>1.개인정보 수집 및 이용 동의(필수)</h2>
+                        <div id="signup_rule2">
+                            <p>개인정보보호법에 따라 솔라엠버시에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권
+                                및 동의
+                                <br>
+                                1. 수집하는 개인정보<br>
+                                이용자는 회원가입을 하지 않아도 정보 검색, 뉴스 보기 등 대부분의 솔라엠버시 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페,
+                                블로그
+                                등과 같이
+
+                                회원가입 시점에 솔라엠버시가 이용자로부터 수집하는 개인정보는 아래와 같습니다.<br>
+                                - 회원 가입 시 필수항목으로 아이디, 비밀번호, 이름, 생년월일, 성별, 휴대전화번호를, 선택항목으로 본인확인 이메일주소를 수집합니다.<br>
+                                단, 비밀번호 없이 회원 가입 시에는 필수항목으로 아이디, 이름, 생년월일, 휴대전화번호를, 선택항목으로 비밀번호를 수집합니다.<br>
+                                만약 이용자가 입력하는 생년월일이 만14세 미만 아동일 경우에는 법정대리인 정보(법정대리인의 이름, 생년월일, 성별, 중복가입확인정보(DI), 휴대전화번호)를
+                                추가로
+                                이용자에게 개인정보 보관기간에 대해 회원가입 시 또는 서비스 가입 시 동의를 얻은 경우는 아래와 같습니다.<br>
+                                - 부정 가입 및 이용 방지<br>
+                                부정 이용자의 가입인증 휴대전화번호 또는 DI (만14세 미만의 경우 법정대리인DI) : 탈퇴일로부터 6개월 보관<br>
+                                탈퇴한 이용자의 휴대전화번호(복호화가 불가능한 일방향 암호화(해시처리)) : 탈퇴일로부터 6개월 보관<br>
+
+                            <div id="singup_rule2check">
+                                해당 약관을 모두 숙지했으며, 동의합니다.<input type="checkbox" id="rule1_agree">
+                            </div>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div id="promotion">
+                            프로모션 정보 수진 동의(선택)<input type="checkbox" id="promotion_agree">
+                            <p>
+                                이벤트/혜택 등 다양한 정보를 휴대전화(알림 또는 문자), 이메일로 받아보실 수 있습니다.<br>
+                                일부 서비스(별도 회원 체계로 운영하거나 네이버 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, <br>
+                                개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
+                            </p>
+                            <input type="radio" id="normal" name="user_type">일반회원
+                            <input type="radio" id="business" name="user_type">사업자 회원
+                        </div>
+
+                        <div id="buttons">
+                            <button id="next_n" onclick="location.href='/user/signup_normal.do'">일반 회원</button>
+                            <button id="next_b" onclick="location.href='/user/signup_business.do'">사업자 회원</button>
+                            <button id="cancel" onclick="location.href='/'">취소</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--여기까지-->
+            <section id="SE_contents2">
+                <div id="SE_banner1"><h1>배너자리</h1></div>
+            </section>
+
+            <section id="SE_contents3">
+                <div id="SE_banner2"><h1>배너자리</h1></div>
+            </section>
+            <footer id="SE_footer">
+                <p>
+                </p>
+                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                <p>
+                </p>
+                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.find_id_result_container{ /* 아이디 찾은 결과 페이지 */
+    height: 1050px;
+    background: #b9e0ffc4;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.find_id_result_text{ /* 비번찾기 안내문 */
+    margin-top: 25px;
+    margin-left: 40px;
+}
+
+.find_id_result_container2{ /* 그냥 네모 박스*/
+    border: 1px solid #000;
+    background: linear-gradient(180deg, #DBF0FF 0%, #FFFFFF 100%);
+    margin-left:50px;
+    margin-right:50px;
+    margin-top: 15px;
+    height: 920px;
+    font-size:15px ;
+}
+
+.find_id_result_content{ /*  사용자 아이디 찾은 결과창 */
+    margin-top: 110px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.find_id_result_container_3{ /* 취소버튼 start */
+    margin-top: 550px;
+    text-align: center;
+}
+.find_id_result_container_3 button{
+    background: #D9D9D9;
+    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color:#000;
+    border-style: none;
+    width: 130px;
+    height: 40px;
+    font-size: 20px;
+}
+.justspace{ /* 취소버튼 end */
+    display: inline;
+    margin:auto 20px;
+}

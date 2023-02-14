@@ -1,177 +1,189 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-
-    <style>
-        #container{
-            /* background-color: red; */
-            /* height: 400px; */
-            width : 1920px;
-            margin : 20px auto ;
-        }
-
-        header {
-            /* width: 100%; */
-            height: 600px;
-            background-color: green;
-            text-align: center;
-        }
-
-        #img1 {
-            width: 1320px;
-            height: 500px;
-        }
-
-        #img2 {
-            height: 100%;
-            width: 100%;
-        }
-
-        #left-sidebar {
-            background-color: blue;
-            width: 300px;
-            height: 2100px;   
-            float : left; 
-        }
-
-        #contents {
-            background-color: gold;
-            width: 1320px;
-            height: 2100px;   
-            float : left;             
-        }
-
-        #contents #content1{
-            background-color: gray;
-            height: 100px;
-            
-        }
-
-        #contents #content2 {
-            background-color: purple;
-            height: 330px;
-            text-align: center;
-        }
-
-        #contents #content3 {
-            background-color: navy;
-            height: 400px;
-            display: flex;
-            
-        }
-
-        #contents #content3 #sub1 {
-            background-color: skyblue;
-            height: 400px;
-            width: 850px;
-        }
-
-        #contents #content3 #sub2 {
-            background-color: brown;
-            height: 400px;
-            width: 470px;
-        }
-
-        #contents #content4 {
-            background: #121212;
-            height: 600px;
-            display: flex;
-            
-        }
-
-        #contents #content4 #sub3 {
-            background-color: indigo;
-            width: 660px;
-            height: 600px;
-        }
-
-        #contents #content4 #sub4 {
-            background-color: pink;
-            height: 600px;
-            width: 660px;
-        }
-
-        #contents #content5 {
-            height: 600px;
-            width: 1320px;
-            display: flex;
-        }
-
-        #contents #content5 #sub5 {
-            background-color: pink;
-            width: 660px;
-            height: 600px;
-        }
-
-        #contents #content5 #sub6 {
-            background-color: indigo;
-            height: 600px;
-            width: 660px;
-        }
-
-        #right-sidebar {
-            background-color: red;
-            width: 300px;
-            height: 2100px;   
-            float : left;             
-        }
-
-        footer {
-            background-color: yellowgreen;
-            height: 300px;   
-            clear : left;              
-        }
-
-    </style>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
+    <title>SOLAR EMBASSY</title>
 </head>
 <body>
-    <div id="container"> 
-        <header>
-            <h1>메인이미지</h1> 
-            <img id="img1" src="/img/solar_embassy_main.png" alt="">
-        </header>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
 
-        <aside id="left-sidebar">
-            <h1> 사이드바</h1>
-        </aside>
+            <!--여기부터-->
+            <div id="SE_content2">  <!--컨텐츠 img영역. CSS SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+                <div class="s1"><a class="ss1" href="#">항목1</a></div>
+                <div class="s2"><a class="ss2" href="#">항목2</a></div>
+                <div class="s3"><a class="ss3" href="#">항목3</a></div>
+                <div class="s4"><a class="ss4" href="#">항목4</a></div>
+                <div class="s5"><a class="ss5" href="#">항목5</a></div>
+                <div class="s6"><a class="ss6" href="#">항목6</a></div>
 
-        <section id="contents">
-            <div id="content1"></div>
-            <div id="content2">
-                <img id="img2" src="/img/solar_main.png" alt="">
             </div>
-            <div id="content3">
-                <div id="sub1"></div>
-                <div id="sub2"></div>
-            </div>
-            <div id="content4">
-                <div id="sub3"></div>
-                <div id="sub4"></div>
-            </div>
-            <div id="content5">
-                <div id="sub5"></div>
-                <div id="sub6"></div>
-            </div>
-        </section>
 
+            <div id="SE_content3">
+                <div id="SE_BEST_list">
+                    <div id="SE_BEST_list_title"><a class="SE_board_title" href="#">인기 BEST</a></div>
 
-        <aside id="right-sidebar">
-            <h1> 사이드바</h1>
-        </aside>
+                    <div id="SE_thumbnails"> <!--컨텐츠 제목-->
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
 
-        <footer>
-            <h2> 푸터 </h2>
-        </footer>
+                </div>
+
+                <div id="SE_sub2">
+                    <div class="SE_ranking_title"><a class="SE_board_title" href="#">오늘의 HOT GALAXY </a> | <a
+                            class="SE_board_title" href="#"> 실시간 HOT PLANET</a></div>
+                    <div class="SE_ranking"></div>
+                </div>
+
+                <div id="SE_content4">
+                    <div id="SE_sub3">
+                        <div class="SE_new_post_title"><a class="SE_board_title" href="">최근 생성 된 게시판</a></div>
+                        <div class="SE_new_post">
+                        </div>
+                    </div>
+
+                    <div id="SE_sub4">
+                        <ul class="SE_sub4_title">
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">잡담</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">일상</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">고민</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">유머</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">여행</a>
+                            </li>
+
+                            <li class="SE_sub4_menu">
+                                <a class="bp1" href="#">코딩</a>
+                            </li>
+                        </ul>
+                        <div class="SE_sub4_content"></div>
+                    </div>
+                </div>
+
+                <div id="SE_content5">
+                    <div id="SE_sub5">
+                        <div class="SE_board1_title"><a class="SE_board_title" href="">임시 게시판 1호</a></div>
+                        <div class="SE_board1">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>작성자</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="${list_one.boardNo}" ></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${list_one.userId}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="SE_sub6">
+                        <div class="SE_board2_title"><a class="SE_board_title" href="">임시 게시판 2호</a></div>
+                        <div class="SE_board2"></div>
+                    </div>
+                </div>
+
+                <div id="SE_content6">
+                    <div id="SE_sub7">
+                        <div class="SE_board3_title"><a class="SE_board_title" href="">임시 게시판 3호</a></div>
+                        <div class="SE_board3"></div>
+                    </div>
+                </div>
+
+                <div id="SE_content7">
+                    <div id="SE_sub8">
+                        <div class="SE_board4_title"><a class="SE_board_title" href="">임시 게시판 4호</a></div>
+                        <div class="SE_board4"></div>
+                    </div>
+                </div>
+                <!--여기까지-->
+
+            </div>
+            <section id="SE_contents2">
+                <div id="SE_banner1"><h1>배너자리</h1></div>
+            </section>
+
+            <section id="SE_contents3">
+                <div id="SE_banner2"><h1>배너자리</h1></div>
+            </section>
+            <footer id="SE_footer">
+                <p>
+                </p>
+                <p>
+                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+                <p>
+                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+            </footer>
+
+        </div>
     </div>
-
-
-
-
-
-
-
-
+</div>
 </body>
 </html>

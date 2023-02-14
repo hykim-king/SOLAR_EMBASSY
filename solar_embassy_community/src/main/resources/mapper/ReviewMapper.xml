@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.ReviewMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Review">
+            <id property="reNo" column="re_no" jdbcType="INTEGER"/>
+            <result property="boNo" column="bo_no" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="contents" column="contents" jdbcType="VARCHAR"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="likes" column="likes" jdbcType="INTEGER"/>
+            <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="contentReply" column="content_reply" jdbcType="VARCHAR"/>
+            <result property="replyPostDate" column="reply_post_date" jdbcType="TIMESTAMP"/>
+            <result property="replyUpdateDate" column="reply_update_date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        re_no,bo_no,user_id,
+        contents,state,likes,
+        post_time,update_time,content_reply,
+        reply_post_date,reply_update_date
+    </sql>
+</mapper>

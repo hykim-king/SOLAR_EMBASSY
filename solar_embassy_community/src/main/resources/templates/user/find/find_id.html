@@ -1,0 +1,103 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/find_id.css">
+    <title>SOLAR EMBASSY</title>
+</head>
+<body>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
+
+
+            <div class="find_id_container">
+                <h1 class="find_id_text" style="color: rgb(0, 0, 0);">
+                    아이디찾기
+                </h1>
+                <div class="find_id_container2">
+                    <div class="find_id_content">
+                        <h2>아이디 찾을 방법을 선택 해 주세요</h2>
+                        <div class="find_id_content_2">
+                            <span style="font-weight: bold; font-size: 24px;">○ 회원 정보에 등록한 휴대전화로 인증 </span>
+                            <p style="font-size: 16px;"> 회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받으실 수 있습니다.</p>
+                            <div class="find_id_input">
+                                <form action="" method="POST">
+                                    <label for="name">이름</label>
+                                    <input type="text" name="name" id="name" value=""><br>
+
+                                    <label for="phone">휴대전화</label>
+                                    <input type="text" name="phone" id="phone" value=""><button class="confirm_btn">인증받기</button><br>
+
+                                    <label for="confirm">인증번호</label>
+                                    <input type="text" name="confirm" id="confirm" value=""><button class="confirm_btn">인증확인</button><br>
+
+                                    <div class="warning">휴대폰 번호로 전송 된 인증번호 4자리(혹은 6자리)를 입력해주세요.<button class="reconfirm">인증재전송</button></div>
+                                    <br>
+                                    <a href="/user/find_id_result_phone.do" class="confirm_btn">아이디 찾기</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="find_id_content_3">
+                            <div class="find_id_content_3-1" style=" font-size: 20px;">○ 본인 이메일로 인증 [회원가입시 작성된 이메일로 전송] </div>
+                            <form action="/user/find_id_result_email.do" method="GET">
+                                <label for="email" class="find_id_content_3-2">본인확인 이메일로 인증(%유저이메일%@%이메일주소%.com) <!-- 이부분 유저 이메일 for 문 돌려야함 -->
+                                    <button id="email" class="confirm_btn">이메일로 전송</button></label>
+                            </form>
+                        </div>
+                        <div class="find_id_content_4">
+                            <form>
+                                <button id="cancle" onclick="location.href='/#'">취소</button>
+                                <div class="justspace"></div>
+                                <button id="service_center">고객센터</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <section id="SE_contents2">
+                <div id="SE_banner1"><h1>배너자리</h1></div>
+            </section>
+
+            <section id="SE_contents3">
+                <div id="SE_banner2"><h1>배너자리</h1></div>
+            </section>
+
+            <footer id="SE_footer">
+                <p>
+                </p>
+                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                <p>
+                </p>
+                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+            </footer>
+        </div>
+
+
+
+    </div>
+</div>
+</body>
+</html>

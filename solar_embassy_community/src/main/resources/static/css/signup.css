@@ -1,0 +1,83 @@
+#signup_main {
+    background-color: #ffffff;
+    width: 1200px;
+    height: 95%;
+    /* border: 1px solid #000; */
+    text-align: center;
+    position: relative;
+}
+
+
+#signup_title {
+    margin-top: 10px;
+    width: 1100px;
+    height: 635px;
+    background-color: #ffffff;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#signup_intro {
+    border: 1px solid #000;
+    height: 100%;
+}
+
+#signup_rule1title {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 10%;
+    width: 80%;
+
+}
+
+#signup_rule1 {
+    border: 1px solid #000;
+}
+
+#rule1_agree {
+    margin-left: 5px;
+}
+
+#signup_rule2title {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 10%;
+    width: 80%;
+}
+
+#signup_rule2 {
+    border: 1px solid #000;
+}
+
+#promotion {
+    border: 1px solid #000;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 10%;
+    width: 80%;
+}
+
+#promotion_agree {
+    margin-left: 5px;
+}
+
+#buttons {
+    margin: 50px auto 0;
+}
+
+#next_n,#next_b {
+    width: 100px;
+    height: 70px;
+    border-radius: 15px;
+    margin-right: 50px;
+}
+
+#cancel {
+    width: 100px;
+    height: 70px;
+    border-radius: 15px;
+}

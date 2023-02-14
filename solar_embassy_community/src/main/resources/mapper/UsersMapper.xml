@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.UsersMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Users">
+            <id property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="passwords" column="passwords" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="hp" column="hp" jdbcType="VARCHAR"/>
+            <result property="tell" column="tell" jdbcType="VARCHAR"/>
+            <result property="adminId" column="admin_id" jdbcType="VARCHAR"/>
+            <result property="regDate" column="reg_date" jdbcType="TIMESTAMP"/>
+            <result property="lastLoginTime" column="last_login_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="cPoint" column="c_point" jdbcType="INTEGER"/>
+            <result property="ePoint" column="e_point" jdbcType="INTEGER"/>
+            <result property="exp" column="exp" jdbcType="INTEGER"/>
+            <result property="userLevel" column="user_level" jdbcType="INTEGER"/>
+            <result property="birth" column="birth" jdbcType="DATE"/>
+            <result property="profileImgNo" column="profile_img_no" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_id,nickname,passwords,
+        email,hp,tell,
+        admin_id,reg_date,last_login_time,
+        update_time,state,c_point,
+        e_point,exp,user_level,
+        birth,profile_img_no
+    </sql>
+    <insert id="insert" parameterType="com.community.solar_embassy.dto.Users">
+        insert INTO users
+            (user_id,  passwords,  nickname, email) VALUES
+            (#{userId}, #{passwords}, #{nickname}, #{email})
+    </insert>
+
+
+    <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM USERS WHERE user_id=#{userId} AND passwords=#{passwords}
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM solar_embassy.users where user_id=#{user_id}
+    </delete>
+
+    <select id="findById" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM solar_embassy.users where user_id=#{user_id}
+    </select>
+</mapper>
