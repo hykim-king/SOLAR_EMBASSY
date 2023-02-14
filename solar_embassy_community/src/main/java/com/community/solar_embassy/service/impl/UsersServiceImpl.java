@@ -20,7 +20,6 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public Users login(String userId, String pw) {
         Users user = usersMapper.findByUserIdAndPw(userId, pw);
-        user.setProfileImgNo(profileImgMapper.findProfileImg(user.getProfileImgNo()));
         return user;
     }
 
