@@ -1,9 +1,40 @@
+#SE_contents #content1{
+    background-color: hotpink;
+    height: 80px;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+
+#SE_contents #content1 #btn {
+    margin: 25px;
+    display: flex;
+    text-decoration: none;
+}
+
+#SE_contents #content1 #btn #autogalaxy a {
+    padding-left: 10px;
+    color: #fff;
+    float: left;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#SE_contents #content1 #btn #autopedia a {
+    padding-left: 30px;
+    color: #fff;
+    float: left;
+    text-decoration: none;
+    font-size: 20px;
+}
+
 #SE_contents #content2 {
     background-color: white;
     width: 1200px;
     height: max-content;
     font-size: small;
     border: 1px solid black;
+    margin-top: 40px;
 }
 
 #SE_contents #content2 #autobrand {

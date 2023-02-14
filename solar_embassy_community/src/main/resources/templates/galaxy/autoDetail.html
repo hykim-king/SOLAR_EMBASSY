@@ -32,25 +32,18 @@ layout:decorate="~{/layout}"> -->
       <!--메뉴 + 오른쪽 사이드-->
       <th:block th:insert="/menuAndAside"></th:block>
       <!--메뉴 end-->
-      <div>
-        <form id="detail" method="post">
-          <table>
-            <caption>차량 정보</caption>
-            <tbody>
-            <tr>
-              차량 이름 : <td th:text="${auto.getAutoName()}"></td>
-              코드명 : <td th:text="${auto.getCodeName()}"></td>
-              제조사 : <td th:text="${auto.getComName()}"></td>
-              차종 : <td th:text="${auto.getAutoType()}"></td>
-              출시일 : <td th:text="${auto.getReleaseDate()}"></td>
-              탑승 인원 : <td th:text="${auto.getSeat()}"></td>
-              연비 : <td th:text="${auto.getMpg()}"></td>
-              차량 엔진 : <td th:text="${auto.getAutoEngine()}"></td>
-            </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
+        <div id="container">
+          <div id="inform">
+            차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
+            코드명 : <span th:text="${auto.getCodeName()}"></span> <br>
+            제조사 : <span th:text="${auto.getComName()}"></span> <br>
+            차종 : <span th:text="${auto.getAutoType()}"></span> <br>
+            출시일 : <span th:text="${#dates.format(auto.getReleaseDate(),'yyyy-MM-dd')}"></span> <br>
+            탑승 인원 : <span th:text="${auto.getSeat()}"></span>인승 <br>
+            연비 : <span th:text="${auto.getMpg()}"></span>km <br>
+            차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
+          </div>
+        </div>
       <section id="SE_contents2">
         <div id="SE_banner1"><h1>배너자리</h1></div>
       </section>

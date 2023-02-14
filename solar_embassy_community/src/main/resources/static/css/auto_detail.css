@@ -1,0 +1,8 @@
+#container {
+    background-color: white;
+    width: 1200px;
+    height: max-content;
+    font-size: medium;
+    border: 1px solid black;
+
+}

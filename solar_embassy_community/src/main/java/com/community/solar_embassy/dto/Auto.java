@@ -3,6 +3,7 @@ package com.community.solar_embassy.dto;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class Auto implements Serializable {
@@ -18,6 +19,7 @@ public class Auto implements Serializable {
 
     private String autoType;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date releaseDate;
 
     private Integer seat;
