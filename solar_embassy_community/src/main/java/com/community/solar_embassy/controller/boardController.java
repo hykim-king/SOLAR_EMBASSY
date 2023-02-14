@@ -47,8 +47,8 @@ public class boardController {
     }
 
     @RequestMapping("/boardDetail")
-    public String boardDetail(@RequestParam int board_no) throws Exception {
-        boardService.selectBoardDetail(board_no);
+    public String boardDetail(@RequestParam int boardNo) throws Exception {
+        boardService.selectBoardDetail(boardNo);
         return "/boardDetail";
     }
 
