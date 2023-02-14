@@ -2,6 +2,8 @@ package com.community.solar_embassy.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -45,6 +47,10 @@ public class Booking implements Serializable {
     private String updaterId;
 
     private Date updateDate;
+
+    private Reserved reserved;
+
+    private List<Review> reviewList;
 
     private static final long serialVersionUID = 1L;
 }

@@ -14,9 +14,9 @@ public interface UsersMapper extends CRUD<Users,String>{
     List<Users> findPaging(PagingDto paging);
     int deleteById(String id);
     Users findById(String id);
-    int insert(Users dto);
-    int update(Users dto);
+    int insert(Users users);
 
+    int update(Users dto);
 }
 
 

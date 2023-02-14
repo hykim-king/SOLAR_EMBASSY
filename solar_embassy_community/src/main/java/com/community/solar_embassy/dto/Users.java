@@ -1,11 +1,12 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
-public class Users implements Serializable {
+public class Users {
     private String userId;
 
     private String nickname;
@@ -40,5 +41,16 @@ public class Users implements Serializable {
 
     private Integer profileImgNo;
 
-    private static final long serialVersionUID = 1L;
+    private ProfileImg profileImg;
+
+    private Admin admin;
+
+    private Grade grade;
+
+    private List<Letter> letterList;
+
+    private List<UserBlock> userBlockList;
+
+    private List<Booking> bookingList;
+
 }

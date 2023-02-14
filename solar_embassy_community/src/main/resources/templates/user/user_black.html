@@ -105,24 +105,25 @@ layout:decorate="~{/layout}"> -->
             border-radius: 5px 5px 0 0;
         }
 
+
+        #SE_left-sidebar { /*좌측 사이드바 영역값.*/
+            width: 300px;
+            height: 40px;
+            position: absolute;
+            transform: translate(1260px, 10px);
+            background-color: #333125;
+            border-radius: 5px;
+        }
+
         .SE_logbtn { /*로그인 공간 안의 버튼 3개.*/
-            margin: 10px 5px 5px 10px;
+            margin: 10px 0 0 10px;
             width: 80px;
             height: 20px;
             color: white;
-            font-size: 10px;
+            font-size: 11px;
             border-radius: 5px;
             background-color: #364959;
-        }
-
-        #SE_left-sidebar { /*좌측 사이드바 영역값.*/
-            background-color: #5164AA;
-            width: 360px;
-            height: 80px;
-            position: absolute;
-            transform: translate(0, 50px);
-            margin: 0;
-            z-index: 3;
+            border: 2px solid #0D3360;
         }
 
         input[id="menuicon"] {
@@ -278,6 +279,42 @@ layout:decorate="~{/layout}"> -->
             background-color: #a084dcbb;
             /* transition-duration: 0.1s; */
             padding: 0;
+        #SE_contents #content1 { /*NAV BAR 메인 메뉴 공간.*/
+            height: 80px;
+            position: fixed;
+            float: top;
+        }
+
+        #SE_menu_wrap { /*Nav bar 크기*/
+            width: 1200px;
+            height: 80px;
+            margin: 0 auto;
+            padding: 0;
+            z-index: 1000;
+        }
+
+        .SE_top_menu { /*Nav bar 각 메뉴*/
+            padding: 0;
+            margin: 0 auto;
+            width: 200px;
+            height: 100%;
+            background-color: #645CBB;
+            float: left;
+            text-align: center;
+            font: 20px/100px '';
+            /* transition-duration: 0.1s; */
+
+        }
+
+        .SE_sub_menu { /*드롭 다운 위치*/
+            margin-top: 10px;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            background-color: #A084DC;
+            /* transition-duration: 0.1s; */
+            padding: 0;
+
         }
 
         .SE_sub_menu > li { /*드롭다운 하위메뉴*/
@@ -495,6 +532,17 @@ layout:decorate="~{/layout}"> -->
             margin: 200px 0 0 10px;
 
         }
+
+        .SE_top_menu:hover > .SE_sub_menu { /*하위 메뉴 늘어나는 길이 hover*/
+            height: 240px;
+        }
+
+        .SE_sub_menu > li:hover { /*하위 메뉴 각 항목 hover*/
+            background-color: #EBC7E6;
+            transition-duration: 0.5s;
+            z-index: 1000;
+        }
+
         #user_info { /*유저 정보 칸*/
             background-color: #C3C0EB;
             display: inline-block;
@@ -569,6 +617,14 @@ layout:decorate="~{/layout}"> -->
             margin: 200px 0 0 10px;
 
         }
+        #SE_right-sidebar { /*우측 임시 사이드 바*/
+            background-color: #5164AA;
+            width: 360px;
+            height: 80px;
+            position: absolute;
+            transform: translate(1200px, -80px);
+        }
+
 
         #SE_footer { /*footer 영역*/
             background-color: Black;
@@ -585,6 +641,13 @@ layout:decorate="~{/layout}"> -->
 
         #SE_footer a {
             display: inline-block;
+            clear: left;
+            float: bottom;
+            position: absolute;
+            transform: translate(0, 2110px);
+            text-align: center;
+            color: white;
+            font: 18px/60px '';
         }
 
     </style>
@@ -710,6 +773,10 @@ layout:decorate="~{/layout}"> -->
                     </li>
                 </ul>
             </div>
+            <aside id="SE_right-sidebar">
+                <h1> 우측 사이드바</h1>
+                <h1> 기능없는상태</h1>
+            </aside>
             <div id="user_info">
                 <div id="user_info_btn">
                     <div id="user_info_btn1">

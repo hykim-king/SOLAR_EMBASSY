@@ -74,18 +74,19 @@ layout:decorate="~{/layout}"> -->
                     </div>
                     <div class="text-center">
                         <div id="user_info_bgc2" class="">
-                        <h2 class="mt-3">인기 여행지 게시글</h2>
+
+                        <h2 class="mt-3">(일간 추천을 가장 많이받은 게시글?)</h2>
                         </div>
 
                         <div id="user_info_bgc3" class="">
-                        <h2 class="mt-3">추천 리뷰 게시글</h2>
+                        <h2 class="mt-3">(주간 추천을 가장 많이받은 게시글?)</h2>
+
                         </div>
                     </div>
 
                     <div id="boardList_table_btn" class="mb-2">
                         <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
-                        <button class="float-end btn btn-outline-dark btn-lg" type="button">글쓰기</button>
-
+                        <a href="/board/boardWrite.do" class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
                     </div>
 
                     <div id="boardList_table">
@@ -103,23 +104,29 @@ layout:decorate="~{/layout}"> -->
                             <tr>
                                 <th scope="col" class="text-center">글번호</th>
                                 <th scope="col" class="text-center">구분(주제)</th>
-                                <th scope="col" class="text-center">제목(댓글수)</th>
+                                <th scope="col" class="text-center">제목</th>
                                 <th scope="col" class="text-center">작성자</th>
                                 <th scope="col" class="text-center">추천수</th>
                                 <th scope="col" class="text-center">조회수</th>
-                                <th scope="col" class="text-center">날짜</th>
+                                <th scope="col" class="text-center">작성일</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th class="text-center">자동차 갤럭시</th>
-                                <td class="text-center">공지(공지)</td>
-                                <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
-                                <td class="text-center">sowlw3</td>
-                                <td class="text-center">500</td>
-                                <td class="text-center">300</td>
-                                <td class="text-center">2023-23-23</td>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}">
+                                <th:block th:text="${list}"></th:block>
+                                <td th:text="${list.boardNo}"></td>
+                                <td class="title">
+                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}" th:text="${list.title}"></a>
+                                </td>
+                                <td th:text="${list.boardNo}"></td>
+                                <td th:text="${list.boardNo}"></td>
+                                <td th:text="${list.boardNo}"></td>
+                                <td th:text="${list.postTime}"></td>
                             </tr>
+                            <tr th:unless="${#lists.size(list)} > 0">
+                                <td colspan="8">조회된 결과가 없습니다.</td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
 

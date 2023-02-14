@@ -2,6 +2,8 @@ package com.community.solar_embassy.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -29,6 +31,8 @@ public class Reply implements Serializable {
     private String imgPath;
 
     private String originImgName;
+
+    private List<Reply> replyList;
 
     private static final long serialVersionUID = 1L;
 }
