@@ -85,7 +85,8 @@ layout:decorate="~{/layout}"> -->
                 <div id="SE_content4">
                     <div id="SE_sub3">
                         <div class="SE_new_post_title"><a class="SE_board_title" href="">최근 생성 된 게시판</a></div>
-                        <div class="SE_new_post"></div>
+                        <div class="SE_new_post">
+                        </div>
                     </div>
 
                     <div id="SE_sub4">
@@ -122,7 +123,24 @@ layout:decorate="~{/layout}"> -->
                 <div id="SE_content5">
                     <div id="SE_sub5">
                         <div class="SE_board1_title"><a class="SE_board_title" href="">임시 게시판 1호</a></div>
-                        <div class="SE_board1"></div>
+                        <div class="SE_board1">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>작성자</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="${list_one.boardNo}" ></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${list_one.userId}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div id="SE_sub6">
