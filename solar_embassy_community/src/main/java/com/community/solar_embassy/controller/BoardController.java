@@ -2,19 +2,17 @@ package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.BoardDto;
 import com.community.solar_embassy.service.BoardService;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Locale;
 
 @Controller
 @RequestMapping("/board")
-public class boardController {
+public class BoardController {
 
     @Autowired
     BoardService boardService;
@@ -48,9 +46,10 @@ public class boardController {
         }
     }
 
-    @RequestMapping("/boardDetail")
-    public String boardDetail(@RequestParam int board_no) throws Exception {
-        boardService.selectBoardDetail(board_no);
+    @RequestMapping("/openBoardDetail")
+    public String boardDetail(@RequestParam int boardNo, Model model) throws Exception {
+        BoardDto board=boardService.selectBoardDetail(boardNo);
+        model.addAttribute("board",board);
         return "/boardDetail";
     }
 

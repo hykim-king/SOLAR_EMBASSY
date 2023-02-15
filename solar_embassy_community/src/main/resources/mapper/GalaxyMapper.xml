@@ -19,4 +19,7 @@
         reg_time,updater_id,update_time,
         state
     </sql>
+    <select id="findGalaxy" resultType="Galaxy">
+        SELECT * FROM galaxy WHERE galaxy_no = #{galaxyNo}
+    </select>
 </mapper>

@@ -23,4 +23,7 @@
         ceo,industries,slogan,
         content
     </sql>
+    <select id="findCompany" resultType="Company">
+        SELECT * FROM company WHERE com_no=#{com}
+    </select>
 </mapper>

@@ -18,7 +18,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(Model model) throws Exception {
-        List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list = boardService.selectBoardListBySize(5);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         model.addAttribute("list", list);
         return "/index";
     }

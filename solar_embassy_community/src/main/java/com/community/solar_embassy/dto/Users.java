@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class Users {
@@ -20,11 +21,11 @@ public class Users {
     private String tell;
 
     private String adminId;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date regDate;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date lastLoginTime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date updateTime;
 
     private Integer state;
@@ -36,7 +37,7 @@ public class Users {
     private Integer exp;
 
     private Integer userLevel;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date birth;
 
     private Integer profileImgNo;

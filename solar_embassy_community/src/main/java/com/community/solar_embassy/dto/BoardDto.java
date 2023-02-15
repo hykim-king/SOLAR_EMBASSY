@@ -1,6 +1,7 @@
 package com.community.solar_embassy.dto;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -11,18 +12,22 @@ public class BoardDto{
 
     private Integer galaxyNo;
 
+    private Galaxy galaxy;
+
     private String userId;
+
+    private Users user;
 
     private Integer boardTag;
 
     private String title;
 
     private String contents;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:Ss")
     private Date postTime;
 
     private String updaterId;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     private Integer state;

@@ -12,9 +12,11 @@ public interface BoardMapper {
     List<BoardDto> selectBoardList() throws Exception;
     int insertBoard(BoardDto board) throws Exception;
     void updateViews(int board_no) throws Exception;
-    BoardDto selectBoardDetail(int board_no) throws Exception;
+    List<BoardDto> selectBoardDetail(int board_no) throws Exception;
     void updateBoard(BoardDto board) throws Exception;
     void deleteBoard(int board_no) throws Exception;
+
+    List<BoardDto> selectBoardListBySize(int size);
 }
 
 
