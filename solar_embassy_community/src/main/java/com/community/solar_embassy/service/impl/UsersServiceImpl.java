@@ -1,6 +1,7 @@
 package com.community.solar_embassy.service.impl;
 
 import com.community.solar_embassy.dto.Users;
+import com.community.solar_embassy.mapper.ProfileImgMapper;
 import com.community.solar_embassy.mapper.UsersMapper;
 import com.community.solar_embassy.service.UsersService;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class UsersServiceImpl implements UsersService {
 
     private UsersMapper usersMapper;
+    private ProfileImgMapper profileImgMapper;
 
     public UsersServiceImpl(UsersMapper usersMapper) {
         this.usersMapper = usersMapper;
@@ -17,7 +19,8 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public Users login(String userId, String pw) {
-        return usersMapper.findByUserIdAndPw(userId, pw);
+        Users user = usersMapper.findByUserIdAndPw(userId, pw);
+        return user;
     }
 
     @Override
