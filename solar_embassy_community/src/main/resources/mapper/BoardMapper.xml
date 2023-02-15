@@ -62,10 +62,10 @@
     </update>
     <select id="selectBoardDetail" parameterType="int" resultMap="BaseResultMap">
         <![CDATA[
-        SELECT /*board_no, title, contents, views, DATE_FORMAT(post_time, '%Y.%m.%d %H:%i:%s') as post_time, user_id*/*
+        SELECT /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
         FROM board
         WHERE board_no = #{board_no}
-          AND state = '1'
+        AND state = '1'
         ]]>
     </select>
     <select id="selectBoardListBySize" resultMap="BaseResultMap">
@@ -75,8 +75,8 @@
     <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">
         <![CDATA[
         UPDATE board
-        SET title     = #{title},
-            contents  = #{contents},
+        SET title    = #{title},
+            contents = #{contents},
             user_id   = 'user1',
             post_time = NOW()
         WHERE board_no = #{boardNo}
@@ -85,8 +85,7 @@
 
     <update id="deleteBoard" parameterType="int">
         <![CDATA[
-        DELETE
-        FROM board
+        DELETE FROM board
         WHERE board_no = #{board_no}
         ]]>
 </update>
