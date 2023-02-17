@@ -18,6 +18,8 @@
         <result property="likes" column="likes" jdbcType="INTEGER"/>
         <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
         <result property="views" column="views" jdbcType="INTEGER"/>
+        <association property="user" column="user_id" select="com.community.solar_embassy.mapper.UsersMapper.findById"
+                     fetchType="lazy"/>
     </resultMap>
 
     <!--    <sql id="Base_Column_List">-->
@@ -69,15 +71,15 @@
         SELECT /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
         FROM board
         WHERE board_no = #{board_no}
-        AND state = '1'
+          AND state = '1'
         ]]>
     </select>
     <!--수정, 삭제-->
     <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">
         <![CDATA[
         UPDATE board
-        SET title    = #{title},
-            contents = #{contents},
+        SET title     = #{title},
+            contents  = #{contents},
             user_id   = 'user1',
             post_time = NOW()
         WHERE board_no = #{boardNo}
@@ -86,7 +88,8 @@
 
     <update id="deleteBoard" parameterType="int">
         <![CDATA[
-        DELETE FROM board
+        DELETE
+        FROM board
         WHERE board_no = #{board_no}
         ]]>
 </update>

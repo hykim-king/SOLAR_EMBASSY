@@ -19,10 +19,14 @@
             <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        reply_no,board_no,user_id,
-        fk_reply_no,contents,post_time,
-        update_time,likes,dislikes,
-        state,img_path,origin_img_name
-    </sql>
+    <insert id="insert">
+        INSERT INTO solar_embassy.reply (reply_no, board_no, user_id, fk_reply_no, contents, post_time)
+        VALUES (#{replyNo}, #{boardNo}, '#{userId}', #{fkReplyNo}, #{contents}, #{postTime})
+    </insert>
+
+    <delete id="deleteById">
+
+    </delete>
+
+
 </mapper>

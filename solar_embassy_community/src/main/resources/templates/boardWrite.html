@@ -76,6 +76,9 @@ layout:decorate="~{/layout}"> -->
             <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post" action="/board/boardWrite.do">
+                        <input type="hidden" name="usreId" th:value="${session.loginUser.userId}">
+                        <input type="hidden" name="galaxyNo"  th:value="1">
+                        <input type="text" name="boardTag" th:value="1">
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,10 +103,12 @@ layout:decorate="~{/layout}"> -->
                             </div>
                             <div id="textarea_btn">
                                 <button class="btn btn-Light"><a href="/board/boardList.do"></a>취소</button>
-                                <button type="submit" class="btn btn-Light"><a href="/board/boardDetail">저장</a></button>
+                                <button type="submit" class="btn btn-Light"><a href="/board/boardDetail.do"></a>저장</button>
                             </div>
                         </div>
                     </form>
+
+
                 </div>
             </div>
             <footer id="SE_footer">
