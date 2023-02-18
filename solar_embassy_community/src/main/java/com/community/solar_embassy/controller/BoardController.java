@@ -12,7 +12,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping("/board")
-public class boardController {
+public class BoardController {
 
     @Autowired
     BoardService boardService;
@@ -21,7 +21,7 @@ public class boardController {
     public String boardList(Locale locale, Model model) throws Exception {
         List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         model.addAttribute("list", list);
-        return "boardList";
+        return "/boardList";
     }
 
     @GetMapping("/boardWrite.do")
@@ -29,7 +29,7 @@ public class boardController {
         return "/boardWrite";
     }
 
-//    @PostMapping("/board/boardWrite")
+    //    @PostMapping("/board/boardWrite")
 //    public String boardWrite(BoardDto board) throws Exception {
 //        boardService.insertBoard(board);
 //        return "redirect:/board/boardList.do";
@@ -47,10 +47,13 @@ public class boardController {
     }
 
     @RequestMapping("/boardDetail")
-    public String boardDetail(@RequestParam int boardNo) throws Exception {
-        boardService.selectBoardDetail(boardNo);
+    public String boardDetail(@RequestParam int boardNo, Model model) throws Exception {
+        BoardDto board = boardService.selectBoardDetail(boardNo);
+        board.setBoardNo(boardNo);
+        model.addAttribute("board",board);
         return "/boardDetail";
     }
+//     return "redirect:  (설정한 링크로 가는 것 ) / html로 가면 redirect 제외해야 함
 
     //    @RequestMapping("/openBoardDetail")
 //    public ModelAndView openBoardDetail(@RequestParam int board_no) throws Exception{
@@ -66,10 +69,18 @@ public class boardController {
     }
 
 
-    @RequestMapping("/deleteBoard")  //삭제요청
-    public String deleteBoard(BoardDto board) throws Exception {
-        boardService.deleteBoard(board.getBoardNo());      //게시글 삭제
-        return "redirect:/board/boardList";  //삭제완료 후 게시판 목록으로
+    @RequestMapping (value = "deleteBoard", method = RequestMethod.POST)
+    public String deleteBoard(@RequestParam int boardNo) throws Exception {
+        boardService.deleteBoard(boardNo);
+        return "redirect:/board/boardList.do";
     }
+
+
+
+//    @RequestMapping("/deleteBoard")  //삭제요청
+//    public String deleteBoard(BoardDto board) throws Exception {
+//        boardService.deleteBoard(board.getBoardNo());      //게시글 삭제
+//        return "redirect:/board/boardList";  //삭제완료 후 게시판 목록으로
+//    }
 
 }
