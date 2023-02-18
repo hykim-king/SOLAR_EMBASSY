@@ -56,19 +56,30 @@ create table company
 
 create table auto
 (
-    auto_no      int auto_increment  ,
+    auto_no      int         not null,
     auto_name    varchar(20) not null,
     code_name    varchar(20) not null,
-    com          int         not null,
+    com_name     varchar(20) not null,
+    com          int         null,
     auto_type    varchar(10) null,
     release_date date        null,
     seat         int         null,
     mpg          double      null,
     auto_engine  varchar(10) null,
     primary key (auto_no, auto_name, code_name),
-    constraint auto_company_com_no_fk
-        foreign key (com) references company (com_no)
-            on update cascade on delete cascade
+    constraint auto_company_com_no_com_name_fk
+        foreign key (com, com_name) references company (com_no, com_name)
+);
+
+create table auto_data
+(
+    data_no   int auto_increment,
+    p_data    varchar(50) not null,
+    auto_name varchar(20) not null,
+    sub_data  varchar(50) not null,
+    disp      int         not null,
+    price     int         not null,
+    primary key (data_no, p_data)
 );
 
 create table auto_img
