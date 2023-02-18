@@ -5,28 +5,36 @@
 <mapper namespace="com.community.solar_embassy.mapper.ReplyMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Reply">
-            <id property="replyNo" column="reply_no" jdbcType="VARCHAR"/>
-            <result property="boardNo" column="board_no" jdbcType="INTEGER"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="fkReplyNo" column="fk_reply_no" jdbcType="VARCHAR"/>
-            <result property="contents" column="contents" jdbcType="VARCHAR"/>
-            <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="likes" column="likes" jdbcType="INTEGER"/>
-            <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
-            <result property="state" column="state" jdbcType="INTEGER"/>
-            <result property="imgPath" column="img_path" jdbcType="VARCHAR"/>
-            <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
+        <id property="replyNo" column="reply_no" jdbcType="INTEGER"/>
+        <result property="boardNo" column="board_no" jdbcType="INTEGER"/>
+        <result property="userId" column="userId" jdbcType="VARCHAR"/>
+        <result property="fkReplyNo" column="fk_reply_no" jdbcType="INTEGER"/>
+        <result property="contents" column="contents" jdbcType="VARCHAR"/>
+        <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="likes" column="likes" jdbcType="INTEGER"/>
+        <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="imgPath" column="img_path" jdbcType="VARCHAR"/>
+        <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
+        <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById"
+                     autoMapping="true" fetchType="lazy"></association>
     </resultMap>
 
     <insert id="insert">
-        INSERT INTO solar_embassy.reply (reply_no, board_no, user_id, fk_reply_no, contents, post_time)
-        VALUES (#{replyNo}, #{boardNo}, '#{userId}', #{fkReplyNo}, #{contents}, #{postTime})
+        INSERT INTO solar_embassy.reply (reply_no, board_no, userId, contents)
+        VALUES (#{replyNo}, #{boardNo}, #{userId}, #{contents})
     </insert>
 
     <delete id="deleteById">
-
+        DELETE FROM solar_embassy.reply WHERE reply_no=#{replyNo}
     </delete>
+    <select id="findByBoardNo" resultMap="BaseResultMap">
+        SELECT *
+        FROM reply
+        WHERE board_no = #{boardNo}
+        ORDER BY reply_no DESC
+    </select>
 
 
 </mapper>

@@ -66,7 +66,7 @@ layout:decorate="~{/layout}"> -->
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
-        <!--검색과 로그인 end-->
+        <!--검색과 로그인 end-->5
         <div id="SE_contents" style="z-index:2">
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
@@ -75,10 +75,8 @@ layout:decorate="~{/layout}"> -->
             <!--여기부터-->
             <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
                 <div id="user_info_bgc1" class="pt-1">
-                    <form id="frm" name="frm" method="post" action="/board/boardWrite.do">
-                        <input type="hidden" name="usreId" th:value="${session.loginUser.userId}">
-                        <input type="hidden" name="galaxyNo" th:value="1">
-                        <input type="hidden" name="boardTag" th:value="1">
+                    <form id="frm" name="frm" method="post" action="/board/boardUpdate.do">
+                        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -92,20 +90,22 @@ layout:decorate="~{/layout}"> -->
                                 </ul>
                             </div>
                             <div>
-                                <input type="text" placeholder="제목" id="title" name="title" class="form-control"
+                                <input th:text="${board.title}" type="text" placeholder="제목" id="title" name="title" class="form-control"
                                        aria-label="Text input with dropdown button" style="width: 600px">
                             </div>
                         </div>
 
                         <div>
                             <div id="textarea">
-                                <textarea id="summernote" name="contents"></textarea>
+                                <textarea th:text="${board.contents}" id="summernote" name="contents"></textarea>
                             </div>
                             <div id="textarea_btn">
                                 <a href="/board/boardList.do" class="btn btn-Light">취소</a>
-                                <button type="submit" class="btn btn-Light"><a href="/board/boardDetail.do"></a>저장</button>
+                                <button type="submit" class="btn btn-danger"><a href="/board/boardDetail.do"></a>삭제</button>
+                                <button type="submit" class="btn btn-warning"><a href="/board/boardDetail.do"></a>수정</button>
                             </div>
                         </div>
+                        <input type="hidden" name="usreId" th:value="${session.loginUser.userId}">
                     </form>
 
 

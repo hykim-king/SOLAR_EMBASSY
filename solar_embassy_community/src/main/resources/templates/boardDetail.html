@@ -54,10 +54,7 @@ layout:decorate="~{/layout}"> -->
             border-bottom: 1px solid #D3D3D3;
         }
 
-        #reply_comment2 {
-            background-color: #F0FFFF;
-            border-bottom: 1px solid #D3D3D3;
-        }
+
 
         #reply_reg {
             background-color: #F0FFFF;
@@ -88,7 +85,7 @@ layout:decorate="~{/layout}"> -->
                 <div>
                     <h2 class="ms-5 pt-5"><strong>여행 갤럭시</strong></h2>
                 </div>
-                <div id="head_info" class="px-4 py-2 mt-4 mb-5">
+                <div id="head_info" class="px-4 py-2 mt-4 mb-3">
                     <div class="fs-3">
                         <span>[질문] </span>
                         <span th:text="${board.title}"></span>
@@ -96,17 +93,17 @@ layout:decorate="~{/layout}"> -->
                     <div>
                         <span th:text="${board.user.nickname}"> </span>
                         <span> | </span>
-                        <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm:ss')}"> </span>
+                        <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm')}"> </span>
                         <span class="float-end"> 댓글 (3) </span>
                         <span class="float-end"> 추천: 3 | </span>
                         <span class="float-end"> 조회: 3 | </span>
                     </div>
                 </div>
-
+                <div class="mb-2 text-end">
+                    <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]" class="float-end btn btn-warning">수정</button>
+                </div>
                 <div id="main_content" class="p-5">
-                    <div th:text="${board.contents}">
-
-                    </div>
+                    <div th:text="${board.contents}"></div>
                 </div>
 
                 <div id="likes">
@@ -118,11 +115,15 @@ layout:decorate="~{/layout}"> -->
                 <div id="reply" class="pt-4">
                     <h4 class="ms-4"><span><i class="bi bi-chat-dots me-2"></i></span>댓글 (2)</h4>
                 </div>
-                <div id="reply_comment">
+
+                <div id="reply_comment" th:each="reply:${replyList}">
                     <div class="px-3 pt-3 pb-3">
-                        <span>user1 </span>
-                        <span>(2023-02-16)</span>
-                        <span class="ms-2"><i class="bi bi-x-square"></i></span>
+                        <span th:text="${reply.user.nickname}"> </span>
+                        <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
+                        <span><i class="bi bi-x-square"></i></span>
+<!--                        <form id="reply_del" class="p-4 form" th:if="${session.loginUser == reply.userId}" method="post" action="/reply/delete.do">-->
+<!--                            <span class="ms-2"><i class="bi bi-x-square"></i></span>-->
+<!--                        </form>-->
                         <span>
                             <button type="button" class="btn btn-primary btn-sm float-end "><i
                                     class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
@@ -131,7 +132,7 @@ layout:decorate="~{/layout}"> -->
                         </span>
                     </div>
                     <div id="reply_content" class="px-3">
-                        <p>틀 잡기용 댓글입니다.</p>
+                        <p th:text="${reply.contents}"></p>
                     </div>
 
                     <div>
@@ -139,43 +140,26 @@ layout:decorate="~{/layout}"> -->
                     </div>
                 </div>
 
-                <!-- 백엔드 작업시 삭제해주세요! -->
-                <div id="reply_comment2">
-                    <div class="px-3 pt-3 pb-3">
-                        <span>user2 </span>
-                        <span>(2023-02-16)</span>
-                        <span class="ms-2"><i class="bi bi-x-square"></i></span>
-                        <span>
-                            <button type="button" class="btn btn-primary btn-sm float-end "><i
-                                    class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
-                            <button type="button" class="btn btn-danger btn-sm float-end me-1"><i
-                                    class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
-                        </span>
-                    </div>
-                    <div id="reply_content2" class="px-3">
-                        <p>삭제할 댓글 입니다.</p>
-                    </div>
 
-                    <div>
-                        <p class="text-end me-3">답글</p>
-                    </div>
-                </div>
-                <!-- 백엔드 작업시 삭제해주세요! end ------------------------->
 
-                <form action="/reply/register.do" method="POST" name="replyRegisterForm">
-                    <div id="reply_reg" class="p-4">
-                        <div class="mb-3">
-                            <input class="form-control text-center" type="text" th:value="${session.loginUser.nickname}" aria-label="Disabled input example" readonly
-                            style="width: 15%;">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
-                        </div>
-                        <div id="reply_reg_btn">
-                            <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>
-                            <button type="submit" class="btn btn-secondary btn-sm float-end">등록</button>
-                        </div>
+
+                <!--댓글 등록-->
+                <form id="reply_reg" class="p-4 form" th:if="${session.loginUser!=null}" method="post" action="/reply/register.do">
+                    <div class="mb-3">
+                        <input class="form-control text-center" type="text"  th:value="${session.loginUser.nickname}"
+                               aria-label="Disabled input example" readonly
+                               style="width: 15%;">
+                        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+                        <input type="hidden" name="boardNo" th:value="${boardNo}">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                  name="contents"></textarea>
+                    </div>
+                    <div id="reply_reg_btn">
+                        <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>
+                        <button type="submit" class="btn btn-secondary btn-sm float-end">등록</button>
                     </div>
                 </form>
-
+                <!--댓글 등록 end-->
                 <div id="boardList_table_btn" class="mb-2 mt-3">
                     <button class="btn btn-dark btn-sm" type="button">전체글</button>
                     <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i class="bi bi-pencil"></i> 글 쓰기</a>
@@ -211,7 +195,7 @@ layout:decorate="~{/layout}"> -->
                                    th:text="${list.boardTag}"></a>
                             </td>
                             <td th:text="${list.title}" style="cursor: pointer"
-                                th:onclick="location.href = [[@{'/board/{boardNo}/boardDetail.do' (boardNo=${list.boardNo})}]]"></td>
+                                th:onclick="location.href=[[@{'/board/{boardNo}/boardDetail.do' (boardNo=${list.boardNo})}]]"></td>
                             <td th:text="${list.user.nickname}"></td>
                             <td th:text="${list.likes}"></td>
                             <td th:text="${list.views}"></td>

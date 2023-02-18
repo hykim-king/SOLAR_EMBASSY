@@ -121,7 +121,7 @@ layout:decorate="~{/layout}"> -->
                                 <td th:text="${list.user.nickname}"></td>
                                 <td th:text="${list.likes}"></td>
                                 <td th:text="${list.views}"></td>
-                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm')}"></td>
                             </tr>
                             <tr th:unless="${#lists.size(list)} > 0">
                                 <td colspan="8">조회된 결과가 없습니다.</td>
@@ -143,5 +143,6 @@ layout:decorate="~{/layout}"> -->
             </footer>
 
         </div>
+</div>
 </body>
 </html>

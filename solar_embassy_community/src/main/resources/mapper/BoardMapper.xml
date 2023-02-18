@@ -7,7 +7,7 @@
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.BoardDto">
         <id property="boardNo" column="board_no" jdbcType="INTEGER"/>
         <result property="galaxyNo" column="galaxy_no" jdbcType="INTEGER"/>
-        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="userId" jdbcType="VARCHAR"/>
         <result property="boardTag" column="board_tag" jdbcType="INTEGER"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
         <result property="contents" column="contents" jdbcType="VARCHAR"/>
@@ -18,7 +18,7 @@
         <result property="likes" column="likes" jdbcType="INTEGER"/>
         <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
         <result property="views" column="views" jdbcType="INTEGER"/>
-        <association property="user" column="user_id" select="com.community.solar_embassy.mapper.UsersMapper.findById"
+        <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById"
                      fetchType="lazy"/>
     </resultMap>
 
@@ -50,7 +50,7 @@
                           title,
                           contents,
                           post_time,
-                          user_id)
+                          userId)
         VALUES ('1',
                 '1',
                 #{title},
@@ -80,7 +80,7 @@
         UPDATE board
         SET title     = #{title},
             contents  = #{contents},
-            user_id   = 'user1',
+            userId   = 'user1',
             post_time = NOW()
         WHERE board_no = #{boardNo}
         ]]>

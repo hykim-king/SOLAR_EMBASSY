@@ -13,6 +13,7 @@ public class Reply implements Serializable {
     private Integer boardNo;
 
     private String userId;
+    private Users user;
 
     private String fkReplyNo;
 

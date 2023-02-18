@@ -5,6 +5,8 @@ import com.community.solar_embassy.mapper.ReplyMapper;
 import com.community.solar_embassy.service.ReplyService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
@@ -16,6 +18,17 @@ public class ReplyServiceImpl implements ReplyService {
     @Override
     public int register(Reply reply) {
         return replyMapper.insert(reply);
+    }
+
+    @Override
+    public int delete(Reply reply) {
+        return replyMapper.deleteById(reply);
+    }
+
+
+    @Override
+    public List<Reply> findByBoardNo(int boardNo) {
+        return replyMapper.findByBoardNo(boardNo);
     }
 }
 

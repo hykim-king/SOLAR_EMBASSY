@@ -1,6 +1,7 @@
 package com.community.solar_embassy.controller;
 
 
+import com.community.solar_embassy.dto.BoardDto;
 import com.community.solar_embassy.dto.Reply;
 import com.community.solar_embassy.dto.Users;
 import com.community.solar_embassy.service.ReplyService;
@@ -38,7 +39,6 @@ public class ReplyController {
     }
     //pathVariable + (delete,patch,put,post,get)
 
-
     @PostMapping("/register.do")
     public @ResponseBody AjaxSateHandler register(Reply reply,
                                                   @SessionAttribute Users loginUser){
@@ -49,6 +49,15 @@ public class ReplyController {
         ajaxSateHandler.setState(register);
         return ajaxSateHandler;
         //return "{\"state\":"+register+"}";
+    }
+    @PostMapping ("/delete.do")
+    public @ResponseBody AjaxSateHandler delete(Reply reply,
+                                                @SessionAttribute Users loginUser){
+        AjaxSateHandler ajaxSateHandler = new AjaxSateHandler();
+        int delete=0;
+        delete = replyService.delete(reply);
+        ajaxSateHandler.setState(delete);
+        return  ajaxSateHandler;
     }
 
 }

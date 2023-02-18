@@ -5,7 +5,7 @@
 <mapper namespace="com.community.solar_embassy.mapper.UsersMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Users">
-        <id property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <id property="userId" column="userId" jdbcType="VARCHAR"/>
         <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
         <result property="passwords" column="passwords" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
@@ -25,7 +25,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        user_id,nickname,passwords,
+        userId,nickname,passwords,
         email,hp,tell,
         admin_id,reg_date,last_login_time,
         update_time,state,c_point,
@@ -34,20 +34,20 @@
     </sql>
     <insert id="insert" parameterType="com.community.solar_embassy.dto.Users">
         insert INTO users
-            (user_id,  passwords,  nickname, email) VALUES
+            (userId,  passwords,  nickname, email) VALUES
             (#{userId}, #{passwords}, #{nickname}, #{email})
     </insert>
 
 
     <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.Users">
-        SELECT * FROM USERS WHERE user_id=#{userId} AND passwords=#{passwords}
+        SELECT * FROM USERS WHERE userId=#{userId} AND passwords=#{passwords}
     </select>
 
     <delete id="deleteById">
-        DELETE FROM solar_embassy.users where user_id=#{user_id}
+        DELETE FROM solar_embassy.users where userId=#{userId}
     </delete>
 
     <select id="findById" resultType="com.community.solar_embassy.dto.Users">
-        SELECT * FROM solar_embassy.users where user_id=#{user_id}
+        SELECT * FROM solar_embassy.users where userId=#{userId}
     </select>
 </mapper>
