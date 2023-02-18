@@ -15,6 +15,10 @@
         <result property="seat" column="seat" jdbcType="INTEGER"/>
         <result property="mpg" column="mpg" jdbcType="DOUBLE"/>
         <result property="autoEngine" column="auto_engine" jdbcType="VARCHAR"/>
+        <result property="disp" column="disp" jdbcType="INTEGER"/>
+        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="data" column="data" jdbcType="VARCHAR"/>
+        <result property="subData" column="sub_data" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--    <sql id="Base_Column_List">-->
@@ -34,7 +38,9 @@
                DATE_FORMAT(release_date, '%Y.%m.%d') as release_date,
                seat,
                mpg,
-               auto_engine*/*
+               auto_engine,
+                disp,
+                price*/*
         FROM auto
         WHERE auto_name = #{auto_name}
         ]]>

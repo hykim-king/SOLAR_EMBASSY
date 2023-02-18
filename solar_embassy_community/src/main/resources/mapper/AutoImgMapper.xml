@@ -12,7 +12,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        auto_img_no,auto_no,auto_img_path,
+        auto_img_no, auto_no, auto_img_path,
         source_img_name
     </sql>
+
 </mapper>

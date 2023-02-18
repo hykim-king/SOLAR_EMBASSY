@@ -28,6 +28,14 @@ public class Auto implements Serializable {
 
     private String autoEngine;
 
+    private Integer disp;
+
+    private Integer price;
+
+    private String data;
+
+    private String subData;
+
     private static final long serialVersionUID = 1L;
 
 }
