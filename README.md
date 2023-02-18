@@ -8,19 +8,18 @@
 [5. 기능 시연](#5-기능-시연)  
     
 # 1-팀 소개 
-팀원: 김민환, 김성범, 김유석, 문현희, 안성현, 윤한성, 정승연, 정효빈
+팀원: 김성범, 김유석, 문현희, 안성현, 윤한성, 정승연, 정효빈
   
 ## 1-1. 담당업무 
-|이름|담당업무|
-|:---------:|:------------:|
-|김민환     |메인, 회원가입 |
-|김성범     |메인, 회원가입 |
-|김유석     |메인, 회원가입 |
-|문현희     |메인, 예약     |
-|안성현     |메인, 회원가입 |
-|윤한성     |메인, 회원가입 |
-|정승연     |메인, 회원가입 |
-|정효빈     |메인, 자동차 갤러리/백과 |
+|이  름|담당업무
+|김성범|쪽지(F,B), 회원가입(F) 등 
+|김유석|회원정보수정(F) 등
+|문현희|Board(B), 캠핑예약(F,B) 등
+|안성현|Board(F), 회원가입(F) 등
+|윤한성|메인(F), 로그인(F) 등
+|정승연|메인(B), 회원관리(F) 등
+|정효빈|자동차 갤러리/백과(F,B) 등
+자세한 역할은 설계서 참조.
 
 # 2. Project 목표
 ▶️ 한 사이트에서 다양한 주제에 대해 의견이 오고 갈수 있게 제작합니다.  
@@ -29,8 +28,10 @@
 
 # 3. Project 기획
    ### 3.1- 개발환경 
-   사용언어 JAVA 외 상세내용 추가 예정   
-   
+   Tools : IntelliJ IDEA, Visual Studio Code, PhotoshopCC, POWER SHELL, GITHUB, figuma, eXERD, DB Browser for SQLite
+   JAVA(Spring boot, maven), HTML(CSS, Bootstrap, Java script), Mysql
+   Apache Tomcat
+    
    ### 3.2-일정(WBS)  
    ![WBS](https://github.com/MOONHYUNHEE/markdown_20230127/blob/main/doc/wbs.jpg)  
    
@@ -39,3 +40,4 @@
    <img src="https://user-images.githubusercontent.com/119906623/215012951-7e4634f7-908a-4535-a0e3-98fc6ab94410.png" width="200" height="400"/>
 
 # 5. 기능 시연
+ - 추후 수정
