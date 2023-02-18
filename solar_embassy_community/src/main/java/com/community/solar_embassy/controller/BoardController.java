@@ -46,13 +46,21 @@ public class BoardController {
         }
     }
 
-    @RequestMapping("/boardDetail")
-    public String boardDetail(@RequestParam int boardNo, Model model) throws Exception {
-        BoardDto board = boardService.selectBoardDetail(boardNo);
-        board.setBoardNo(boardNo);
+
+    @GetMapping("/{boardNo}/boardDetail.do") /*@RequestParam int boardNo, Model model*/
+    public String boardDetail(Locale locale, Model model, @PathVariable int boardNo) throws Exception {
+        List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+
+        BoardDto board=boardService.selectBoardDetail(boardNo);
+        model.addAttribute("list", list);
         model.addAttribute("board",board);
-        return "/boardDetail";
+
+//        BoardDto board = boardService.selectBoardDetail(boardNo);
+//        board.setBoardNo(boardNo);
+//        model.addAttribute("board",board);
+        return "boardDetail";
     }
+
 //     return "redirect:  (설정한 링크로 가는 것 ) / html로 가면 redirect 제외해야 함
 
     //    @RequestMapping("/openBoardDetail")

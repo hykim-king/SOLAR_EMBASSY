@@ -25,7 +25,7 @@ layout:decorate="~{/layout}"> -->
             position: relative;
         }
 
-        #user_info_bgc2{
+        #user_info_bgc2 {
             margin-top: 30px;
             margin-bottom: 40px;
             background-color: #EBC7E6;
@@ -36,7 +36,7 @@ layout:decorate="~{/layout}"> -->
 
         }
 
-        #user_info_bgc3{
+        #user_info_bgc3 {
             margin-top: 30px;
             margin-left: 10%;
             margin-bottom: 40px;
@@ -55,7 +55,6 @@ layout:decorate="~{/layout}"> -->
 <div id="SE_container">
 
 
-
     <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
@@ -67,10 +66,9 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 end-->
 
             <!--여기부터-->
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
                 <div id="user_info_bgc1" class="pt-1">
                     <div>
-                        <h1 class="mx-5 my-5 border-bottom-0"><strong>여행 갤럭시</strong></h1>
+                        <h1 class="mx-5 my-5"><strong>여행 갤럭시</strong></h1>
                     </div>
                     <div class="text-center">
                         <div id="user_info_bgc2" class="">
@@ -90,15 +88,15 @@ layout:decorate="~{/layout}"> -->
                     </div>
 
                     <div id="boardList_table">
-                        <table class="table table-light">
+                        <table class="table table-light table-hover">
                             <colgroup>
-                                <col style="width:12%">
-                                <col style="width:10%">
-                                <col style="width:40%">
-                                <col style="width:10%">
-                                <col style="width:9%">
-                                <col style="width:9%">
-                                <col style="width:10%">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
                             </colgroup>
                             <thead class="table-success">
                             <tr>
@@ -112,16 +110,18 @@ layout:decorate="~{/layout}"> -->
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}">
-                                <th:block th:text="${list}"></th:block>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}" class="text-center">
                                 <td th:text="${list.boardNo}"></td>
                                 <td class="title">
-                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}" th:text="${list.title}"></a>
+                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}"
+                                       th:text="${list.boardTag}"></a>
                                 </td>
-                                <td th:text="${list.boardNo}"></td>
-                                <td th:text="${list.boardNo}"></td>
-                                <td th:text="${list.boardNo}"></td>
-                                <td th:text="${list.postTime}"></td>
+                                <td th:text="${list.title}" style="cursor: pointer"
+                                    th:onclick="location.href = [[@{'/board/{boardNo}/boardDetail.do' (boardNo=${list.boardNo})}]]"></td>
+                                <td th:text="${list.user.nickname}"></td>
+                                <td th:text="${list.likes}"></td>
+                                <td th:text="${list.views}"></td>
+                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
                             </tr>
                             <tr th:unless="${#lists.size(list)} > 0">
                                 <td colspan="8">조회된 결과가 없습니다.</td>
@@ -129,26 +129,19 @@ layout:decorate="~{/layout}"> -->
                             </tbody>
                         </table>
                     </div>
-
-                <div>
-            </div>
-
-            <div id="SE_content3">
+                </div>
 
             </div>
+            <footer id="SE_footer">
+                <p>
+                </p>
+                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                <p>
+                </p>
+                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+            </footer>
+
         </div>
-
-    </div>
-        <footer id="SE_footer">
-            <p>
-            </p>
-            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-            <p>
-            </p>
-            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-        </footer>
-
-</div>
 </body>
 </html>
