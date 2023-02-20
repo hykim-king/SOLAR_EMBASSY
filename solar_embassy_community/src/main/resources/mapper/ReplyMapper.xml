@@ -5,17 +5,17 @@
 <mapper namespace="com.community.solar_embassy.mapper.ReplyMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Reply">
-            <id property="replyNo" column="reply_no" jdbcType="VARCHAR"/>
+            <id property="replyNo" column="replyNo" jdbcType="VARCHAR"/>
             <result property="boardNo" column="board_no" jdbcType="INTEGER"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="fkReplyNo" column="fk_reply_no" jdbcType="VARCHAR"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="fkReplyNo" column="fkReplyNo" jdbcType="VARCHAR"/>
             <result property="contents" column="contents" jdbcType="VARCHAR"/>
-            <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
+            <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
             <result property="likes" column="likes" jdbcType="INTEGER"/>
             <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
             <result property="state" column="state" jdbcType="INTEGER"/>
-            <result property="imgPath" column="img_path" jdbcType="VARCHAR"/>
+            <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
             <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
     </resultMap>
 

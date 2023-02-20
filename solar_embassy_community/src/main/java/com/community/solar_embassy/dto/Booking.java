@@ -28,7 +28,7 @@ public class Booking implements Serializable {
 
     private Date boDate;
 
-    private Date ckeckin;
+    private Date checkin;
 
     private Date checkout;
 

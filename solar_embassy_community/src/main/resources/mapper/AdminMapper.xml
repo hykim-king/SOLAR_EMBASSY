@@ -9,7 +9,7 @@
             <result property="adminLevel" column="admin_level" jdbcType="INTEGER"/>
             <result property="department" column="department" jdbcType="VARCHAR"/>
             <result property="regTime" column="reg_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">

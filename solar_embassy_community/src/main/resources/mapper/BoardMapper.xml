@@ -29,7 +29,7 @@
     <!--    </sql>-->
     <select id="findAll" resultMap="BaseResultMap">
         SELECT *
-        FROM BOARD
+        FROM board
     </select>
     <!--게시글 목록-->
     <select id="selectBoardList" resultMap="BaseResultMap">
@@ -37,60 +37,73 @@
         SELECT *
         FROM board
         WHERE state = 1
-        ORDER BY board_no DESC
+        ORDER BY boardNo DESC
+        LIMIT 9
         ]]>
    </select>
-    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="boardNo" keyColumn="board_no"
+    <!-- 게시글 카운트 -->
+    <!-- 게시글 수 카운팅 -->
+    <select id="count" parameterType="PagingDto" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            board
+        WHERE
+            delete_yn = 0
+    </select>
+
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="boardNo" keyColumn="boardNo"
             parameterType="com.community.solar_embassy.dto.BoardDto">
         <![CDATA[
-        INSERT INTO board(galaxy_no,
-                          board_tag,
+        INSERT INTO board(galaxyNo,
+                          boardTag,
                           title,
                           contents,
-                          post_time,
-                          user_id)
+                          postTime,
+                          likes,
+                          views,
+                          userId)
         VALUES ('1',
-                '1',
+                #{boardTag},
                 #{title},
                 #{contents},
                 NOW(),
-                'user1')
+                #{likes},
+                #{views},
+                #{userId})
         ]]>
    </insert>
     <update id="updateViews" parameterType="int">
         <![CDATA[
         UPDATE board
         SET views = views + 1
-        WHERE board_no = #{board_no}
+        WHERE boardNo = #{boardNo}
         ]]>
     </update>
-    <select id="selectBoardDetail" parameterType="int" resultType="com.community.solar_embassy.dto.BoardDto">
+    <select id="selectBoardDetail" parameterType="int" resultMap="BaseResultMap">
         <![CDATA[
-        SELECT board_no, title, contents, views, DATE_FORMAT(post_time, '%Y.%m.%d %H:%i:%s') as post_time, user_id
+        SELECT /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
         FROM board
-        WHERE board_no = #{board_no}
-          AND state = '1'
+        WHERE boardNo = #{boardNo}
+        AND state = '1'
         ]]>
     </select>
     <!--수정, 삭제-->
     <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">
         <![CDATA[
-        UPDATE t_board
+        UPDATE board
         SET title    = #{title},
             contents = #{contents},
             userId   = 'user1',
             postTime = NOW()
-        WHERE board_no = #{boardId}
+        WHERE boardNo = #{boardNo}
         ]]>
     </update>
 
     <update id="deleteBoard" parameterType="int">
         <![CDATA[
-        UPDATE board
-        SET is_deleted = 'y',
-            userId     = 'user1',
-            postTime   = NOW()
-        WHERE board_id = #{board_no}
+        DELETE FROM board
+        WHERE boardNo = #{boardNo}
         ]]>
 </update>
 </mapper>

@@ -5,13 +5,13 @@
 <mapper namespace="com.community.solar_embassy.mapper.ProfileImgMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.ProfileImg">
-            <id property="profileImgNo" column="profile_img_no" jdbcType="INTEGER"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="imgPath" column="img_path" jdbcType="VARCHAR"/>
-            <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
+            <id property="profileImgNo" column="profileImgNo" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
+            <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
             <result property="saveImgName" column="save_img_name" jdbcType="VARCHAR"/>
-            <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">

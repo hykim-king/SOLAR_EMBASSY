@@ -5,9 +5,9 @@
 <mapper namespace="com.community.solar_embassy.mapper.GradeMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Grade">
-            <id property="userLevel" column="user_level" jdbcType="INTEGER"/>
+            <id property="userLevel" column="userLevel" jdbcType="INTEGER"/>
             <result property="grade" column="grade" jdbcType="VARCHAR"/>
-            <result property="totalExp" column="total_exp" jdbcType="INTEGER"/>
+            <result property="totalExp" column="totalExp" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">

@@ -26,10 +26,10 @@ public class BoardDto{
 
     private Integer state;
 
-    private Integer likes;
+    private int likes;
 
     private Integer dislikes;
 
-    private Integer views;
+    private int views;
 
 }

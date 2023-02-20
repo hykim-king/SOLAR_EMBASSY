@@ -1,82 +1,264 @@
-<!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>게시판 목록</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
     <style>
-        html{overflow:scroll;}
-        html, body, div, h1, h2, a, form, table, caption, thead, tbody, tr, th, td, submit {
-            margin:0; outline:0; border:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent;
+        #user_info_bgc1 {
+            margin-left: 2.5%;
+            margin-top: 30px;
+            background-color: #DBE3FF;
+            width: 95%;
+            height: 1680px;
+            border-radius: 10px;
+            position: relative;
         }
-        body {
-            font-size:0.875em; line-height:1.5; color:#666; -webkit-text-size-adjust:none; min-width:320px;
-            font-family:'NanumGothic','나눔고딕',dotum, "Helvetica Neue", Helvetica, Verdana, Arial, Sans-Serief;
+
+        #user_info_bgc2{
+            margin-top: 80px;
+            margin-left: 25px;
+            background-color: #EBC7E6;
+            width: 95%;
+            height: 30%;
+            border-radius: 10px;
+
         }
-        h1, h2, h3 {font-size: 1.5em;}
-        p{margin:0; padding:0;}
-        ul{margin:0;}
-        a:link, a:visited {text-decoration:none; color: #656565;}
-        input{vertical-align:middle;}
-        input:focus {outline:0;}
-        caption {display:none; width:0; height:0; margin-top:-1px; overflow:hidden; visibility:hidden; font-size:0; line-height:0;}
 
-        .container {max-width:1024px; margin:30px auto;}
-        .board_list {width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:15px 0; border-collapse: collapse;}
-        .board_list thead th:first-child {background-image:none;}
-        .board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3b3a3a; text-align: center; vertical-align:middle;}
-        .board_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle;}
-        .board_list tbody tr:first-child td {border:none;}
-        .board_list tbody tr:hover{background:#ffff99;}
-        .board_list tbody td.title {text-align:left; padding-left:20px;}
-        .board_list tbody td a {display:inline-block}
-
-        .board_detail {width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; border-collapse:collapse;}
-        .board_detail tbody input {width:100%;}
-        .board_detail tbody th {text-align:left; background:#f7f7f7; color:#3b3a3a; vertical-align:middle; text-align: center;}
-        .board_detail tbody th, .board_detail tbody td {padding:10px 15px; border-bottom:1px solid #ccc;}
-        .board_detail tbody textarea {width:100%; min-height:170px}
-
-        .btn {margin:5px; padding:5px 11px; color:#fff !important; display:inline-block; background-color:#7D7F82; vertical-align:middle; border-radius:0 !important; cursor:pointer; border:none;}
-        .btn:hover {background: #6b9ab8;}
-
-        .file_list a {display:inherit !important;}
+        #user_info_bgc3{
+            margin-top: 10px;
+            margin-left: 25px;
+            background-color: #EBC7E6;
+            width: 95%;
+            height: 30%;
+            border-radius: 10px;
+        }
+        #user_info_bgc4{
+            margin-top: 10px;
+            margin-left: 25px;
+            width: 95%;
+            height: 30%;
+            border-radius: 10px;
+            background-color: #EBC7E6;
+            text-align: center;
+        }
+        #bgc2_table, #bgc3_table{
+            margin-top: 30px;
+        }
+        #bgc2_h2 {
+            padding-top: 13px;
+            text-align: center;
+        }
+        #bgc3_h3 {
+            padding-top: 15px;
+            text-align: center;
+        }
+        #bgc4_h4{
+            padding-top: 15px;
+            text-align: center;
+        }
 
     </style>
+    <title>SOLAR EMBASSY</title>
 </head>
 <body>
-<div class="container">
-    <h2>게시판 목록</h2>
-    <table class="board_list">
-        <colgroup>
-            <col width="15%"/>
-            <col width="*"/>
-            <col width="15%"/>
-            <col width="20%"/>
-        </colgroup>
-        <thead>
-        <tr>
-            <th scope="col">글번호</th>
-            <th scope="col">제목</th>
-            <th scope="col">조회수</th>
-            <th scope="col">작성일</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}">
-            <th:block th:text="${list}"></th:block>
-            <td th:text="${list.boardNo}"></td>
-            <td class="title">
-                <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}" th:text="${list.title}"></a>
-            </td>
-            <td th:text="${list.views}"></td>
-            <td th:text="${list.postTime}"></td>
-        </tr>
-        <tr th:unless="${#lists.size(list)} > 0">
-            <td colspan="4">조회된 결과가 없습니다.</td>
-        </tr>
-        </tbody>
-    </table>
-    <a href="/board/boardWrite.do" class="btn">글 쓰기</a>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
+
+            <!--여기부터-->
+            <div id="SE_content2">  <!--컨텐츠 img영역. CSS SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+                <div class="s1"><a class="ss1" href="#">항목1</a></div>
+                <div class="s2"><a class="ss2" href="#">항목2</a></div>
+                <div class="s3"><a class="ss3" href="#">항목3</a></div>
+                <div class="s4"><a class="ss4" href="#">항목4</a></div>
+                <div class="s5"><a class="ss5" href="#">항목5</a></div>
+                <div class="s6"><a class="ss6" href="#">항목6</a></div>
+
+            </div>
+
+            <div id="SE_content3"> <!--SE_content3 / 여행 갤럭시 -->
+                <div id="user_info_bgc1" class="pt-1">
+                    <div>
+                        <h1 class="mx-5 my-5 border-bottom-0"><strong>여행 갤럭시</strong></h1>
+                        <a href="/board/boardWrite.do" class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
+                        <button class="float-end btn btn-outline-dark btn-lg" type="button">전체글</button>
+                    </div>
+                    <div id="user_info_bgc2" class="">
+                        <h2 id="bgc2_h2">(일간 추천을 가장 많이받은 게시글?)</h2>
+                        <!--테이블에 db내역 출력-->
+                        <table class="table table-light" id="bgc2_table" >
+                            <colgroup class>
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                            </colgroup>
+                            <thead class="table-success">
+                            <tr>
+                                <th scope="col" class="text-center">글번호</th>
+                                <th scope="col" class="text-center">구분(주제)</th>
+                                <th scope="col" class="text-center">제목</th>
+                                <th scope="col" class="text-center">작성자</th>
+                                <th scope="col" class="text-center">추천수</th>
+                                <th scope="col" class="text-center">조회수</th>
+                                <th scope="col" class="text-center">작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}" class="text-center">
+                                <td th:text="${list.boardNo}"></td>
+                                <td class="title">
+                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}"
+                                       th:text="${list.boardTag}"></a>
+                                </td>
+                                <td th:text="${list.title}"></td>
+                                <td th:text="${list.userId}"></td>
+                                <td th:text="${list.likes}"></td>
+                                <td th:text="${list.views}"></td>
+                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                            </tr>
+                            <tr th:unless="${#lists.size(list)} > 0">
+                                <td colspan="8">조회된 결과가 없습니다.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--테이블에 db내역 출력-->
+                    </div>
+                    <!--user_info_bgc2 끝-->
+                    <div id="user_info_bgc3" class="">
+                        <h2 class="mt-3" id="bgc3_h3">(주간 추천을 가장 많이받은 게시글?)</h2>
+                        <!--테이블에 db내역 출력-->
+                        <table class="table table-light" id="bgc3_table" >
+                            <colgroup class>
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                            </colgroup>
+                            <thead class="table-success">
+                            <tr>
+                                <th scope="col" class="text-center">글번호</th>
+                                <th scope="col" class="text-center">구분(주제)</th>
+                                <th scope="col" class="text-center">제목</th>
+                                <th scope="col" class="text-center">작성자</th>
+                                <th scope="col" class="text-center">추천수</th>
+                                <th scope="col" class="text-center">조회수</th>
+                                <th scope="col" class="text-center">작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}" class="text-center">
+                                <td th:text="${list.boardNo}"></td>
+                                <td class="title">
+                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}"
+                                       th:text="${list.boardTag}"></a>
+                                </td>
+                                <td th:text="${list.title}"></td>
+                                <td th:text="${list.userId}"></td>
+                                <td th:text="${list.likes}"></td>
+                                <td th:text="${list.views}"></td>
+                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                            </tr>
+                            <tr th:unless="${#lists.size(list)} > 0">
+                                <td colspan="8">조회된 결과가 없습니다.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--테이블에 db내역 출력-->
+                    </div>
+                    <div id="user_info_bgc4" class="">
+                        <h2 class="mt-3" id="bgc4_h4">(월간 추천을 가장 많이받은 게시글?)</h2>
+                        <!--테이블에 db내역 출력-->
+                        <table class="table table-light" id="bgc4_table" >
+                            <colgroup class>
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                            </colgroup>
+                            <thead class="table-success">
+                            <tr>
+                                <th scope="col" class="text-center">글번호</th>
+                                <th scope="col" class="text-center">구분(주제)</th>
+                                <th scope="col" class="text-center">제목</th>
+                                <th scope="col" class="text-center">작성자</th>
+                                <th scope="col" class="text-center">추천수</th>
+                                <th scope="col" class="text-center">조회수</th>
+                                <th scope="col" class="text-center">작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="list_one:${list}" class="text-center">
+                                <td th:text="${list_one.boardNo}"></td>
+                                <td class="title">
+                                    <a href="/boardDetail?boardNo=" th:attrappend="href=${list_one.boardNo}"
+                                       th:text="${list_one.boardTag}"></a>
+                                </td>
+                                <td th:text="${list_one.title}"></td>
+                                <td th:text="${list_one.userId}"></td>
+                                <td th:text="${list_one.likes}"></td>
+                                <td th:text="${list_one.views}"></td>
+                                <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                            </tr>
+                            <tr th:unless="${list.size()} > 0">
+                                <td colspan="8">조회된 결과가 없습니다.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--테이블에 db내역 출력-->
+                    </div>
+
+
+
+
+                </div> <!--SE_content3 end / 여행 갤럭시 end -->
+
+                <!--여기까지-->
+
+            </div>
+            <section id="SE_contents2">
+                <div id="SE_banner1"><h1>배너자리</h1></div>
+            </section>
+
+            <section id="SE_contents3">
+                <div id="SE_banner2"><h1>배너자리</h1></div>
+            </section>
+            <footer id="SE_footer">
+                <p>
+                </p>
+                <p><h3> <a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+                <p><h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+            </footer>
+
+        </div>
+    </div>
 </div>
 </body>
 </html>
