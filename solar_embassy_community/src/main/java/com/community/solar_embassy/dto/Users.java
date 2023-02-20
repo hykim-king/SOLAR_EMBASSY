@@ -1,6 +1,8 @@
 package com.community.solar_embassy.dto;
 
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -38,5 +40,17 @@ public class Users {
     private Date birth;
 
     private Integer profileImgNo;
+
+    private ProfileImg profileImg;
+
+    private Admin admin;
+
+    private Grade grade;
+
+    private List<Letter> letterList;
+
+    private List<UserBlock> userBlockList;
+
+    private List<Booking> bookingList;
 
 }

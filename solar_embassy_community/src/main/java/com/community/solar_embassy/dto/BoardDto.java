@@ -3,6 +3,7 @@ package com.community.solar_embassy.dto;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class BoardDto{
@@ -31,5 +32,9 @@ public class BoardDto{
     private Integer dislikes;
 
     private int views;
+
+    private List<BoardImg> boardImgList;
+
+    private List<Reply> replyList;
 
 }
