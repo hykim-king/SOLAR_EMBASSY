@@ -76,6 +76,17 @@ layout:decorate="~{/layout}"> -->
             <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post" action="/board/boardWrite.do">
+                        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+                        <div th:text="${session.loginUser.nickname}+'님의 작성글입니다.'"></div>
+                        <select name="galaxyNo" th:selected="${galaxyNo}">
+                            <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}" th:text="${galaxy.galName}"></option>
+                        </select>
+                        <select name="boardTag">
+                            <option value="1" >일상</option>
+                            <option value="2">유머</option>
+                            <option value="3">예약</option>
+                            <option value="4">후기</option>
+                        </select>
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button"

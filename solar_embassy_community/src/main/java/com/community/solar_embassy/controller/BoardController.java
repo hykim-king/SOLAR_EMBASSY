@@ -1,7 +1,11 @@
 package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.Galaxy;
+import com.community.solar_embassy.dto.Users;
 import com.community.solar_embassy.service.BoardService;
+import com.community.solar_embassy.service.GalaxyService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,16 +20,27 @@ public class BoardController {
 
     @Autowired
     BoardService boardService;
+    @Autowired
+    GalaxyService galaxyService;
 
     @GetMapping("/boardList.do")
-    public String boardList(Locale locale, Model model) throws Exception {
-        List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+    public String boardList(Locale locale, Model model, @RequestParam int galaxyNo) throws Exception {
+//        List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list = boardService.boardListByGalaxy(galaxyNo);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         model.addAttribute("list", list);
+        model.addAttribute("galaxyNo", galaxyNo);
         return "/boardList";
     }
 
     @GetMapping("/boardWrite.do")
-    public String boardWrite(Locale locale, Model model) throws Exception {
+    public String boardWrite(Locale locale, Model model, HttpSession session, @RequestParam int galaxyNo) throws Exception {
+        Users loginUser = (Users) session.getAttribute("loginUser");
+        if ( loginUser == null) {
+            return "redirect:/user/login.do";
+        }
+        List<Galaxy> galaxies = galaxyService.findAll();
+        model.addAttribute("galaxies",galaxies);
+        model.addAttribute("galaxyNo",galaxyNo);
         return "/boardWrite";
     }
 
@@ -39,7 +54,7 @@ public class BoardController {
         int insert = boardService.insertBoard(board);
         System.out.println(insert);
         if (insert == 1) {
-            return "redirect:/board/boardList.do";
+            return "redirect:/board/boardList.do?galaxyNo="+board.getGalaxyNo();
         }
         else{
             return "redirect:/board/boardWrite.do";

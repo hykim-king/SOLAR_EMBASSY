@@ -85,7 +85,7 @@ layout:decorate="~{/layout}"> -->
 
                     <div id="boardList_table_btn" class="mb-2">
                         <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
-                        <a href="/board/boardWrite.do" class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
+                        <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}" class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
                     </div>
 
                     <div id="boardList_table">
@@ -119,8 +119,8 @@ layout:decorate="~{/layout}"> -->
                                 </td>
                                 <td th:text="${list.title}"></td>
                                 <td th:text="${list.user.nickname}"></td>
-                                <td th:text="${list.likes}"></td>
-                                <td th:text="${list.views}"></td>
+                                <td th:text="${(list.likes ==null)?0:list.likes}"></td>
+                                <td th:text="${(list.views ==null)?0:list.views}"></td>
                                 <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
                             </tr>
                             <tr th:unless="${#lists.size(list)} > 0">

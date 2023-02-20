@@ -49,6 +49,11 @@ public class BoardServiceImpl implements BoardService {
 
     }
 
+    @Override
+    public List<BoardDto> boardListByGalaxy(int galaxyNo) {
+        return boardMapper.selectBoardListByGalaxy();
+    }
+
 }
 
 

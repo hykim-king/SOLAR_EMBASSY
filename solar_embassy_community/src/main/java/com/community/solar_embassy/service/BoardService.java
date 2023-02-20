@@ -13,4 +13,6 @@ public interface BoardService  {
     BoardDto selectBoardDetail(int board_id) throws Exception;
     void updateBoard(BoardDto board) throws Exception;
     void deleteBoard(int board_id) throws Exception;
+
+    List<BoardDto> boardListByGalaxy(int galaxyNo);
 }

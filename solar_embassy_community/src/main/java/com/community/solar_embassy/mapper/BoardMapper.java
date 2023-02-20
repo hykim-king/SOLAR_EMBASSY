@@ -17,6 +17,8 @@ public interface BoardMapper {
     void deleteBoard(int board_no) throws Exception;
 
     List<BoardDto> selectBoardListBySize(int size);
+
+    List<BoardDto> selectBoardListByGalaxy();
 }
 
 

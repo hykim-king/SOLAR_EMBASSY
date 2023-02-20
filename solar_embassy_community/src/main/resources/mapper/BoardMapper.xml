@@ -21,9 +21,9 @@
         <association property="user" column="user_id" select="com.community.solar_embassy.mapper.UsersMapper.findById"
                      fetchType="lazy"
         ></association>
-        <association property="galaxy" column="galaxy_no" select="com.community.solar_embassy.mapper.GalaxyMapper.findGalaxy"
+        <collection property="galaxy" column="galaxy_no" select="com.community.solar_embassy.mapper.GalaxyMapper.findGalaxy"
                      fetchType="lazy"
-        ></association>
+        ></collection>
     </resultMap>
     <select id="findAll" resultMap="BaseResultMap">
         SELECT *
@@ -46,8 +46,8 @@
                           title,
                           contents,
                           user_id)
-        VALUES ('1',
-                '1',
+        VALUES (#{galaxyNo},
+                #{boardTag},
                 #{title},
                 #{contents},
                 #{userId})
@@ -70,6 +70,9 @@
     </select>
     <select id="selectBoardListBySize" resultMap="BaseResultMap">
         SELECT * FROM board ORDER BY board_no DESC LIMIT #{size}
+    </select>
+    <select id="selectBoardListByGalaxy" resultMap="BaseResultMap">
+        SELECT * FROM board WHERE galaxy_no= #{galaxyNo} ORDER BY board_no DESC LIMIT 10
     </select>
     <!--수정, 삭제-->
     <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">

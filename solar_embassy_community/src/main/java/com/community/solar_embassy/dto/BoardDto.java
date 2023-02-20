@@ -12,7 +12,7 @@ public class BoardDto{
 
     private Integer galaxyNo;
 
-    private Galaxy galaxy;
+    private List<Galaxy> galaxy;
 
     private String userId;
 
