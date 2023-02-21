@@ -22,16 +22,9 @@
         <result property="userLevel" column="user_level" jdbcType="INTEGER"/>
         <result property="birth" column="birth" jdbcType="DATE"/>
         <result property="profileImgNo" column="profile_img_no" jdbcType="INTEGER"/>
+
     </resultMap>
 
-    <sql id="Base_Column_List">
-        userId,nickname,passwords,
-        email,hp,tell,
-        admin_id,reg_date,last_login_time,
-        update_time,state,c_point,
-        e_point,exp,user_level,
-        birth,profile_img_no
-    </sql>
     <insert id="insert" parameterType="com.community.solar_embassy.dto.Users">
         insert INTO users
             (userId,  passwords,  nickname, email) VALUES
@@ -50,4 +43,5 @@
     <select id="findById" resultType="com.community.solar_embassy.dto.Users">
         SELECT * FROM solar_embassy.users where userId=#{userId}
     </select>
+
 </mapper>

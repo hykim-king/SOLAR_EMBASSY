@@ -8,11 +8,12 @@ import lombok.Data;
 
 @Data
 public class Reply implements Serializable {
-    private String replyNo;
+    private Integer replyNo;
 
     private Integer boardNo;
 
     private String userId;
+
     private Users user;
 
     private String fkReplyNo;
@@ -36,4 +37,13 @@ public class Reply implements Serializable {
     private List<Reply> replyList;
 
     private static final long serialVersionUID = 1L;
+    public Reply(){
+
+    }
+    public Reply(Integer replyNo, Integer boardNo, String userId, String contents){
+        this.replyNo = replyNo;
+        this.boardNo = boardNo;
+        this.userId = userId;
+        this.contents = contents;
+    }
 }

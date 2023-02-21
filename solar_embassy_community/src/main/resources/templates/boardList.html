@@ -110,18 +110,18 @@ layout:decorate="~{/layout}"> -->
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}" class="text-center">
-                                <td th:text="${list.boardNo}"></td>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="board:${list}" class="text-center">
+                                <td th:text="${board.boardNo}"></td>
                                 <td class="title">
-                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}"
-                                       th:text="${list.boardTag}"></a>
+                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${board.boardNo}"
+                                       th:text="${board.boardTag}"></a>
                                 </td>
-                                <td th:text="${list.title}" style="cursor: pointer"
-                                    th:onclick="location.href = [[@{'/board/{boardNo}/boardDetail.do' (boardNo=${list.boardNo})}]]"></td>
-                                <td th:text="${list.user.nickname}"></td>
-                                <td th:text="${list.likes}"></td>
-                                <td th:text="${list.views}"></td>
-                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm')}"></td>
+                                <td th:text="${board.title}" style="cursor: pointer"
+                                    th:onclick="location.href = [[@{'/board/{boardNo}/boardDetail.do' (boardNo=${board.boardNo})}]]"></td>
+                                <td th:text="${board.user.nickname}"></td>
+                                <td th:text="${board.likes}"></td>
+                                <td th:text="${board.views}"></td>
+                                <td th:text="${#dates.format(board.postTime,'yyyy-MM-dd hh:mm')}"></td>
                             </tr>
                             <tr th:unless="${#lists.size(list)} > 0">
                                 <td colspan="8">조회된 결과가 없습니다.</td>

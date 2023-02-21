@@ -21,19 +21,28 @@
                      autoMapping="true" fetchType="lazy"></association>
     </resultMap>
 
-    <insert id="insert">
-        INSERT INTO solar_embassy.reply (reply_no, board_no, userId, contents)
+    <insert id="insertReply">
+        INSERT INTO solar_embassy.reply (replyNo, boardNo, userId, contents)
         VALUES (#{replyNo}, #{boardNo}, #{userId}, #{contents})
     </insert>
+    <update id="updateReply">
+        UPDATE reply
+        SET contents = #{contents}
+        WHERE replyNo = #{replyNo}
+    </update>
 
     <delete id="deleteById">
-        DELETE FROM solar_embassy.reply WHERE reply_no=#{replyNo}
+        DELETE FROM solar_embassy.reply WHERE replyNo=#{replyNo}
     </delete>
+
     <select id="findByBoardNo" resultMap="BaseResultMap">
         SELECT *
         FROM reply
-        WHERE board_no = #{boardNo}
-        ORDER BY reply_no DESC
+        WHERE boardNo = #{boardNo}
+        ORDER BY replyNo DESC
+    </select>
+    <select id="findAll" resultType="com.community.solar_embassy.dto.Reply">
+
     </select>
 
 

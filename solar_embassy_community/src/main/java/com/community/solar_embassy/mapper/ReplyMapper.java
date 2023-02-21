@@ -8,10 +8,10 @@ import java.util.List;
 @Mapper
 public interface ReplyMapper {
     int deleteById(Reply replyNo);
-    int insert(Reply dto);
-
-
+    int insertReply(Reply dto);
+    int updateReply(Reply reply);
     List<Reply> findByBoardNo(int boardNo);
+    List<Reply> findAll();
 }
 
 

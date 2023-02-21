@@ -76,7 +76,7 @@ layout:decorate="~{/layout}"> -->
             <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post" action="/board/boardWrite.do">
-                        <input type="hidden" name="usreId" th:value="${session.loginUser.userId}">
+                        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                         <input type="hidden" name="galaxyNo" th:value="1">
                         <input type="hidden" name="boardTag" th:value="1">
                         <div id="title_input" class="dropdown">

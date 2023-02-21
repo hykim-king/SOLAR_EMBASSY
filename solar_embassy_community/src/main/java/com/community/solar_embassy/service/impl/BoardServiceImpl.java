@@ -22,8 +22,7 @@ public class BoardServiceImpl implements BoardService {
     // 게시글 작성 요청 처리
     @Override
     public int insertBoard(BoardDto board) throws Exception {
-        int insert = boardMapper.insertBoard(board);
-        return insert;
+        return boardMapper.insertBoard(board);
     }
 
     @Override
