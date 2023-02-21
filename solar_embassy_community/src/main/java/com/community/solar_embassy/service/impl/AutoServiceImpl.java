@@ -5,7 +5,6 @@ import com.community.solar_embassy.service.AutoService;
 import com.community.solar_embassy.mapper.AutoMapper;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class AutoServiceImpl implements AutoService {
     private AutoMapper autoMapper;

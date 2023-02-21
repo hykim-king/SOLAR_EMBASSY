@@ -5,20 +5,20 @@
 <mapper namespace="com.community.solar_embassy.mapper.AutoMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Auto">
-        <id property="autoNo" column="auto_no" jdbcType="INTEGER"/>
-        <id property="autoName" column="auto_name" jdbcType="VARCHAR"/>
-        <id property="codeName" column="code_name" jdbcType="VARCHAR"/>
-        <result property="comName" column="com_name" jdbcType="VARCHAR"/>
-        <result property="com" column="com" jdbcType="INTEGER"/>
-        <result property="autoType" column="auto_type" jdbcType="VARCHAR"/>
-        <result property="releaseDate" column="release_date" jdbcType="DATE"/>
+        <id property="autoNo" column="autoNo" jdbcType="INTEGER"/>
+        <id property="autoName" column="autoName" jdbcType="VARCHAR"/>
+        <id property="codeName" column="codeName" jdbcType="VARCHAR"/>
+        <result property="detailName" column="detailName" jdbcType="VARCHAR"/>
+        <result property="optionName" column="optionName" jdbcType="VARCHAR"/>
+        <result property="comNo" column="comNo" jdbcType="INTEGER"/>
+        <result property="comName" column="comName" jdbcType="VARCHAR"/>
+        <result property="autoType" column="autoType" jdbcType="VARCHAR"/>
+        <result property="releaseDate" column="releaseDate" jdbcType="DATE"/>
         <result property="seat" column="seat" jdbcType="INTEGER"/>
         <result property="mpg" column="mpg" jdbcType="DOUBLE"/>
-        <result property="autoEngine" column="auto_engine" jdbcType="VARCHAR"/>
-        <result property="disp" column="disp" jdbcType="INTEGER"/>
+        <result property="disp" column="disp" jdbcType="DOUBLE"/>
         <result property="price" column="price" jdbcType="INTEGER"/>
-        <result property="data" column="data" jdbcType="VARCHAR"/>
-        <result property="subData" column="sub_data" jdbcType="VARCHAR"/>
+        <result property="autoEngine" column="autoEngine" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--    <sql id="Base_Column_List">-->
@@ -28,21 +28,6 @@
     <!--    </sql>-->
 
     <select id="selectAutoDetail" parameterType="String" resultMap="BaseResultMap">
-        <![CDATA[
-        SELECT /*auto_no,
-               auto_name,
-               code_name,
-               com_name,
-               com,
-               auto_type,
-               DATE_FORMAT(release_date, '%Y.%m.%d') as release_date,
-               seat,
-               mpg,
-               auto_engine,
-                disp,
-                price*/*
-        FROM auto
-        WHERE auto_name = #{auto_name}
-        ]]>
+        SELECT * FROM auto WHERE autoName = #{autoName}
     </select>
 </mapper>

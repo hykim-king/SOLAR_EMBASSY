@@ -17,4 +17,13 @@ public class Admin implements Serializable {
     private Date updateTime;
 
     private static final long serialVersionUID = 1L;
+
+    public Admin() {
+    }
+
+    public Admin(String adminId, Integer adminLevel, String department) {
+        this.adminId = adminId;
+        this.adminLevel = adminLevel;
+        this.department = department;
+    }
 }

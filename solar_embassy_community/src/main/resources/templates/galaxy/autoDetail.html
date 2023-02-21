@@ -58,15 +58,13 @@ layout:decorate="~{/layout}"> -->
 
         <div id="content3">
           <h1>제원</h1>
-          <h2 th:text="${autoData.getPData()}"></h2>
+          <h2>"제원 이름"</h2>
           <div id="data">
             <ul>
-              <li id="subdata">
-                <input type="checkbox" th:text="${autoData.getSubData()}">
-              </li>
-              <li id="disp" th:text="${autoData.getDisp()}">cc</li>
-              <li id="mpg" th:text="${auto.getMpg()}">km</li>
-              <li id="price" th:text="${autoData.getPrice()}">만원</li>
+              <li id="subdata"></li>
+              <li>cc</li>
+              <li>km</li>
+              <li>만원</li>
             </ul>
           </div>
         </div>
@@ -74,7 +72,7 @@ layout:decorate="~{/layout}"> -->
         <div id="content4">
           <span>
             <a href="#">
-              <img src="/img/autopedia/kona1.jpg" alt="">
+              <img th:src="${auto}" alt="">
             </a>
           </span>
           <span>

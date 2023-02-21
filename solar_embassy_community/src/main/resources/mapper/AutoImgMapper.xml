@@ -5,15 +5,22 @@
 <mapper namespace="com.community.solar_embassy.mapper.AutoImgMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.AutoImg">
-            <id property="autoImgNo" column="auto_img_no" jdbcType="INTEGER"/>
-            <result property="autoNo" column="auto_no" jdbcType="INTEGER"/>
-            <result property="autoImgPath" column="auto_img_path" jdbcType="VARCHAR"/>
-            <result property="sourceImgName" column="source_img_name" jdbcType="VARCHAR"/>
+            <id property="autoImgNo" column="autoImgNo" jdbcType="INTEGER"/>
+            <result property="autoNo" column="autoNo" jdbcType="INTEGER"/>
+            <result property="autoImgPath" column="autoImgPath" jdbcType="VARCHAR"/>
+            <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        auto_img_no, auto_no, auto_img_path,
-        source_img_name
-    </sql>
+<!--    <sql id="Base_Column_List">-->
+<!--        auto_img_no, auto_no, auto_img_path,-->
+<!--        source_img_name-->
+<!--    </sql>-->
+
+    <select id="selectAutoImgDetail" parameterType="Integer" resultMap="BaseResultMap">
+        <![CDATA[
+        SELECT * FROM auto_img WHERE autoImgNo = #{autoImgNo}
+        ]]>
+    </select>
+
 
 </mapper>

@@ -12,7 +12,7 @@ public class Company implements Serializable {
 
     private String address;
 
-    private String pacom;
+    private String parentName;
 
     private Date foundDate;
 
