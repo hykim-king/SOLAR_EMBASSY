@@ -18,15 +18,13 @@
         <result property="likes" column="likes" jdbcType="INTEGER"/>
         <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
         <result property="views" column="views" jdbcType="INTEGER"/>
+        <association property="user" column="user_id" select="com.community.solar_embassy.mapper.UsersMapper.findById"
+                     fetchType="lazy"
+        ></association>
+        <collection property="galaxy" column="galaxy_no" select="com.community.solar_embassy.mapper.GalaxyMapper.findGalaxy"
+                     fetchType="lazy"
+        ></collection>
     </resultMap>
-
-    <!--    <sql id="Base_Column_List">-->
-    <!--        board_no,galaxy_no,user_id,-->
-    <!--        board_tag,title,contents,-->
-    <!--        post_time,updater_id,update_time,-->
-    <!--        state,likes,dislikes,-->
-    <!--        views-->
-    <!--    </sql>-->
     <select id="findAll" resultMap="BaseResultMap">
         SELECT *
         FROM board
@@ -59,6 +57,7 @@
                           boardTag,
                           title,
                           contents,
+<<<<<<< HEAD
                           postTime,
                           likes,
                           views,
@@ -70,6 +69,13 @@
                 NOW(),
                 #{likes},
                 #{views},
+=======
+                          user_id)
+        VALUES (#{galaxyNo},
+                #{boardTag},
+                #{title},
+                #{contents},
+>>>>>>> 69a5ab68b59c6e2c9478a29653c95fb104023b62
                 #{userId})
         ]]>
    </insert>
@@ -91,6 +97,12 @@
 >>>>>>> 3e359ae2778b4cddcd7a068a7e6df5609a978007
         AND state = '1'
         ]]>
+    </select>
+    <select id="selectBoardListBySize" resultMap="BaseResultMap">
+        SELECT * FROM board ORDER BY board_no DESC LIMIT #{size}
+    </select>
+    <select id="selectBoardListByGalaxy" resultMap="BaseResultMap">
+        SELECT * FROM board WHERE galaxy_no= #{galaxyNo} ORDER BY board_no DESC LIMIT 10
     </select>
     <!--수정, 삭제-->
     <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">

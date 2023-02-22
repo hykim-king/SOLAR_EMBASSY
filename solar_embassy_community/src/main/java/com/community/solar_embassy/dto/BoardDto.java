@@ -2,12 +2,17 @@ package com.community.solar_embassy.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
+/**
+ * @TableName board
+ */
 @Data
-public class BoardDto{
+public class BoardDto implements Serializable {
     private Integer boardNo;
+
+    private Date postTime;
 
     private Integer galaxyNo;
 
@@ -18,8 +23,6 @@ public class BoardDto{
     private String title;
 
     private String contents;
-
-    private Date postTime;
 
     private String updaterId;
 
@@ -33,8 +36,5 @@ public class BoardDto{
 
     private int views;
 
-    private List<BoardImg> boardImgList;
-
-    private List<Reply> replyList;
-
+    private static final long serialVersionUID = 1L;
 }

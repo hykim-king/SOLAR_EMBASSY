@@ -1,9 +1,13 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName profile_img
+ */
 @Data
 public class ProfileImg implements Serializable {
     private Integer profileImgNo;
@@ -21,4 +25,14 @@ public class ProfileImg implements Serializable {
     private Date updateTime;
 
     private static final long serialVersionUID = 1L;
+
+    public ProfileImg(String userId, String imgPath, String originImgName, String saveImgName) {
+        this.userId = userId;
+        this.imgPath = imgPath;
+        this.originImgName = originImgName;
+        this.saveImgName = saveImgName;
+    }
+
+    public ProfileImg() {
+    }
 }
