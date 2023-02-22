@@ -1,13 +1,15 @@
 package com.community.solar_embassy.dto;
 
-import java.util.Date;
-import java.util.List;
-
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName users
+ */
 @Data
-public class Users {
+public class Users implements Serializable {
     private String userId;
 
     private String nickname;
@@ -18,14 +20,14 @@ public class Users {
 
     private String hp;
 
-    private String tell;
+    private String tel;
 
     private String adminId;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+
     private Date regDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+
     private Date lastLoginTime;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+
     private Date updateTime;
 
     private Integer state;
@@ -37,21 +39,26 @@ public class Users {
     private Integer exp;
 
     private Integer userLevel;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+
+    private Grade grade;
+
     private Date birth;
 
     private Integer profileImgNo;
 
-    private ProfileImg profileImg;
+    public Users() {
+    }
 
-    private Admin admin;
+    public Users(String userId, String nickname, String passwords, String email, String hp, String tel, String adminId, Date birth) {
+        this.userId = userId;
+        this.nickname = nickname;
+        this.passwords = passwords;
+        this.email = email;
+        this.hp = hp;
+        this.tel = tel;
+        this.adminId = adminId;
+        this.birth = birth;
+    }
 
-    private Grade grade;
-
-    private List<Letter> letterList;
-
-    private List<UserBlock> userBlockList;
-
-    private List<Booking> bookingList;
-
+    private static final long serialVersionUID = 1L;
 }

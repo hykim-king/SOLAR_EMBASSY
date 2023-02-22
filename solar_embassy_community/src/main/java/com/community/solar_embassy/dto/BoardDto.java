@@ -1,33 +1,31 @@
 package com.community.solar_embassy.dto;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
+/**
+ * @TableName board
+ */
 @Data
-public class BoardDto{
+public class BoardDto implements Serializable {
     private Integer boardNo;
+
+    private Date postTime;
 
     private Integer galaxyNo;
 
-    private List<Galaxy> galaxy;
-
     private String userId;
-
-    private Users user;
 
     private Integer boardTag;
 
     private String title;
 
     private String contents;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:Ss")
-    private Date postTime;
 
     private String updaterId;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private Integer state;
@@ -38,8 +36,5 @@ public class BoardDto{
 
     private Integer views;
 
-    private List<BoardImg> boardImgList;
-
-    private List<Reply> replyList;
-
+    private static final long serialVersionUID = 1L;
 }

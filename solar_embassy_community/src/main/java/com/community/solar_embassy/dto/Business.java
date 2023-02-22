@@ -1,16 +1,16 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName business
+ */
 @Data
 public class Business implements Serializable {
-    private String crNum;
-
-    private String buTell;
+    private Integer buNo;
 
     private String buId;
 
@@ -20,24 +20,15 @@ public class Business implements Serializable {
 
     private String email;
 
-    private String buTitle;
-
-    private String buAddress;
-
-    private Integer buCode;
-
-    private Integer crImgNo;
-
-    private String imgPath;
-
-    private String sourceImgName;
-
-    private String saveImgName;
+    private String phone;
 
     private Date regDate;
 
     private Date updateTime;
 
+    private Integer state;
+
+    private Integer auth;
 
     private static final long serialVersionUID = 1L;
 }

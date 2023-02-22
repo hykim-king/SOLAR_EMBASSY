@@ -1,11 +1,13 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName company
+ */
 @Data
 public class Company implements Serializable {
     private Integer comNo;
@@ -14,7 +16,7 @@ public class Company implements Serializable {
 
     private String address;
 
-    private String pacom;
+    private String parentName;
 
     private Date foundDate;
 
@@ -28,7 +30,20 @@ public class Company implements Serializable {
 
     private String content;
 
-    private List<Auto> autoList;
-
     private static final long serialVersionUID = 1L;
+
+    public Company(String comName, String address, String parentName, Date foundDate, String founders, String ceo, String industries, String slogan, String content) {
+        this.comName = comName;
+        this.address = address;
+        this.parentName = parentName;
+        this.foundDate = foundDate;
+        this.founders = founders;
+        this.ceo = ceo;
+        this.industries = industries;
+        this.slogan = slogan;
+        this.content = content;
+    }
+
+    public Company() {
+    }
 }

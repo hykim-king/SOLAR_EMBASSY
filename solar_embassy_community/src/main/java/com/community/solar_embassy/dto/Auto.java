@@ -1,12 +1,13 @@
 package com.community.solar_embassy.dto;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
+/**
+ * @TableName auto
+ */
 @Data
 public class Auto implements Serializable {
     private Integer autoNo;
@@ -15,21 +16,27 @@ public class Auto implements Serializable {
 
     private String codeName;
 
-    private Integer com;
-    private Company company;
+    private String detailName;
+
+    private String optionName;
+
+    private Integer comNo;
+
+    private String comName;
 
     private String autoType;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date releaseDate;
 
     private Integer seat;
 
     private Double mpg;
 
-    private String autoEngine;
+    private Double disp;
 
-    private List<AutoImg> autoImgList;
+    private Integer price;
+
+    private String autoEngine;
 
     private static final long serialVersionUID = 1L;
 }

@@ -1,14 +1,18 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName reply
+ */
 @Data
 public class Reply implements Serializable {
-    private String replyNo;
+    private Integer replyNo;
+
+    private Date postTime;
 
     private Integer boardNo;
 
@@ -17,8 +21,6 @@ public class Reply implements Serializable {
     private String fkReplyNo;
 
     private String contents;
-
-    private Date postTime;
 
     private Date updateTime;
 
@@ -31,8 +33,6 @@ public class Reply implements Serializable {
     private String imgPath;
 
     private String originImgName;
-
-    private List<Reply> replyList;
 
     private static final long serialVersionUID = 1L;
 }

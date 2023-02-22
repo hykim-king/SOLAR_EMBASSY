@@ -18,7 +18,7 @@ public class AutoServiceImpl
 
     @Override
     public Auto detail(String autoName) {
-        return autoMapper.selectAutoDetail(autoName).get(0);
+        return autoMapper.selectByAutoName(autoName);
     }
 }
 

@@ -6,25 +6,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @TableName review
+ * @TableName reserve_list
  */
 @Data
-public class Review implements Serializable {
-    private Integer reNo;
+public class ReserveList implements Serializable {
+    private Integer listNo;
 
-    private Date postTime;
+    private Date bokCheckDate;
 
     private Integer bokNo;
 
-    private String userId;
-
-    private String contents;
-
-    private Integer state;
-
-    private Integer likes;
-
-    private String buComment;
+    private String buTell;
 
     private String updaterId;
 
