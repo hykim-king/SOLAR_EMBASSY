@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community.solar_embassy.mapper.RoomMapper">
+
+    <resultMap id="BaseResultMap" type="community.solar_embassy.dto.Room">
+        <id property="buTell" column="buTell" jdbcType="INTEGER"/>
+        <result property="licenseName" column="licenseName" jdbcType="VARCHAR"/>
+        <result property="licenseNum" column="licenseNum" jdbcType="VARCHAR"/>
+        <result property="roomNo" column="roomNo" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="roCount" column="roCount" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="TIMESTAMP"/>
+        <result property="checkin" column="checkin" jdbcType="TIMESTAMP"/>
+        <result property="checkout" column="checkout" jdbcType="VARCHAR"/>
+        <result property="info" column="info" jdbcType="TIMESTAMP"/>
+        <result property="postTime" column="postTime" jdbcType="VARCHAR"/>
+        <result property="updaterId" column="updaterId" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="imgPath" column="imgPath" jdbcType="TIMESTAMP"/>
+        <result property="sourceImgName" column="sourceImgName" jdbcType="TIMESTAMP"/>
+        <result property="saveImgName" column="saveImgName" jdbcType="TIMESTAMP"/>
+        <result property="buNo" column="buNo" jdbcType="TIMESTAMP"/>
+        <result property="buCode" column="buCode" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- <sql id="Base_Column_List">
+        ro_no,cr_num,bu_tell,
+        bu_img_no,ro_count,ro_name,
+        ro_price,checkin,checkout,
+        ro_info,post_time,updater_id,
+        update_time
+    </sql> -->
+</mapper>

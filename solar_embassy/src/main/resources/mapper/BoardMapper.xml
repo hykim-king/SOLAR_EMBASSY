@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community.solar_embassy.mapper.BoardMapper">
+
+    <resultMap id="BaseResultMap" type="community.solar_embassy.dto.BoardDto">
+        <id property="boardNo" column="boardNo" jdbcType="INTEGER"/>
+        <result property="galaxyNo" column="galaxyNo" jdbcType="INTEGER"/>
+        <result property="userId" column="userId" jdbcType="VARCHAR"/>
+        <result property="boardTag" column="boardTag" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="contents" column="contents" jdbcType="VARCHAR"/>
+        <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
+        <result property="updaterId" column="updater_id" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="likes" column="likes" jdbcType="INTEGER"/>
+        <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
+        <result property="views" column="views" jdbcType="INTEGER"/>
+        <association property="user" column="userId" select="community.solar_embassy.mapper.UsersMapper.findById"
+                     fetchType="lazy"
+        ></association>
+        <collection property="galaxy" column="galaxyNo" select="community.solar_embassy.mapper.GalaxyMapper.findGalaxy"
+                    fetchType="lazy"
+        ></collection>
+    </resultMap>
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT *
+        FROM board
+    </select>
+    <!--게시글 목록-->
+    <select id="selectBoardList" resultMap="BaseResultMap">
+		<![CDATA[
+        SELECT *
+        FROM board
+        WHERE state = 1
+        ORDER BY boardNo DESC
+        ]]>
+   </select>
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="boardNo" keyColumn="boardNo"
+            parameterType="community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        INSERT INTO board(galaxyNo,
+                          boardTag,
+                          title,
+                          contents,
+                          userId)
+        VALUES (#{galaxyNo},
+                #{boardTag},
+                #{title},
+                #{contents},
+                #{userId})
+        ]]>
+   </insert>
+    <update id="updateViews" parameterType="int">
+        <![CDATA[
+        UPDATE board
+        SET views = views + 1
+        WHERE boardNo = #{boardNo}
+        ]]>
+    </update>
+    <select id="selectBoardDetail" parameterType="int" resultMap="BaseResultMap">
+        <![CDATA[
+        SELECT /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
+        FROM board
+        WHERE boardNo = #{boardNo}
+          AND state = '1'
+        ]]>
+    </select>
+    <select id="selectBoardListBySize" resultMap="BaseResultMap">
+        SELECT * FROM board ORDER BY boardNo DESC LIMIT #{size}
+    </select>
+    <select id="selectBoardListByGalaxy" resultMap="BaseResultMap">
+        SELECT * FROM board WHERE galaxyNo= #{galaxyNo} ORDER BY boardNo DESC LIMIT 10
+    </select>
+    <!--수정, 삭제-->
+    <update id="updateBoard" parameterType="community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        UPDATE board
+        SET title    = #{title},
+            contents = #{contents},
+            userId   = 'user1',
+            postTime = NOW()
+        WHERE boardNo = #{boardNo}
+        ]]>
+    </update>
+
+    <update id="deleteBoard" parameterType="int">
+        <![CDATA[
+        DELETE FROM board
+        WHERE boardNo = #{boardNo}
+        ]]>
+</update>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community.solar_embassy.mapper.BookingMapper">
+
+    <resultMap id="BaseResultMap" type="community.solar_embassy.dto.Booking">
+        <id property="bokNo" column="bokNo" jdbcType="INTEGER"/>
+        <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
+        <result property="buNo" column="buNo" jdbcType="VARCHAR"/>
+        <result property="userId" column="userId" jdbcType="VARCHAR"/>
+        <result property="userName" column="userName" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="userPhone" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="startDate" column="startDate" jdbcType="TIMESTAMP"/>
+        <result property="endDate" column="endDate" jdbcType="TIMESTAMP"/>
+        <result property="bookingDate" column="bookingDate" jdbcType="TIMESTAMP"/>
+        <result property="checkin" column="checkin" jdbcType="TIMESTAMP"/>
+        <result property="checkout" column="checkout" jdbcType="VARCHAR"/>
+        <result property="payment" column="payment" jdbcType="INTEGER"/>
+        <result property="price" column="price" jdbcType="TIMESTAMP"/>
+        <result property="payDate" column="payDate" jdbcType="TIMESTAMP"/>
+        <result property="state" column="state" jdbcType="TIMESTAMP"/>
+        <result property="bokCheck" column="bokCheck" jdbcType="TIMESTAMP"/>
+        <result property="updaterId" column="updaterId" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- <sql id="Base_Column_List">
+        bo_no,cr_num,bu_tell,
+        ro_no,user_id,bu_address,
+        rd_start_date,rd_end_date,user_name,
+        user_phone,bo_date,ckeckin,
+        checkout,payment,price,
+        reg_date,state,bu_check,
+        updater_id,update_date
+    </sql> -->
+</mapper>

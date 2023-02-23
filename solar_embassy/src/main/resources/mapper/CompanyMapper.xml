@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community.solar_embassy.mapper.CompanyMapper">
+
+    <resultMap id="BaseResultMap" type="community.solar_embassy.dto.Company">
+        <id property="comNo" column="comNo" jdbcType="INTEGER"/>
+        <id property="comName" column="comName" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="parentName" column="parentName" jdbcType="VARCHAR"/>
+        <result property="foundDate" column="foundDate" jdbcType="DATE"/>
+        <result property="founders" column="founders" jdbcType="VARCHAR"/>
+        <result property="ceo" column="ceo" jdbcType="VARCHAR"/>
+        <result property="industries" column="industries" jdbcType="VARCHAR"/>
+        <result property="slogan" column="slogan" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- <sql id="Base_Column_List">
+        com_no,com_name,address,
+        pacom,found_date,founders,
+        ceo,industries,slogan,
+        content
+    </sql> -->
+    <!--  <select id="findCompany" resultType="company">
+         SELECT * FROM company WHERE comNo=#{com}
+     </select>  -->
+ </mapper>

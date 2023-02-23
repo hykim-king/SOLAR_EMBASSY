@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community.solar_embassy.mapper.AutoMapper">
+
+    <resultMap id="BaseResultMap" type="community.solar_embassy.dto.Auto">
+        <id property="autoNo" column="auto_no" jdbcType="INTEGER"/>
+        <id property="autoName" column="auto_name" jdbcType="VARCHAR"/>
+        <id property="codeName" column="code_name" jdbcType="VARCHAR"/>
+        <result property="com" column="com" jdbcType="INTEGER"/>
+        <result property="autoType" column="auto_type" jdbcType="VARCHAR"/>
+        <result property="releaseDate" column="release_date" jdbcType="DATE"/>
+        <result property="seat" column="seat" jdbcType="INTEGER"/>
+        <result property="mpg" column="mpg" jdbcType="DOUBLE"/>
+        <result property="autoEngine" column="auto_engine" jdbcType="VARCHAR"/>
+        <association property="company" column="com_no" select="com.community.solar_embassy.mapper.CompanyMapper.findCompany" fetchType="lazy"></association>
+    </resultMap>
+
+    <!-- <sql id="Base_Column_List">
+        auto_no,auto_name,code_name,
+        com,auto_type,release_date,
+        seat,mpg,auto_engine
+    </sql> -->
+    <select id="selectAutoDetail" resultMap="BaseResultMap">
+        SELECT *
+        FROM auto
+        WHERE autoName = #{autoName}
+    </select>
+</mapper>
