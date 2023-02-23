@@ -1,14 +1,11 @@
 package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.Auto;
-import com.community.solar_embassy.dto.AutoImg;
 import com.community.solar_embassy.dto.Company;
-import com.community.solar_embassy.service.AutoImgService;
 import com.community.solar_embassy.service.AutoService;
 import com.community.solar_embassy.service.CompanyService;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,29 +21,29 @@ public class AutoController {
     @Autowired
     AutoService autoService;
     CompanyService companyService;
-    AutoImgService autoImgService;
+    //AutoImgService autoImgService;
 
     private Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
-    public AutoController(AutoService autoService, AutoImgService autoImgService, CompanyService companyService) {
+    public AutoController(AutoService autoService, CompanyService companyService
+                          ) {
         this.autoService = autoService;
         this.companyService = companyService;
-        this.autoImgService = autoImgService;
+        //this.autoImgService = autoImgService;
     }
 
     @GetMapping("/autopedia.do")
-    public String autopedia() {
-        return "/galaxy/autopedia";
-    }
+    public void autopedia() {}
 
     @GetMapping("/autoDetail.do")
     public ModelAndView autoDetail(
-            @RequestParam(name = "autoName") String autoName, @RequestParam(name = "autoImgNo") int autoImgNo,
+            @RequestParam(name = "autoName") String autoName,
+            //@RequestParam(name = "autoImgNo") int autoImgNo,
             ModelAndView model) throws Exception {
         Auto auto = autoService.detail(autoName);
-        AutoImg autoImg = autoImgService.detail(autoImgNo);
+        //AutoImg autoImg = autoImgService.detail(autoImgNo);
         model.addObject("auto", auto);
-        model.addObject("autoImg", autoImg);
+        //model.addObject("autoImg", autoImg);
         model.setViewName("/galaxy/autoDetail");
         return model;
     }
