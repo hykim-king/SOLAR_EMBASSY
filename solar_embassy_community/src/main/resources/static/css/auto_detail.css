@@ -68,21 +68,8 @@
     margin-left: 20px;
 }
 #SE_contents #content3 #data ul #subdata {
-    float: left;
+    float: bottom;
     width: 600px;
-}
-
-#SE_contents #content3 #data ul #disp {
-    width: 200px;
-    float: left;
-}
-#SE_contents #content3 #data ul #mpg {
-    width: 200px;
-    float: left;
-}
-#SE_contents #content3 #data ul #price {
-    width: 200px;
-    float: left;
 }
 
 #SE_contents #content4 {

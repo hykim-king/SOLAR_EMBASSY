@@ -15,7 +15,7 @@ class AutoMapperTest {
     void selectAutoDetail() throws Exception {
         Auto auto = new Auto();
         auto.setAutoNo(1);
-        auto.setAutoName("The All New 그랜저");
+        auto.setAutoName("그랜저");
         auto.setCodeName("GN7");
         auto.setDetailName("2023년형 가솔린 2.0");
         auto.setOptionName("익스클루시브 (A/T)");

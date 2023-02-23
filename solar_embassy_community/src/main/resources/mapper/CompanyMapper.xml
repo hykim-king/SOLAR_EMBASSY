@@ -5,11 +5,11 @@
 <mapper namespace="com.community.solar_embassy.mapper.CompanyMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Company">
-            <id property="comNo" column="com_no" jdbcType="INTEGER"/>
-            <id property="comName" column="com_name" jdbcType="VARCHAR"/>
+            <id property="comNo" column="comNo" jdbcType="INTEGER"/>
+            <id property="comName" column="comName" jdbcType="VARCHAR"/>
             <result property="address" column="address" jdbcType="VARCHAR"/>
-            <result property="parentName" column="pacom" jdbcType="VARCHAR"/>
-            <result property="foundDate" column="found_date" jdbcType="DATE"/>
+            <result property="parentName" column="parentName" jdbcType="VARCHAR"/>
+            <result property="foundDate" column="foundDate" jdbcType="DATE"/>
             <result property="founders" column="founders" jdbcType="VARCHAR"/>
             <result property="ceo" column="ceo" jdbcType="VARCHAR"/>
             <result property="industries" column="industries" jdbcType="VARCHAR"/>
