@@ -6,6 +6,9 @@
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Galaxy">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5cf775746b414febfc9303caabf399122e8587d6
             <id property="galaxyNo" column="galaxyNo" jdbcType="INTEGER"/>
             <result property="adminId" column="adminId" jdbcType="VARCHAR"/>
             <result property="galName" column="galName" jdbcType="VARCHAR"/>
@@ -13,6 +16,7 @@
             <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
             <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
             <result property="state" column="state" jdbcType="INTEGER"/>
+<<<<<<< HEAD
 =======
         <id property="galaxyNo" column="galaxy_no" jdbcType="INTEGER"/>
         <result property="adminId" column="admin_id" jdbcType="VARCHAR"/>
@@ -22,17 +26,19 @@
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
         <result property="state" column="state" jdbcType="INTEGER"/>
 >>>>>>> 69a5ab68b59c6e2c9478a29653c95fb104023b62
+=======
+>>>>>>> 5cf775746b414febfc9303caabf399122e8587d6
     </resultMap>
 
     <sql id="Base_Column_List">
-        galaxy_no,admin_id,gal_name,
-        reg_time,updater_id,update_time,
+        galaxyNo,adminId,galName,
+        regTime,updaterId,updateTime,
         state
     </sql>
-    <select id="findGalaxy" resultMap="BaseResultMap">
-        SELECT * FROM galaxy WHERE galaxy_no=#{galaxyNo}
+    <select id="findGalaxy" resultType="com.community.solar_embassy.dto.Galaxy">
+        SELECT * FROM galaxy WHERE galaxyNo= #{galaxyNo}
     </select>
-    <select id="findAll" resultMap="BaseResultMap">
+    <select id="findAll" resultType="com.community.solar_embassy.dto.Galaxy">
         SELECT * FROM galaxy
     </select>
 </mapper>

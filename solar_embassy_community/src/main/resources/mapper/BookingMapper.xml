@@ -5,35 +5,34 @@
 <mapper namespace="com.community.solar_embassy.mapper.BookingMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Booking">
-            <id property="boNo" column="bo_no" jdbcType="INTEGER"/>
-            <result property="crNum" column="cr_num" jdbcType="VARCHAR"/>
-            <result property="buTell" column="bu_tell" jdbcType="VARCHAR"/>
-            <result property="roNo" column="ro_no" jdbcType="INTEGER"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="buAddress" column="bu_address" jdbcType="VARCHAR"/>
-            <result property="rdStartDate" column="rd_start_date" jdbcType="TIMESTAMP"/>
-            <result property="rdEndDate" column="rd_end_date" jdbcType="TIMESTAMP"/>
-            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
-            <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
-            <result property="boDate" column="bo_date" jdbcType="TIMESTAMP"/>
-            <result property="ckeckin" column="ckeckin" jdbcType="TIMESTAMP"/>
+            <id property="bokNo" column="bokNo" jdbcType="INTEGER"/>
+            <id property="bookingDate" column="bookingDate" jdbcType="TIMESTAMP"/>
+            <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
+            <result property="buNo" column="buNo" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="userName" column="userName" jdbcType="VARCHAR"/>
+            <result property="userPhone" column="userPhone" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="startDate" column="startDate" jdbcType="TIMESTAMP"/>
+            <result property="endDate" column="endDate" jdbcType="TIMESTAMP"/>
+            <result property="checkin" column="checkin" jdbcType="TIMESTAMP"/>
             <result property="checkout" column="checkout" jdbcType="TIMESTAMP"/>
             <result property="payment" column="payment" jdbcType="VARCHAR"/>
             <result property="price" column="price" jdbcType="VARCHAR"/>
-            <result property="regDate" column="reg_date" jdbcType="TIMESTAMP"/>
+            <result property="payDate" column="payDate" jdbcType="TIMESTAMP"/>
             <result property="state" column="state" jdbcType="INTEGER"/>
-            <result property="buCheck" column="bu_check" jdbcType="VARCHAR"/>
-            <result property="updaterId" column="updater_id" jdbcType="VARCHAR"/>
-            <result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
+            <result property="bokCheck" column="bokCheck" jdbcType="VARCHAR"/>
+            <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        bo_no,cr_num,bu_tell,
-        ro_no,user_id,bu_address,
-        rd_start_date,rd_end_date,user_name,
-        user_phone,bo_date,ckeckin,
-        checkout,payment,price,
-        reg_date,state,bu_check,
-        updater_id,update_date
+        bokNo,bookingDate,buTell,
+        buNo,userId,userName,
+        userPhone,address,startDate,
+        endDate,checkin,checkout,
+        payment,price,payDate,
+        state,bokCheck,updaterId,
+        updateTime
     </sql>
 </mapper>

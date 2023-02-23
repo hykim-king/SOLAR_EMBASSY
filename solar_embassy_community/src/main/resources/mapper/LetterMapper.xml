@@ -6,6 +6,7 @@
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Letter">
             <id property="letterNo" column="letterNo" jdbcType="INTEGER"/>
+<<<<<<< HEAD
             <result property="senderId" column="sender_id" jdbcType="VARCHAR"/>
             <result property="receiverId" column="receiverId" jdbcType="VARCHAR"/>
             <result property="title" column="title" jdbcType="VARCHAR"/>
@@ -15,12 +16,23 @@
             <result property="receiveState" column="receiveState" jdbcType="INTEGER"/>
             <result property="receiverDel" column="receiverDel" jdbcType="INTEGER"/>
             <result property="senderDel" column="sender_del" jdbcType="INTEGER"/>
+=======
+            <result property="senderId" column="senderId" jdbcType="VARCHAR"/>
+            <result property="receiverId" column="receiverId" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="contents" column="contents" jdbcType="VARCHAR"/>
+            <result property="sentTime" column="sentTime" jdbcType="TIMESTAMP"/>
+            <result property="readTime" column="readTime" jdbcType="TIMESTAMP"/>
+            <result property="receiveState" column="receiveState" jdbcType="INTEGER"/>
+            <result property="receiverName" column="receiverName" jdbcType="VARCHAR"/>
+            <result property="senderName" column="senderName" jdbcType="VARCHAR"/>
+>>>>>>> 5cf775746b414febfc9303caabf399122e8587d6
     </resultMap>
 
     <sql id="Base_Column_List">
-        letter_no,sender_id,receiver_id,
-        title,contents,sent_time,
-        read_time,receive_state,receiver_del,
-        sender_del
+        letterNo,senderId,receiverId,
+        title,contents,sentTime,
+        readTime,receiveState,receiverName,
+        senderName
     </sql>
 </mapper>

@@ -14,7 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        block_no,user_id,block_obj_id,
-        reason,post_time,update_time
+        blockNo,userId,blockObjId,
+        reason,postTime,updateTime
     </sql>
 </mapper>

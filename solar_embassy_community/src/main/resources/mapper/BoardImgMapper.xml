@@ -5,15 +5,15 @@
 <mapper namespace="com.community.solar_embassy.mapper.BoardImgMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.BoardImg">
-            <id property="boardImgNo" column="board_img_no" jdbcType="VARCHAR"/>
-            <result property="boardNo" column="board_no" jdbcType="INTEGER"/>
-            <result property="imagePath" column="image_path" jdbcType="VARCHAR"/>
-            <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
-            <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
+            <id property="boardImgNo" column="boardImgNo" jdbcType="INTEGER"/>
+            <result property="boardNo" column="boardNo" jdbcType="INTEGER"/>
+            <result property="imagePath" column="imagePath" jdbcType="VARCHAR"/>
+            <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
+            <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        board_img_no,board_no,image_path,
-        origin_img_name,post_time
+        boardImgNo,boardNo,imagePath,
+        originImgName,postTime
     </sql>
 </mapper>

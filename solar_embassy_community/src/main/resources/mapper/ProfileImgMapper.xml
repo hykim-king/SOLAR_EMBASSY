@@ -9,17 +9,49 @@
             <result property="userId" column="userId" jdbcType="VARCHAR"/>
             <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
             <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
+<<<<<<< HEAD
             <result property="saveImgName" column="save_img_name" jdbcType="VARCHAR"/>
+=======
+            <result property="saveImgName" column="saveImgName" jdbcType="VARCHAR"/>
+>>>>>>> 5cf775746b414febfc9303caabf399122e8587d6
             <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        profile_img_no,user_id,img_path,
-        origin_img_name,save_img_name,post_time,
-        update_time
+        profileImgNo,userId,imgPath,
+        originImgName,saveImgName,postTime,
+        updateTime
     </sql>
-    <select id="findProfileImg" resultType="java.lang.Integer">
-        SELECT
+    <insert id="insert">
+        INSERT INTO profile_img(userId, imgPath, originImgName, saveImgName)
+        VALUES (#{userId}, #{imgPath}, #{originImgName}, #{saveImgName})
+    </insert>
+    <update id="update">
+        UPDATE profile_img
+        SET userId=#{userId},
+            imgPath=#{imgPath},
+            originImgName=#{originImgName},
+            saveImgName=#{saveImgName},
+            updateTime=CURRENT_TIMESTAMP
+        WHERE profileImgNo = #{profileImgNo}
+    </update>
+    <update id="resetNo">
+        ALTER TABLE profile_img AUTO_INCREMENT=#{profileImgNo}
+    </update>
+    <delete id="delete">
+        DELETE FROM profile_img WHERE profileImgNo= #{profileImgNo}
+    </delete>
+    <select id="lastIndex" resultType="java.lang.Integer">
+        SELECT profileImgNo FROM profile_img ORDER BY profileImgNo DESC LIMIT 1
+    </select>
+    <select id="findByNo" resultType="com.community.solar_embassy.dto.ProfileImg">
+        SELECT * FROM profile_img WHERE profileImgNo= #{profileImgNo}
+    </select>
+    <select id="findAll" resultType="com.community.solar_embassy.dto.ProfileImg">
+        SELECT * FROM profile_img
+    </select>
+    <select id="findAble" resultType="com.community.solar_embassy.dto.ProfileImg">
+        SELECT * FROM profile_img WHERE userId in ('admin',#{userId})
     </select>
 </mapper>

@@ -23,6 +23,7 @@ public class Users implements Serializable {
     private String tel;
 
     private String adminId;
+    private Admin admin;
 
     private Date regDate;
 
