@@ -5,7 +5,7 @@
 <mapper namespace="com.community.solar_embassy.mapper.AdminMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Admin">
-            <id property="adminId" column="admin_id" jdbcType="VARCHAR"/>
+            <id property="adminId" column="adminId" jdbcType="VARCHAR"/>
             <result property="adminLevel" column="adminLevel" jdbcType="INTEGER"/>
             <result property="department" column="department" jdbcType="VARCHAR"/>
             <result property="regTime" column="regTime" jdbcType="TIMESTAMP"/>
@@ -13,27 +13,27 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        admin_id,admin_level,department,
-        reg_time,update_time
+        adminId,adminLevel,department,
+        regTime,updateTime
     </sql>
-    <insert id="insertOne" parameterType="Admin">
-        INSERT INTO admin(adminId, adminLevel, department, updateTime)
-            VALUE (#{adminId}, #{adminLevel}, #{department}, #{updateTime})
+    <insert id="insertOne">
+        INSERT INTO admin(adminId, adminLevel, department) VALUES (#{adminId}, #{adminLevel}, #{department})
     </insert>
     <update id="modifyOne">
-        UPDATE admin
-        SET adminLevel=#{adminId},
-            department=#{department},
-            updateTime=current_timestamp
-        WHERE adminId = #{adminId}
+        UPDATE admin SET adminLevel=#{adminLevel}, department=#{department}, updateTime = CURRENT_TIMESTAMP WHERE adminId=#{adminId}
     </update>
     <delete id="deleteOne">
-        DELETE FROM admin WHERE adminId= #{adminId}
+        DELETE FROM admin WHERE adminId=#{adminId}
     </delete>
-    <select id="findAll" resultMap="BaseResultMap">
+    <select id="findAll" resultType="com.community.solar_embassy.dto.Admin">
         SELECT * FROM admin
     </select>
+    <select id="findAllByPaging" resultType="com.community.solar_embassy.dto.Admin">
+        SELECT * FROM admin
+        <if test="orderField!=null">ORDER BY ${orderField} ${direct}</if>
+        LIMIT #{startRow},#{rows}
+    </select>
     <select id="findOneByAdminId" resultType="com.community.solar_embassy.dto.Admin">
-        SELECT * FROM admin WHERE adminId= #{adminId}
+        SELECT * FROM admin WHERE adminId=#{adminId}
     </select>
 </mapper>

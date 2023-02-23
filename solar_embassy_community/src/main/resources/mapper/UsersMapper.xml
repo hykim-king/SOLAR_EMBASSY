@@ -4,59 +4,87 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.community.solar_embassy.mapper.UsersMapper">
 
-    <resultMap id="BaseResultMap" type="Users" autoMapping="true">
-        <id property="userId" column="userid" jdbcType="VARCHAR"/>
-        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
-        <result property="passwords" column="passwords" jdbcType="VARCHAR"/>
-        <result property="email" column="email" jdbcType="VARCHAR"/>
-        <result property="hp" column="hp" jdbcType="VARCHAR"/>
-        <result property="tell" column="tell" jdbcType="VARCHAR"/>
-        <result property="adminId" column="admin_id" jdbcType="VARCHAR"/>
-        <result property="regDate" column="reg_date" jdbcType="TIMESTAMP"/>
-        <result property="lastLoginTime" column="last_login_time" jdbcType="TIMESTAMP"/>
-        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-        <result property="state" column="state" jdbcType="INTEGER"/>
-        <result property="cPoint" column="c_point" jdbcType="INTEGER"/>
-        <result property="ePoint" column="e_point" jdbcType="INTEGER"/>
-        <result property="exp" column="exp" jdbcType="INTEGER"/>
-        <result property="userLevel" column="user_level" jdbcType="INTEGER"/>
-        <result property="birth" column="birth" jdbcType="DATE"/>
-        <result property="profileImgNo" column="profile_img_no" jdbcType="INTEGER"/>
-        <association property="admin" column="adminId" select="com.community.solar_embassy.mapper.AdminMapper.findOne"
-                     fetchType="lazy" autoMapping="true"></association>
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Users">
+            <id property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="passwords" column="passwords" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="hp" column="hp" jdbcType="VARCHAR"/>
+            <result property="tell" column="tell" jdbcType="VARCHAR"/>
+            <result property="adminId" column="adminId" jdbcType="VARCHAR"/>
+            <result property="regDate" column="regDate" jdbcType="TIMESTAMP"/>
+            <result property="lastLoginTime" column="lastLoginTime" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="cPoint" column="cPoint" jdbcType="INTEGER"/>
+            <result property="ePoint" column="ePoint" jdbcType="INTEGER"/>
+            <result property="exp" column="exp" jdbcType="INTEGER"/>
+            <result property="userLevel" column="userLevel" jdbcType="INTEGER"/>
+            <result property="birth" column="birth" jdbcType="DATE"/>
+            <result property="profileImgNo" column="profileImgNo" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        userid,nickname,passwords,
+        userId,nickname,passwords,
         email,hp,tell,
-        admin_id,reg_date,last_login_time,
-        update_time,state,c_point,
-        e_point,exp,user_level,
-        birth,profile_img_no
+        adminId,regDate,lastLoginTime,
+        updateTime,state,cPoint,
+        ePoint,exp,userLevel,
+        birth,profileImgNo
     </sql>
-    <insert id="insert" parameterType="com.community.solar_embassy.dto.Users">
-        insert INTO users
-            (userid, passwords, nickname, email)
-        VALUES (#{userId}, #{passwords}, #{nickname}, #{email})
+    <insert id="insert">
+        INSERT INTO users(userId, nickname, passwords, email, hp, tel, adminId, birth, profileImgNo)
+        VALUES (#{userId}, #{nickname}, #{passwords}, #{email}, #{hp}, #{tel}, #{adminId},
+                #{birth}, #{profileImgNo})
     </insert>
-
-
-    <select id="findByUserIdAndPw" resultType="Users">
-        SELECT *
-        FROM users
-        WHERE userid = #{userId}
-          AND passwords = #{passwords}
-    </select>
-
-    <delete id="deleteById">
-        DELETE
-        FROM users
-        where userid = #{user_id}
+    <update id="updateLogin">
+        UPDATE users SET lastLoginTime=CURRENT_TIMESTAMP WHERE userId= #{userId}
+    </update>
+    <update id="update">
+        UPDATE users
+        SET nickname=#{nickname},
+            passwords=#{passwords},
+            email=#{email},
+            hp=#{hp},
+            tel=#{tel},
+            adminId=#{adminId},
+            birth=#{birth},
+            profileImgNo=#{profileImgNo},
+            updateTime=CURRENT_TIMESTAMP
+        WHERE userId = #{userId}
+    </update>
+    <delete id="delete">
+        DELETE FROM users WHERE userId= #{userId}
     </delete>
-
-    <select id="findById" resultType="com.community.solar_embassy.dto.Users">
-        SELECT *
-        FROM solar_embassy.users
-        where userid = #{user_id}
+    <select id="findByUserIdAndPw" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM users WHERE userId= #{userId} and passwords= #{passwords}
     </select>
+    <select id="findAll" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM users
+    </select>
+    <select id="findPaging" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM users
+        <if test="orderField!=null">
+            ORDER BY ${orderField} ${direct}
+        </if>
+        LIMIT #{startRow} #{rows}
+    </select>
+    <select id="findById" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM users WHERE userId= #{userId}
+    </select>
+    <update id="getPoints">
+        UPDATE users
+        SET cPoint=cPoint + #{cPoint},
+            ePoint=ePoint + #{ePoint}
+        WHERE userId = #{userId}
+    </update>
+    <update id="expUp">
+        UPDATE users SET exp=exp+#{exp} WHERE userId= #{userId}
+    </update>
+    <update id="levelUp">
+        UPDATE users
+        SET exp=exp-(SELECT totalExp FROM grade WHERE grade.userLevel=users.userLevel),
+            userLevel=userLevel+1
+        WHERE userId= #{userId}
+    </update>
 </mapper>

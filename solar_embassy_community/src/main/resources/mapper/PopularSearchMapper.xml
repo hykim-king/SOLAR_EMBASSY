@@ -5,18 +5,18 @@
 <mapper namespace="com.community.solar_embassy.mapper.PopularSearchMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.PopularSearch">
-            <id property="psNo" column="ps_no" jdbcType="INTEGER"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="crNum" column="cr_num" jdbcType="VARCHAR"/>
-            <result property="buTell" column="bu_tell" jdbcType="VARCHAR"/>
-            <result property="psKeyword" column="ps_keyword" jdbcType="VARCHAR"/>
-            <result property="psDatetime" column="ps_datetime" jdbcType="TIMESTAMP"/>
-            <result property="psIp" column="ps_ip" jdbcType="VARCHAR"/>
+            <id property="popKwdNo" column="popKwdNo" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="licenseNum" column="licenseNum" jdbcType="VARCHAR"/>
+            <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
+            <result property="searchKw" column="searchKw" jdbcType="VARCHAR"/>
+            <result property="searchTime" column="searchTime" jdbcType="TIMESTAMP"/>
+            <result property="searchIp" column="searchIp" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        ps_no,user_id,cr_num,
-        bu_tell,ps_keyword,ps_datetime,
-        ps_ip
+        popKwdNo,userId,licenseNum,
+        buTell,searchKw,searchTime,
+        searchIp
     </sql>
 </mapper>
