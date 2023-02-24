@@ -42,7 +42,7 @@ layout:decorate="~{/layout}"> -->
 
             <div id="content2">
                 <div id="photo">
-                    <img src="/img/autopedia/hyundai.png" alt="">
+                    <img th:src="${company.getComImgName()}" alt="">
                 </div>
                 <div id="inform">
                     기업명 : <span th:text="${company.getComName()}"></span> <br>

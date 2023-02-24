@@ -26,5 +26,7 @@ public class Company implements Serializable {
 
     private String content;
 
+    private String comImgName;
+
     private static final long serialVersionUID = 1L;
 }
