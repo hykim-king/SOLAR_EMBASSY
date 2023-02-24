@@ -17,6 +17,7 @@ public class BoardDto implements Serializable {
     private Integer galaxyNo;
 
     private String userId;
+    private Users user;
 
     private Integer boardTag;
 
