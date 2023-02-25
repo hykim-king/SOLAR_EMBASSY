@@ -12,13 +12,13 @@ public interface BoardMapper {
 
     int insertBoard(BoardDto board) throws Exception;
 
-    void updateViews(int board_no) throws Exception;
+    void updateViews(int boardNo) throws Exception;
 
-    List<BoardDto> selectBoardDetail(int board_no) throws Exception;
+    List<BoardDto> selectBoardDetail(int boardNo) throws Exception;
 
     void updateBoard(BoardDto board) throws Exception;
 
-    int deleteBoard(int board_no) throws Exception;
+    int deleteBoard(int boardNo) throws Exception;
 
     int count(BoardDto board ) throws Exception;
 

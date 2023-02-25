@@ -37,17 +37,17 @@ public class BoardController {
 
     @GetMapping("/boardWrite.do")
     public String boardWrite(Locale locale, Model model, HttpSession session, @RequestParam int galaxyNo) throws Exception {
-        Users loginUser = (Users) session.getAttribute("loginUser");
+      Users loginUser = (Users) session.getAttribute("loginUser");
         if ( loginUser == null) {
             return "redirect:/user/login.do";
-        }
+       }
         List<Galaxy> galaxies = galaxyService.findAll();
         model.addAttribute("galaxies",galaxies);
         model.addAttribute("galaxyNo",galaxyNo);
         return "/boardWrite";
     }
 
-    //    @PostMapping("/board/boardWrite")
+//    @PostMapping("/board/boardWrite")
 //    public String boardWrite(BoardDto board) throws Exception {
 //        boardService.insertBoard(board);
 //        return "redirect:/board/boardList.do";

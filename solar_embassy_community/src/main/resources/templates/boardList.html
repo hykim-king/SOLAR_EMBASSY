@@ -17,8 +17,8 @@ layout:decorate="~{/layout}"> -->
     <style>
         #user_info_bgc1 {
             margin-left: 2.5%;
-            margin-top: 30px;
-            background-color: #DBE3FF;
+            margin-top: 5px;
+            background-color: #D1EDE1;
             width: 95%;
             height: 1500px;
             border-radius: 10px;
@@ -28,7 +28,7 @@ layout:decorate="~{/layout}"> -->
         #user_info_bgc2 {
             margin-top: 30px;
             margin-bottom: 40px;
-            background-color: #EBC7E6;
+            background-color: #FFC2C3;
             width: 40%;
             height: 30%;
             border-radius: 10px;
@@ -40,7 +40,7 @@ layout:decorate="~{/layout}"> -->
             margin-top: 30px;
             margin-left: 10%;
             margin-bottom: 40px;
-            background-color: #EBC7E6;
+            background-color: #FFC2C3;
             width: 40%;
             height: 30%;
             border-radius: 10px;
@@ -48,13 +48,22 @@ layout:decorate="~{/layout}"> -->
 
         }
 
+        #SE_contents {
+            height: 3010px;
+            background-color: #D1EDE1;
+        }
+
+        #SE_content22 {
+            background-color: #D1EDE1;
+            height: max-content;
+        }
+
+
     </style>
     <title>SOLAR EMBASSY</title>
 </head>
 <body>
 <div id="SE_container">
-
-
     <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
@@ -66,10 +75,11 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 end-->
 
             <!--여기부터-->
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+            <div id="SE_content22">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+                <th:block th:if="${galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1" class="pt-1">
                     <div>
-                        <h1 class="mx-5 my-5 border-bottom-0"><strong>여행 갤럭시</strong></h1>
+                        <h1 class="mx-5 my-5 border-bottom-0"><strong><span th:text="${galaxy.galName}"></span>갤럭시</strong></h1>
                     </div>
                     <div class="text-center">
                         <div id="user_info_bgc2" class="">
@@ -85,7 +95,8 @@ layout:decorate="~{/layout}"> -->
 
                     <div id="boardList_table_btn" class="mb-2">
                         <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
-                        <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}" class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
+                        <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}"
+                           class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
                     </div>
 
                     <div id="boardList_table">
@@ -111,17 +122,17 @@ layout:decorate="~{/layout}"> -->
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}" class="text-center">
-                                <td th:text="${list.boardNo}"></td>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="list_n:${list}" class="text-center">
+                                <td th:text="${list_n.boardNo}"></td>
                                 <td class="title">
-                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}"
-                                       th:text="${list.boardTag}"></a>
+                                    <a href="/board/boardDetail?boardNo=" th:attrappend="href=${list_n.boardNo}"
+                                       th:text="${list_n.boardTag}" style="color:#000;"></a>
                                 </td>
-                                <td th:text="${list.title}"></td>
-                                <td th:text="${list.user.nickname}"></td>
-                                <td th:text="${(list.likes ==null)?0:list.likes}"></td>
-                                <td th:text="${(list.views ==null)?0:list.views}"></td>
-                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+                                <td th:text="${list_n.title}" th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]" style="cursor: pointer"></td>
+                                <td th:text="${list_n.userId}"></td>
+                                <td th:text="${(list_n.likes ==null)?0:list_n.likes}"></td>
+                                <td th:text="${(list_n.views ==null)?0:list_n.views}"></td>
+                                <td th:text="${#dates.format(list_n.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
                             </tr>
                             <tr th:unless="${#lists.size(list)} > 0">
                                 <td colspan="8">조회된 결과가 없습니다.</td>
@@ -133,9 +144,6 @@ layout:decorate="~{/layout}"> -->
                     <div>
                     </div>
 
-                    <div id="SE_content3">
-
-                    </div>
                 </div>
 
             </div>
@@ -148,7 +156,8 @@ layout:decorate="~{/layout}"> -->
                 </p>
                 <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
             </footer>
-
         </div>
+    </div>
+</div>
 </body>
 </html>

@@ -28,9 +28,9 @@ layout:decorate="~{/layout}"> -->
         #user_info_bgc1 {
             margin-left: 2.5%;
             margin-top: 30px;
-            background-color: #DBE3FF;
+            background-color: #9389c7;
             width: 95%;
-            height: 620px;
+            height: 800px;
             border-radius: 10px;
             position: relative;
         }
@@ -48,11 +48,28 @@ layout:decorate="~{/layout}"> -->
             width: 95%;
         }
 
-        #textarea_btn{
+        #textarea_btn {
             margin-right: 30px;
             float: right;
         }
 
+        #SE_contents {
+            height: 3010px;
+            background-color: #9389c7;
+        }
+
+        #SE_footer {
+            margin-top: 600px;
+            font-size: 5em;
+        }
+
+        #title_input1 {
+            margin-left: 10px;
+        }
+
+        #SE_content22 {
+            margin-top: 100px;
+        }
 
 
     </style>
@@ -60,8 +77,6 @@ layout:decorate="~{/layout}"> -->
 </head>
 <body>
 <div id="SE_container">
-
-
     <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
@@ -73,22 +88,25 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 end-->
 
             <!--여기부터-->
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+            <div id="SE_content22">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+                <th:block th:if="${galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post" action="/board/boardWrite.do">
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                         <div th:text="${session.loginUser.nickname}+'님의 작성글입니다.'"></div>
-                        <select name="galaxyNo" th:selected="${galaxyNo}">
-                            <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}" th:text="${galaxy.galName}"></option>
-                        </select>
-                        <select name="boardTag">
-                            <option value="1" >일상</option>
-                            <option value="2">유머</option>
-                            <option value="3">예약</option>
-                            <option value="4">후기</option>
-                        </select>
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
+                                <select th:name="galaxyNo" th:selected="${galaxyNo}"
+                                        class="btn btn-secondary dropdown-toggle">
+                                    <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}"
+                                            th:text="${galaxy.galName}"></option>
+                                </select>
+                                <select name="boardTag" class="btn btn-secondary dropdown-toggle">
+                                    <option value="1">일상</option>
+                                    <option value="2">유머</option>
+                                    <option value="3">예약</option>
+                                    <option value="4">후기</option>
+                                </select>
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
                                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                     주제
@@ -100,7 +118,7 @@ layout:decorate="~{/layout}"> -->
                                     <li><a class="dropdown-item" href="#">기타</a></li>
                                 </ul>
                             </div>
-                            <div>
+                            <div id="title_input1">
                                 <input type="text" placeholder="제목" id="title" name="title" class="form-control"
                                        aria-label="Text input with dropdown button" style="width: 600px">
                             </div>
@@ -121,7 +139,8 @@ layout:decorate="~{/layout}"> -->
             <footer id="SE_footer">
                 <p>
                 </p>
-                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+                <h3 id="footer_text1"><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a
+                        href="#">비즈니스 문의</a> /
                     <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
                 <p>
                 </p>

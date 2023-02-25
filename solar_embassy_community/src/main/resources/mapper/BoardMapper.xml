@@ -26,7 +26,7 @@
         FROM board
         WHERE state = 0
         ORDER BY boardNo DESC
-            LIMIT 9
+        LIMIT 9
         ]]>
     </select>
     <!--게시글 등록-->
@@ -51,7 +51,7 @@
    </insert>
     <!--게시글 상세-->
     <select id="selectBoardDetail" parameterType="int" resultType="BoardDto">
-        SELECT  /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
+        SELECT *
         FROM board
         WHERE boardNo = #{boardNo}
           AND state = 0
@@ -91,7 +91,7 @@
     <delete id="deleteBoard" parameterType="int">
         <![CDATA[
         DELETE FROM board
-        WHERE boardNo = #{board_no}
+        WHERE boardNo = #{boardNo}
         ]]>
     </delete>
 </mapper>
