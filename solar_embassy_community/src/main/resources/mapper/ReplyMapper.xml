@@ -5,29 +5,31 @@
 <mapper namespace="com.community.solar_embassy.mapper.ReplyMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Reply">
-        <id property="replyNo" column="reply_no" jdbcType="INTEGER"/>
-        <result property="boardNo" column="board_no" jdbcType="INTEGER"/>
+        <id property="replyNo" column="replyNo" jdbcType="INTEGER"/>
+        <result property="boardNo" column="boardNo" jdbcType="INTEGER"/>
         <result property="userId" column="userId" jdbcType="VARCHAR"/>
-        <result property="fkReplyNo" column="fk_reply_no" jdbcType="INTEGER"/>
+        <result property="fkReplyNo" column="fkReplyNo" jdbcType="INTEGER"/>
         <result property="contents" column="contents" jdbcType="VARCHAR"/>
-        <result property="postTime" column="post_time" jdbcType="TIMESTAMP"/>
-        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
         <result property="likes" column="likes" jdbcType="INTEGER"/>
         <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
         <result property="state" column="state" jdbcType="INTEGER"/>
-        <result property="imgPath" column="img_path" jdbcType="VARCHAR"/>
-        <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
+        <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
+        <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
         <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById"
-                     autoMapping="true" fetchType="lazy"></association>
+                     autoMapping="true" fetchType="lazy"/>
     </resultMap>
 
     <insert id="insertReply">
-        INSERT INTO solar_embassy.reply (replyNo, boardNo, userId, contents)
-        VALUES (#{replyNo}, #{boardNo}, #{userId}, #{contents})
+        INSERT INTO solar_embassy.reply (replyNo, boardNo, userId, contents, fkReplyNo)
+        VALUES (#{replyNo}, #{boardNo}, #{userId}, #{contents}, #{fkReplyNo})
     </insert>
+
     <update id="updateReply">
         UPDATE reply
-        SET contents = #{contents}
+        SET contents = #{contents},
+            updateTime = #{updateTime}
         WHERE replyNo = #{replyNo}
     </update>
 
@@ -38,11 +40,14 @@
     <select id="findByBoardNo" resultMap="BaseResultMap">
         SELECT *
         FROM reply
-        WHERE boardNo = #{boardNo}
+        WHERE boardNo = #{boardNo} and fkReplyNO is null
         ORDER BY replyNo DESC
     </select>
     <select id="findAll" resultType="com.community.solar_embassy.dto.Reply">
 
+    </select>
+    <select id="findAllByFkReplyNo" resultType="com.community.solar_embassy.dto.Reply">
+        SELECT * FROM reply WHERE fkReplyNo=#{replyNo}
     </select>
 
 

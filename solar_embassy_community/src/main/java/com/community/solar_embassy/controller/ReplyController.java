@@ -42,7 +42,6 @@ public class ReplyController {
     @PostMapping("/register.do")
     public @ResponseBody AjaxSateHandler register(Reply reply,
                                                   @SessionAttribute Users loginUser){
-
         AjaxSateHandler ajaxSateHandler=new AjaxSateHandler();
         int register=0;
         register=replyService.register(reply);
@@ -50,15 +49,30 @@ public class ReplyController {
         return ajaxSateHandler;
         //return "{\"state\":"+register+"}";
     }
-    @PostMapping ("/delete.do")
-    public @ResponseBody AjaxSateHandler delete(Reply reply,
+
+    @PutMapping("/modify.do")
+    public @ResponseBody AjaxSateHandler modify(@SessionAttribute Users loginInfo,
+                                                 @ModelAttribute Reply reply) {
+        System.out.println(reply);
+        AjaxSateHandler ajaxStateHandler = new AjaxSateHandler();
+        int modify = 0;
+        modify = replyService.modifyOne(reply);
+        System.out.println(modify);
+        ajaxStateHandler.setState(modify);
+        return ajaxStateHandler;
+    }
+
+    @DeleteMapping ("/delete.do")
+    public @ResponseBody AjaxSateHandler delete(Reply replyNo,
                                                 @SessionAttribute Users loginUser){
         AjaxSateHandler ajaxSateHandler = new AjaxSateHandler();
         int delete=0;
-        delete = replyService.delete(reply);
+        delete = replyService.delete(replyNo);
         ajaxSateHandler.setState(delete);
         return  ajaxSateHandler;
     }
+
+
 
 }
 

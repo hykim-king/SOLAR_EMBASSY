@@ -13,6 +13,7 @@ public class Reply implements Serializable {
     private Integer boardNo;
 
     private String userId;
+    private String nickname;
 
     private Users user;
 
@@ -34,7 +35,7 @@ public class Reply implements Serializable {
 
     private String originImgName;
 
-    private List<Reply> replyList;
+    private List<Reply> rereplyList;
 
     private static final long serialVersionUID = 1L;
     public Reply(){

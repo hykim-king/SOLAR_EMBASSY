@@ -54,13 +54,33 @@ layout:decorate="~{/layout}"> -->
             border-bottom: 1px solid #D3D3D3;
         }
 
+        #reply_reply_comment{
+            border-top: 1px solid #D3D3D3;
+
+
+        }
+
+        #reply_reply_icon{
+            transform: rotate(135deg);
+        }
 
 
         #reply_reg {
             background-color: #F0FFFF;
+
             border-bottom: 2px solid #00008B;
             border-top: 2px solid #00008B;
         }
+
+        #reply_update{
+            border-top: 1px solid #D3D3D3;
+        }
+
+        #rRegister{
+            border-top: 1px solid #D3D3D3;
+        }
+
+
 
 
     </style>
@@ -99,11 +119,11 @@ layout:decorate="~{/layout}"> -->
                         <span class="float-end"> 조회: 3 | </span>
                     </div>
                 </div>
-                <div class="mb-2 text-end">
-                    <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]" class="float-end btn btn-warning">수정</button>
-                </div>
-                <div id="main_content" class="p-5">
-                    <div th:text="${board.contents}"></div>
+
+                <div id="main_content" class="p-5 text-wrap">
+                    <div th:utext="${board.contents}">
+
+                    </div>
                 </div>
 
                 <div id="likes">
@@ -112,18 +132,22 @@ layout:decorate="~{/layout}"> -->
                     <button type="button" class="btn btn-primary btn-lg"><i
                             class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
                 </div>
+                <div class="mb-4 text-end">
+                        <button class="float-end btn btn-danger">삭제</button>
+                        <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]" class="float-end btn btn-warning me-2">수정</button>
+                </div>
+
                 <div id="reply" class="pt-4">
                     <h4 class="ms-4"><span><i class="bi bi-chat-dots me-2"></i></span>댓글 (2)</h4>
                 </div>
-
+                <!--댓글리스트-->
                 <div id="reply_comment" th:each="reply:${replyList}">
                     <div class="px-3 pt-3 pb-3">
-                        <span th:text="${reply.user.nickname}"> </span>
+                        <span th:text="${reply.nickname}"> </span>
                         <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
-                        <span><i class="bi bi-x-square"></i></span>
-<!--                        <form id="reply_del" class="p-4 form" th:if="${session.loginUser == reply.userId}" method="post" action="/reply/delete.do">-->
-<!--                            <span class="ms-2"><i class="bi bi-x-square"></i></span>-->
-<!--                        </form>-->
+                        <span><a href="javascript:void(0)" class="d-inline text-black"
+                                 th:onclick="removeReply([[${reply.replyNo}]])"><i class="bi bi-x-square"></i></a></span>
+
                         <span>
                             <button type="button" class="btn btn-primary btn-sm float-end "><i
                                     class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
@@ -135,10 +159,85 @@ layout:decorate="~{/layout}"> -->
                         <p th:text="${reply.contents}"></p>
                     </div>
 
-                    <div>
-                        <p class="text-end me-3">답글</p>
+                    <div  class="text-end me-3 mb-2">
+                        <span>수정 |</span>
+                        <a class="text-black" style="display: inline;" href="javascript:rRegister_btn();">댓글</a>
                     </div>
+
+                    <!--댓글 수정-->
+                    <form id="reply_update" class="p-4 form" th:onsubmit="event.preventDefault(); modifyReply(this);"
+                          th:if="${session.loginUser!=null}" action="/reply/update.do">
+                        <input type="hidden" name="boardNo" th:value="${reply.boardNo}">
+                        <input type="hidden" name="fkReplyNo" th:value="${reply.fkReplyNo}">
+                        <input type="hidden" name="replyNo" th:value="${reply.replyNo}">
+                        <div class="mb-3">
+                            <input class="form-control text-center" type="text"  th:value="${session.loginUser.nickname}"
+                                   aria-label="Disabled input example" readonly
+                                   style="width: 15%;">
+                            <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"
+                                      name="contents" th:text="${reply.contents}"></textarea>
+                        </div>
+                        <div id="reply_update_btn">
+                            <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>
+                            <button type="submit" class="btn btn-secondary btn-sm float-end">수정</button>
+                        </div>
+                    </form>
+                    <!--댓글 수정 end-->
+
+                    <!--대댓글 리스트-->
+                    <div id="reply_reply_comment">
+                        <div class="" th:each="rereply:${reply.rereplyList}">
+                            <div class="px-3 pt-3 pb-3">
+                                <span id="reply_reply_icon">
+                                    <i class="bi bi-reply-all fs-1" ></i>
+                                </span>
+                                <span class="ms-4" th:text="${rereply.nickname}"> </span>
+                                <span th:text="${#dates.format(rereply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
+                                <span><a href="javascript:void(0)" class="d-inline text-black"
+                                         th:onclick="removeReply([[${rereply.replyNo}]])"><i class="bi bi-x-square"></i></a></span>
+                                <span>
+                                <button type="button" class="btn btn-primary btn-sm float-end "><i
+                                        class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
+                                <button type="button" class="btn btn-danger btn-sm float-end me-1"><i
+                                        class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
+                                </span>
+                            </div>
+
+                            <div id="reply_reply_content" class="px-3" style="margin-left: 43px">
+                                <p th:text="${rereply.contents}"></p>
+                            </div>
+
+                            <div  class="text-end me-3 mb-2">
+                                <span>수정</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--대댓글 리스트 end-->
+                    <!--대댓글 등록-->
+                    <form id="rRegister" style="display: none" class="p-4 form" th:if="${session.loginUser!=null}" method="post" action="/reply/register.do">
+                        <div style="width: 75%;">
+                            <span class="ms-3">
+                                <i class="bi bi-reply-all fs-1" ></i>
+                            </span>
+                            <div class="mb-3" style="margin-left: 60px">
+                                <input class="form-control text-center" type="text"  th:value="${session.loginUser.nickname}"
+                                       aria-label="Disabled input example" readonly
+                                       style="width: 15%;">
+                                <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+                                <input type="hidden" name="boardNo" th:value="${boardNo}">
+                                <input type="hidden" name="fkReplyNo" th:value="${reply.replyNo}">
+                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
+                                          name="contents"></textarea>
+                            </div>
+                            <div id="reply_reply_reg_btn" class="ms-5" >
+                                <button type="button" class="btn btn-secondary btn-sm" style="margin-left: 30px">이미지 첨부</button>
+                                <button type="submit" class="btn btn-secondary btn-sm float-end">등록</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--대댓글 등록 end-->
                 </div>
+                <!--댓글리스트 end-->
 
 
 
@@ -160,6 +259,7 @@ layout:decorate="~{/layout}"> -->
                     </div>
                 </form>
                 <!--댓글 등록 end-->
+
                 <div id="boardList_table_btn" class="mb-2 mt-3">
                     <button class="btn btn-dark btn-sm" type="button">전체글</button>
                     <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i class="bi bi-pencil"></i> 글 쓰기</a>
@@ -224,6 +324,54 @@ layout:decorate="~{/layout}"> -->
         </div>
     </div>
 </div>
+<script th:inline="javascript">
+    async function removeReply(replyNo){
+        let url="/reply/delete.do?replyNo="+replyNo;
+        const resp=await fetch(url,{method:"DELETE"});
+        if(resp.status===200){
+            const json=await resp.json();
+            if(json.state===1){
+                alert("댓글을 삭제 하였습니다.");
+            }else{
+                alert("댓글이 이미 삭제되었습니다.");
+            }
+        }else{
+            alert(`댓글 삭제에 실패했습니다.! ${resp.status}`);
+        }
+    }
+
+    async function modifyReply(e, replyModifyForm) {
+        const formData = new FormData(replyModifyForm);
+        let url = "/reply/modify.do";
+        const resp = await fetch(url, {method: "PUT", body: formData}); //api, 비동기식
+        if (resp.status === 200) {
+            const json = await resp.json();
+            if (json.state === 1) {
+                await loadReplyList();
+                alert("수정 성공!");
+            } else {
+                alert("이미 삭제된 레코드 입니다.");
+            }
+        } else {
+            alert(`서버 오류! (${resp.status})`);
+        }
+    }
+
+</script>
+
+<script>
+    function rRegister_btn(){
+        const con = document.getElementById("rRegister");
+        if(con.style.display==='none'){
+            con.style.display = 'block';
+        }else{
+            con.style.display = 'none';
+        }
+    }
+</script>
+
 </body>
+
 </html>
+
 

@@ -2,7 +2,6 @@ package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.BoardDto;
 import com.community.solar_embassy.dto.Reply;
-import com.community.solar_embassy.dto.Users;
 import com.community.solar_embassy.service.BoardService;
 import com.community.solar_embassy.service.ReplyService;
 import jakarta.servlet.http.HttpSession;
@@ -58,9 +57,13 @@ public class BoardController {
         List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         BoardDto board=boardService.selectBoardDetail(boardNo);
         List<Reply> replyList = replyService.findByBoardNo(boardNo);
+        for(Reply reply:replyList){
+           reply.setRereplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
+        }
         model.addAttribute("list", list);
         model.addAttribute("board",board);
         model.addAttribute("replyList",replyList);
+
 
 //        BoardDto board = boardService.selectBoardDetail(boardNo);
 //        board.setBoardNo(boardNo);
