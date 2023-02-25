@@ -8,4 +8,6 @@ import java.util.List;
 public interface GalaxyService {
 
     List<Galaxy> findAll();
+
+    Galaxy findByNo(int galaxyNo);
 }

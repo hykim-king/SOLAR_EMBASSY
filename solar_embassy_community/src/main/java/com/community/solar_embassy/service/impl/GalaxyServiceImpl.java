@@ -20,7 +20,13 @@ public class GalaxyServiceImpl implements GalaxyService {
     public List<Galaxy> findAll() {
         return galaxyMapper.findAll();
     }
+
+    @Override
+    public Galaxy findByNo(int galaxyNo) {
+        return galaxyMapper.findGalaxy(galaxyNo);
+    }
 }
+
 
 
 

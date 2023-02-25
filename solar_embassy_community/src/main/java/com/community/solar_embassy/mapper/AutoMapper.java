@@ -7,7 +7,9 @@ import java.util.List;
 
 @Mapper
 public interface AutoMapper {
-     List<Auto> selectAutoDetail(String autoName) throws Exception;
+     List<Auto> selectAutoList(String comName);
+     Auto selectByAutoName(String autoName);
+     int insert(Auto auto);
 
 }
 

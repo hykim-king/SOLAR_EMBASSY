@@ -29,8 +29,11 @@ public class BoardController {
         List<BoardDto> list = boardService.boardListByGalaxy(galaxyNo);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         model.addAttribute("list", list);
         model.addAttribute("galaxyNo", galaxyNo);
+        Galaxy galaxy = galaxyService.findByNo(galaxyNo);
+        model.addAttribute("galaxy",galaxy);
         return "/boardList";
     }
+
 
     @GetMapping("/boardWrite.do")
     public String boardWrite(Locale locale, Model model, HttpSession session, @RequestParam int galaxyNo) throws Exception {
@@ -44,7 +47,7 @@ public class BoardController {
         return "/boardWrite";
     }
 
-//    @PostMapping("/board/boardWrite")
+    //    @PostMapping("/board/boardWrite")
 //    public String boardWrite(BoardDto board) throws Exception {
 //        boardService.insertBoard(board);
 //        return "redirect:/board/boardList.do";
@@ -62,9 +65,10 @@ public class BoardController {
     }
 
     @RequestMapping("/boardDetail")
-    public String boardDetail(@RequestParam int boardNo, Model model) throws Exception {
+    public String boardDetail(@RequestParam int boardNo,  Model model) throws Exception {
         BoardDto board = boardService.selectBoardDetail(boardNo);
         board.setBoardNo(boardNo);
+        model.addAttribute("board",board);
         return "/boardDetail";
     }
 //     return "redirect:  (설정한 링크로 가는 것 ) / html로 가면 redirect 제외해야 함
@@ -79,14 +83,18 @@ public class BoardController {
     @RequestMapping("/updateBoard")  // 수정요청
     public String updateBoard(BoardDto board) throws Exception {
         boardService.updateBoard(board);         //게시글 수정
-        return "redirect:/board/openBoardList";  //수정완료 후 게시판 목록으로
+        return "redirect:/board/boardList.do";  //수정완료 후 게시판 목록으로
     }
 
 
     @RequestMapping (value = "deleteBoard", method = RequestMethod.POST)
     public String deleteBoard(@RequestParam int boardNo) throws Exception {
-        boardService.deleteBoard(boardNo);
-        return "redirect:/board/boardList.do";
+        int galaxyNo = boardService.selectBoardDetail(boardNo).getGalaxyNo();
+        int delete = boardService.deleteBoard(boardNo);
+        if (delete !=1) {
+            return "redirect:/board/boardDetail?boardNo="+boardNo;
+        }
+        return "redirect:/board/boardList.do?galaxyNo="+galaxyNo;
     }
 
 

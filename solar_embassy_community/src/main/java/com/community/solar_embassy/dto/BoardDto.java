@@ -17,6 +17,7 @@ public class BoardDto implements Serializable {
     private Integer galaxyNo;
 
     private String userId;
+    private Users user;
 
     private Integer boardTag;
 
@@ -30,11 +31,11 @@ public class BoardDto implements Serializable {
 
     private Integer state;
 
-    private Integer likes;
+    private int likes;
 
     private Integer dislikes;
 
-    private Integer views;
+    private int views;
 
     private static final long serialVersionUID = 1L;
 }

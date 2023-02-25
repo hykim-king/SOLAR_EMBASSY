@@ -32,9 +32,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDto selectBoardDetail(int board_no) throws Exception {
-       // boardMapper.updateViews(board_no);             // 조회수 증가시키기
-        return boardMapper.selectBoardDetail(board_no).get(0);
+    public BoardDto selectBoardDetail(int boardNo) throws Exception {
+        // boardMapper.updateViews(board_no);             // 조회수 증가시키기
+        return boardMapper.selectBoardDetail(boardNo).get(0);
     }
 
     @Override
@@ -44,14 +44,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void deleteBoard(int board_no) throws Exception {
-        boardMapper.deleteBoard(board_no);
+    public int deleteBoard(int boardNo) throws Exception {
+        return boardMapper.deleteBoard(boardNo);
 
     }
 
     @Override
     public List<BoardDto> boardListByGalaxy(int galaxyNo) {
-        return boardMapper.selectBoardListByGalaxy();
+        return boardMapper.selectBoardListByGalaxy(galaxyNo);
     }
 
 }

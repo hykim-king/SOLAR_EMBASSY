@@ -29,4 +29,19 @@ public class Company implements Serializable {
     private String comImgName;
 
     private static final long serialVersionUID = 1L;
+
+    public Company(String comName, String address, String parentName, Date foundDate, String founders, String ceo, String industries, String slogan, String content) {
+        this.comName = comName;
+        this.address = address;
+        this.parentName = parentName;
+        this.foundDate = foundDate;
+        this.founders = founders;
+        this.ceo = ceo;
+        this.industries = industries;
+        this.slogan = slogan;
+        this.content = content;
+    }
+
+    public Company() {
+    }
 }

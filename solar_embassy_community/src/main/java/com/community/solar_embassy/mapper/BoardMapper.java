@@ -1,6 +1,7 @@
 package com.community.solar_embassy.mapper;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.PagingDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,14 +18,13 @@ public interface BoardMapper {
 
     void updateBoard(BoardDto board) throws Exception;
 
-    void deleteBoard(int board_no) throws Exception;
+    int deleteBoard(int board_no) throws Exception;
 
     int count(BoardDto board ) throws Exception;
 
     List<BoardDto> selectBoardListBySize(int size);
 
-    List<BoardDto> selectBoardListByGalaxy();
-
+    List<BoardDto> selectBoardListByGalaxy(int galaxyNo);
 
 }
 
