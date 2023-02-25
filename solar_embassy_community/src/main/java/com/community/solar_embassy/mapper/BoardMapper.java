@@ -13,7 +13,7 @@ public interface BoardMapper {
 
     void updateViews(int board_no) throws Exception;
 
-    List<BoardDto> selectBoardDetail(int board_no) throws Exception;
+    BoardDto selectBoardDetail(int boardNo) throws Exception;
 
     void updateBoard(BoardDto board) throws Exception;
 
@@ -24,7 +24,7 @@ public interface BoardMapper {
 
     List<BoardDto> selectBoardListBySize(int size);
 
-    List<BoardDto> selectBoardListByGalaxy();
+    List<BoardDto> selectBoardListByGalaxy(int galaxyNo);
 
 
 }

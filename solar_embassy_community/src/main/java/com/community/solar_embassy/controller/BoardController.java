@@ -28,6 +28,7 @@ public class BoardController {
     BoardService boardService;
     @Autowired
     ReplyService replyService;
+
     GalaxyService galaxyService;
 
     @GetMapping("/boardList.do")
@@ -85,8 +86,6 @@ public class BoardController {
 //        board.setBoardNo(boardNo);
 //        model.addAttribute("board",board);
         return "boardDetail";
-
-
     }
 
 //     return "redirect:  (설정한 링크로 가는 것 ) / html로 가면 redirect 제외해야 함

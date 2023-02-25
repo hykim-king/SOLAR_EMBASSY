@@ -32,7 +32,7 @@
         DELETE FROM reply WHERE replyNo= #{replyNo}
     </delete>
     <select id="findByBoardNo" resultType="com.community.solar_embassy.dto.Reply">
-        SELECT * FROM reply WHERE boardNo= #{boardNo}
+        SELECT * FROM reply WHERE boardNo= #{boardNo} and fkReplyNo is null
     </select>
     <select id="findAll" resultType="com.community.solar_embassy.dto.Reply">
         SELECT * FROM reply

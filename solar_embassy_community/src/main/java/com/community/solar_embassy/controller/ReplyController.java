@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Locale;
 
 
 @Controller
@@ -39,6 +41,18 @@ public class ReplyController {
     }
     //pathVariable + (delete,patch,put,post,get)
 
+    @GetMapping("/{boardNo}/list.do")
+    public String list(@PathVariable int boardNo,
+                       HttpServletRequest req,
+                       Model model){
+        List<Reply> replyList=replyService.findByBoardNo(boardNo);
+        for(Reply reply:replyList){
+            reply.setRereplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
+        }
+        model.addAttribute("replyList",replyList);
+        return "/reply/list";
+    }
+
     @PostMapping("/register.do")
     public @ResponseBody AjaxSateHandler register(Reply reply,
                                                   @SessionAttribute Users loginUser){
@@ -50,18 +64,25 @@ public class ReplyController {
         //return "{\"state\":"+register+"}";
     }
 
-    @PutMapping("/modify.do")
-    public @ResponseBody AjaxSateHandler modify(@SessionAttribute Users loginInfo,
-                                                 @ModelAttribute Reply reply) {
-        System.out.println(reply);
-        AjaxSateHandler ajaxStateHandler = new AjaxSateHandler();
-        int modify = 0;
-        modify = replyService.modifyOne(reply);
-        System.out.println(modify);
-        ajaxStateHandler.setState(modify);
-        return ajaxStateHandler;
+    @GetMapping("/modify.do")
+    public String modify(@RequestParam int replyNo,
+                         @SessionAttribute Users loginUser,
+                         Model model){
+        List<Reply> reply=replyService.findByFkReplyNo(replyNo);
+        model.addAttribute("reply",reply);
+        return "/reply/modify";
     }
-
+    @PutMapping("/modify.do")
+    public @ResponseBody AjaxSateHandler modify(
+            Reply reply,
+            @SessionAttribute Users loginUser
+//            ,@RequestParam(required = false, name = "imgFile") MultipartFile imgFile
+    ){
+        AjaxSateHandler ajaxSateHandler=new AjaxSateHandler();
+        int modify=replyService.modifyOne(reply);
+        ajaxSateHandler.setState(modify);
+        return  ajaxSateHandler;
+    }
     @DeleteMapping ("/delete.do")
     public @ResponseBody AjaxSateHandler delete(Reply replyNo,
                                                 @SessionAttribute Users loginUser){

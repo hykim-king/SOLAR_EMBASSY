@@ -1,7 +1,3 @@
-<!-- xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{/layout}"> -->
-
 <html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -49,368 +45,276 @@ layout:decorate="~{/layout}"> -->
             border-bottom: 2px solid #00008B;
         }
 
-        #reply_comment {
-            background-color: #F0FFFF;
-            border-bottom: 1px solid #D3D3D3;
-        }
-
-        #reply_reply_comment{
-            border-top: 1px solid #D3D3D3;
-
-
-        }
-
-        #reply_reply_icon{
-            transform: rotate(135deg);
-        }
-
-
-        #reply_reg {
-            background-color: #F0FFFF;
-
-            border-bottom: 2px solid #00008B;
-            border-top: 2px solid #00008B;
-        }
-
-        #reply_update{
+        #rRegister {
             border-top: 1px solid #D3D3D3;
         }
-
-        #rRegister{
-            border-top: 1px solid #D3D3D3;
-        }
-
-
-
-
     </style>
     <title>SOLAR EMBASSY</title>
 </head>
 <body>
-<<<<<<< HEAD
 <div id="SE_container">
-=======
-<div>
-  <h2>게시글 상세 화면</h2>
-  <form id="frm" method="post">
-    <table>
-      <colgroup>
-        <col width="15%">
-        <col width="35%">
-        <col width="15%">
-        <col width="35%">
-      </colgroup>
-      <caption>게시글 상세 내용</caption>
-      <tbody>
-      <tr>
-        <th scope="row">글 번호</th>
-        <td th:text="${board.boardNo}"></td>
-        <th scope="row">조회수</th>
-        <td th:text="${board.views}"></td>
-      </tr>
-      <tr>
-        <th scope="row">작성자</th>
-        <td th:text="${board.userId}"></td>
-        <th scope="row">작성일</th>
-        <td th:text="${board.postTime}"></td>
-      </tr>
-      <tr>
-        <th scope="row">제목</th>
-        <td colspan="3"><input type="text" id="title" name="title" th:value="${board.title}" /></td>
-      </tr>
-      <tr>
-        <td colspan="4" class="view_text">
-          <textarea title="내용" id="contents" name="contents" th:text="${board.contents}"></textarea>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <input type="hidden" id="boardId" th:value="${board.boardNo}" />
-  </form>
+    <div>
+        <th:block th:insert="/mainImg"></th:block>
+        <div id="SE_topline">
+            <!--검색과 로그인 + 왼쪽 사이드-->
+            <th:block th:insert="/searchAndLogin"></th:block>
+            <!--검색과 로그인 end-->
+            <div id="SE_contents" style="z-index:2">
+                <!--메뉴 + 오른쪽 사이드-->
+                <th:block th:insert="/menuAndAside"></th:block>
+                <!--메뉴 end-->
 
-
-    <th:block th:insert="/mainImg"></th:block>
-    <div id="SE_topline">
-        <!--검색과 로그인 + 왼쪽 사이드-->
-        <th:block th:insert="/searchAndLogin"></th:block>
-        <!--검색과 로그인 end-->
-        <div id="SE_contents" style="z-index:2">
-            <!--메뉴 + 오른쪽 사이드-->
-            <th:block th:insert="/menuAndAside"></th:block>
-            <!--메뉴 end-->
-
-            <!--여기부터-->
-            <div id="user_info_bgc1">
-                <div>
-                    <h2 class="ms-5 pt-5"><strong>여행 갤럭시</strong></h2>
-                </div>
-                <div id="head_info" class="px-4 py-2 mt-4 mb-3">
-                    <div class="fs-3">
-                        <span>[질문] </span>
-                        <span th:text="${board.title}"></span>
-                    </div>
+                <!--여기부터-->
+                <div id="user_info_bgc1">
                     <div>
-                        <span th:text="${board.user.nickname}"> </span>
-                        <span> | </span>
-                        <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm')}"> </span>
-                        <span class="float-end"> 댓글 (3) </span>
-                        <span class="float-end"> 추천: 3 | </span>
-                        <span class="float-end"> 조회: 3 | </span>
+                        <h2 class="ms-5 pt-5"><strong>여행 갤럭시</strong></h2>
                     </div>
-                </div>
-
-                <div id="main_content" class="p-5 text-wrap">
-                    <div th:utext="${board.contents}">
-
+                    <div id="head_info" class="px-4 py-2 mt-4 mb-3">
+                        <div class="fs-3">
+                            <span>[질문] </span>
+                            <span th:text="${board.title}"></span>
+                        </div>
+                        <div>
+                            <span th:text="${board.userId}"> </span>
+                            <span> | </span>
+                            <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm')}"> </span>
+                            <span class="float-end"> 댓글 (3) </span>
+                            <span class="float-end"> 추천: 3 | </span>
+                            <span class="float-end"> 조회: 3 | </span>
+                        </div>
                     </div>
-                </div>
 
-                <div id="likes">
-                    <button type="button" class="btn btn-danger btn-lg"><i class="bi bi-hand-thumbs-up"></i>
-                        <span> 3</span></button>
-                    <button type="button" class="btn btn-primary btn-lg"><i
-                            class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
-                </div>
-                <div class="mb-4 text-end">
+                    <div id="main_content" class="p-5 text-wrap">
+                        <div th:utext="${board.contents}">
+
+                        </div>
+                    </div>
+
+                    <div id="likes">
+                        <button type="button" class="btn btn-danger btn-lg"><i class="bi bi-hand-thumbs-up"></i>
+                            <span> 3</span></button>
+                        <button type="button" class="btn btn-primary btn-lg"><i
+                                class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
+                    </div>
+                    <div class="mb-4 text-end">
                         <button class="float-end btn btn-danger">삭제</button>
-                        <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]" class="float-end btn btn-warning me-2">수정</button>
-                </div>
-
-                <div id="reply" class="pt-4">
-                    <h4 class="ms-4"><span><i class="bi bi-chat-dots me-2"></i></span>댓글 (2)</h4>
-                </div>
-                <!--댓글리스트-->
-                <div id="reply_comment" th:each="reply:${replyList}">
-                    <div class="px-3 pt-3 pb-3">
-                        <span th:text="${reply.nickname}"> </span>
-                        <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
-                        <span><a href="javascript:void(0)" class="d-inline text-black"
-                                 th:onclick="removeReply([[${reply.replyNo}]])"><i class="bi bi-x-square"></i></a></span>
-
-                        <span>
-                            <button type="button" class="btn btn-primary btn-sm float-end "><i
-                                    class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
-                            <button type="button" class="btn btn-danger btn-sm float-end me-1"><i
-                                    class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
-                        </span>
-                    </div>
-                    <div id="reply_content" class="px-3">
-                        <p th:text="${reply.contents}"></p>
+                        <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]"
+                                class="float-end btn btn-warning me-2">수정
+                        </button>
                     </div>
 
-                    <div  class="text-end me-3 mb-2">
-                        <span>수정 |</span>
-                        <a class="text-black" style="display: inline;" href="javascript:rRegister_btn();">댓글</a>
+                    <div id="reply" class="pt-4">
+                        <h4 class="ms-4"><span><i class="bi bi-chat-dots me-2"></i></span>댓글 (2)</h4>
                     </div>
 
-                    <!--댓글 수정-->
-                    <form id="reply_update" class="p-4 form" th:onsubmit="event.preventDefault(); modifyReply(this);"
-                          th:if="${session.loginUser!=null}" action="/reply/update.do">
-                        <input type="hidden" name="boardNo" th:value="${reply.boardNo}">
-                        <input type="hidden" name="fkReplyNo" th:value="${reply.fkReplyNo}">
-                        <input type="hidden" name="replyNo" th:value="${reply.replyNo}">
-                        <div class="mb-3">
-                            <input class="form-control text-center" type="text"  th:value="${session.loginUser.nickname}"
-                                   aria-label="Disabled input example" readonly
-                                   style="width: 15%;">
-                            <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"
-                                      name="contents" th:text="${reply.contents}"></textarea>
-                        </div>
-                        <div id="reply_update_btn">
-                            <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>
-                            <button type="submit" class="btn btn-secondary btn-sm float-end">수정</button>
-                        </div>
-                    </form>
-                    <!--댓글 수정 end-->
-
-                    <!--대댓글 리스트-->
-                    <div id="reply_reply_comment">
-                        <div class="" th:each="rereply:${reply.rereplyList}">
-                            <div class="px-3 pt-3 pb-3">
-                                <span id="reply_reply_icon">
-                                    <i class="bi bi-reply-all fs-1" ></i>
-                                </span>
-                                <span class="ms-4" th:text="${rereply.nickname}"> </span>
-                                <span th:text="${#dates.format(rereply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
-                                <span><a href="javascript:void(0)" class="d-inline text-black"
-                                         th:onclick="removeReply([[${rereply.replyNo}]])"><i class="bi bi-x-square"></i></a></span>
-                                <span>
-                                <button type="button" class="btn btn-primary btn-sm float-end "><i
-                                        class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
-                                <button type="button" class="btn btn-danger btn-sm float-end me-1"><i
-                                        class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
-                                </span>
-                            </div>
-
-                            <div id="reply_reply_content" class="px-3" style="margin-left: 43px">
-                                <p th:text="${rereply.contents}"></p>
-                            </div>
-
-                            <div  class="text-end me-3 mb-2">
-                                <span>수정</span>
-                            </div>
-                        </div>
+                    <div id="replyListContainer">
+                        <th:block th:include="/reply/list"></th:block>
                     </div>
-                    <!--대댓글 리스트 end-->
-                    <!--대댓글 등록-->
-                    <form id="rRegister" style="display: none" class="p-4 form" th:if="${session.loginUser!=null}" method="post" action="/reply/register.do">
-                        <div style="width: 75%;">
-                            <span class="ms-3">
-                                <i class="bi bi-reply-all fs-1" ></i>
-                            </span>
-                            <div class="mb-3" style="margin-left: 60px">
-                                <input class="form-control text-center" type="text"  th:value="${session.loginUser.nickname}"
-                                       aria-label="Disabled input example" readonly
-                                       style="width: 15%;">
-                                <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
-                                <input type="hidden" name="boardNo" th:value="${boardNo}">
-                                <input type="hidden" name="fkReplyNo" th:value="${reply.replyNo}">
-                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
-                                          name="contents"></textarea>
-                            </div>
-                            <div id="reply_reply_reg_btn" class="ms-5" >
-                                <button type="button" class="btn btn-secondary btn-sm" style="margin-left: 30px">이미지 첨부</button>
-                                <button type="submit" class="btn btn-secondary btn-sm float-end">등록</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!--대댓글 등록 end-->
-                </div>
-                <!--댓글리스트 end-->
 
-
-
-
-                <!--댓글 등록-->
-                <form id="reply_reg" class="p-4 form" th:if="${session.loginUser!=null}" method="post" action="/reply/register.do">
-                    <div class="mb-3">
-                        <input class="form-control text-center" type="text"  th:value="${session.loginUser.nickname}"
-                               aria-label="Disabled input example" readonly
-                               style="width: 15%;">
-                        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
-                        <input type="hidden" name="boardNo" th:value="${boardNo}">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                  name="contents"></textarea>
+                    <div th:if="${session.loginUser!=null}" id="replyRegisterContainer">
+                        <th:block th:include="/reply/register"></th:block>
                     </div>
-                    <div id="reply_reg_btn">
-                        <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>
-                        <button type="submit" class="btn btn-secondary btn-sm float-end">등록</button>
+
+                    <div id="boardList_table_btn" class="mb-2 mt-3">
+                        <button class="btn btn-dark btn-sm" type="button">전체글</button>
+                        <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i
+                                class="bi bi-pencil"></i> 글 쓰기</a>
                     </div>
-                </form>
-                <!--댓글 등록 end-->
 
-                <div id="boardList_table_btn" class="mb-2 mt-3">
-                    <button class="btn btn-dark btn-sm" type="button">전체글</button>
-                    <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i class="bi bi-pencil"></i> 글 쓰기</a>
-                </div>
-
-                <div id="boardList_table">
+                    <div id="boardList_table">
                         <table class="table table-light table-hover">
                             <colgroup>
-                            <col style="width:max-content">
-                            <col style="width:max-content">
-                            <col style="width:max-content">
-                            <col style="width:max-content">
-                            <col style="width:max-content">
-                            <col style="width:max-content">
-                            <col style="width:max-content">
-                        </colgroup>
-                        <thead class="table-success">
-                        <tr>
-                            <th scope="col" class="text-center">글번호</th>
-                            <th scope="col" class="text-center">구분(주제)</th>
-                            <th scope="col" class="text-center">제목</th>
-                            <th scope="col" class="text-center">작성자</th>
-                            <th scope="col" class="text-center">추천수</th>
-                            <th scope="col" class="text-center">조회수</th>
-                            <th scope="col" class="text-center">작성일</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}" class="text-center">
-                            <td th:text="${list.boardNo}"></td>
-                            <td class="title">
-                                <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}"
-                                   th:text="${list.boardTag}"></a>
-                            </td>
-                            <td th:text="${list.title}" style="cursor: pointer"
-                                th:onclick="location.href=[[@{'/board/{boardNo}/boardDetail.do' (boardNo=${list.boardNo})}]]"></td>
-                            <td th:text="${list.user.nickname}"></td>
-                            <td th:text="${list.likes}"></td>
-                            <td th:text="${list.views}"></td>
-                            <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
-                        </tr>
-                        <tr th:unless="${#lists.size(list)} > 0">
-                            <td colspan="8">조회된 결과가 없습니다.</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <p class="text-center">(페이지네이션 자리)</p>
-                </div>
-            </div>
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                            </colgroup>
+                            <thead class="table-success">
+                            <tr>
+                                <th scope="col" class="text-center">글번호</th>
+                                <th scope="col" class="text-center">제목</th>
+                                <th scope="col" class="text-center">작성자</th>
+                                <th scope="col" class="text-center">추천수</th>
+                                <th scope="col" class="text-center">조회수</th>
+                                <th scope="col" class="text-center">작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="boardi:${list}" class="text-center">
+                                <td th:text="${boardi.boardNo}"></td>
+                                <td class="title" style="display: flex;cursor: pointer"
+                                    th:onclick="location.href=
+                                    [[@{'/board/{boardNo}/boardDetail.do' (boardNo=${boardi.boardNo})}]]">
+                                    <a
+                                            th:switch="${boardi.boardTag}" style="font-weight: bold;">
+                                        <span th:case="1">[일상]</span>
+                                        <span th:case="2">[유머]</span>
+                                        <span th:case="3">[예약]</span>
+                                        <span th:case="4">[후기]</span>
+                                    </a>
+                                    <th:block th:text="${boardi.title}"></th:block>
+                                </td>
+                                <td th:text="${boardi.user.nickname}"></td>
+                                <td th:text="${(boardi.likes ==null)?0:boardi.likes}"></td>
+                                <td th:text="${(boardi.views ==null)?0:boardi.views}"></td>
+                                <td th:text="${#dates.format(boardi.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
 
-            <footer id="SE_footer">
-                <p>
-                </p>
-                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-                <p>
-                </p>
-                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-            </footer>
+                            </tr>
+                            <tr th:unless="${#lists.size(list)} > 0">
+                                <td colspan="8">조회된 결과가 없습니다.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <p class="text-center">(페이지네이션 자리)</p>
+                    </div>
+                </div>
+
+                <footer id="SE_footer">
+                    <p>
+                    </p>
+                    <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스
+                        문의</a> /
+                        <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                    <p>
+                    </p>
+                    <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+                </footer>
+            </div>
         </div>
     </div>
-</div>
-<script th:inline="javascript">
-    async function removeReply(replyNo){
-        let url="/reply/delete.do?replyNo="+replyNo;
-        const resp=await fetch(url,{method:"DELETE"});
-        if(resp.status===200){
-            const json=await resp.json();
-            if(json.state===1){
-                alert("댓글을 삭제 하였습니다.");
-            }else{
-                alert("댓글이 이미 삭제되었습니다.");
-            }
-        }else{
-            alert(`댓글 삭제에 실패했습니다.! ${resp.status}`);
-        }
-    }
+    <script th:inline="javascript">
+        const replyListContainer = document.getElementById("replyListContainer");
 
-    async function modifyReply(e, replyModifyForm) {
-        const formData = new FormData(replyModifyForm);
-        let url = "/reply/modify.do";
-        const resp = await fetch(url, {method: "PUT", body: formData}); //api, 비동기식
-        if (resp.status === 200) {
-            const json = await resp.json();
-            if (json.state === 1) {
-                await loadReplyList();
-                alert("수정 성공!");
+        function loadRegisterForm(replyNo) {
+            const replyRegisterForm = document.forms["replyRegisterForm"];
+            const cloneForm = replyRegisterForm.cloneNode(true); //등록폼 가져와서 복사
+            cloneForm.onsubmit = function (e) { //복사된 폼의 등록 이벤트 재정의
+                registerReply(e, cloneForm);
+            }
+            cloneForm.fkReplyNo.value = replyNo; //복사된 폼의 참조하는 부모 번호 정의
+            let selector = "reReplyRegisterContainer" + replyNo;
+            const reReplyRegisterContainer = document.getElementById(selector); //복사한 폼의 옮길 위치
+            reReplyRegisterContainer.append(cloneForm);
+        }
+
+        async function removeReply(replyNo) {
+            let url = "/reply/delete.do?replyNo=" + replyNo;
+            const resp = await fetch(url, {method: "DELETE"});
+            if (resp.status === 200) {
+                const json = await resp.json();
+                if (json.state === 1) {
+                    alert("댓글을 삭제 하였습니다.");
+                } else {
+                    alert("댓글이 이미 삭제되었습니다.");
+                }
             } else {
-                alert("이미 삭제된 레코드 입니다.");
+                alert(`댓글 삭제에 실패했습니다.! ${resp.status}`);
             }
-        } else {
-            alert(`서버 오류! (${resp.status})`);
         }
-    }
 
-</script>
-
-<script>
-    function rRegister_btn(){
-        const con = document.getElementById("rRegister");
-        if(con.style.display==='none'){
-            con.style.display = 'block';
-        }else{
-            con.style.display = 'none';
+        async function loadReplyModifyForm(replyNo) {
+            let url = "/reply/modify.do?replyNo=" + replyNo;
+            let selector = "reply_comment" + replyNo;
+            const replyContainer = document.getElementById(selector);
+            const resp = await fetch(url);
+            if (resp.status === 200) {
+                let html = await resp.text();
+                console.log(html)
+                replyContainer.innerHTML = html;
+            }
         }
-    }
-</script>
 
+        //node.onsubmit=modifyReply; //modifyReply.this == node
+        //node.onsubmit=function(event){modifyReply();}  //modifyReply.this == window
+        async function modifyReply(formNode) {
+            //console.log(formNode);
+            const formData = new FormData(formNode); //queryString 작성 필요 없음 (단!! multipart/form-data 만)
+            let url = "/reply/modify.do"
+            const resp = await fetch(url, {method: "post"});
+            if (resp.status === 200) {
+                const json = await resp.json();
+                if (json.state === 1) {
+                    await loadReplyList();
+                    alert("수정 성공");
+                } else {
+                    alert("이미 삭제된 레코드 입니다.");
+                }
+            } else {
+                alert("서버 오류 (" + resp.status + ")");
+            }
+        }
+
+        async function loadReplyList() {
+            const resp = await fetch("/reply/[[${boardNo}]]/list.do");
+            const html = await resp.text();
+            replyListContainer.innerHTML = html;
+            init();
+        }
+
+        function init() {
+            const pageBtns = replyListContainer.querySelectorAll(".uk-pagination a");
+            const replyRegisterForm = document.forms["replyRegisterForm"];
+            pageBtns.forEach((btn) => {
+                btn.onclick = async (e) => {
+                    e.preventDefault();
+                    let btnUrl = e.target.href;
+                    let queryString = btnUrl.split("?")[1];
+                    let url = "/reply/[[${boardNo}]]/list.do?" + queryString;
+                    const resp = await fetch(url);
+                    const html = await resp.text();
+                    replyListContainer.innerHTML = html;
+                    init();
+                }
+            });
+            replyRegisterForm.onsubmit = function (e) {
+                registerReply(e, replyRegisterForm);
+            };
+        }
+
+        init();
+
+        async function registerReply(e, replyRegisterForm) {
+            e.preventDefault();
+            let url = "/reply/register.do";
+            const formData = new FormData(replyRegisterForm);
+            //let queryString="?userId="+replyRegisterForm.userId.value+"&title="+replyRegisterForm.title.value;
+            //post 통신으로 하더라도 fetch 로 통신시 파라미터를 queryString 을 생성해서 통신해야 한다.!!
+            //multipart/form-data 로 전달할때는 new FormData(formNode)를 넣으면 자동으로 파라미터 생성
+            const resp = await fetch(url, {method: "POST", body: formData});
+            const json = await resp.json();
+            console.log(json);
+            if (json.state == 1) {
+                await loadReplyList();
+            }
+        }
+
+    </script>
+
+    <script>
+        function rModify_btn() {
+            const con = document.getElementById("rModify");
+            if (con.style.display === 'none') {
+                con.style.display = 'block';
+            } else {
+                con.style.display = 'none';
+            }
+        }
+
+        function rRegister_btn() {
+            const con = document.getElementById("rRegister");
+            if (con.style.display === 'none') {
+                con.style.display = 'block';
+            } else {
+                con.style.display = 'none';
+            }
+        }
+    </script>
+</div>
 </body>
-
 </html>
 
 
