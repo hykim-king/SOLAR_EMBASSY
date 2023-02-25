@@ -765,15 +765,13 @@ input[id="menuicon"]:checked + label + div {top:80px;}
 #SE_autoNavbar{
     background-color: hotpink;
     height: 80px;
-    display: flex;
     border-radius: 10px;
+    display: flex;
     border: 2px solid #000;
 }
 
 #SE_autoNavbar a {
-    padding-left: 30px;
     color: #fff;
-    float: left;
     text-decoration: none;
     font-size: 20px;
     cursor: pointer;
