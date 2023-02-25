@@ -1,13 +1,9 @@
 package com.community.solar_embassy.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
-/**
- * @TableName company
- */
 @Data
 public class Company implements Serializable {
     private Integer comNo;
@@ -29,6 +25,8 @@ public class Company implements Serializable {
     private String slogan;
 
     private String content;
+
+    private String comImgName;
 
     private static final long serialVersionUID = 1L;
 
