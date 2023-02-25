@@ -1,9 +1,13 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName user_block
+ */
 @Data
 public class UserBlock implements Serializable {
     private Integer blockNo;

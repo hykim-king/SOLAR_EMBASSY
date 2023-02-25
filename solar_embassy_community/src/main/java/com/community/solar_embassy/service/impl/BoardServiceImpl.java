@@ -19,6 +19,11 @@ public class BoardServiceImpl implements BoardService {
         return boardMapper.selectBoardList();
     }
 
+    @Override
+    public List<BoardDto> selectBoardListBySize(int size) throws Exception {
+        return boardMapper.selectBoardListBySize(size);
+    }
+
     // 게시글 작성 요청 처리
     @Override
     public int insertBoard(BoardDto board) throws Exception {
@@ -28,8 +33,8 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDto selectBoardDetail(int board_no) throws Exception {
-        boardMapper.updateViews(board_no);             // 조회수 증가시키기
-        return boardMapper.selectBoardDetail(board_no);
+       // boardMapper.updateViews(board_no);             // 조회수 증가시키기
+        return boardMapper.selectBoardDetail(board_no).get(0);
     }
 
     @Override
@@ -42,6 +47,11 @@ public class BoardServiceImpl implements BoardService {
     public void deleteBoard(int board_no) throws Exception {
         boardMapper.deleteBoard(board_no);
 
+    }
+
+    @Override
+    public List<BoardDto> boardListByGalaxy(int galaxyNo) {
+        return boardMapper.selectBoardListByGalaxy();
     }
 
 }

@@ -44,23 +44,49 @@ layout:decorate="~{/layout}"> -->
                     <div id="SE_BEST_list_title"><a class="SE_board_title" href="#">인기 BEST</a></div>
 
                     <div id="SE_thumbnails"> <!--컨텐츠 제목-->
-                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
-                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
-                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
-                        <a href="#"><div class="SE_BEST"><div class="BEST_thumbnail"><div class="BEST_substance"><h3>인기글 제목</h3></div></div></div></a>
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="SE_BEST">
+                                <div class="BEST_thumbnail">
+                                    <div class="BEST_substance"><h3>인기글 제목</h3></div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
 
                 <div id="SE_sub2">
-                    <div class="SE_ranking_title"><a class="SE_board_title" href="#">오늘의 HOT GALAXY </a> | <a class="SE_board_title" href="#"> 실시간 HOT PLANET</a></div>
+                    <div class="SE_ranking_title"><a class="SE_board_title" href="#">오늘의 HOT GALAXY </a> | <a
+                            class="SE_board_title" href="#"> 실시간 HOT PLANET</a></div>
                     <div class="SE_ranking"></div>
                 </div>
 
                 <div id="SE_content4">
                     <div id="SE_sub3">
                         <div class="SE_new_post_title"><a class="SE_board_title" href="">최근 생성 된 게시판</a></div>
-                        <div class="SE_new_post"></div>
+                        <div class="SE_new_post">
+                        </div>
                     </div>
 
                     <div id="SE_sub4">
@@ -97,26 +123,94 @@ layout:decorate="~{/layout}"> -->
                 <div id="SE_content5">
                     <div id="SE_sub5">
                         <div class="SE_board1_title"><a class="SE_board_title" href="">임시 게시판 1호</a></div>
-                        <div class="SE_board1"></div>
+                        <div class="SE_board1">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>작성자</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="${list_one.boardNo}"></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${list_one.user.nickname}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div id="SE_sub6">
                         <div class="SE_board2_title"><a class="SE_board_title" href="">임시 게시판 2호</a></div>
-                        <div class="SE_board2"></div>
+                        <div class="SE_board2">
+                            <table class="table">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>갤럭시</th>
+                                    <th>제목</th>
+                                    <th>날짜</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="'[ '+${list_one.galaxy.get(0).galName}+' ]'"></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
                 <div id="SE_content6">
                     <div id="SE_sub7">
                         <div class="SE_board3_title"><a class="SE_board_title" href="">임시 게시판 3호</a></div>
-                        <div class="SE_board3"></div>
+                        <div class="SE_board3">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>날짜</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="${list_one.boardNo}"></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
                 <div id="SE_content7">
                     <div id="SE_sub8">
                         <div class="SE_board4_title"><a class="SE_board_title" href="">임시 게시판 4호</a></div>
-                        <div class="SE_board4"></div>
+                        <div class="SE_board4">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>날짜</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="${list_one.boardNo}"></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!--여기까지-->
@@ -129,13 +223,7 @@ layout:decorate="~{/layout}"> -->
             <section id="SE_contents3">
                 <div id="SE_banner2"><h1>배너자리</h1></div>
             </section>
-            <footer id="SE_footer">
-                <p>
-                </p>
-                <p><h3> <a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
-                <p><h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
-            </footer>
-
+            <th:block th:insert="/footer"></th:block>
         </div>
     </div>
 </div>

@@ -1,14 +1,20 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName review
+ */
 @Data
 public class Review implements Serializable {
     private Integer reNo;
 
-    private Integer boNo;
+    private Date postTime;
+
+    private Integer bokNo;
 
     private String userId;
 
@@ -18,15 +24,11 @@ public class Review implements Serializable {
 
     private Integer likes;
 
-    private Date postTime;
+    private String buComment;
+
+    private String updaterId;
 
     private Date updateTime;
-
-    private String contentReply;
-
-    private Date replyPostDate;
-
-    private Date replyUpdateDate;
 
     private static final long serialVersionUID = 1L;
 }
