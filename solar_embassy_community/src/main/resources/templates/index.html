@@ -134,9 +134,9 @@ layout:decorate="~{/layout}"> -->
                                 </thead>
                                 <tbody>
                                 <tr th:each="list_one:${list}" class="text-center">
-                                    <td th:text="${list_one.boardNo}" ></td>
+                                    <td th:text="${list_one.boardNo}"></td>
                                     <td th:text="${list_one.title}" class="text-start"></td>
-                                    <td th:text="${list_one.userId}"></td>
+                                    <td th:text="${list_one.user.nickname}"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -145,21 +145,72 @@ layout:decorate="~{/layout}"> -->
 
                     <div id="SE_sub6">
                         <div class="SE_board2_title"><a class="SE_board_title" href="">임시 게시판 2호</a></div>
-                        <div class="SE_board2"></div>
+                        <div class="SE_board2">
+                            <table class="table">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>갤럭시</th>
+                                    <th>제목</th>
+                                    <th>날짜</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="'[ '+${list_one.galaxy.get(0).galName}+' ]'"></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
                 <div id="SE_content6">
                     <div id="SE_sub7">
                         <div class="SE_board3_title"><a class="SE_board_title" href="">임시 게시판 3호</a></div>
-                        <div class="SE_board3"></div>
+                        <div class="SE_board3">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>날짜</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="${list_one.boardNo}"></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
                 <div id="SE_content7">
                     <div id="SE_sub8">
                         <div class="SE_board4_title"><a class="SE_board_title" href="">임시 게시판 4호</a></div>
-                        <div class="SE_board4"></div>
+                        <div class="SE_board4">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>날짜</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list_one:${list}" class="text-center">
+                                    <td th:text="${list_one.boardNo}"></td>
+                                    <td th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!--여기까지-->
@@ -172,16 +223,7 @@ layout:decorate="~{/layout}"> -->
             <section id="SE_contents3">
                 <div id="SE_banner2"><h1>배너자리</h1></div>
             </section>
-            <footer id="SE_footer">
-                <p>
-                </p>
-                <p>
-                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
-                <p>
-                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
-            </footer>
-
+            <th:block th:insert="/footer"></th:block>
         </div>
     </div>
 </div>

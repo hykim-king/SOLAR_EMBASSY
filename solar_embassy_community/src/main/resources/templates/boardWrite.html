@@ -81,21 +81,36 @@ layout:decorate="~{/layout}"> -->
                         <input type="hidden" name="boardTag" th:value="1">
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    주제
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">잡담</a></li>
-                                    <li><a class="dropdown-item" href="#">정보</a></li>
-                                    <li><a class="dropdown-item" href="#">질문</a></li>
-                                    <li><a class="dropdown-item" href="#">기타</a></li>
-                                </ul>
-                            </div>
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"></a></div>
+                        <div th:text="${session.loginUser.nickname}+'님의 작성글입니다.'"></div>
+                        <select name="galaxyNo" th:selected="${galaxyNo}">
+                            <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}" th:text="${galaxy.galName}"></option>
+                        </select>
+                        <select name="boardTag">
+                            <option value="1" >일상</option>
+                            <option value="2">유머</option>
+                            <option value="3">예약</option>
+                            <option value="4">후기</option>
+                        </select>
+<!--                        <div id="title_input" class="dropdown">-->
+<!--                            <div class="me-2">-->
+<!--                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"-->
+<!--                                   id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">-->
+
+<!--                                    주제-->
+<!--                                </a>-->
+<!--                                <ul class="dropdown-menu">-->
+<!--                                    <li><a class="dropdown-item" href="#">잡담</a></li>-->
+<!--                                    <li><a class="dropdown-item" href="#">정보</a></li>-->
+<!--                                    <li><a class="dropdown-item" href="#">질문</a></li>-->
+<!--                                    <li><a class="dropdown-item" href="#">기타</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
                             <div>
                                 <input type="text" placeholder="제목" id="title" name="title" class="form-control"
                                        aria-label="Text input with dropdown button" style="width: 600px">
                             </div>
-                        </div>
+<!--                        </div>-->
 
                         <div>
                             <div id="textarea">
@@ -107,8 +122,6 @@ layout:decorate="~{/layout}"> -->
                             </div>
                         </div>
                     </form>
-
-
                 </div>
             </div>
             <footer id="SE_footer">

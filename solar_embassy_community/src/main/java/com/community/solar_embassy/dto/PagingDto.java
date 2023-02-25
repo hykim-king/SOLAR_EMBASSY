@@ -23,7 +23,6 @@ public class PagingDto {
     private String queryString;
 
     public PagingDto() { //dto 를 컨트롤러의 파라미터로 사용할 때 생성자에 정의된 필드가 required=true 로 정의된다.
-        this.startRow=(this.page-1)*this.rows;
     }
 
     public PagingDto(int page, int rows, String orderField, String direct) {

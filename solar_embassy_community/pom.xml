@@ -8,11 +8,11 @@
         <version>3.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.bigdata6</groupId>
-    <artifactId>spring_mybatis</artifactId>
+    <groupId>com.community</groupId>
+    <artifactId>solar_embassy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring_mybatis</name>
-    <description>spring_mybatis</description>
+    <name>solar_embassy</name>
+    <description>solar_embassy</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -67,16 +67,14 @@
             <version>1.16</version>
         </dependency>
         <dependency>
-            <groupId>com.bigdata6</groupId>
-            <artifactId>spring_mybatis</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.bigdata6</groupId>
-            <artifactId>spring_mybatis</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
     </dependencies>

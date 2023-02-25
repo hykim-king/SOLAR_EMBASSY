@@ -1,36 +1,36 @@
 package com.community.solar_embassy.dto;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @TableName booking
+ */
 @Data
 public class Booking implements Serializable {
-    private Integer boNo;
+    private Integer bokNo;
 
-    private String crNum;
+    private Date bookingDate;
 
     private String buTell;
 
-    private Integer roNo;
+    private Integer buNo;
 
     private String userId;
-
-    private String buAddress;
-
-    private Date rdStartDate;
-
-    private Date rdEndDate;
 
     private String userName;
 
     private String userPhone;
 
-    private Date boDate;
+    private String address;
 
-    private Date ckeckin;
+    private Date startDate;
+
+    private Date endDate;
+
+    private Date checkin;
 
     private Date checkout;
 
@@ -38,19 +38,15 @@ public class Booking implements Serializable {
 
     private String price;
 
-    private Date regDate;
+    private Date payDate;
 
     private Integer state;
 
-    private String buCheck;
+    private String bokCheck;
 
     private String updaterId;
 
-    private Date updateDate;
-
-    private Reserved reserved;
-
-    private List<Review> reviewList;
+    private Date updateTime;
 
     private static final long serialVersionUID = 1L;
 }

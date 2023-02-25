@@ -1,10 +1,17 @@
 package com.community.solar_embassy.dto;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
+
+/**
+ * @TableName attend_check
+ */
 @Data
 public class AttendCheck implements Serializable {
+    private Integer checkNo;
+
     private Integer dayNo;
 
     private String userId;

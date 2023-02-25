@@ -66,29 +66,36 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 end-->
 
             <!--여기부터-->
+            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
                 <div id="user_info_bgc1" class="pt-1">
                     <div>
-                        <h1 class="mx-5 my-5"><strong>여행 갤럭시</strong></h1>
+                        <h1 class="mx-5 my-5 border-bottom-0"><strong>여행 갤럭시</strong></h1>
+
                     </div>
                     <div class="text-center">
                         <div id="user_info_bgc2" class="">
 
+
                         <h2 class="mt-3">(일간 추천을 가장 많이받은 게시글?)</h2>
                         </div>
 
-                        <div id="user_info_bgc3" class="">
-                        <h2 class="mt-3">(주간 추천을 가장 많이받은 게시글?)</h2>
 
+                            <h2 class="mt-3">(일간 추천을 가장 많이받은 게시글?)</h2>
+                        </div>
+
+                        <div id="user_info_bgc3" class="">
+                            <h2 class="mt-3">(주간 추천을 가장 많이받은 게시글?)</h2>
                         </div>
                     </div>
 
                     <div id="boardList_table_btn" class="mb-2">
                         <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
-                        <a href="/board/boardWrite.do" class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
+                        <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}" class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
                     </div>
 
                     <div id="boardList_table">
                         <table class="table table-light table-hover">
+
                             <colgroup>
                                 <col style="width:max-content">
                                 <col style="width:max-content">
@@ -110,18 +117,19 @@ layout:decorate="~{/layout}"> -->
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:if="${#lists.size(list)} > 0" th:each="board:${list}" class="text-center">
-                                <td th:text="${board.boardNo}"></td>
+
+                            <tr th:if="${#lists.size(list)} > 0" th:each="list:${list}" class="text-center">
+                                <td th:text="${list.boardNo}"></td>
                                 <td class="title">
-                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${board.boardNo}"
-                                       th:text="${board.boardTag}"></a>
+                                    <a href="openBoardDetail?boardNo=" th:attrappend="href=${list.boardNo}"
+                                       th:text="${list.boardTag}"></a>
                                 </td>
-                                <td th:text="${board.title}" style="cursor: pointer"
-                                    th:onclick="location.href = [[@{'/board/{boardNo}/boardDetail.do' (boardNo=${board.boardNo})}]]"></td>
-                                <td th:text="${board.user.nickname}"></td>
-                                <td th:text="${board.likes}"></td>
-                                <td th:text="${board.views}"></td>
-                                <td th:text="${#dates.format(board.postTime,'yyyy-MM-dd hh:mm')}"></td>
+                                <td th:text="${list.title}"></td>
+                                <td th:text="${list.user.nickname}"></td>
+                                <td th:text="${(list.likes ==null)?0:list.likes}"></td>
+                                <td th:text="${(list.views ==null)?0:list.views}"></td>
+                                <td th:text="${#dates.format(list.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+
                             </tr>
                             <tr th:unless="${#lists.size(list)} > 0">
                                 <td colspan="8">조회된 결과가 없습니다.</td>
@@ -129,6 +137,15 @@ layout:decorate="~{/layout}"> -->
                             </tbody>
                         </table>
                     </div>
+
+
+                    <div>
+                    </div>
+
+                    <div id="SE_content3">
+
+                    </div>
+
                 </div>
 
             </div>
@@ -141,7 +158,6 @@ layout:decorate="~{/layout}"> -->
                 </p>
                 <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
             </footer>
-
         </div>
 </div>
 </body>

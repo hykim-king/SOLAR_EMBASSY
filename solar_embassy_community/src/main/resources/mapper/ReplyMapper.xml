@@ -22,33 +22,24 @@
     </resultMap>
 
     <insert id="insertReply">
-        INSERT INTO solar_embassy.reply (replyNo, boardNo, userId, contents, fkReplyNo)
-        VALUES (#{replyNo}, #{boardNo}, #{userId}, #{contents}, #{fkReplyNo})
+        INSERT INTO reply(boardNo, userId, fkReplyNo, contents, imgPath, originImgName)
+        VALUES (#{boardNo}, #{userId}, #{fkReplyNo}, #{contents}, #{imgPath}, #{originImgName})
     </insert>
-
     <update id="updateReply">
-        UPDATE reply
-        SET contents = #{contents},
-            updateTime = #{updateTime}
-        WHERE replyNo = #{replyNo}
+        UPDATE reply SET contents=#{contents}, imgPath=#{imgPath}, originImgName=#{originImgName}, updateTime=CURRENT_TIMESTAMP WHERE replyNo= #{replyNo}
     </update>
-
     <delete id="deleteById">
-        DELETE FROM solar_embassy.reply WHERE replyNo=#{replyNo}
+        DELETE FROM reply WHERE replyNo= #{replyNo}
     </delete>
-
-    <select id="findByBoardNo" resultMap="BaseResultMap">
-        SELECT *
-        FROM reply
-        WHERE boardNo = #{boardNo} and fkReplyNO is null
-        ORDER BY replyNo DESC
+    <select id="findByBoardNo" resultType="com.community.solar_embassy.dto.Reply">
+        SELECT * FROM reply WHERE boardNo= #{boardNo}
     </select>
     <select id="findAll" resultType="com.community.solar_embassy.dto.Reply">
-
+        SELECT * FROM reply
     </select>
+
     <select id="findAllByFkReplyNo" resultType="com.community.solar_embassy.dto.Reply">
         SELECT * FROM reply WHERE fkReplyNo=#{replyNo}
     </select>
-
 
 </mapper>
