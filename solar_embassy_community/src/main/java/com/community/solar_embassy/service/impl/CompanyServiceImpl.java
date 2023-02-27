@@ -15,8 +15,8 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company detail(String comName) throws Exception {
-        return companyMapper.selectCompanyDetail(comName).get(0);
+    public Company detail(int comNo) throws Exception {
+        return companyMapper.selectCompanyDetail(comNo).get(0);
     }
 }
 

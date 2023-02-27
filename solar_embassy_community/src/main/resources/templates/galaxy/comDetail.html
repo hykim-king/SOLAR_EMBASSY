@@ -15,7 +15,7 @@ layout:decorate="~{/layout}"> -->
     <!--원본 css-->
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/com_detail.css">
-    <title>자동차 정보</title>
+    <title th:text="${company.getComName()}"></title>
 </head>
 <body>
 <div id="SE_container">
@@ -36,7 +36,7 @@ layout:decorate="~{/layout}"> -->
 
             <div id="content2">
                 <div id="photo">
-                    <img th:src="${company.getComImgName()}" alt="">
+                    <img th:src="${company.getComImgName()}" alt="" src="">
                 </div>
                 <div id="inform">
                     기업명 : <span th:text="${company.getComName()}"></span> <br>

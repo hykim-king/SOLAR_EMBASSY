@@ -15,11 +15,13 @@
 }
 
 #SE_contents #content2 #photo img {
+    width: 350px;
+    height: 200px;
     object-fit: contain;
 }
 
 #SE_contents #content2 #inform {
-    margin-left: 300px;
+    margin-left: 150px;
 }
 
 #SE_contents #content3 {

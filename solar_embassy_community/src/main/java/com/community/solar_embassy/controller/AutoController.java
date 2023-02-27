@@ -5,6 +5,7 @@ import com.community.solar_embassy.service.AutoService;
 import com.community.solar_embassy.service.CompanyService;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,7 +19,6 @@ public class AutoController {
     @Autowired
     AutoService autoService;
     CompanyService companyService;
-    //AutoImgService autoImgService;
 
     private Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
@@ -26,7 +26,6 @@ public class AutoController {
                           ) {
         this.autoService = autoService;
         this.companyService = companyService;
-        //this.autoImgService = autoImgService;
     }
 
     @GetMapping("/autopedia.do")
@@ -35,21 +34,18 @@ public class AutoController {
     @GetMapping("/autoDetail.do")
     public ModelAndView autoDetail(
             @RequestParam(name = "autoName") String autoName,
-            //@RequestParam(name = "autoImgNo") int autoImgNo,
             ModelAndView model) throws Exception {
         Auto auto = autoService.detail(autoName);
-        //AutoImg autoImg = autoImgService.detail(autoImgNo);
         model.addObject("auto", auto);
-        //model.addObject("autoImg", autoImg);
         model.setViewName("/galaxy/autoDetail");
         return model;
     }
 
     @GetMapping("/comDetail.do")
     public ModelAndView comDetail(
-            @RequestParam(name = "comName") String comName,
+            @RequestParam(name = "comNo") int comNo,
             ModelAndView model) throws Exception {
-        Company company = companyService.detail(comName);
+        Company company = companyService.detail(comNo);
         model.addObject("company", company);
         model.setViewName("/galaxy/comDetail");
         return model;

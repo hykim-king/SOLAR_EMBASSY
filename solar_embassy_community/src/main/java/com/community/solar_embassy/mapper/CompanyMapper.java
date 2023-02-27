@@ -8,8 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface CompanyMapper {
-    List<Company> selectCompanyDetail(String comName) throws Exception;
-    int insert(Company company);
+    List<Company> selectCompanyDetail(int comNo) throws Exception;
 }
 
 

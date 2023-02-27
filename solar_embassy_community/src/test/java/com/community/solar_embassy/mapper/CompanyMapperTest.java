@@ -36,7 +36,7 @@ class CompanyMapperTest {
                 "아산, 전주에 소재하고 있다. 또한, 전세계 완성차 공장은 중국, 미국, 유럽, 러시아, 브라질 등 전세계 대륙에 고루 " +
                 "분포하고 있다. 현대자동차의 심볼은 단순히 H를 형상화 한 것만이 아니라 두 사람이 악수하고 있는 모습을 담고 있다고 한다. " +
                 "H를 감싸고 있는 타원은 세계를 무대로 뛰고 있음을 뜻한다.");
-        companyMapper.selectCompanyDetail("현대자동차");
+        companyMapper.selectCompanyDetail(1);
         System.out.println(company);
     }
 }
