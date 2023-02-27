@@ -137,7 +137,7 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 /*프로필 내부 설정 값.*/
 .SE_sidebar_profile>ul{
     padding: 10px;
-    font: 15px/50px'';
+    font: 18px/50px'';
 }
 
 /*메인 컨테이너*/

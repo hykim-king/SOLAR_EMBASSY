@@ -1,3 +1,5 @@
+a{text-decoration: none;}
+
 /* PW찾기 제목 영역 */
 .find_pw_container{
     background: #78b7eac4;
@@ -83,7 +85,7 @@
     margin-right: 15px;
     width: 250px;
     height: 40px;
-    /*border-style: none;*/
+    border-style: none;
     border-radius: 5px;
     box-shadow: 1px 2px 2px 1px #888;
 }
@@ -103,6 +105,7 @@
     font-weight: bold;
     border-style: none;
     border-radius: 5px;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 /*휴대폰 번호로 전송 된 ~ 입력해주세요 text*/
@@ -123,6 +126,7 @@
     background: #325dff;
     border-style: none;
     border-radius: 5px;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 /*PW 찾기 버튼*/
@@ -139,6 +143,7 @@
     background: linear-gradient(-45deg, #23a6d5, #a156ff);
     background-size: 400% 400%;
     animation: gradient 3s ease infinite;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 @keyframes gradient {
@@ -182,6 +187,7 @@
     color:#fff;
     position: absolute;
     transform: translate(550px,-40px);
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 /*ID 찾기로 이동 영역*/
@@ -216,6 +222,7 @@
     border-style: none;
     border-radius: 5px;
     margin-right: 25px;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 /*고객센터 버튼*/
@@ -230,4 +237,5 @@
     border-style: none;
     border-radius: 5px;
     margin-left: 25px;
+    box-shadow: 1px 2px 2px 1px #888;
 }

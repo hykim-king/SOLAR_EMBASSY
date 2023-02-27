@@ -1,3 +1,5 @@
+a{text-decoration: none;}
+
 /*제목 영역*/
 #content1_signup {
     text-align: center;
@@ -47,10 +49,10 @@
     height: 50px;
     border-radius: 10px;
     border:none;
-    box-shadow: 0 0 5px #417cef;
     padding-left: 15px;
     font-size: 15px ;
     margin : 10px 30px 10px 0;
+    box-shadow: 0 0 5px #417cef;
 }
 
 
@@ -64,6 +66,7 @@
     font-weight: bold;
     border: none;
     border-radius: 10px;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 
@@ -112,6 +115,7 @@
     font-weight: bold;
     border: none;
     border-radius: 10px;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 /*하단 버튼 영역*/

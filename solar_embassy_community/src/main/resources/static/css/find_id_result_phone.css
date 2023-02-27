@@ -1,3 +1,5 @@
+a{text-decoration: none;}
+
 /* ID찾기 제목 영역 */
 .find_id_result_container{
     background: #78b7eac4;
@@ -53,6 +55,7 @@
     background: linear-gradient(-45deg, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 @keyframes gradient {
@@ -71,6 +74,7 @@
     font-weight: bold;
     border-style: none;
     border-radius: 5px;
+    box-shadow: 1px 2px 2px 1px #888;
 }
 
 /*고객센터 버튼*/
@@ -83,4 +87,5 @@
     font-weight: bold;
     border-style: none;
     border-radius: 5px;
+    box-shadow: 1px 2px 2px 1px #888;
 }

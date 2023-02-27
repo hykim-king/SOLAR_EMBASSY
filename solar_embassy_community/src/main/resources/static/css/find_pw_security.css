@@ -1,3 +1,5 @@
+a{text-decoration: none;}
+
 /* PW찾기 제목 영역 */
 .find_pw_security_container{
     background: #78b7eac4;
@@ -28,7 +30,7 @@
 
 /*삽입 이미지 설정*/
 .find_pw_security_container2>img{
-    margin: 30px 0 20px 380px;
+    margin: 80px 0 0 380px;
 }
 
 
@@ -80,15 +82,23 @@
     100% {background-position: 0% 50%;}
 }
 
-/* 아이디 기억나지 ~ 하세요 */
+/* ID가 기억나지 않는다면? */
 .find_pw_security_content_3{
     margin: 0 auto;
     text-align: center;
+    width: 220px;
+    transform: translate(-80px,-40px);
 }
 .find_pw_security_content_3-1>a{
     font-weight: bold;
-    font-size: 20px;
-    color: #0a58ca;
+    font-size: 16px;
+    color: #000000;
+}
+
+.find_pw_security_content_3-1>a:hover{
+    font-weight: bold;
+    font-size: 16px;
+    color: #6abe82;
 }
 
 /*버튼 영역*/

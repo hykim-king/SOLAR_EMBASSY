@@ -1,3 +1,4 @@
+a{text-decoration: none;}
 
 /*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓BG설정 태그↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 .bg {
@@ -211,8 +212,9 @@ a {
 .btn2 {
     width: 450px;
     height: 70px;
-    background-color: #731e09;
-    color: rgba(255, 105, 180, 0.68);
+    background-color: #FF69B4FF;
+    color: #fff;
+    border:none;
     border-radius: 5px;
     font-size: 24px;
     cursor: pointer;
