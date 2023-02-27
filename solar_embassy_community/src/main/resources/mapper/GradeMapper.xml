@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.GradeMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Grade">
+            <id property="userLevel" column="userLevel" jdbcType="INTEGER"/>
+            <result property="grade" column="grade" jdbcType="VARCHAR"/>
+            <result property="totalExp" column="totalExp" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        userLevel,grade,totalExp
+    </sql>
+    <insert id="insert">
+        INSERT INTO grade(userLevel, grade, totalExp) VALUES (#{userLevel}, #{grade}, #{totalExp})
+    </insert>
+    <update id="update">
+        UPDATE grade SET grade=#{grade},totalExp=#{totalExp} WHERE userLevel= #{userLevel}
+    </update>
+    <delete id="delete">
+        DELETE FROM grade WHERE userLevel= #{userLevel}
+    </delete>
+    <select id="findByLevel" resultType="com.community.solar_embassy.dto.Grade">
+        SELECT * FROM grade WHERE userLevel= #{userLevel}
+    </select>
+    <select id="findAll" resultType="com.community.solar_embassy.dto.Grade">
+        SELECT * FROM grade
+    </select>
+    <select id="findByPaging" resultType="com.community.solar_embassy.dto.Grade">
+        SELECT * FROM grade
+        <if test="orderField!=null">ORDER BY ${orderField} ${direct}</if>
+        LIMIT #{startRow}, #{rows}
+    </select>
+</mapper>

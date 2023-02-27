@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.BoardMapper">
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.BoardDto">
+            <id property="boardNo" column="boardNo" jdbcType="INTEGER"/>
+            <id property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+            <result property="galaxyNo" column="galaxyNo" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="boardTag" column="boardTag" jdbcType="INTEGER"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="contents" column="contents" jdbcType="VARCHAR"/>
+            <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="likes" column="likes" jdbcType="INTEGER"/>
+            <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
+            <result property="views" column="views" jdbcType="INTEGER"/>
+    </resultMap>
+    <!--게시글 목록-->
+    <select id="selectBoardList" resultType="com.community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        SELECT *FROM board
+        WHERE state = 0
+        ORDER BY boardNo DESC
+        LIMIT 9
+        ]]>
+    </select>
+    <!--게시글 등록-->
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="boardNo" keyColumn="boardNo"
+            parameterType="com.community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        INSERT INTO board(galaxyNo,
+                          boardTag,
+                          title,
+                          contents,
+                          likes,
+                          views,
+                          userId)
+        VALUES ('1',
+                #{boardTag},
+                #{title},
+                #{contents},
+                #{likes},
+                #{views},
+                #{userId})
+        ]]>
+   </insert>
+    <!--게시글 상세-->
+    <select id="selectBoardDetail" parameterType="int" resultType="BoardDto">
+        SELECT /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
+        FROM board
+        WHERE boardNo = #{boardNo}
+          AND state = 0
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT *
+        FROM board
+    </select>
+    <!--수정, 삭제-->
+    <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">
+        <![CDATA[
+        UPDATE board
+        SET title    = #{title},
+            contents = #{contents},
+            userId   = #{userId},
+            updateTime=CURRENT_TIMESTAMP,
+            boardTag=#{boardTag},
+            updaterId=#{userId}
+        WHERE boardNo = #{boardNo}
+        ]]>
+    </update>
+<!--게시글 조회 수 증가-->
+    <update id="updateViews" parameterType="int">
+        <![CDATA[
+        UPDATE board
+        SET views = views+1
+        WHERE boardNo = #{boardNo}
+        ]]>
+    </update>
+
+
+    <delete id="deleteBoard" parameterType="int">
+        <![CDATA[
+        DELETE FROM board
+        WHERE boardNo = #{boardNo}
+        ]]>
+    </delete>
+</mapper>

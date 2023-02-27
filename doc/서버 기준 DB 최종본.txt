@@ -1,0 +1,540 @@
+create table admin
+(
+    adminId    varchar(20)                         not null comment '관리자 id'
+        primary key,
+    adminLevel int                                 null comment '관리자 등급',
+    department varchar(100)                        null comment '관리자 부서',
+    regTime    timestamp default CURRENT_TIMESTAMP null comment '관리자 생성일시',
+    updateTime timestamp                           null comment '수정일시'
+);
+
+create table board
+(
+    boardNo    int auto_increment comment '게시글 번호',
+    galaxyNo   int                                 not null comment '게시판 번호',
+    userId     varchar(20) charset latin1          not null comment '유저 id',
+    boardTag   int                                 not null comment '게시글 카테고리',
+    title      varchar(100)                        not null comment '게시글 제목',
+    contents   longtext                            not null comment '게시글 내용',
+    postTime   timestamp default CURRENT_TIMESTAMP not null comment '작성 일시',
+    updaterId  varchar(20) charset latin1          null comment '수정자',
+    updateTime timestamp                           null comment '수정 일시',
+    state      int       default 0                 null comment '게시글 상태',
+    likes      int                                 null comment '추천',
+    dislikes   int                                 null comment '비추천',
+    views      int                                 null comment '조회 수',
+    primary key (boardNo, postTime)
+)
+    partition by range (UNIX_TIMESTAMP(postTime)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table board_img
+(
+    boardImgNo    int auto_increment comment '게시글 이미지 번호'
+        primary key,
+    boardNo       int                                 not null comment '게시글 번호',
+    imagePath     varchar(255) charset latin1         not null comment '이미지 경로',
+    originImgName varchar(255) charset latin1         null comment '원본 이미지명',
+    postTime      timestamp default CURRENT_TIMESTAMP not null comment '등록 일시'
+);
+
+create table booking
+(
+    bokNo       int auto_increment comment '예약번호',
+    buTell      varchar(12) charset latin1          not null comment '숙소 연락처',
+    buNo        int                                 not null comment '비즈니스pk / 가입 시 자동  부여',
+    userId      varchar(20) charset latin1          not null comment '이용자 id',
+    userName    varchar(20) charset latin1          not null comment '이용자 성명',
+    userPhone   varchar(12) charset latin1          not null comment '이용자 폰번호',
+    address     varchar(255) charset latin1         not null comment '숙소 주소',
+    startDate   timestamp                           not null comment '숙박 기간(시작일)',
+    endDate     timestamp                           not null comment '숙박 기간(종료일)',
+    bookingDate timestamp default CURRENT_TIMESTAMP not null comment '예약날짜',
+    checkin     timestamp                           not null comment '체크인',
+    checkout    timestamp                           not null comment '체크아웃',
+    payment     varchar(255) charset latin1         not null comment '결제수단',
+    price       varchar(40) charset latin1          not null comment '가격',
+    payDate     timestamp                           not null comment '결제일',
+    state       int       default 0                 null comment '상태',
+    bokCheck    varchar(100) charset latin1         not null comment '사업자가 해당 예약건 확인 여부',
+    updaterId   varchar(20) charset latin1          null comment '수정자',
+    updateTime  timestamp                           null comment '수정일시',
+    primary key (bokNo, bookingDate)
+)
+    partition by range (UNIX_TIMESTAMP(bookingDate)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table business
+(
+    buNo        int auto_increment comment '가입시 자동 부여되는 번호'
+        primary key,
+    buId        varchar(20) charset latin1          not null comment '가입 시 아이디',
+    buPasswords varchar(20) charset latin1          not null comment '가입 시 pw',
+    buName      varchar(20) charset latin1          not null comment '가입 시 성명',
+    email       varchar(320) charset latin1         null comment '가입 시 이메일 ',
+    phone       varchar(12) charset latin1          not null comment '가입 시 휴대폰 번호',
+    regDate     timestamp default CURRENT_TIMESTAMP not null comment '회원가입 일시',
+    updateTime  timestamp                           null comment '수정일시',
+    state       int       default 0                 not null comment '상태(관리자가 사업자 상태 변경 가능)',
+    auth        int                                 null comment '중복 확인'
+);
+
+create table company
+(
+    comNo      int auto_increment comment '제조사번호',
+    comName    varchar(20) charset latin1 not null comment '제조사이름',
+    address    varchar(30) charset latin1 null comment '제조사 주소',
+    parentName varchar(20) charset latin1 null comment '모기업',
+    foundDate  date                       null comment '제조사번호',
+    founders   varchar(20) charset latin1 null comment '설립자',
+    ceo        varchar(20) charset latin1 null comment 'CEO',
+    industries varchar(30) charset latin1 null comment '대표업종',
+    slogan     varchar(50) charset latin1 null comment '슬로건',
+    content    longtext charset latin1    null comment '제조사 설명(내용)',
+    primary key (comNo, comName)
+);
+
+create table auto
+(
+    autoNo      int auto_increment comment '자동차 번호',
+    autoName    varchar(20) charset latin1 not null comment '자동차명(통용)',
+    codeName    varchar(20) charset latin1 not null comment '제조사코드명',
+    detailName  varchar(20) charset latin1 not null comment '제원명',
+    optionName  varchar(20) charset latin1 not null comment '세부제원명',
+    comNo       int                        not null comment '제조사번호',
+    comName     varchar(20) charset latin1 not null comment '제조사이름',
+    autoType    varchar(10) charset latin1 null comment 'ex) 준중형',
+    releaseDate date                       null comment '출시일',
+    seat        int                        null comment '좌석수',
+    mpg         double                     null comment '연비',
+    disp        double                     null comment '배기량(CC)',
+    price       int                        not null comment '가격',
+    autoEngine  varchar(10) charset latin1 null comment '엔진 종류',
+    primary key (autoNo, autoName, codeName),
+    constraint auto_company_comNo_fk
+        foreign key (comNo, comName) references company (comNo, comName)
+            on update cascade on delete cascade
+);
+
+create table auto_img
+(
+    autoImgNo     int auto_increment comment '자동차 이미지번호'
+        primary key,
+    autoNo        int                         not null comment '자동차 번호',
+    autoImgPath   varchar(255) charset latin1 null comment '이미지 경로',
+    sourceImgName varchar(255) charset latin1 null comment '원본 이미지명',
+    constraint autoImg_auto_autoNo_fk
+        foreign key (autoNo) references auto (autoNo)
+            on update cascade on delete cascade
+);
+
+create table galaxy
+(
+    galaxyNo   int auto_increment comment '게시판 번호'
+        primary key,
+    adminId    varchar(20)                         null comment '관리자 id',
+    galName    varchar(100)                        not null comment '게시판명',
+    regTime    timestamp default CURRENT_TIMESTAMP not null comment '등록 일시',
+    updaterId  varchar(20)                         null comment '수정자',
+    updateTime timestamp                           null comment '수정 일시',
+    state      int       default 0                 null comment '상태',
+    constraint galaxy_admin_adminId_fk
+        foreign key (adminId) references admin (adminId)
+            on update cascade on delete set null
+);
+
+create table grade_img
+(
+    grade         varchar(50)  not null comment '등급'
+        primary key,
+    imgPath       varchar(255) null comment '이미지 경로',
+    originImgName varchar(255) null comment '원본 이미지명'
+);
+
+create table grade
+(
+    userLevel int         not null comment '유저 레벨'
+        primary key,
+    grade     varchar(50) not null comment '유저 등급',
+    totalExp  int         not null comment '총 경험치',
+    constraint grade_grade_img_grade_fk
+        foreign key (grade) references grade_img (grade)
+            on update cascade on delete cascade
+);
+
+create table popular_search
+(
+    popKwdNo   int                         not null comment '인기 검색어 번호'
+        primary key,
+    userId     varchar(20) charset latin1  not null comment '유저 id',
+    licenseNum varchar(10) charset latin1  not null comment '사업자등록증 번호',
+    buTell     varchar(12) charset latin1  not null comment '사업장 연락처',
+    searchKw   varchar(100) charset latin1 not null comment '검색어 키워드',
+    searchTime timestamp                   not null comment '검색 일시',
+    searchIp   varchar(50) charset latin1  null comment '등록(검색)ip'
+)
+    comment '인기 검색어 현황';
+
+create table reply
+(
+    replyNo       int auto_increment comment '댓글 번호',
+    boardNo       int                                 not null comment '게시글 번호',
+    userId        varchar(20) charset latin1          not null comment '유저 id',
+    fkReplyNo     varchar(100) charset latin1         null comment '대댓글 번호',
+    contents      varchar(100) charset latin1         not null comment '내용',
+    postTime      timestamp default CURRENT_TIMESTAMP not null comment '등록 일시',
+    updateTime    timestamp                           null comment '수정 일시',
+    likes         int                                 null comment '추천',
+    dislikes      int                                 null comment '비추천',
+    state         int       default 0                 null comment '상태',
+    imgPath       varchar(255) charset latin1         null comment '이미지 경로',
+    originImgName varchar(255) charset latin1         null comment '원본 이미지명',
+    primary key (replyNo, postTime)
+)
+    partition by range (UNIX_TIMESTAMP(postTime)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table reserve_list
+(
+    listNo       int auto_increment comment '예약 리스트 번호',
+    bokNo        int                        not null comment '예약번호',
+    buTell       varchar(20) charset latin1 not null comment '사업장 연락처',
+    bokCheckDate timestamp                  not null comment '예약 확인 상태(사업자가 확인하는 부분)',
+    updaterId    varchar(20) charset latin1 null comment '수정자',
+    updateTime   timestamp                  null comment '수정일시',
+    primary key (listNo, bokCheckDate)
+)
+    partition by range (UNIX_TIMESTAMP(bokCheckDate)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table review
+(
+    reNo       int auto_increment comment '리뷰 번호 ',
+    bokNo      int                        not null comment '예약번호',
+    userId     varchar(20) charset latin1 not null comment '유저 id',
+    postTime   timestamp                  not null comment '등록 일시',
+    contents   longtext charset latin1    not null comment '리뷰 내용',
+    state      int default 0              null comment '상태 ',
+    likes      int                        null comment '추천',
+    buComment  longtext charset latin1    null comment '리뷰 답글(사업자용)',
+    updaterId  varchar(20) charset latin1 null comment '수정자',
+    updateTime timestamp                  null comment '수정일시',
+    primary key (reNo, postTime)
+)
+    partition by range (UNIX_TIMESTAMP(postTime)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table room
+(
+    buTell        varchar(12) charset latin1          not null comment '사업장 연락처',
+    licenseName   varchar(100) charset latin1         not null comment '사업자등록증에 있는 상호명',
+    licenseNum    varchar(10) charset latin1          not null comment '사업자등록증번호',
+    roomNo        int                                 not null comment '게시글 번호',
+    title         varchar(255) charset latin1         not null comment '숙소명',
+    address       varchar(255) charset latin1         not null comment '숙소 위치',
+    roCount       varchar(20) charset latin1          not null comment '인원수',
+    price         varchar(40) charset latin1          not null comment '가격',
+    checkin       timestamp                           not null comment '체크인',
+    checkout      timestamp                           not null comment '체크아웃',
+    info          longtext charset latin1             null comment '숙소정보',
+    postTime      timestamp default CURRENT_TIMESTAMP not null comment '게시글 등록일시',
+    updaterId     varchar(20) charset latin1          null comment '수정자',
+    updateTime    timestamp                           null comment '수정일시',
+    imgPath       varchar(100) charset latin1         not null comment '이미지 경로',
+    sourceImgName varchar(255) charset latin1         null comment '원본 이미지명',
+    saveImgName   varchar(255) charset latin1         null comment '저장 이미지명',
+    buNo          int                                 null,
+    buCode        int                                 null comment '숙소 종류(캠핑장, 낚시터)등',
+    primary key (buTell, postTime)
+)
+    partition by range (UNIX_TIMESTAMP(postTime)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table room_img
+(
+    imgNo         int auto_increment comment '객실 이미지 번호'
+        primary key,
+    buTell        varchar(12) charset latin1          not null comment '사업장 연락처',
+    imgPath       varchar(100) charset latin1         not null comment '이미지 경로',
+    sourceImgName varchar(255) charset latin1         null comment '원본 이미지명',
+    saveImgName   varchar(255) charset latin1         null comment '저장 이미지명',
+    postTime      timestamp default CURRENT_TIMESTAMP not null comment '등록 일시'
+);
+
+create table users
+(
+    userId        varchar(20)                         not null comment '유저 id'
+        primary key,
+    nickname      varchar(20)                         not null comment '닉네임',
+    passwords     varchar(20)                         not null comment '비밀번호',
+    email         varchar(320)                        not null comment '이메일',
+    hp            varchar(12)                         null comment '휴대폰 번호',
+    tel           varchar(12)                         null comment '유선 번호',
+    adminId       varchar(20)                         null comment '관리자 id',
+    regDate       timestamp default CURRENT_TIMESTAMP not null comment '가입 일시',
+    lastLoginTime timestamp                           null comment '마지막 로그인 일시',
+    updateTime    timestamp                           null comment '수정 일시',
+    state         int       default 0                 null comment '상태',
+    cPoint        int       default 0                 null comment 'c포인트',
+    ePoint        int       default 0                 null comment 'e포인트',
+    exp           int       default 0                 null comment '경험치',
+    userLevel     int       default 1                 null comment '유저 레벨',
+    birth         date                                null comment '생년월일',
+    profileImgNo  int                                 null comment '프로필 이미지번호 ',
+    constraint users_admin_adminId_fk
+        foreign key (adminId) references admin (adminId)
+            on update cascade on delete set null,
+    constraint users_grade_user_level_fk
+        foreign key (userLevel) references grade (userLevel)
+            on update cascade on delete set null
+);
+
+create table attend_check
+(
+    checkNo    int auto_increment comment '출첵 순번'
+        primary key,
+    dayNo      int         not null comment '일수',
+    userId     varchar(20) not null comment '유저 id',
+    checkState int         null comment '출첵 상태',
+    checkTime  timestamp   null comment '출첵 일시',
+    cPoint     int         null comment ' c포인트',
+    ePoint     int         null comment 'e포인트',
+    constraint attend_check_users_userId_fk
+        foreign key (userId) references users (userId)
+            on update cascade on delete cascade
+);
+
+create table letter
+(
+    letterNo     int auto_increment comment '이미지 번호'
+        primary key,
+    senderId     varchar(20)                         null comment '발신자',
+    receiverId   varchar(20)                         null comment '수신자',
+    title        varchar(100)                        not null comment '제목',
+    contents     longtext                            not null comment '내용',
+    sentTime     timestamp default CURRENT_TIMESTAMP not null comment '발신 일시',
+    readTime     timestamp                           null comment '수신일시',
+    receiveState int                                 null comment '수신 확인 상태',
+    receiverName varchar(20)                         null comment '수신자 닉네임',
+    senderName   varchar(20)                         null comment '발신자 닉네임',
+    constraint letter_users_userId_fk
+        foreign key (senderId) references users (userId)
+            on update cascade on delete set null,
+    constraint letter_users_userId_fk2
+        foreign key (receiverId) references users (userId)
+            on update cascade on delete set null
+);
+
+create table profile_img
+(
+    profileImgNo  int auto_increment comment '프로필 이미지 번호'
+        primary key,
+    userId        varchar(20)                         null comment '유저 id',
+    imgPath       varchar(100)                        not null comment '이미지 경로',
+    originImgName varchar(255)                        null comment '원본 이미지명',
+    saveImgName   varchar(255)                        null comment '저장 이미지명',
+    postTime      timestamp default CURRENT_TIMESTAMP not null comment '등록 일시',
+    updateTime    timestamp                           null comment '수정일시',
+    constraint profile_img_users_userId_fk
+        foreign key (userId) references users (userId)
+            on update cascade on delete cascade
+);
+
+create table user_block
+(
+    blockNo    int auto_increment comment '차단 순번(자동 생성)'
+        primary key,
+    userId     varchar(20)                         not null comment '차단한 유저 id',
+    blockObjId varchar(20)                         not null comment '차단 당한 유저 id',
+    reason     varchar(255)                        null comment '차단 사유',
+    postTime   timestamp default CURRENT_TIMESTAMP not null comment '등록 일시',
+    updateTime timestamp                           null comment '수정 일시',
+    constraint user_block_users_userId_fk
+        foreign key (userId) references users (userId),
+    constraint user_block_users_userId_fk2
+        foreign key (blockObjId) references users (userId)
+);
+
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('명왕성', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('목성', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('수성', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('지구', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('천왕성', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('태양', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('토성', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('해왕성', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('화성', '','');
+INSERT INTO grade_img (grade, imgPath, originImgName) VALUES ('금성', '','');
+
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (1, '해왕성',10);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (2, '해왕성',15);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (3, '해왕성',20);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (4, '해왕성',25);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (5, '해왕성',30);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (6, '해왕성',35);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (7, '해왕성',40);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (8, '해왕성',45);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (9, '해왕성',50);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (10, '해왕성',55);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (11, '천왕성',60);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (12, '천왕성',68);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (13, '천왕성',76);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (14, '천왕성',84);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (15, '천왕성',92);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (16, '천왕성',100);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (17, '천왕성',108);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (18, '천왕성',116);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (19, '천왕성',124);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (20, '천왕성',132);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (21, '천왕성',140);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (22, '천왕성',148);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (23, '천왕성',156);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (24, '천왕성',164);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (25, '천왕성',172);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (26, '토성',180);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (27, '토성',190);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (28, '토성',200);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (29, '토성',210);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (30, '토성',220);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (31, '토성',230);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (32, '토성',240);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (33, '토성',250);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (34, '토성',260);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (35, '토성',270);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (36, '토성',280);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (37, '토성',290);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (38, '토성',300);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (39, '토성',310);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (40, '토성',320);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (41, '목성',330);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (42, '목성',345);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (43, '목성',360);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (44, '목성',375);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (45, '목성',390);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (46, '목성',405);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (47, '목성',420);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (48, '목성',435);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (49, '목성',450);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (50, '목성',465);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (51, '목성',480);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (52, '목성',495);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (53, '목성',510);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (54, '목성',525);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (55, '목성',540);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (56, '목성',555);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (57, '목성',570);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (58, '목성',585);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (59, '목성',600);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (60, '목성',615);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (61, '화성',630);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (62, '화성',660);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (63, '화성',690);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (64, '화성',720);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (65, '화성',750);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (66, '화성',780);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (67, '화성',810);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (68, '화성',840);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (69, '화성',870);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (70, '화성',900);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (71, '지구',930);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (72, '지구',980);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (73, '지구',1030);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (74, '지구',1080);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (75, '지구',1130);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (76, '지구',1180);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (77, '지구',1230);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (78, '지구',1280);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (79, '지구',1330);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (80, '지구',1380);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (81, '금성',1430);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (82, '금성',1500);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (83, '금성',1570);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (84, '금성',1640);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (85, '금성',1710);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (86, '금성',1780);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (87, '금성',1850);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (88, '금성',1920);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (89, '금성',1990);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (90, '금성',2060);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (91, '수성',2130);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (92, '수성',2230);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (93, '수성',2330);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (94, '수성',2430);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (95, '수성',2530);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (96, '수성',2630);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (97, '수성',2730);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (98, '수성',2830);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (99, '수성',2930);
+INSERT INTO grade (userLevel, grade, totalExp) VALUES (100, '태양',9999);

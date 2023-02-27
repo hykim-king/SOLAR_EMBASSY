@@ -1,0 +1,498 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+
+    <title>SOLAR EMBASSY</title>
+
+    <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
+    <!--    <script src="/uikit/js/uikit.js"></script>-->
+    <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background-color: white;
+            height: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #SE_container { /*메인 컨테이너*/
+            width: 1920px;
+            background-color: #5B8FB9;
+            margin: 0 auto;
+            position: relative;
+            transform: translate(0, 0);
+        }
+
+        #SE_header { /*헤더*/
+            width: 100%;
+            height: 250px;
+            background-color: black;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #SE_img1 { /*메인 서비스 이미지*/
+            width: 1200px;
+            height: 200px;
+            position: absolute;
+            transform: translate(-50%, 0%);
+        }
+
+        #SE_topline { /*검색창, 로그인의 공간*/
+            width: 100%;
+            height: 50px;
+            position: relative;
+            background-color: black;
+        }
+
+        #SE_search-bar { /*검색입력 칸*/
+            width: 300px;
+            height: 40px;
+            font-size: 11px;
+            position: absolute;
+            float: left;
+            transform: translate(720px, 4px);
+            margin: 0;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+
+        #SE_btn { /*검색 버튼*/
+            width: 60px;
+            height: 40px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            position: absolute;
+            margin: 0;
+            float: left;
+            transform: translate(960px, 4px);
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #364959;
+        }
+
+        #SE_login { /*로그인 공간 */
+            width: 300px;
+            height: 40px;
+            position: absolute;
+            transform: translate(1260px, 10px);
+            background-color: #333125;
+            border-radius: 5px;
+        }
+
+        .SE_logbtn { /*로그인 공간 안의 버튼 3개.*/
+            margin: 10px 0 0 10px;
+            width: 80px;
+            height: 20px;
+            color: white;
+            font-size: 11px;
+            border-radius: 5px;
+            background-color: #364959;
+            border: 2px solid #0D3360;
+        }
+
+        #SE_left-sidebar { /*좌측 사이드바*/
+            background-color: #5164AA;
+            width: 360px;
+            height: 80px;
+            position: absolute;
+            transform: translate(0, 50px);
+        }
+
+        .dropdown { /*좌측 사이드바 드롭 다운 버튼*/
+            position: absolute;
+            transform: translate(100, 100);
+            margin: 0;
+            border: 1px solid red;
+            width: 100%;
+            background-color: #5164AA;
+        }
+
+        .dropdown-menu { /*좌측 사이드 바 드롭 다운 메뉴*/
+            background-color: #A084DC;
+            width: 360px;
+            height: 200px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        #SE_contents { /*메인 컨테이너*/
+            width: 1200px;
+            height: 2110px;
+            background-color: #5B8FB9;
+            position: fixed;
+            transform: translate(360px, 50px);
+        }
+
+        #SE_contents #content1 { /*NAV BAR 메인 메뉴 공간.*/
+            height: 80px;
+            position: fixed;
+            float: top;
+        }
+
+        #SE_menu_wrap { /*Nav bar 크기*/
+            width: 1200px;
+            height: 80px;
+            margin: 0 auto;
+            padding: 0;
+            z-index: 1000;
+        }
+
+        .SE_top_menu { /*Nav bar 각 메뉴*/
+            padding: 0;
+            margin: 0 auto;
+            width: 200px;
+            height: 100%;
+            background-color: #645CBB;
+            float: left;
+            text-align: center;
+            font: 20px/100px '';
+            /* transition-duration: 0.1s; */
+
+        }
+
+        .SE_sub_menu { /*드롭 다운 위치*/
+            margin-top: 10px;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            background-color: #A084DC;
+            /* transition-duration: 0.1s; */
+            padding: 0;
+
+        }
+
+        .SE_sub_menu > li { /*드롭다운 하위메뉴*/
+            width: 100%;
+            height: 60px;
+            border-bottom: 2px solid white;
+            box-sizing: border-box;
+            font: 18px/60px '';
+            padding: 0;
+
+        }
+
+        .SE_top_menu.SE_top_menu:hover { /*하위 메뉴 hover*/
+            font: 18px/60px '';
+            height: 100%;
+            background-color: #BFACE2;
+
+        }
+
+        .SE_top_menu:hover > .SE_sub_menu { /*하위 메뉴 늘어나는 길이 hover*/
+            height: 240px;
+        }
+
+        .SE_sub_menu > li:hover { /*하위 메뉴 각 항목 hover*/
+            background-color: #EBC7E6;
+            transition-duration: 0.5s;
+            z-index: 1000;
+        }
+
+        #user_info { /*유저 정보 칸*/
+            background-color: #C3C0EB;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        #user_info_btn { /*유저 정보 버튼 칸*/
+            width: 100%;
+            margin-bottom: ;
+            display: flex;
+            position: relative;
+            border-bottom: 3px solid #663399;
+        }
+
+        #user_info_btn1 { /*유저 정보 버튼*/
+            margin-bottom: 20px;
+            margin-left: 10px;
+        }
+
+        #user_info_btn2 { /*유저 차단 버튼*/
+            margin-left: 20px;
+        }
+
+        #user_info_btn3 { /*회원 탈퇴 버튼*/
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(-160%, -70%);
+        }
+
+        #user_info_bgc1 {
+            margin-left: 25%;
+            margin-top: 60px;
+            background-color: #2B2851;
+            width: 50%;
+            height: 29%;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        #user_info_bgc2 {
+            background-color: lightgray;
+            width: 97%;
+            height: 97%;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #user_info_modify{
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 45px;
+
+            width: 78%;
+            height: 50%;
+
+        }
+
+
+        #SE_right-sidebar { /*우측 임시 사이드 바*/
+            background-color: #5164AA;
+            width: 360px;
+            height: 80px;
+            position: absolute;
+            transform: translate(1200px, -80px);
+        }
+
+
+        #SE_footer { /*footer 영역*/
+            background-color: Black;
+            width: 100%;
+            height: 140px;
+            clear: left;
+            float: bottom;
+            position: absolute;
+            transform: translate(0, 2110px);
+            text-align: center;
+            color: white;
+            font: 18px/60px '';
+        }
+
+    </style>
+</head>
+<body>
+<div id="SE_container">
+    <header id="SE_header">
+        <h6>메인이미지</h6>
+        <img id="SE_img1" src="../../static/img/solar_embassy_main.png" alt="">
+    </header>
+
+    <div id="SE_topline">
+        <form>
+            <!--검색-->
+            <div id="SE_search">
+                <input type="text" id="SE_search-bar" placeholder="검색어를 입력하세요.">
+                <button type="button" id="SE_btn">검색</button>
+            </div>
+        </form>
+
+        <!--로그인-->
+        <form>
+            <div id="SE_login">
+                <button class="SE_logbtn" type="button">ID/PW 찾기</button>
+                <button class="SE_logbtn" type="button">로그인</button>
+                <button class="SE_logbtn" type="button">회원가입</button>
+            </div>
+        </form>
+        <aside id="SE_left-sidebar">
+
+            <!-- 부트스트랩 사이드바 아이콘-->
+            <div class="dropdown">
+
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="330px" height="67px" fill="white"
+                             class="bi bi-list" viewBox="0 0 15 15">
+                            <path fill-rule="#5164AA"
+                                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </a>
+                </button>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">마이 페이지</a></li>
+                    <li><a class="dropdown-item" href="#">개발중</a></li>
+                    <li><a class="dropdown-item" href="#">개발중</a></li>
+                    <li><a class="dropdown-item" href="#">개발중</a></li>
+                </ul>
+            </div>
+
+
+        </aside>
+
+        <section id="SE_contents">
+
+            <div id="SE_content1">
+                <ul id="SE_menu_wrap">
+                    <li class="SE_top_menu">
+                        <a href="#">메인 메뉴</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">메인 홈</a></li>
+                            <li><a href="#">마이 페이지</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <a href="#">태양계 소식지</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이용정책</a></li>
+                            <li><a href="#">이벤트 안내</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <a href="#">주제별 갤럭시</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">스포츠</a></li>
+                            <li><a href="#">문학</a></li>
+                            <li><a href="#">문화</a></li>
+                            <li><a href="#">게임</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <a href="#">마이너 갤럭시</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">유머</a></li>
+                            <li><a href="#">취미</a></li>
+                            <li><a href="#">여행</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <a href="#">태양계 놀이터</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">외계인 잡기</a></li>
+                            <li><a href="#">행성 맞추기</a></li>
+                            <li><a href="#">개발중</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <a href="#">스타 콜로세움</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">맞짱 게시판</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <aside id="SE_right-sidebar">
+                <h1> 우측 사이드바</h1>
+                <h1> 기능없는상태</h1>
+            </aside>
+
+            <div id="user_info">
+                <div id="user_info_btn">
+                    <div id="user_info_btn1">
+                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3 ">회원 정보 수정</button>
+                    </div>
+                    <div id="user_info_btn2">
+                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3">차단 목록 관리</button>
+                    </div>
+                    <div id="user_info_btn3">
+                        <button type="button" class="btn btn-outline-danger col-12 mt-5 ms-4 fs-3">회원 탈퇴</button>
+                    </div>
+                </div>
+                <div id="user_info_bgc1">
+                    <div id="user_info_bgc2">
+                        <div id="user_info_modify" >
+                            <div>
+                                <div class="input-group input-group-lg mb-3">
+                                    <input type="text" class="form-control" placeholder="아이디" aria-label="id">
+                                    <button type="submit" class="btn btn-info btn-lg">중복체크</button>
+                                </div>
+                                <div class="text-start">
+                                    <span>사용 가능한 아이디 입니다.</span>
+                                </div>
+                                <div class="input-group input-group-lg my-3">
+                                    <input type="text" class="form-control" placeholder="닉네임" aria-label="nickname">
+                                    <button type="submit" class="btn btn-info btn-lg">중복체크</button>
+                                </div>
+                                <div class="text-start">
+                                    <span>중복된 닉네임 입니다.</span>
+                                </div>
+                                <div class="input-group input-group-lg my-3">
+                                    <input type="text" class="form-control" placeholder="Email" aria-label="Username">
+                                    <span class="input-group-text">@</span>
+                                    <input type="text" class="form-control" placeholder="naver.com" aria-label="Server">
+                                    <button type="submit" class="btn btn-info btn-lg">인증확인</button>
+                                </div>
+                                <div class="input-group input-group-lg my-3">
+                                    <input type="text" class="form-control" placeholder="휴대폰번호" aria-label="phoenNum">
+                                    <button type="submit" class="btn btn-info btn-lg">인증확인</button>
+                                </div>
+                                <div class="input-group input-group-lg my-3 ">
+                                    <input type="text" class="form-control rounded" placeholder="현재 비밀번호" aria-label="nowPw">
+                                </div>
+                                <div class="input-group input-group-lg my-3">
+                                    <input type="text" class="form-control rounded" placeholder="새 비밀번호" aria-label="newPw">
+                                </div>
+                                <div class="input-group input-group-lg my-3">
+                                    <input type="text" class="form-control rounded" placeholder="비밀번호 확인" aria-label="newPwCheck">
+                                </div>
+
+                                <button type="submit" class="btn btn-secondary btn-lg mt-5">확인</button>
+                                <button type="submit" class="btn btn-secondary btn-lg mt-5 ms-5">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <footer id="SE_footer">
+            <p>
+            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
+                    href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+            <p>
+            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+        </footer>
+    </div>
+
+</div>
+</body>
+</html>

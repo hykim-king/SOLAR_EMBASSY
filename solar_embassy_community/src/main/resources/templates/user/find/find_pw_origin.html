@@ -1,0 +1,161 @@
+<head>
+    <meta charset="UTF-8">
+    <title>SOLAR EMBASSY</title>
+    <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
+    <!--    <script src="/uikit/js/uikit.js"></script>-->
+    <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
+    <link rel="stylesheet" href="/css/find_pw.css">
+</head>
+<body>
+<div id="container">
+    <th:block th:insert="/mainImg"></th:block>
+
+    <div id="topline">
+        <form>
+            <!--검색-->
+            <div id="search">
+                <input type="text" id="search-bar" placeholder="검색어를 입력하세요.">
+                <button type="button" id="btn">검색</button>
+            </div>
+        </form>
+
+        <!--로그인-->
+        <form>
+            <div id="login">
+                <button class="logbtn" type="button" onclick="location.href='/user/login.do'" style="cursor:pointer">로그인</button>
+                <button class="logbtn" type="button">ID/PW 찾기</button>
+                <button class="logbtn" type="button" onclick="location.href='/user/signup.do'" style="cursor:pointer">회원가입</button>
+            </div>
+        </form>
+        <aside id="left-sidebar">
+            <h1> 사이드바</h1>
+        </aside>
+
+        <section id="contents">
+            <div id="content1">
+                <ul id="menu_wrap">
+                    <li class="top_menu">
+                        <a href="#">메인 메뉴</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">메인 홈</a></li>
+                            <li><a href="#">마이 페이지</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">태양계 소식지</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이용정책</a></li>
+                            <li><a href="#">이벤트 안내</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">주제별 갤럭시</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">스포츠</a></li>
+                            <li><a href="#">문학</a></li>
+                            <li><a href="#">문화</a></li>
+                            <li><a href="#">게임</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">마이너 갤럭시</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">유머</a></li>
+                            <li><a href="#">취미</a></li>
+                            <li><a href="#">여행</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">태양계 놀이터</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">외계인 잡기</a></li>
+                            <li><a href="#">행성 맞추기</a></li>
+                            <li><a href="#">개발중</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="top_menu">
+                        <a href="#">스타 콜로세움</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">맞짱 게시판</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <aside id="right-sidebar">
+                <h1> 임시 사이드바</h1>
+            </aside>
+            <div class="find_pw_container">
+                <h1 class="find_pw_text" style="color: rgb(0, 0, 0);">
+                    비밀번호 찾기
+                    <span style="font-size: 16px; color: #FF0000;">01.아이디입력</span><span style="font-size: 16px;">>02.본인 확인>03.비밀번호 재설정 (임시 비밀번호 전송.)</span>
+                </h1>
+                <div class="find_pw_container2">
+                    <div class="find_pw_content">
+                        <span style="font-size: 24px; font-weight:bold;">비밀번호를 찾기 위해 다음과 같은 인증 수단이 필요합니다. 인증 수단을 선택해주세요.</span>
+                        
+                        <div class="find_pw_input">
+                            
+                            <div class="find_pw_inputText">
+                                <span style="font-weight: bold;"> ○ 회원 정보에 등록된 휴대전화로 인증 (% User_Phone_Number %) </span>
+                                <button>인증받기</button>
+                            </div>
+                            
+                            <div class="find_pw_input_area">
+                                <form action="">   
+                                    
+                                    <label for="confirm">인증번호</label>
+                                    <input type="text" name="confirm" id="confirm" value="  ID를 입력하세요."><button class="confirm_btn">인증확인</button><br>
+
+                                    <div class="warning">휴대폰 번호로 전송 된 인증번호 4자리(혹은 6자리)를 입력해주세요.<button class="reconfirm">인증재전송</button></div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="find_pw_content_3">
+                        <div class="find_pw_content_3-1" style=" font-size: 20px;">○ 회원 정보에 등록된 이메일로 임시 비밀번호 전송 </div>
+                        <form action="" method="POST">
+                            <label for="email" class="find_pw_content_3-2">본인확인 이메일로 인증(%유저이메일%@%이메일주소%.com) <!-- 이부분 유저 이메일 for 문 돌려야함 -->
+                            <button id="email">이메일로 전송</button></label>
+                        </form>
+                    </div>
+                    
+                    <div class="next">
+                        <button>다음</button>
+                    </div>
+                    
+                    <div class="find_pw_content_4">
+                        <div class="find_pw_content_4-1" style="font-size: 20px; font-weight:bold;">아이디가 기억이 나지 않는다면 <span style="color:#14F30F">아이디 찾기</span>로 이동하세요.</div>
+                    </div>
+
+                    <div class="find_pw_content_5">
+                        <form action="" method="POST">
+                            <button id="cancle">취소</button>
+                            <div class="justspace"></div>
+                            <button id="service_center">고객센터</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            <p>
+            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a
+                    href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
+            <p>
+            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

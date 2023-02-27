@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.PopularSearchMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.PopularSearch">
+            <id property="popKwdNo" column="popKwdNo" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="licenseNum" column="licenseNum" jdbcType="VARCHAR"/>
+            <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
+            <result property="searchKw" column="searchKw" jdbcType="VARCHAR"/>
+            <result property="searchTime" column="searchTime" jdbcType="TIMESTAMP"/>
+            <result property="searchIp" column="searchIp" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        popKwdNo,userId,licenseNum,
+        buTell,searchKw,searchTime,
+        searchIp
+    </sql>
+</mapper>

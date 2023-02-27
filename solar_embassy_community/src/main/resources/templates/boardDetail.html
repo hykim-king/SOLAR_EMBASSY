@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/board.css}"/>
+  <title>Insert title here</title>
+</head>
+<body>
+<div>
+  <h2>게시글 상세 화면</h2>
+  <form id="frm" method="post">
+    <table>
+      <colgroup>
+        <col width="15%">
+        <col width="35%">
+        <col width="15%">
+        <col width="35%">
+      </colgroup>
+      <caption>게시글 상세 내용</caption>
+      <tbody>
+      <tr>
+        <th scope="row">글 번호</th>
+        <td th:text="${board.boardNo}"></td>
+        <th scope="row">조회수</th>
+        <td th:text="${board.views}"></td>
+      </tr>
+      <tr>
+        <th scope="row">작성자</th>
+        <td th:text="${board.userId}"></td>
+        <th scope="row">작성일</th>
+        <td th:text="${board.postTime}"></td>
+      </tr>
+      <tr>
+        <th scope="row">제목</th>
+        <td colspan="3"><input type="text" id="title" name="title" th:value="${board.title}" /></td>
+      </tr>
+      <tr>
+        <td colspan="4" class="view_text">
+          <textarea title="내용" id="contents" name="contents" th:text="${board.contents}"></textarea>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <input type="hidden" id="boardId" th:value="${board.boardNo}" />
+  </form>
+
+  <a href="#this" class="btn" id="list">목록으로</a>
+  <a href="#this" class="btn" id="edit">수정</a>
+  <a href="#this" class="btn" id="delete">삭제</a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#list').on("click",function(){
+      location.href="/board/boardList.do";
+    });
+
+    $('#edit').on("click",function(){
+      var frm = $('#frm')[0];
+      frm.action = "/board/updateBoard";
+      frm.submit();
+
+    });
+
+    $('#delete').on("click",function(){
+      var frm = $('#frm')[0];
+      frm.action = "/board/boardDetail";
+      frm.submit();
+    });
+  });
+</script>
+</body>
+</html>

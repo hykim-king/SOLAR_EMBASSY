@@ -1,0 +1,622 @@
+
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+   rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <title>SOLAR EMBASSY</title>
+
+    <!--    <link rel="stylesheet" href="/uikit/css/uikit.css">-->
+    <!--    <script src="/uikit/js/uikit.js"></script>-->
+    <!--    <script src="/uikit/js/uikit-icons.js"></script>-->
+
+    <style>
+        *{margin:0; padding:0;}
+
+        html,body{
+            background-color: white;
+            height: 100%;
+            max-width: 1920px;
+            margin: 0 auto ;
+        }
+        ul{list-style: none;}
+        a{text-decoration: none; color: white; display: block;}
+        
+        #SE_container{                                      /*메인 컨테이너*/
+            width : 1920px;
+            background-color: #5B8FB9;
+            margin : 0 auto ;
+            position:relative;
+            transform: translate(0,0);
+        }
+        
+        #SE_header {                                      /*헤더*/
+            width: 100%;
+            height: 250px;
+            background-color: black;
+            text-align: center;
+            margin : 0 auto ;
+            position:relative;
+        }
+        #SE_img1 {                         /*메인 서비스 이미지*/
+            width: 1200px;
+            height: 200px;
+            position:absolute;
+            transform:translate(-50%,0%);
+        }
+        
+        #SE_topline{                                       /*검색창, 로그인의 공간*/
+            width: 100%;
+            height: 50px;
+            position: relative;
+            background-color: black;
+        }
+        
+        #SE_search-bar{                                       /*검색입력 칸*/
+            width: 300px;
+            height: 40px;
+            font-size: 11px;
+            position: absolute;
+            float: left;
+            transform: translate(720px,4px);
+            margin: 0;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        
+        #SE_btn{                                      /*검색 버튼*/
+            width: 60px;
+            height: 40px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            position: absolute;
+            margin: 0;
+            float: left;
+            transform: translate(960px,4px);
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #364959;
+        }
+        
+        #SE_login{                                      /*로그인 공간 */
+            width: 300px;
+	        height: 60px;
+            position: absolute;
+            transform: translate(1260px, 10px);
+            background-color: orange;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .SE_logbtn{                                      /*로그인 공간 안의 버튼 3개.*/
+            margin:  10px 5px 5px 10px;
+            width: 80px;
+            height: 20px;
+            color: white;
+            font-size: 10px;
+            border-radius: 5px;
+            background-color: #364959;
+        }
+        
+        #SE_left-sidebar {                                      /*좌측 사이드바 영역값.*/
+            background-color: #5164AA;
+            width: 360px;
+            height: 80px;
+            position: absolute;
+            transform: translate(0,50px);
+            margin: 0;
+            z-index: 3;
+        }
+
+        input[id="menuicon"] {display:none;}                                 /*사이드바 세부 설정 및 애니메이션.*/
+        input[id="menuicon"] + label {display:block;margin: 15px 0 0 290px;width:60px;height:40px;position:relative;cursor:pointer;} /*아이콘 선의 간격, 위치*/
+        input[id="menuicon"] + label span {display:block;position:absolute;width:100%;height:5px;border-radius:30px;background:gray;transition:all .35s;}/*아이콘 선 값*/
+        input[id="menuicon"] + label span:nth-child(1) {top:0;} /*첫째줄*/
+        input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);} /* 비슷하게 사용할 수 있는 style top:calc(50% - 2.5px); margin-top:-2.5px;*/ 
+        input[id="menuicon"] + label span:nth-child(3) {bottom:0;} /*셋째줄*/
+        input[id="menuicon"]:checked + label {z-index:2;}
+        input[id="menuicon"]:checked + label span {background:#fff;} /*x 아이콘 색상.*/
+        input[id="menuicon"]:checked + label span:nth-child(1) {top:50%;transform:translateY(-50%) rotate(45deg);} /*첫줄 x형태로 변형*/
+        input[id="menuicon"]:checked + label span:nth-child(2) {opacity:0;} /* 가운데줄*/
+        input[id="menuicon"]:checked + label span:nth-child(3) {bottom:50%;transform:translateY(50%) rotate(-45deg);}/*셋째줄 X형태로 변형*/
+        div[class="SE_sidebar_profile"] {width:360px;height:500px; background:#4a6399be; border-bottom: 3px solid darkblue; border-right: 2px solid darkblue; position:fixed; top:80px; top:-1000%;z-index:1;transition:all .3s;} /*프로필 영역*/
+        input[id="menuicon"]:checked + label + div {top:80px;}
+
+        .SE_sidebar_profile{                         /*프로필 영역 설정 값.*/
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            padding-top: 20px;
+            z-index: 3;
+        }
+        
+        #SE_profileIMG{                         /*프로필 사진*/
+            padding-top:20px;
+            border:2px solid rgba(223, 223, 223, 0.315);
+            background-color: #00000021;
+        }
+        
+        .SE_sidebar_profile_in{                 /*프로필 내부 설정 값.*/
+            padding: 10px;
+            font: 15px/50px'';
+        }
+        
+        #SE_contents {                                      /*메인 컨테이너*/
+            width: 1200px;
+            height: 2100px;
+            margin: 0;
+            background-color: rgb(100, 144, 180);
+            position: fixed;
+            transform: translate(360px,50px);
+        }
+        
+        #SE_contents #SE_content1{                                      /*NAV BAR 메인 메뉴 영역.*/
+            width: 1200px;
+            height: 80px;
+            margin: 0;
+        }
+        
+        #SE_navIMG{                                 /*nav bar 삽입 이미지*/
+            margin-top: 10px;
+        }
+        
+        #SE_menu_wrap{                               /*Nav bar 전체 크기*/
+            margin-bottom: 10px;
+            float: left;
+            width: 1200px;
+            height: 80px;
+            padding: 0;
+            position: relative;
+            transform: translate(0,0px);
+            z-index: 3;
+        }
+        
+        .SE_top_menu{                                /*Nav bar 각 메뉴칸*/
+            background-color: #645CBB;
+            width: 200px;
+            height: 100%;
+            padding:0;
+            text-align: center;
+            float: left;
+            font: 20px/60px'';
+            /* transition-duration: 0.1s; */   
+        }
+        
+        .SE_sub_menu{                  /*드롭 다운 위치*/
+            margin-top: -10px;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            background-color: #a084dcbb;
+            /* transition-duration: 0.1s; */
+            padding: 0;
+        }
+        
+        .SE_sub_menu>li{               /*드롭다운 하위메뉴*/
+            width: 100%;
+            height: 80px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            box-sizing: border-box;
+            font: 18px/60px '';
+            padding: 0;
+        }
+        
+        .SE_top_menu.SE_top_menu:hover{       /*하위 메뉴 hover*/
+            font: 18px/60px '';
+            height: 100%;
+            background-color: #bface2ce;
+        }
+        
+        .SE_top_menu:hover>.SE_sub_menu{          /*하위 메뉴 늘어나는 길이 hover*/
+            height: 320px;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .SE_sub_menu>li:hover{                 /*하위 메뉴 각 항목 hover*/
+            background-color: #ebc7e6a4;
+            transition-duration: 0.5s;
+        }
+
+        #SE_right-sidebar {                        /*우측 임시 사이드 바*/
+            background-color: #5164AA;
+            width: 360px;
+            height: 80px;
+            margin: 0;
+            position: relative;
+            transform: translate(1200px, -80px);
+        }
+
+/* 여기부터 *******************************************************************************************************************************************/
+        #SE_intro{         /* 항목 영역*/
+            width: 1200px;           
+            height: 80px;
+            position: relative;
+            transform: translate(-20px,-30px);
+        }
+        #SE_intro .SE_intro_T{                /*항목*/
+            width: 1200px;
+            height: 50px;
+            position: relative;
+            transform: translate(20px,0px);
+            display: flex;         
+        }
+        
+        #SE_intro .SE_intro_T .intro_bar{          /*각 항목*/
+            background-color: white;
+            width: 380px;
+            height: 50px;
+            float: left;
+            margin-left: 5px;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+        
+        #SE_intro .SE_intro_T .intro_bar .itr1{     /*폰트 설정*/
+            margin-top: 5px;
+            text-align: center;
+            color: black;
+            font-size: 25px;
+        }
+        
+        #SE_intro .SE_intro_T .intro_bar:hover{     /*hover*/
+            background-color: thistle;
+        }
+        
+        #SE_intro .SE_intro_T .intro_bar .itr1:hover{ /*hover*/
+            text-align: center;
+            color: green;
+            font-size: 25px;
+        }
+        
+        #SE_rules{
+            background: linear-gradient(white 60%, rgb(223, 223, 255));
+            width: 1150px;
+            height: 1850px;
+            border-radius: 5px;
+            margin: 0 25px 0 25px;
+            position: absolute;
+            font-size: 14px;
+            transform: translate(0,-30px);
+        }
+        #SE_rules::-webkit-scrollbar {
+            width: 8px;  /* 스크롤바의 너비 */
+        }
+
+        #SE_rules::-webkit-scrollbar-thumb {
+            height: 30%; /* 스크롤바의 길이 */
+            background: #217af4; /* 스크롤바의 색상 */
+            border-radius: 10px;
+        }
+
+        #SE_rules::-webkit-scrollbar-track {
+            background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+        }
+/* 여기까지 ********************************************************************************************************/
+
+        
+        #SE_contents2{                  /*좌측 공간5 여백 (배너 자리)*/
+            width: 360px;
+            height: 2100px;
+            position: absolute;
+            transform: translate(0,130px);
+        }
+
+        #SE_banner1{            /*배너(좌)*/
+            width:340px;
+            height: 900px;
+            border-radius: 10px;
+            border: 1px solid hotpink;
+            margin: 200px 0 0 10px;
+            
+        }
+
+        #SE_contents3{                          /*우측 공간 여백 (배너 자리)*/
+            width: 360px;
+            height: 2100px;
+            position: absolute;
+            transform: translate(1560px,130px);
+        }
+
+        #SE_banner2{            /*배너(우)*/
+            width:340px;
+            height: 900px;
+            border-radius: 10px;
+            border: 1px solid hotpink;
+            margin: 200px 0 0 10px;
+            
+        }
+
+        #SE_footer{                                      /*footer 영역*/
+            background-color: Black;
+            width: 100%;
+            height: 140px;
+            float: left;
+            position: absolute;
+            transform: translate(0,2100px);
+            text-align: center;
+            color: white;
+            font: 18px/60px '';   
+            z-index: 2;  
+        }
+
+        #SE_footer a{     
+            display: inline-block;  
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="SE_container">
+    <header id="SE_header">
+        <h6>메인이미지</h6>
+        <img id="SE_img1" src="/img/title.jpg" alt="">
+    </header>
+
+    <div id="SE_topline">
+        <form>
+            <!--검색-->
+            <div id="SE_search">
+                <input type="text" id="SE_search-bar" placeholder="검색어를 입력하세요.">
+                <button type="button" id="SE_btn">검색</button></div>
+        </form>
+
+        <!--로그인-->
+        <form>
+            <div id="SE_login">
+                <button class="SE_logbtn" type="button">ID/PW 찾기</button>
+                <button class="SE_logbtn" type="button">로그인</button>
+                <button class="SE_logbtn" type="button">회원가입</button>
+            </div>
+        </form>
+                    <aside id="SE_left-sidebar">
+
+                        <input type="checkbox" id="menuicon">
+                        <label for="menuicon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </label>
+
+                        <div class="SE_sidebar_profile">
+                            <img id="SE_profileIMG"src="#" alt="userIMG" width="200px" height="200px"  class="rounded-circle">
+                            <ul class="SE_sidebar_profile_in">
+                                <li><a href="#">로그인</a></li>
+                                <li><a href="#">마이페이지</a></li>
+                                <li><a href="#">쪽지</a></li>
+                                <li><a href="#">개발중</a></li>
+                                <li><a href="#">개발중</a></li>
+                            </ul>
+                        </div>
+
+                    </aside>
+
+        <section id="SE_contents">
+
+            <div id="SE_content1">
+                <ul id="SE_menu_wrap">
+                    <li class="SE_top_menu">
+                        <img id="SE_navIMG"src="#" alt="navIMG" width="20px" height="20px">
+                        <a href="#">메인 메뉴</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">메인 홈</a></li>
+                            <li><a href="#">마이 페이지</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <img id="SE_navIMG"src="#" alt="navIMG" width="20px" height="20px">
+                        <a href="#">태양계 소식지</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이용정책</a></li>
+                            <li><a href="#">이벤트 안내</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <img id="SE_navIMG"src="#" alt="navIMG" width="20px" height="20px">
+                        <a href="#">주제별 갤럭시</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">스포츠</a></li>
+                            <li><a href="#">문학</a></li>
+                            <li><a href="#">문화</a></li>
+                            <li><a href="#">게임</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <img id="SE_navIMG"src="#" alt="navIMG" width="20px" height="20px">
+                        <a href="#">마이너 갤럭시</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">유머</a></li>
+                            <li><a href="#">취미</a></li>
+                            <li><a href="#">여행</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <img id="SE_navIMG"src="#" alt="navIMG" width="20px" height="20px">
+                        <a href="#">태양계 놀이터</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">외계인 잡기</a></li>
+                            <li><a href="#">행성 맞추기</a></li>
+                            <li><a href="#">개발중</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="SE_top_menu">
+                        <img id="SE_navIMG"src="#" alt="navIMG" width="20px" height="20px">
+                        <a href="#">스타 콜로세움</a>
+                        <ul class="SE_sub_menu">
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">개발중</a></li>
+                            <li><a href="#">맞짱 게시판</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <aside id="SE_right-sidebar">
+                <!-- <h1> 우측 사이드바</h1>
+                <h1> 기능없는상태</h1> -->
+            </aside>
+            
+            <!--여기부터**********************************************************************************************-->
+            
+            <div id="SE_intro">                      <!-- 분류 목록-->
+                <ul class="SE_intro_T">
+                    <li class="intro_bar"><a class="itr1" href="/introduce">1. 서비스 소개</a></li>
+                    <li class="intro_bar"><a class="itr1" href="/user_rules">2. 이용약관</a></li>
+                    <li class="intro_bar"><a class="itr1" href="/personal">3. 개인정보 취급방침</a></li>
+                </ul>
+            </div>
+            
+            <div id="SE_rules" style="overflow-x:hidden">
+                <h1><p style="text-align: center">솔라 엠버시 서비스 이용약관</p></h1>
+                <br>
+                <p style="text-indent:20px">제 1 장 총 칙</p>
+                <p style="text-indent:30px">제 1 조 (목적)</p>
+                    <p style="text-indent:40px">이 약관은 {SOLAR EMBASSY}(이하 "사이트"라 합니다)에서 제공하는 인터넷 서비스(이하 "서비스"라 합니다)의 
+                    <p style="text-indent:40px">이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.</p>
+                <br>
+                <p style="text-indent:30px"> 제 2 조 (약관의 효력 및 변경)</p>
+                    <p style="text-indent:40px">① 이 약관은 서비스 화면이나 기타의 방법으로 이용고객에게 공지함으로써 효력을 발생합니다.</p>
+                    <p style="text-indent:40px">② 사이트는 이 약관의 내용을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로 공지 또는 통지함으로써 효력을 발생합니다.</p>
+                <br>
+                <p style="text-indent:30px">제 3 조 (용어의 정의)</p>
+                    <p style="text-indent:40px">이 약관에서 사용하는 용어의 정의는 다음과 같습니다.<br>
+                        <p style="text-indent:40px">① 회원 : 사이트와 서비스 이용계약을 체결하거나 이용자 아이디(ID)를 부여받은 개인 또는 단체를 말합니다.<br>
+                        <p style="text-indent:40px">② 신청자 : 회원가입을 신청하는 개인 또는 단체를 말합니다.<br>
+                        <p style="text-indent:40px">③ 아이디(ID) : 회원의 식별과 서비스 이용을 위하여 회원이 정하고 사이트가 승인하는 문자와 숫자의 조합을 말합니다.<br>
+                        <p style="text-indent:40px">④ 비밀번호 : 회원이 부여 받은 아이디(ID)와 일치된 회원임을 확인하고, 회원 자신의 비밀을 보호하기 위하여 회원이 정한 문자와 숫자의 조합을 말합니다.<br>
+                        <p style="text-indent:40px">⑤ 해지 : 사이트 또는 회원이 서비스 이용계약을 취소하는 것을 말합니다.<br>
+                <br>
+                
+                <p style="text-indent:20px">제 2 장 서비스 이용계약</p>
+                <p style="text-indent:30px">제 4 조 (이용계약의 성립)</p>
+                        <p style="text-indent:40px">① 이용약관 하단의 동의 버튼을 누르면 이 약관에 동의하는 것으로 간주됩니다.</p>
+                        <p style="text-indent:40px">② 이용계약은 서비스 이용희망자의 이용약관 동의 후 이용 신청에 대하여 사이트가 승낙함으로써 성립합니다.</p>
+                <br>
+
+                <p style="text-indent:30px">제 5 조 (이용신청)</p>
+                        <p style="text-indent:40px">① 신청자가 본 서비스를 이용하기 위해서는 사이트 소정의 가입신청 양식에서 요구하는 이용자 정보를 기록하여 제출해야 합니다.</p>                    <p style="text-indent:40px">② 가입신청 양식에 기재하는 모든 이용자 정보는 모두 실제 데이터인 것으로 간주됩니다. <br>
+                         <p style="text-indent:58px">실명이나 실제 정보를 입력하지 않은 사용자는 법적인 보호를 받을 수 없으며, 서비스의 제한을 받을 수 있습니다.</p>
+                <br>
+                <p style="text-indent:30px">제 6 조 (이용신청의 승낙)</p>
+                        <p style="text-indent:40px">① 사이트는 신청자에 대하여 제2항, 제3항의 경우를 예외로 하여 서비스 이용신청을 승낙합니다.</p>
+                          <p style="text-indent:40px">② 사이트는 다음에 해당하는 경우에 그 신청에 대한 승낙 제한사유가 해소될 때까지 승낙을 유보할 수 있습니다.</p>
+                                <p style="text-indent:50px">가. 서비스 관련 설비에 여유가 없는 경우</p>
+                                <p style="text-indent:50px">나. 기술상 지장이 있는 경우</p>
+                                <p style="text-indent:50px">다. 기타 사이트가 필요하다고 인정되는 경우</p>
+                            <p style="text-indent:40px">③ 사이트는 신청자가 다음에 해당하는 경우에는 승낙을 거부할 수 있습니다.</p>
+                                <p style="text-indent:50px">가. 다른 개인(사이트)의 명의를 사용하여 신청한 경우</p>
+                                <p style="text-indent:50px">나. 이용자 정보를 허위로 기재하여 신청한 경우</p>
+                                <p style="text-indent:50px">다. 사회의 안녕질서 또는 미풍양속을 저해할 목적으로 신청한 경우</p>
+                                <p style="text-indent:50px">라. 기타 사이트 소정의 이용신청요건을 충족하지 못하는 경우</p>
+                            <br>
+                <p style="text-indent:30px">제 7 조 (이용자정보의 변경)</p>
+                    <p style="text-indent:40px">회원은 이용 신청시에 기재했던 회원정보가 변경되었을 경우에는, </p>
+                    <p style="text-indent:40px">온라인으로 수정하여야 하며 변경하지 않음으로 인하여 발생되는 모든 문제의 책임은 회원에게 있습니다.</p>
+                     <br>
+
+                <p style="text-indent:20px">제 3 장 계약 당사자의 의무</p>
+                <p style="text-indent:30px">제 8 조 (사이트의 의무)</p>
+                            <p style="text-indent:40px">① 사이트는 회원에게 각 호의 서비스를 제공합니다.</p>
+                                <p style="text-indent:50px">가. 신규서비스와 도메인 정보에 대한 뉴스레터 발송</p>
+                                <p style="text-indent:50px">나. 추가 도메인 등록시 개인정보 자동 입력</p>
+                                <p style="text-indent:50px">다. 도메인 등록, 관리를 위한 각종 부가서비스</p>
+                            <p style="text-indent:40px">② 사이트는 서비스 제공과 관련하여 취득한 회원의 개인정보를 회원의 동의없이 타인에게 누설, 공개 또는 배포할 수 없으며, </p>
+                               <p style="text-indent:60px">서비스관련 업무 이외의 상업적 목적으로 사용할 수 없습니다. (단, 다음 각 호의 1에 해당하는 경우는 예외입니다.)</p>
+                                <p style="text-indent:50px">가. 전기통신기본법 등 법률의 규정에 의해 국가기관의 요구가 있는 경우</p>
+                                <p style="text-indent:50px">나. 범죄에 대한 수사상의 목적이 있거나 정보통신윤리 위원회의 요청이 있는 경우</p>
+                                <p style="text-indent:50px">다. 기타 관계법령에서 정한 절차에 따른 요청이 있는 경우</p>
+                            <p style="text-indent:40px">③ 사이트는 이 약관에서 정한 바에 따라 지속적, 안정적으로 서비스를 제공할 의무가 있습니다.</p>
+                <br>
+                <p style="text-indent:30px">제 9 조 (회원의 의무)</p>
+                            <p style="text-indent:40px">① 회원은 서비스 이용 시 다음 각 호의 행위를 하지 않아야 합니다.</p>
+                                <p style="text-indent:50px">가. 다른 회원의 ID를 부정하게 사용하는 행위</p>
+                                <p style="text-indent:50px">나. 서비스에서 얻은 정보를 사이트의 사전승낙 없이 회원의 이용 이외의 목적으로 복제하거나 이를 변경, 출판 및 방송 등에 사용하거나 타인에게 제공하는 행위</p>
+                                <p style="text-indent:50px">다. 사이트의 저작권, 타인의 저작권 등 기타 권리를 침해하는 행위</p>
+                                <p style="text-indent:50px">라. 공공질서 및 미풍양속에 위반되는 내용의 정보, 문장, 도형 등을 타인에게 유포하는 행위</p>
+                                <p style="text-indent:50px">마. 범죄와 결부된다고 객관적으로 판단되는 행위</p>
+                                <p style="text-indent:50px">바. 기타 관계법령에 위배되는 행위</p>
+                            <p style="text-indent:40px">② 회원은 관계법령, 이 약관에서 규정하는 사항, 서비스 이용 안내 및 주의 사항을 준수하여야 합니다.</p>
+                            <p style="text-indent:40px">③ 회원은 내용별로 사이트가 서비스 공지사항에 게시하거나 별도로 공지한 이용 제한 사항을 준수하여야 합니다.</p>
+                <br>
+
+                <p style="text-indent:20px">제 4 장 서비스 제공 및 이용</p>
+                <p style="text-indent:30px">제 10 조 (회원 아이디(ID)와 비밀번호 관리에 대한 회원의 의무)
+                        <p style="text-indent:40px">① 아이디(ID)와 비밀번호에 대한 모든 관리는 회원에게 책임이 있습니다. 회원에게 부여된 아이디(ID)와 비밀번호의 관리소홀, 부정사용에 의하여</p>
+                          <p style="text-indent:60px">발생하는 모든 결과에 대한 전적인 책임은 회원에게 있습니다.</p>
+                        <p style="text-indent:40px">② 자신의 아이디(ID)가 부정하게 사용된 경우 또는 기타 보안 위반에 대하여, 회원은 반드시 사이트에 그 사실을 통보해야 합니다.</p>
+                <br>
+
+                <p style="text-indent:30px">제 11 조 (서비스 제한 및 정지)</p>
+                            <p style="text-indent:40px">① 사이트는 전시, 사변, 천재지변 또는 이에 준하는 국가비상사태가 발생하거나 발생할 우려가 있는 경우와 </p>
+                              <p style="text-indent:60px">전기통신사업법에 의한 기간통신 사업자가 전기통신서비스를 중지하는 등 기타 불가항력적 사유가 있는 경우에는 </p>
+                              <p style="text-indent:60px">서비스의 전부 또는 일부를 제한하거나 정지할 수 있습니다.</p>
+                            <p style="text-indent:40px">② 사이트는 제1항의 규정에 의하여 서비스의 이용을 제한하거나 정지할 때에는 그 사유 및 제한기간 등을 지체없이 회원에게 알려야 합니다.</p>
+                            <br>
+                <p style="text-indent:20px">제5장 계약사항의 변경, 해지</p>
+                <br>
+                <p style="text-indent:30px">제 12 조 (정보의 변경)</p>
+                    <p style="text-indent:30px">회원이 주소, 비밀번호 등 고객정보를 변경하고자 하는 경우에는 홈페이지의 회원정보 변경 서비스를 이용하여 변경할 수 있습니다.</p>
+                <br>
+
+                <p style="text-indent:30px">제 13 조 (계약사항의 해지)</p>
+                    <p style="text-indent:30px">회원은 서비스 이용계약을 해지할 수 있으며, 해지할 경우에는 본인이 직접 서비스를 통하거나 전화 또는 온라인 등으로 사이트에 해지신청을 하여야 합니다. </p>
+                    <p style="text-indent:30px">사이트는 해지신청이 접수된 당일부터 해당 회원의 서비스 이용을 제한합니다. </p>
+                    <p style="text-indent:30px">사이트는 회원이 다음 각 항의 1에 해당하여 이용계약을 해지하고자 할 경우에는 해지조치 7일전까지 그 뜻을 이용고객에게 통지하여 소명할 기회를 주어야 합니다.</p>
+                        <p style="text-indent:40px">① 이용고객이 이용제한 규정을 위반하거나 그 이용제한 기간 내에 제한 사유를 해소하지 않는 경우</p>
+                        <p style="text-indent:40px">② 정보통신윤리위원회가 이용해지를 요구한 경우</p>
+                        <p style="text-indent:40px">③ 이용고객이 정당한 사유 없이 의견진술에 응하지 아니한 경우</p>
+                        <p style="text-indent:40px">④ 타인 명의로 신청을 하였거나 신청서 내용의 허위 기재 또는 허위서류를 첨부하여 이용계약을 체결한 경우 </p>
+                            <p style="text-indent:60px">사이트는 상기 규정에 의하여 해지된 이용고객에 대해서는 별도로 정한 기간동안 가입을 제한할 수 있습니다.</p>
+                <br>
+
+                <p style="text-indent:20px">제6장 손해배상</p>
+                <p style="text-indent:30px">제 14 조 (면책조항)</p>
+                        <p style="text-indent:40px">① 사이트는 회원이 서비스 제공으로부터 기대되는 이익을 얻지 못하였거나 서비스 자료에 대한 취사선택 또는 이용으로 발생하는 손해 등에 대해서는 책임이 면제됩니다.</p>
+                        <p style="text-indent:40px">② 사이트는 회원의 귀책사유나 제3자의 고의로 인하여 서비스에 장애가 발생하거나 회원의 데이터가 훼손된 경우에 책임이 면제됩니다.</p>
+                        <p style="text-indent:40px">③ 사이트는 회원이 게시 또는 전송한 자료의 내용에 대해서는 책임이 면제됩니다.</p>
+                        <p style="text-indent:40px">④ 상표권이 있는 도메인의 경우, 이로 인해 발생할 수도 있는 손해나 배상에 대한 책임은 구매한 회원 당사자에게 있으며, 사이트는 이에 대한 일체의 책임을 지지 않습니다.</p>
+                <br>
+                <p style="text-indent:30px">제 15 조 (관할법원)</p>
+                   <p style="text-indent:40px">서비스와 관련하여 사이트와 회원간에 분쟁이 발생할 경우 사이트의 본사 소재지를 관할하는 법원을 관할법원으로 합니다.</p>
+                <br>
+                
+                <p style="text-align: center"><b>[부칙] 이 약관은 2023년 01월부터 시행합니다.</b></p>
+        </div>
+
+            <!--***************여기까지*******************************************************************************************-->
+
+
+        </section>
+        
+        <section id="SE_contents2">
+            <div id="SE_banner1"><h1>배너자리</h1></div>
+        </section>
+        
+        <section id="SE_contents3">
+            <div id="SE_banner2"><h1>배너자리</h1></div>
+        </section>
+        
+    </div>
+    <footer id="SE_footer">
+        <p> </p>
+        <p><h3><a href="/introduce">서비스 소개</a> / <a href="/user_rules">이용약관</a> / <a href="/personal">개인정보 취급방침</a><a href="https://open.kakao.com/o/sImhIr4e">비즈니스 문의</a> / <a href="https://cafe.naver.com/solarembassy">SNS</a> / <a href="mailto:mall@solarembassy.com">이메일</a></h3></p>
+        <p><h3>Copyright (c) <a href="https://github.com/hykim-king/SOLAR_EMBASSY">www.solarembassy.com</a> All rights reserved.</h3></p>
+        <p>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 SOLAR EMBASSY의 입장과 다를 수 있습니다.</p>
+        <p><h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
+    </footer>
+</body>
+</html>

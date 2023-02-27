@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.BookingMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Booking">
+            <id property="bokNo" column="bokNo" jdbcType="INTEGER"/>
+            <id property="bookingDate" column="bookingDate" jdbcType="TIMESTAMP"/>
+            <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
+            <result property="buNo" column="buNo" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="userName" column="userName" jdbcType="VARCHAR"/>
+            <result property="userPhone" column="userPhone" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="startDate" column="startDate" jdbcType="TIMESTAMP"/>
+            <result property="endDate" column="endDate" jdbcType="TIMESTAMP"/>
+            <result property="checkin" column="checkin" jdbcType="TIMESTAMP"/>
+            <result property="checkout" column="checkout" jdbcType="TIMESTAMP"/>
+            <result property="payment" column="payment" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="VARCHAR"/>
+            <result property="payDate" column="payDate" jdbcType="TIMESTAMP"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="bokCheck" column="bokCheck" jdbcType="VARCHAR"/>
+            <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        bokNo,bookingDate,buTell,
+        buNo,userId,userName,
+        userPhone,address,startDate,
+        endDate,checkin,checkout,
+        payment,price,payDate,
+        state,bokCheck,updaterId,
+        updateTime
+    </sql>
+</mapper>

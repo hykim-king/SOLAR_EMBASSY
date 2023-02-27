@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.ReserveListMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.ReserveList">
+            <id property="listNo" column="listNo" jdbcType="INTEGER"/>
+            <id property="bokCheckDate" column="bokCheckDate" jdbcType="TIMESTAMP"/>
+            <result property="bokNo" column="bokNo" jdbcType="INTEGER"/>
+            <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
+            <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        listNo,bokCheckDate,bokNo,
+        buTell,updaterId,updateTime
+    </sql>
+</mapper>
