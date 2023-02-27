@@ -25,14 +25,9 @@ public class Booking implements Serializable {
     private String userPhone;
 
     private String address;
-
-<<<<<<< HEAD
-=======
     private Date startDate;
 
     private Date endDate;
-
->>>>>>> 69a5ab68b59c6e2c9478a29653c95fb104023b62
     private Date checkin;
 
     private Date checkout;

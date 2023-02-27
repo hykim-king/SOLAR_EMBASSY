@@ -1,10 +1,6 @@
 package com.community.solar_embassy.mapper;
 
-<<<<<<< HEAD
-
 import com.community.solar_embassy.dto.BusinessDto;
-=======
->>>>>>> 69a5ab68b59c6e2c9478a29653c95fb104023b62
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

@@ -11,30 +11,21 @@ public interface BoardMapper {
     List<BoardDto> selectBoardList() throws Exception;
 
     int insertBoard(BoardDto board) throws Exception;
-<<<<<<< HEAD
+
     void updateViews(int boardNo) throws Exception;
-    List<BoardDto> selectBoardDetail(int boardNo) throws Exception;
-    void updateBoard(BoardDto board) throws Exception;
-    void deleteBoard(int boardNo) throws Exception;
-    int count(PagingDto board ) throws Exception;
-=======
 
-    void updateViews(int board_no) throws Exception;
+    BoardDto selectBoardDetail(int boardNo) throws Exception;
 
-    List<BoardDto> selectBoardDetail(int board_no) throws Exception;
+    int updateBoard(BoardDto board) throws Exception;
 
-    void updateBoard(BoardDto board) throws Exception;
-
-    void deleteBoard(int board_no) throws Exception;
+    int deleteBoard(int board_no) throws Exception;
 
     int count(BoardDto board ) throws Exception;
 
     List<BoardDto> selectBoardListBySize(int size);
 
-    List<BoardDto> selectBoardListByGalaxy();
+    List<BoardDto> selectBoardListByGalaxy(int galaxyNo);
 
-
->>>>>>> 69a5ab68b59c6e2c9478a29653c95fb104023b62
 }
 
 

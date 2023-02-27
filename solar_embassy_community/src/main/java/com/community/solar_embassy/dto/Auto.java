@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName auto
- */
 @Data
 public class Auto implements Serializable {
     private Integer autoNo;

@@ -14,6 +14,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Autowired
     BoardMapper boardMapper;
+
     @Override
     public List<BoardDto> selectBoardList() throws Exception {
         return boardMapper.selectBoardList();
@@ -32,32 +33,27 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-<<<<<<< HEAD
     public BoardDto selectBoardDetail(int boardNo) throws Exception {
-       // boardMapper.updateViews(board_no);             // 조회수 증가시키기
-        return boardMapper.selectBoardDetail(boardNo).get(0);
-=======
-    public BoardDto selectBoardDetail(int board_no) throws Exception {
-       // boardMapper.updateViews(board_no);             // 조회수 증가시키기
-        return boardMapper.selectBoardDetail(board_no).get(0);
->>>>>>> 3e359ae2778b4cddcd7a068a7e6df5609a978007
+        // boardMapper.updateViews(board_no);             // 조회수 증가시키기
+        return boardMapper.selectBoardDetail(boardNo);
     }
 
     @Override
-    public void updateBoard(BoardDto board) throws Exception {
-        boardMapper.updateBoard(board);
+    public int updateBoard(BoardDto board) throws Exception {
+       return boardMapper.updateBoard(board);
 
     }
 
     @Override
-    public void deleteBoard(int boardNo) throws Exception {
-        boardMapper.deleteBoard(boardNo);
+    public int deleteBoard(int boardNo) throws Exception {
+           return boardMapper.deleteBoard(boardNo);
 
     }
+
 
     @Override
     public List<BoardDto> boardListByGalaxy(int galaxyNo) {
-        return boardMapper.selectBoardListByGalaxy();
+        return boardMapper.selectBoardListByGalaxy(galaxyNo);
     }
 
 }

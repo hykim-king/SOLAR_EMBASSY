@@ -149,7 +149,6 @@ input[id="menuicon"]:checked + label + div {top:80px;}
     height: 2100px;
     margin: 0;
     background-color: rgb(100, 144, 180);
-    position: fixed;
     transform: translate(360px,50px);
 }
 

@@ -10,7 +10,7 @@
             <result property="passwords" column="passwords" jdbcType="VARCHAR"/>
             <result property="email" column="email" jdbcType="VARCHAR"/>
             <result property="hp" column="hp" jdbcType="VARCHAR"/>
-            <result property="tell" column="tell" jdbcType="VARCHAR"/>
+            <result property="tel" column="tel" jdbcType="VARCHAR"/>
             <result property="adminId" column="adminId" jdbcType="VARCHAR"/>
             <result property="regDate" column="regDate" jdbcType="TIMESTAMP"/>
             <result property="lastLoginTime" column="lastLoginTime" jdbcType="TIMESTAMP"/>

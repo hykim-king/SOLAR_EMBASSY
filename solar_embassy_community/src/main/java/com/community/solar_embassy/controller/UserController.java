@@ -29,11 +29,11 @@ public class UserController {
 
     @PostMapping("/login.do")
     public String login(
-            @RequestParam(name = "user_id") String userId,
-            String pw,
+            @RequestParam(name = "userId") String userId,
+            @RequestParam String passwords,
             HttpSession session,
             @SessionAttribute(required = false) String redirectUri) {
-        Users user = usersService.login(userId, pw);
+        Users user = usersService.login(userId, passwords);
         session.setAttribute("loginUser", user);
         if (user == null) {
             session.setAttribute("msg", "아이디나 비밀번호를 확인하세요!");

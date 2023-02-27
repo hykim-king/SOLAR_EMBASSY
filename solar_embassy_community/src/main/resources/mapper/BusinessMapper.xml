@@ -4,20 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.community.solar_embassy.mapper.BusinessMapper">
 
-<<<<<<< HEAD
-    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.BusinessDto">
-            <id property="licenseNum" column="licenseNum" jdbcType="VARCHAR"/>
-            <id property="buTell" column="bu_tell" jdbcType="VARCHAR"/>
-            <result property="buId" column="bu_id" jdbcType="VARCHAR"/>
-            <result property="buPasswords" column="bu_passwords" jdbcType="VARCHAR"/>
-            <result property="buName" column="bu_name" jdbcType="VARCHAR"/>
-=======
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Business">
             <id property="buNo" column="buNo" jdbcType="INTEGER"/>
             <result property="buId" column="buId" jdbcType="VARCHAR"/>
             <result property="buPasswords" column="buPasswords" jdbcType="VARCHAR"/>
             <result property="buName" column="buName" jdbcType="VARCHAR"/>
->>>>>>> 5cf775746b414febfc9303caabf399122e8587d6
             <result property="email" column="email" jdbcType="VARCHAR"/>
             <result property="phone" column="phone" jdbcType="VARCHAR"/>
             <result property="regDate" column="regDate" jdbcType="TIMESTAMP"/>
@@ -26,7 +17,6 @@
             <result property="auth" column="auth" jdbcType="INTEGER"/>
     </resultMap>
 
-<<<<<<< HEAD
 <!--    <sql id="Base_Column_List">-->
 <!--        cr_num,bu_tell,bu_id,-->
 <!--        bu_passwords,bu_name,email,-->
@@ -54,14 +44,4 @@
 
     </select>
 
-
-
-=======
-    <sql id="Base_Column_List">
-        buNo,buId,buPasswords,
-        buName,email,phone,
-        regDate,updateTime,state,
-        auth
-    </sql>
->>>>>>> 5cf775746b414febfc9303caabf399122e8587d6
 </mapper>

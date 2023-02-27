@@ -30,4 +30,5 @@ public class AutoController {
         model.addObject("auto", auto);
         model.setViewName("/galaxy/autoDetail");
         return model;
-    }}
+    }
+}

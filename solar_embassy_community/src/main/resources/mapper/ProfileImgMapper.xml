@@ -9,11 +9,7 @@
             <result property="userId" column="userId" jdbcType="VARCHAR"/>
             <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
             <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
-<<<<<<< HEAD
             <result property="saveImgName" column="save_img_name" jdbcType="VARCHAR"/>
-=======
-            <result property="saveImgName" column="saveImgName" jdbcType="VARCHAR"/>
->>>>>>> 5cf775746b414febfc9303caabf399122e8587d6
             <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>

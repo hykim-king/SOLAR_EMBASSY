@@ -1,8 +1,5 @@
 package com.community.solar_embassy.controller;
-<<<<<<< HEAD
-=======
 
->>>>>>> 3e359ae2778b4cddcd7a068a7e6df5609a978007
 import com.community.solar_embassy.dto.BoardDto;
 import com.community.solar_embassy.service.BoardService;
 import org.springframework.stereotype.Controller;
@@ -11,17 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-<<<<<<< HEAD
-@Controller
-
-=======
 
 @Controller
-<<<<<<< HEAD
->>>>>>> 3e359ae2778b4cddcd7a068a7e6df5609a978007
-=======
 @RequestMapping("")
->>>>>>> 69a5ab68b59c6e2c9478a29653c95fb104023b62
+
 public class IndexController {
     private BoardService boardService;
 

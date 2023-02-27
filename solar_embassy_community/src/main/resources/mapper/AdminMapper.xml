@@ -5,15 +5,11 @@
 <mapper namespace="com.community.solar_embassy.mapper.AdminMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Admin">
-            <id property="adminId" column="adminId" jdbcType="VARCHAR"/>
-            <result property="adminLevel" column="adminLevel" jdbcType="INTEGER"/>
-            <result property="department" column="department" jdbcType="VARCHAR"/>
-<<<<<<< HEAD
-            <result property="regTime" column="reg_time" jdbcType="TIMESTAMP"/>
-=======
-            <result property="regTime" column="regTime" jdbcType="TIMESTAMP"/>
->>>>>>> 69a5ab68b59c6e2c9478a29653c95fb104023b62
-            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <id property="adminId" column="adminId" jdbcType="VARCHAR"/>
+        <result property="adminLevel" column="adminLevel" jdbcType="INTEGER"/>
+        <result property="department" column="department" jdbcType="VARCHAR"/>
+        <result property="regTime" column="regTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
