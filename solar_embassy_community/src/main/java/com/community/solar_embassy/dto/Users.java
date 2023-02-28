@@ -1,6 +1,7 @@
 package com.community.solar_embassy.dto;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -43,6 +44,7 @@ public class Users implements Serializable {
 
     private Grade grade;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
 
     private Integer profileImgNo;

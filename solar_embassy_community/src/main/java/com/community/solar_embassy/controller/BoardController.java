@@ -60,6 +60,12 @@ public class BoardController {
         }
     }
 
+    //    @PostMapping("/board/boardWrite")
+//    public String boardWrite(BoardDto board) throws Exception {
+//        boardService.insertBoard(board);
+//        return "redirect:/board/boardList.do";
+//    }
+
     @RequestMapping("/boardDetail")
     public String boardDetail(@RequestParam int boardNo, Model model) throws Exception {
         BoardDto board = boardService.selectBoardDetail(boardNo);
@@ -67,6 +73,16 @@ public class BoardController {
         model.addAttribute("board", board);
         return "/boardDetail";
     }
+
+    //     return "redirect:  (설정한 링크로 가는 것 ) / html로 가면 redirect 제외해야 함
+
+    //    @RequestMapping("/openBoardDetail")
+//    public ModelAndView openBoardDetail(@RequestParam int board_no) throws Exception{
+//        ModelAndView mv = new ModelAndView("/boardDetail");
+//        BoardDto board = boardService.selectBoardDetail(board_no);
+//        mv.addObject("board",board);
+//        return mv;
+//    }
 
     @GetMapping("/updateBoard/{boardNo}")
     public String updateBoard(@PathVariable int boardNo, Model model, HttpSession session) throws Exception {
@@ -86,6 +102,33 @@ public class BoardController {
 //        return "redirect:/board/updateBoard"+board.getBoardNo();
     }
 
+    //    @RequestMapping(value = "/updateBoard", method = RequestMethod.POST)  // 수정요청
+//    public String updateBoard(BoardDto board) throws Exception {
+//        int update= boardService.updateBoard(board);         //게시글 수정
+//        int galaxyNo=galaxyService.findByNo(board.getGalaxyNo()).getGalaxyNo();
+//        if (update==1){
+//        return "redirect:/board/boardList.do?galaxyNo="+galaxyNo;  //수정완료 후 게시판 목록으로
+//        }else {
+//            return "redirect:/board/boardDetail?boardNo="+board.getBoardNo();
+//        }
+//    }
+//    @GetMapping("/updateBoard/{boardNo}")
+//    public String update(
+//            @PathVariable int boardNo,
+//            Model model,
+//            HttpSession session) {
+//        return "/updateBoard";
+//}
+//    @PutMapping("updateBoard")
+//    public String updateBoard(BoardDto board, @RequestParam int boardNo) throws Exception {
+//        int update = boardService.updateBoard(board);         //게시글 수정
+//        int galaxyNo = galaxyService.findByNo(board.getGalaxyNo()).getGalaxyNo();
+//        if (update == 1) {
+//            return "redirect:/board/boardDetail?boardNo=" + boardNo;  //수정완료 후 게시판 목록으로
+//        } else {
+//            return "redirect:/board/up" + boardNo;
+//        }
+//    }
 
     @RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)
     public String deleteBoard(@RequestParam int boardNo,HttpSession session ) throws Exception {
@@ -99,5 +142,12 @@ public class BoardController {
         }
         return "redirect:/board/boardList.do?galaxyNo=" + galaxyNo;
     }
+
+    //    @RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)  //삭제요청
+//    public String deleteBoard(BoardDto board) throws Exception {
+//        boardService.deleteBoard(board.getBoardNo());      //게시글 삭제
+//        return "redirect:/board/boardList";  //삭제완료 후 게시판 목록으로
+//    }
+
 
 }

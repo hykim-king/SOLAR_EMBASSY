@@ -80,7 +80,7 @@ public class UserController {
             }
         }
         if (signup_normal > 0) {
-            return "redirect:/user/rocket.do";
+            return "redirect:/user/login.do";
         } else {
             return "redirect:/user/signup_normal.do";
         }

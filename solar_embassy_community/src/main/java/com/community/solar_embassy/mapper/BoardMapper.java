@@ -26,6 +26,10 @@ public interface BoardMapper {
 
     List<BoardDto> selectBoardListByGalaxy(int galaxyNo);
 
+    List<BoardDto> selectBoardListByGalaxySize(int galaxyNo, int size);
+
+    List<BoardDto> selectHot(int endNo);
+    int selectEnd();
 }
 
 

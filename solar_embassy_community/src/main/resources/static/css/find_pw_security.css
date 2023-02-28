@@ -1,94 +1,126 @@
-.find_pw_security_container{ /*비번 찾기 관리 전 페이지 start */
-    height: 1050px;
+/* PW찾기 제목 영역 */
+.find_pw_security_container{
     background: #78b7eac4;
-    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    position: relative;
+    transform: translate(0, -100%);
 }
 
-.find_pw_security_text{ /* 비번찾기 안내문 */
-    margin-top: 25px;
-    margin-left: 40px;
+/* PW 찾기 text*/
+.find_pw_security_text{
+    font: 30px/70px'';
+    font-weight: bold;
+    margin-left: 20px;
 }
 
-.find_pw_security_container2{ /* 그냥 네모 박스*/
-    border: 1px solid #000;
-    background: linear-gradient(180deg, #DBF0FF 0%, #FFFFFF 100%);
+/* PW찾기 영역*/
+.find_pw_security_container2{
+    background: #dadada;
+    border-radius: 15px;
     margin-left:50px;
     margin-right:50px;
-    margin-top: 15px;
-    padding-left: 30px;
+    margin-top: 40px;
+    padding: 10px 0 0 30px;
     height: 920px;
-    font-size:15px ;
-}
-#SE_log_1{ /* solarembassy */
-    margin-top: 120px;
-    margin-left: 210px;
-    width:600px;
-    height:130px;
+    font-size:15px;
 }
 
-.find_pw_security_content{ /*  비밀번호 찾기위해 아이디를 입력해주세요 위치 */
-    margin-top: 20px;
-    margin-left: 300px;
-    height: 350px;
+
+/*삽입 이미지 설정*/
+.find_pw_security_container2>img{
+    margin: 30px 0 20px 380px;
 }
-.find_pw_security_input{ /* ID를 입력하세요 + 다음 버튼 */
+
+
+/*PW를 ~해주세요. 입력 관련 영역*/
+.find_pw_security_content{
+    margin: 100px 0 50px 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* input과 버튼 영역*/
+.find_pw_security_input{
     margin-top: 30px;
     margin-left: 25px;
     font-size: 20px;
 }
 
-.find_pw_security_input input  { /* ID를 입력하세요 인풋란 */
+/* ID를 입력하세요. input */
+.find_pw_security_input input  {
     color:#66666671;
     font-size: 18px;
     margin-top: 20px;
     margin-right: 15px;
-    width: 250px;
+    width: 300px;
     height: 60px;
     border-style: none;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px #0000003F;
     border-radius: 5px;
 }
 
-.next_btn{ /* 다음버튼 */ 
-    color:#ffff;
-    width: 90px;
-    height: 60px;
-    border-style: none;
-    background-color: #5164AA;
-    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-}
-
-.find_pw_security_content_3{ /* 아이디 기억나지 않는다면 start */
-    margin-left: 250px;
-}
-
-.find_pw_security_content_3-2 button{ 
-    margin-left: 5px;
-    height: 28px;
-    width: 95px;
-    border-style: none;
-    background: #5164AA;
-    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    color:white;
-}
-.find_pw_security_content_4{ 
-    margin-top: 100px;
-    margin-left: 380px;
-}
-.find_pw_security_content_4 button{
-    background: #D9D9D9;
-    box-shadow: inset -3px -4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    color:#000;
-    border-style: none;
+/* 다음 버튼 */
+.next_btn{
     width: 100px;
-    height: 40px;
+    height: 60px;
+    font-size: 16px;
     font-weight: bold;
+    color:#fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #a5a5a5;
+    background: linear-gradient(-45deg, #23a6d5, #a156ff);
+    animation: gradient 3s ease infinite;
+    transform: translate(0,-2px);
 }
-.justspace{ /* 아이디 기억나지 않는다면 end */
-    display: inline;
-    margin:auto 20px;
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* 아이디 기억나지 ~ 하세요 */
+.find_pw_security_content_3{
+    margin: 0 auto;
+    text-align: center;
+}
+.find_pw_security_content_3-1>a{
+    font-weight: bold;
+    font-size: 20px;
+    color: #0a58ca;
+}
+
+/*버튼 영역*/
+.find_pw_security_content_4{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/*취소 버튼*/
+.find_pw_security_content_4 #cancel{
+    width: 100px;
+    height: 60px;
+    background-color: #BF7AF6;
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #a5a5a5;
+    margin-right: 50px;
+
+}/*고객센터 버튼*/
+.find_pw_security_content_4 #service_center{
+    width: 100px;
+    height: 60px;
+    background-color: #83aeff;
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #a5a5a5;
+    margin-right: 50px;
 }

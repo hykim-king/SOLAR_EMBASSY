@@ -56,6 +56,21 @@ public class BoardServiceImpl implements BoardService {
         return boardMapper.selectBoardListByGalaxy(galaxyNo);
     }
 
+    @Override
+    public List<BoardDto> boardListByGalaxySize(int galaxyNo, int size) {
+        return boardMapper.selectBoardListByGalaxySize(galaxyNo,size);
+    }
+
+    @Override
+    public int lastNo() {
+        return boardMapper.selectEnd();
+    }
+
+    @Override
+    public List<BoardDto> hotList(int endNo) {
+        return boardMapper.selectHot(endNo);
+    }
+
 }
 
 

@@ -32,43 +32,45 @@ layout:decorate="~{/layout}"> -->
 
 
             <div class="find_id_container">
-                <h1 class="find_id_text" style="color: rgb(0, 0, 0);">
-                    아이디찾기
-                </h1>
+                <p class="find_id_text">아이디찾기</p>
                 <div class="find_id_container2">
                     <div class="find_id_content">
                         <h2>아이디 찾을 방법을 선택 해 주세요</h2>
                         <div class="find_id_content_2">
-                            <span style="font-weight: bold; font-size: 24px;">○ 회원 정보에 등록한 휴대전화로 인증 </span>
-                            <p style="font-size: 16px;"> 회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받으실 수 있습니다.</p>
+                            <div>
+                                <input type="radio" id="num1" name="num1" value="num1" checked>
+                                <label for="num1"> 회원 정보에 등록한 휴대폰 번호로 인증</label>
+                            </div>
+                            <p style="font-size: 16px;"> 회원정보에 등록한 휴대폰 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받으실 수 있습니다.</p>
                             <div class="find_id_input">
                                 <form action="" method="POST">
                                     <label for="name">이름</label>
                                     <input type="text" name="name" id="name" value=""><br>
 
-                                    <label for="phone">휴대전화</label>
+                                    <label for="phone">휴대폰</label>
                                     <input type="text" name="phone" id="phone" value=""><button class="confirm_btn">인증받기</button><br>
 
                                     <label for="confirm">인증번호</label>
                                     <input type="text" name="confirm" id="confirm" value=""><button class="confirm_btn">인증확인</button><br>
 
-                                    <div class="warning">휴대폰 번호로 전송 된 인증번호 4자리(혹은 6자리)를 입력해주세요.<button class="reconfirm">인증재전송</button></div>
+                                    <div class="warning">휴대폰 번호로 전송 된 인증번호 4자리를 입력해주세요.<button class="reconfirm">인증재전송</button></div>
                                     <br>
-                                    <a href="/user/find_id_result_phone.do" class="confirm_btn">아이디 찾기</a>
+                                    <a href="/user/find_id_result_phone.do" class="find_IDbtn">아이디 찾기</a>
                                 </form>
                             </div>
                         </div>
                         <div class="find_id_content_3">
-                            <div class="find_id_content_3-1" style=" font-size: 20px;">○ 본인 이메일로 인증 [회원가입시 작성된 이메일로 전송] </div>
-                            <form action="/user/find_id_result_email.do" method="GET">
-                                <label for="email" class="find_id_content_3-2">본인확인 이메일로 인증(%유저이메일%@%이메일주소%.com) <!-- 이부분 유저 이메일 for 문 돌려야함 -->
-                                    <button id="email" class="confirm_btn">이메일로 전송</button></label>
+                            <div>
+                                <input type="radio" id="num2" name="num1" value="num2">
+                                <label for="num2">본인 E-Mail로 인증 [회원가입시 작성된 E-Mail로 전송]</label>
+                            </div>
+                            <form action="/user/find_id_result_email.do" method="GET"><!-- 이부분 유저 E-Mail for 문 돌려야함 -->
+                                <button id="email" class="confirm_btn">E-Mail로 전송</button></label>
                             </form>
                         </div>
                         <div class="find_id_content_4">
                             <form>
-                                <button id="cancle" onclick="location.href='/#'">취소</button>
-                                <div class="justspace"></div>
+                                <button id="cancel" onclick="location.href='/#'">취소</button>
                                 <button id="service_center">고객센터</button>
                             </form>
                         </div>
@@ -76,27 +78,7 @@ layout:decorate="~{/layout}"> -->
                     </div>
                 </div>
             </div>
-            <section id="SE_contents2">
-                <div id="SE_banner1"><h1>배너자리</h1></div>
-            </section>
-
-            <section id="SE_contents3">
-                <div id="SE_banner2"><h1>배너자리</h1></div>
-            </section>
-
-            <footer id="SE_footer">
-                <p>
-                </p>
-                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-                <p>
-                </p>
-                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-            </footer>
         </div>
-
-
-
     </div>
 </div>
 </body>

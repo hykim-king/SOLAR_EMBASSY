@@ -8,10 +8,10 @@ layout:decorate="~{/layout}"> -->
     <meta charset="UTF-8">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-   rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <title>SOLAR EMBASSY</title>
 
@@ -30,7 +30,7 @@ layout:decorate="~{/layout}"> -->
         }
         ul{list-style: none;}
         a{text-decoration: none; color: white; display: block;}
-        
+
         #SE_container{                                      /*메인 컨테이너*/
             width : 1920px;
             background-color: #5B8FB9;
@@ -38,7 +38,7 @@ layout:decorate="~{/layout}"> -->
             position:relative;
             transform: translate(0,0);
         }
-        
+
         #SE_header {                                      /*헤더*/
             width: 100%;
             height: 250px;
@@ -53,14 +53,14 @@ layout:decorate="~{/layout}"> -->
             position:absolute;
             transform:translate(-50%,0%);
         }
-        
+
         #SE_topline{                                       /*검색창, 로그인의 공간*/
             width: 100%;
             height: 50px;
             position: relative;
             background-color: black;
         }
-        
+
         #SE_search-bar{                                       /*검색입력 칸*/
             width: 300px;
             height: 40px;
@@ -72,7 +72,7 @@ layout:decorate="~{/layout}"> -->
             border: 1px solid white;
             border-radius: 5px;
         }
-        
+
         #SE_btn{                                      /*검색 버튼*/
             width: 60px;
             height: 40px;
@@ -87,16 +87,16 @@ layout:decorate="~{/layout}"> -->
             border: 1px solid white;
             background-color: #364959;
         }
-        
+
         #SE_login{                                      /*로그인 공간 */
             width: 300px;
-	        height: 60px;
+            height: 60px;
             position: absolute;
             transform: translate(1260px, 10px);
             background-color: orange;
             border-radius: 5px 5px 0 0;
         }
-        
+
         .SE_logbtn{                                      /*로그인 공간 안의 버튼 3개.*/
             margin:  10px 5px 5px 10px;
             width: 80px;
@@ -106,7 +106,7 @@ layout:decorate="~{/layout}"> -->
             border-radius: 5px;
             background-color: #364959;
         }
-        
+
         #SE_left-sidebar {                                      /*좌측 사이드바 영역값.*/
             background-color: #5164AA;
             width: 360px;
@@ -121,7 +121,7 @@ layout:decorate="~{/layout}"> -->
         input[id="menuicon"] + label {display:block;margin: 15px 0 0 290px;width:60px;height:40px;position:relative;cursor:pointer;} /*아이콘 선의 간격, 위치*/
         input[id="menuicon"] + label span {display:block;position:absolute;width:100%;height:5px;border-radius:30px;background:gray;transition:all .35s;}/*아이콘 선 값*/
         input[id="menuicon"] + label span:nth-child(1) {top:0;} /*첫째줄*/
-        input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);} /* 비슷하게 사용할 수 있는 style top:calc(50% - 2.5px); margin-top:-2.5px;*/ 
+        input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);} /* 비슷하게 사용할 수 있는 style top:calc(50% - 2.5px); margin-top:-2.5px;*/
         input[id="menuicon"] + label span:nth-child(3) {bottom:0;} /*셋째줄*/
         input[id="menuicon"]:checked + label {z-index:2;}
         input[id="menuicon"]:checked + label span {background:#fff;} /*x 아이콘 색상.*/
@@ -137,18 +137,18 @@ layout:decorate="~{/layout}"> -->
             padding-top: 20px;
             z-index: 3;
         }
-        
+
         #SE_profileIMG{                         /*프로필 사진*/
             padding-top:20px;
             border:2px solid rgba(223, 223, 223, 0.315);
             background-color: #00000021;
         }
-        
+
         .SE_sidebar_profile_in{                 /*프로필 내부 설정 값.*/
             padding: 10px;
             font: 15px/50px'';
         }
-        
+
         #SE_contents {                                      /*메인 컨테이너*/
             width: 1200px;
             height: 2100px;
@@ -157,17 +157,17 @@ layout:decorate="~{/layout}"> -->
             position: fixed;
             transform: translate(360px,50px);
         }
-        
+
         #SE_contents #SE_content1{                                      /*NAV BAR 메인 메뉴 영역.*/
             width: 1200px;
             height: 80px;
             margin: 0;
         }
-        
+
         #SE_navIMG{                                 /*nav bar 삽입 이미지*/
             margin-top: 10px;
         }
-        
+
         #SE_menu_wrap{                               /*Nav bar 전체 크기*/
             margin-bottom: 10px;
             float: left;
@@ -178,7 +178,7 @@ layout:decorate="~{/layout}"> -->
             transform: translate(0,0px);
             z-index: 3;
         }
-        
+
         .SE_top_menu{                                /*Nav bar 각 메뉴칸*/
             background-color: #645CBB;
             width: 200px;
@@ -187,9 +187,9 @@ layout:decorate="~{/layout}"> -->
             text-align: center;
             float: left;
             font: 20px/60px'';
-            /* transition-duration: 0.1s; */   
+            /* transition-duration: 0.1s; */
         }
-        
+
         .SE_sub_menu{                  /*드롭 다운 위치*/
             margin-top: -10px;
             width: 100%;
@@ -199,7 +199,7 @@ layout:decorate="~{/layout}"> -->
             /* transition-duration: 0.1s; */
             padding: 0;
         }
-        
+
         .SE_sub_menu>li{               /*드롭다운 하위메뉴*/
             width: 100%;
             height: 80px;
@@ -208,18 +208,18 @@ layout:decorate="~{/layout}"> -->
             font: 18px/60px '';
             padding: 0;
         }
-        
+
         .SE_top_menu.SE_top_menu:hover{       /*하위 메뉴 hover*/
             font: 18px/60px '';
             height: 100%;
             background-color: #bface2ce;
         }
-        
+
         .SE_top_menu:hover>.SE_sub_menu{          /*하위 메뉴 늘어나는 길이 hover*/
             height: 320px;
             border-radius: 0 0 10px 10px;
         }
-        
+
         .SE_sub_menu>li:hover{                 /*하위 메뉴 각 항목 hover*/
             background-color: #ebc7e6a4;
             transition-duration: 0.5s;
@@ -234,22 +234,22 @@ layout:decorate="~{/layout}"> -->
             transform: translate(1200px, -80px);
         }
 
-/* 여기부터******************************************************************************************************************/
+        /* 여기부터******************************************************************************************************************/
         #SE_intro{         /* 항목 영역*/
-            width: 1200px;           
+            width: 1200px;
             height: 80px;
             position: relative;
             transform: translate(-20px,-30px);
         }
-        
+
         #SE_intro .SE_intro_T{                /*항목*/
             width: 1200px;
             height: 50px;
             position: relative;
             transform: translate(20px,0px);
-            display: flex;         
+            display: flex;
         }
-        
+
         #SE_intro .SE_intro_T .intro_bar{          /*각 항목*/
             background-color: white;
             width: 380px;
@@ -259,24 +259,24 @@ layout:decorate="~{/layout}"> -->
             justify-content: space-between;
             border-radius: 5px;
         }
-        
+
         #SE_intro .SE_intro_T .intro_bar .itr1{     /*폰트 설정*/
             margin-top: 5px;
             text-align: center;
             color: black;
             font-size: 25px;
         }
-        
+
         #SE_intro .SE_intro_T .intro_bar:hover{     /*hover*/
             background-color: thistle;
         }
-        
+
         #SE_intro .SE_intro_T .intro_bar .itr1:hover{ /*hover*/
             text-align: center;
             color: green;
             font-size: 25px;
         }
-        
+
         #SE_service_itr{
             background-image: url("/img/intro.jpg");
             width: 1150px;
@@ -286,10 +286,10 @@ layout:decorate="~{/layout}"> -->
             position: absolute;
             transform: translate(0,-30px);
         }
-        
-/* 여기까지*************************************************************************************************************************/
 
-        
+        /* 여기까지*************************************************************************************************************************/
+
+
         #SE_contents2{                  /*좌측 공간5 여백 (배너 자리)*/
             width: 360px;
             height: 2100px;
@@ -303,7 +303,7 @@ layout:decorate="~{/layout}"> -->
             border-radius: 10px;
             border: 1px solid hotpink;
             margin: 200px 0 0 10px;
-            
+
         }
 
         #SE_contents3{                          /*우측 공간 여백 (배너 자리)*/
@@ -319,7 +319,7 @@ layout:decorate="~{/layout}"> -->
             border-radius: 10px;
             border: 1px solid hotpink;
             margin: 200px 0 0 10px;
-            
+
         }
 
         #SE_footer{                                      /*footer 영역*/
@@ -331,12 +331,12 @@ layout:decorate="~{/layout}"> -->
             transform: translate(0,2100px);
             text-align: center;
             color: white;
-            font: 18px/60px '';   
-            z-index: 2;  
+            font: 18px/60px '';
+            z-index: 2;
         }
 
-        #SE_footer a{     
-            display: inline-block;  
+        #SE_footer a{
+            display: inline-block;
         }
 
     </style>
@@ -365,27 +365,27 @@ layout:decorate="~{/layout}"> -->
                 <button class="SE_logbtn" type="button">회원가입</button>
             </div>
         </form>
-                    <aside id="SE_left-sidebar">
+        <aside id="SE_left-sidebar">
 
-                        <input type="checkbox" id="menuicon">
-                        <label for="menuicon">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </label>
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-                        <div class="SE_sidebar_profile">
-                            <img id="SE_profileIMG"src="#" alt="userIMG" width="200px" height="200px"  class="rounded-circle">
-                            <ul class="SE_sidebar_profile_in">
-                                <li><a href="#">로그인</a></li>
-                                <li><a href="#">마이페이지</a></li>
-                                <li><a href="#">쪽지</a></li>
-                                <li><a href="#">개발중</a></li>
-                                <li><a href="#">개발중</a></li>
-                            </ul>
-                        </div>
+            <div class="SE_sidebar_profile">
+                <img id="SE_profileIMG"src="#" alt="userIMG" width="200px" height="200px"  class="rounded-circle">
+                <ul class="SE_sidebar_profile_in">
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="#">쪽지</a></li>
+                    <li><a href="#">개발중</a></li>
+                    <li><a href="#">개발중</a></li>
+                </ul>
+            </div>
 
-                    </aside>
+        </aside>
 
         <section id="SE_contents">
 
@@ -457,7 +457,7 @@ layout:decorate="~{/layout}"> -->
                 <!-- <h1> 우측 사이드바</h1>
                 <h1> 기능없는상태</h1> -->
             </aside>
-            
+
             <!--여기부터********************************************************************************************-->
 
             <div id="SE_intro">                      <!-- 분류 목록-->
@@ -473,20 +473,21 @@ layout:decorate="~{/layout}"> -->
 
 
         </section>
-        
+
         <section id="SE_contents2">
             <div id="SE_banner1"><h1>배너자리</h1></div>
         </section>
-        
+
         <section id="SE_contents3">
             <div id="SE_banner2"><h1>배너자리</h1></div>
         </section>
-        
+
     </div>
     <footer id="SE_footer">
         <p><h3> <a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> / <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3></p>
         <p><h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3></p>
     </footer>
-    
+</div>
+
 </body>
 </html>

@@ -16,5 +16,8 @@ public interface BoardService {
     int deleteBoard(int boardNo) throws Exception;
 
     List<BoardDto> boardListByGalaxy(int galaxyNo);
+    List<BoardDto> boardListByGalaxySize(int galaxyNo,int size);
 
+    List<BoardDto> hotList(int endNo);
+    int lastNo();
 }

@@ -1,140 +1,133 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <title>회원가입</title>
-    <style>
-        #app {
-            margin: auto;
-            margin-top: 60px;
-            width: 60%;
-            border: 10px;
-            padding: 10px;
-        }
-        table,th,td{
-            border: 1px solid #5ce5cb;
-        }
-        p{
-            font-size: 8px;
-        }
-    </style>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/signup_normal.css">
+    <title>SOLAR EMBASSY</title>
 </head>
 <body>
-    <h1>사업자 회원가입</h1>
-    <div id="app">
-        <!--회원가입 form start -->
-            <table>
-                <tr>
-                    <td>아이디</td>
-                    <td>
-                        <input type="text" id="buId" placeholder="아이디" size="20">
-                        <p id="buIdCheck"></p>
-                        <button type="button" id="buIdCheckBtn">중복확인</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>사용할 아이디</td>
-                    <td>
-                        <input type="text" id="id" name="id" size="20" readonly>
-                    </td>
-                <tr>
-                    <td>비밀번호</td>
-                    <td>
-                        <input type="text" id="buPasswords" name="buPasswords" placeholder="비밀번호">
-                    </td>
-                </tr>
-                <tr>
-                    <td>이름</td>
-                    <td>
-                        <input type="text" id="buName" name="buName" placeholder="이름">
-                    </td>
-                </tr>
-                <tr>
-                    <td>이메일</td>
-                    <td>
-                        <input type="text" id="email" name="email" placeholder="이메일">
-                    </td>
-                </tr>
-                <tr>
-                    <td>휴대폰 번호</td>
-                    <td>
-                        <input type="text" id="phone" name="phone" placeholder="휴대폰 번호">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <button type="button" id="account">회원가입</button>
-                    </td>
-                </tr>
-            </table>
-        <!--회원가입 form end -->
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
+
+            <!--여기부터-->
+            <div id="content1_signup">
+                <div id="SE_title"><p>서비스 회원가입</p></div>
+                <div id="SE_signupAriaB">
+                    <form action="/user/signup_normal.do" method="post">
+
+                        <div class="title_container" id="userId">
+                            <h2>ID입력<small>5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</small></h2>
+                            <div class="input_container">
+                                <input type="text" name="userId" placeholder="ID 입력">
+                                <button type="button" onclick="location.href='#userId'">중복확인</button>
+                                <p>이미 사용중인 ID입니다</p>
+                            </div>
+                        </div>
+
+                        <div class="title_container">
+                            <h2>PW입력<small>8~20자리 영문 대 소문자, 숫자, 특수문자를 사용하세요</small></h2>
+                            <div class="input_container">
+                                <input type="password" name="passwords">
+                                <p>사용 가능한 비밀번호입니다</p>
+                            </div>
+                        </div>
+
+                        <div class="title_container">
+                            <h2>PW 확인</h2>
+                            <div class="input_container">
+                                <input type="password" name="passwords_check">
+                                <p style="color: red" th:if="passwords==passwords_check">입력하신 비밀번호가 다릅니다</p>
+                            </div>
+                        </div>
+
+                        <div class="title_container">
+                            <h2>전화번호(휴대폰) 입력</h2>
+                            <div class="input_container">
+                                <input type="text" name="tell" placeholder="(-)는 빼고 입력해주세요">
+                            </div>
+                        </div>
+
+                        <div class="title_container">
+                            <h2>닉네임 입력</h2>
+                            <div class="input_container">
+                                <input type="text" name="nickname">
+                                <button type="button" onclick="location.href='#'">중복확인</button>
+                                <p>사용가능한 닉네임 입니다</p>
+                            </div>
+                        </div>
+
+                        <div class="title_containerB">
+                            <h2>업체 E-Mail입력</h2>
+                            <div class="input_container">
+                                <input type="text" name="email">
+                                <button type="button" onclick="location.href='#'">중복확인</button>
+                                <p>이미 사용중인 E-Mail입니다</p>
+                            </div>
+
+                            <div>
+                                <div class="input_container">
+                                    <h2>대표자 성명</h2> <input type="text" >
+                                </div>
+                            </div>
+
+                            <div>
+                                <div id="input_container">
+                                    <h2>업체명</h2><input type="text">
+                                </div>
+                            </div>
+
+                            <div class="input_container">
+                                <h2>업체 연락처</h2>
+                                <div class="input_container">
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="input_container">
+                                <h2>사업자 번호</h2>
+                                <div class="input_container">
+                                    <input type="text">
+                                </div>
+                            </div>
+
+                            <div class="input_container">
+                                <h2>업체주소</h2><input type="text"><button>인증하기</button>
+                            </div>
+                            <div class="input_container">
+                                <h2>나머지 주소</h2>
+                                <input type="text">
+                            </div>
+                        </div>
+
+                        <div id="buttons">
+                            <button id="next" onclick="location.href='#'">가입하기</button>
+                            <button id="cancel" onclick="location.href='/'">취소</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!--여기까지-->
+
+        </div>
     </div>
-    <!-- form 태그 사용 안함 jqurey를 이용해서 ajax로 처리 -->
-    <script type="text/javascript">
-        $(document).ready(function (){
-            // 아이디 중복 검사 로직
-            $("buIdCheckBtn").click(function (){
-                $.ajax({
-                    url: "http://localhost:8888/getId",
-                    type: "POST",
-                    data:{"buId": $("buId").val()},
-                    success: function (res){
-                        //alert('success')
-                        if(res.trim() === 'ok'){
-                            $("#buIdCheckBtn").html("사용 가능한 아이디입니다.");
-                            $("#buId").val($("buId").val());
-                        }else {
-                            $("#buIdCheck").html("사용할 수 없는 아이디입니다.");
-                            $("#buId").val("");
-                            $("#buId").focus();
-                        }
-                    },
-                    error: function (){
-                        alert('error')
-                    }
-                });
-
-            )};
-            // 가입버튼 클릭 시 처리해줄 내용
-            $("#account").click(function (){
-            $.ajax({
-                url: "http://localhost:8888/addBusiness",
-                type: "POST",
-                data: {
-                    "buId": $("#buId").val(),
-                    "buPassword": $("#buPasswords").val(),
-                    "buName": $("#buName").val(),
-                    "email": $("#email").val(),
-                    "phone": $("#phone").val(),
-                    "auth":1
-                },
-                // 리턴 받은 메시지 결과에 따른 처리
-                success: function (res){
-                    if (res.trim() === 'ok'){
-                        console.log(res);
-                        alert("가입을 축하합니다.");
-                        location.href="login.html";
-                    } else {
-                        alert("가입 실패했습니다.");
-                        $("#buId").val("");
-                        $("#buPasswords").val("");
-                        $("#buName").val("");
-                        $("#email").val("");
-                        $("#phone").val("");
-
-                    }
-                }
-            });
-        });
-        });
-
-
-    </script>
-
-
-
+</div>
 </body>
 </html>
