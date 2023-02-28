@@ -32,17 +32,68 @@ layout:decorate="~{/layout}"> -->
       <!--메뉴 + 오른쪽 사이드-->
       <th:block th:insert="/menuAndAside"></th:block>
       <!--메뉴 end-->
-        <div id="container">
+
+        <div id="content1">
+          <div id="btn">
+            <span id="autogalaxy"><a href="?">자동차 갤럭시</a></span>
+            <span id="autopedia"><a href="?">자동차 백과</a></span>
+          </div>
+        </div>
+
+        <div id="content2">
+          <div id="photo">
+            <img src="/img/autopedia/grandeur.png" alt="">
+          </div>
           <div id="inform">
-            차량 이름 : <span th:text="${auto.getAutoName()}"> <img src="@#{${auto.codeName}}" style="width: 100px;object-fit: contain"></span> <br>
+            차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
             코드명 : <span th:text="${auto.getCodeName()}"></span> <br>
-            제조사 : <span th:text="${auto.company}"></span> <br>
+            제조사 : <span th:text="${auto.getComName()}"></span> <br>
             차종 : <span th:text="${auto.getAutoType()}"></span> <br>
             출시일 : <span th:text="${#dates.format(auto.getReleaseDate(),'yyyy-MM-dd')}"></span> <br>
             탑승 인원 : <span th:text="${auto.getSeat()}"></span>인승 <br>
             연비 : <span th:text="${auto.getMpg()}"></span>km <br>
             차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
           </div>
+        </div>
+
+        <div id="content3">
+          <h1><strong>제원</strong></h1>
+          <br>
+          <h2 th:text="${auto.getDetailName()}"></h2>
+          <div id="data">
+            <ul>
+              <li th:text="${auto.getOptionName()}"></li>
+              <li th:text="${auto.getDisp()}"></li>
+              <li th:text="${auto.getPrice()}"></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="content4">
+          <span>
+            <a href="#">
+              <img src="/img/autopedia/kona1.jpg" alt="">
+            </a>
+          </span>
+          <span>
+            <a href="#">
+              <img src="/img/autopedia/kona2.jpg" alt="">
+            </a>
+          </span>
+          <span>
+            <a href="#">
+              <img src="/img/autopedia/kona3.jpg" alt="">
+            </a>
+          </span>
+          <span>
+            <a href="#">
+              <img src="/img/autopedia/kona4.jpg" alt="">
+            </a>
+          </span>
+        </div>
+
+        <div id="content5">
+          <a href=""><img src="/img/autopedia/kona1.jpg" alt=""></a>
         </div>
       <section id="SE_contents2">
         <div id="SE_banner1"><h1>배너자리</h1></div>
@@ -52,16 +103,16 @@ layout:decorate="~{/layout}"> -->
         <div id="SE_banner2"><h1>배너자리</h1></div>
       </section>
 
+      <footer id="SE_footer">
+        <p>
+        </p>
+        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+          <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+        <p>
+        </p>
+        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+      </footer>
     </div>
-    <footer id="SE_footer">
-      <p>
-      </p>
-      <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-        <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-      <p>
-      </p>
-      <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-    </footer>
   </div>
 </div>
 </body>

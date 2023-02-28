@@ -14,12 +14,15 @@ layout:decorate="~{/layout}"> -->
             crossorigin="anonymous"></script>
     <!--원본 css-->
     <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/autopedia_i.css">
-    <title>SOLAR EMBASSY</title>
+    <link rel="stylesheet" href="/css/autopedia.css">
+    <title>자동차 백과</title>
 </head>
 <body>
 <div id="SE_container">
-    <th:block th:insert="/mainImg"></th:block>
+    <header id="SE_header">
+        <h6>메인이미지</h6>
+        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'">
+    </header>
 
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
@@ -29,30 +32,35 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
+            <div id="content1">
+                <div id="btn">
+                    <span id="autogalaxy"><a href="?">자동차 갤럭시</a></span>
+                    <span id="autopedia"><a href="?">자동차 백과</a></span>
+                </div>
+            </div>
 
-            <!--여기부터-->
             <div id="content2">
                 <div id="autobrand">
-                    <div><a href="#"><img src="/img/autopedia/hyundai.png" alt=""><br>현대</a></div>
-                    <div><a href="#"><img src="/img/autopedia/kia.png" alt=""><br>기아</a></div>
+                    <div><a href="/galaxy/comDetail.do?comName=현대자동차"><img src="/img/autopedia/hyundai.png" alt=""><br>현대</a></div>
+                    <div><a href=""><img src="/img/autopedia/kia.png" alt=""><br>기아</a></div>
                     <div><a href="#"><img src="/img/autopedia/genesis.jpg" alt=""><br>제네시스</a></div>
                     <div><a href="#"><img src="/img/autopedia/Chevrolet.png" alt=""><br>쉐보레</a></div>
-                    <div><a href="#"><img src="/img/autopedia/RS.png" alt=""><br>르노삼성</a></div>
+                    <div><a href="#"><img src="/img/autopedia/RS.png" alt=""><br>르노코리아</a></div>
                     <div><a href="#"><img src="/img/autopedia/ssangyong.png" alt=""><br>쌍용</a></div>
-                    <div><a href="#"><img src="/img/autopedia/audi.jpg" alt=""><br>아우디</a></div>
                     <div><a href="#"><img src="/img/autopedia/daechang.png" alt=""><br>대창</a></div>
                     <div><a href="#"><img src="/img/autopedia/maiv.png" alt=""><br>마이브</a></div>
                     <div><a href="#"><img src="/img/autopedia/dpeco.png" alt=""><br>디피코</a></div>
-                    <div><a href="#"><img src="/img/autopedia/smart_ev.png" alt=""><br>SMART EV</a></div>
+                    <div><a href="#"><img src="/img/autopedia/edison.png" alt=""><br>에디슨</a></div>
                     <div><a href="#"><img src="/img/autopedia/cevo.png" alt=""><br>쎄보</a></div>
-                    <div><a href="#"><img src="/img/autopedia/zyle.png" alt=""><br>자일</a></div>
-                    <div><a href="#"><img src="/img/autopedia/carind.jpg" alt=""><br>카인드</a></div>
+                    <div><a href="#"><img src="/img/autopedia/tatadaewoo.svg" alt=""><br>타타대우</a></div>
+                    <div><a href="#"><img src="/img/autopedia/masta.png" alt=""><br>마스타</a></div>
+                    <div><a href="#"><img src="/img/autopedia/vivamobility.png" alt=""><br>비바모빌리티</a></div>
                     <div><a href="#"><img src="/img/autopedia/evon.gif" alt=""><br>이비온</a></div>
-                    <div><a href="#"><img src="/img/autopedia/evkmc.gif" alt=""><br>EVKMC</a></div>
-                    <div><a href="#"><img src="/img/autopedia/benz.jpg" alt=""><br>벤츠</a></div>
+                    <div><a href="/galaxy/comDetail.do?comName=메르세데스-벤츠"><img src="/img/autopedia/benz.jpg" alt=""><br>벤츠</a></div>
                     <div><a href="#"><img src="/img/autopedia/BMW.png" alt=""><br>BMW</a></div>
+                    <div><a href="#"><img src="/img/autopedia/audi.jpg" alt=""><br>아우디</a></div>
                     <div><a href="#"><img src="/img/autopedia/volkswagen.png" alt=""><br>폭스바겐</a></div>
-                    <div><a href="#"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></div>
+                    <div><a href="/galaxy/comDetail.do?comName=포르쉐"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></div>
                     <div><a href="#"><img src="/img/autopedia/toyota.png" alt=""><br>토요타</a></div>
                     <div><a href="#"><img src="/img/autopedia/lexus.png" alt=""><br>렉서스</a></div>
                     <div><a href="#"><img src="/img/autopedia/nissan.jpg" alt=""><br>닛산</a></div>
@@ -168,15 +176,7 @@ layout:decorate="~{/layout}"> -->
                     </div>
                 </form>
             </div>
-            <div id="content4">
-                <div id="sub1"></div>
-                <div id="sub2"></div>
-            </div>
-            <div id="content5">
-                <div id="sub3"></div>
-                <div id="sub4"></div>
-            </div>
-            <!--여기까지-->
+
             <section id="SE_contents2">
                 <div id="SE_banner1"><h1>배너자리</h1></div>
             </section>
@@ -184,8 +184,6 @@ layout:decorate="~{/layout}"> -->
             <section id="SE_contents3">
                 <div id="SE_banner2"><h1>배너자리</h1></div>
             </section>
-
-
             <footer id="SE_footer">
                 <p>
                 </p>
@@ -195,6 +193,41 @@ layout:decorate="~{/layout}"> -->
                 </p>
                 <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
             </footer>
+
+            <div id="content4">
+                <div id="sub1">
+                    <ul>
+                        <li>New 국산차<br><a href="/galaxy/autoDetail.do?autoName=코나 N"><img src="/img/autopedia/kona.png" alt=""><br>코나 N(OS N)</a></li>
+                    </ul>
+                    <ul>
+                        <li>New 수입차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/q4etron.png" alt=""><br>Q4 E-트론</a></li>
+                    </ul>
+                    <ul>
+                        <li>Best 국산차<br><a href="/galaxy/autoDetail.do?autoName=그랜저"><img src="/img/autopedia/grandeur.png" alt=""><br>The All New 그랜저(CN7)</a></li>
+                    </ul>
+                    <ul>
+                        <li>Best 수입차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/5series.png" alt=""><br>New 5시리즈(G31)</a></li>
+                    </ul>
+                </div>
+                <div id="sub2">
+                    <ul>
+                        <li>오늘의 추천 차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/polestar2.png" alt=""><br>폴스타 2<br>2022년 전기차 판매 순위 1위!</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="content5">
+                <div id="sub3">
+                    <ul>
+                        <li>가장 많이 즐겨찾는 차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/Cayenne.png" alt=""><br>The New 카이엔(9Y0)</a></li>
+                    </ul>
+                </div>
+                <div id="sub4">
+                    <ul>
+                        <li>가장 많이 즐겨찾는 브랜드<br><a href="/galaxy/comDetail.do?comName=포르쉐"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

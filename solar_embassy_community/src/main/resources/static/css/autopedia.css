@@ -1,215 +1,125 @@
-*{margin:0; padding:0;}
-
-html, body {
-    background-color: #5B8FB9;
-    height: 100%;
-    max-width: 1920px;
-    margin : 0 auto ;
-}
-
-ul{list-style: none;}
-a{text-decoration: none; color: white;}
-
-#container{
-    width : 1920px;
-    background-color: #5B8FB9;
-    margin : 0 auto ;
-}
-
-header {
-    width: 100%;
-    height: 415px;
-    background-color: black;
-    text-align: center;
-    margin : 0 auto ;
-}
-
-#img1 {
-    width: 1200px;
-    height: 355px;
-}
-
-#login{                                      /*로그인 공간 */
-    width: 300px;
-    height: 40px;
-    position: absolute;
-    transform: translate(1260px, -40px);
-    background-color: #333125;
-    border-radius: 5px;
-}
-
-.logbtn{                                      /*로그인 공간 안의 버튼 3개.*/
-    margin:  10px 0 0 10px;
-    width: 80px;
-    height: 20px;
-    color: white;
-    font-size: 11px;
-    border-radius: 5px;
-    background-color: #364959;
-    border: 2px solid #0D3360;
-}
-
-#left-sidebar {
-    background-color: #5164AA;
-    width: 360px;
-    height: 80px;
-    float: left;
-}
-
-#right-sidebar {
-    background-color: #5164AA;
-    width: 360px;
-    height: 80px;
-    float: left;
-}
-
-#contents {
-    background-color: #5B8FB9;
-    width: 1200px;
-    float: left;
-    text-align: center;
-}
-
-#contents #content1{
-    background-color: #826BCE;
-    width: 1200px;
+#SE_contents #content1{
+    background-color: hotpink;
     height: 80px;
     display: flex;
+    border-radius: 10px;
+    border: 1px solid #000000;
 }
 
-#menu_wrap{
-    width: 1200px;
-    height: 100%;
-    margin: 0 auto;
+#SE_contents #content1 #btn {
+    margin: 25px;
+    display: flex;
+    text-decoration: none;
 }
 
-.top_menu{
-    padding:0;
-    margin: 0 auto;
-    width: 200px;
-    height: 100%;
-    background-color: #645CBB;
+#SE_contents #content1 #btn #autogalaxy a {
+    padding-left: 10px;
+    color: #fff;
     float: left;
-    text-align: center;
-    font: 20px/100px'';
-    transition-duration: 0.3s;
+    text-decoration: none;
+    font-size: 20px;
 }
 
-.sub_menu{
-    margin-top: 10px;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    background-color: #A084DC;
-    transition-duration: 0.3s;
-
+#SE_contents #content1 #btn #autopedia a {
+    padding-left: 30px;
+    color: #fff;
+    float: left;
+    text-decoration: none;
+    font-size: 20px;
 }
 
-.sub_menu>li{
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid #0d6efd;
-    box-sizing: border-box;
-    font: 18px/80px '';
-    z-index: 100;
-}
-
-.top_menu.top_menu:hover{
-    font: 18px/70px '';
-    height: 100%;
-    background-color: #BFACE2;
-}
-
-.top_menu:hover>.sub_menu{
-    height: 320px;
-}
-
-.sub_menu>li:hover{
-    background-color: #EBC7E6;
-    transition-duration: 0.5s;
-    z-index: 100;
-}
-
-#contents #content2{
+#SE_contents #content2 {
     background-color: white;
     width: 1200px;
-    height: 600px;
+    height: max-content;
     font-size: small;
+    border: 1px solid black;
+    margin-top: 40px;
 }
 
-#contents #content2 #autobrand {
+#SE_contents #content2 #autobrand {
     width: 1200px;
     display: flex;
     flex-wrap: wrap;
+    box-sizing: content-box;
+    justify-content: center;
 }
 
-#contents #content2 #autobrand div {
-    width: 100px;
-    height: 100px;
+#SE_contents #content2 #autobrand div {
+    width: calc(1200px/9);
+    height: max-content;
     margin-top: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
-#contents #content2 #autobrand div a {
+#SE_contents #content2 #autobrand div a {
     text-decoration: none;
     color: #000;
+    text-align: center;
 }
 
-#contents #content2 #autobrand div a img {
-    width: 30px;
-    height: 30px;
+#SE_contents #content2 #autobrand div a img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
 }
 
-#contents #content2 #autotype {
-<<<<<<< HEAD
-width: 1200px;
-=======
-width: 1320px;
->>>>>>> 101a1b3878fa43d72355207232f04acbedafc4bd
+#SE_contents #content2 #autotype {
+    width: 1200px;
+    padding: 10px;
+
 }
-#contents #content2 #autotype dl{
+
+#SE_contents #content2 #autotype dl {
     display: flex;
 }
-#contents #content2 #autotype dl dt{
+
+#SE_contents #content2 #autotype dl dt {
     width: 100px;
 }
 
-#contents #content2 #autotype ul {
+#SE_contents #content2 #autotype ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     float: left;
 }
-#contents #content2 #autotype ul li {
+
+#SE_contents #content2 #autotype ul li {
     width: 180px;
     justify-items: left;
 }
 
-#contents #content3 {
+#SE_contents #content3 {
     background-color: aqua;
     width: 1200px;
     height: 100px;
     margin-top: 40px;
+    text-align: center;
 }
 
-#contents #content3 form div {
+#SE_contents #content3 form div {
     padding: 25px;
     width: 1200px;
     height: 100px;
 }
 
-#contents #content3 #type {
+#SE_contents #content3 #type {
     height: 30px;
     font-size: 11px;
     margin: 0;
 }
 
-#contents #content3 #searcher {
+#SE_contents #content3 #searcher {
     width: 500px;
     height: 30px;
     font-size: 11px;
     margin: 0;
 }
-#contents #content3 button {
+
+#SE_contents #content3 button {
     width: 60px;
     height: 30px;
     font-size: 11px;
@@ -218,55 +128,134 @@ width: 1320px;
     background-color: #364959;
 }
 
-#contents #content4 {
+#SE_contents #content4 {
     height: 560px;
     display: flex;
     margin-top: 40px;
 }
 
-#contents #content4 #sub1 {
-    background-color: navy;
-    width: 660px;
-    height: 580px;
+#SE_contents #content4 #sub1 {
+    background-color: violet;
+    width: 580px;
+    height: 500px;
     border-radius: 10px;
-}
-
-#contents #content4 #sub2 {
-    background-color: dodgerblue;
-    width: 660px;
-    height: 580px;
-    border-radius: 10px;
-}
-
-#contents #content5 {
-    height: 560px;
+    margin-right: 40px;
     display: flex;
-    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
-#contents #content5 #sub3 {
-    background-color: hotpink;
-    width: 660px;
-    height: 580px;
+#SE_contents #content4 #sub1 ul {
+    background-color: #fff;
+    width: 250px;
+    height: 200px;
     border-radius: 10px;
-}
-
-#contents #content5 #sub4 {
-    background-color: darkmagenta;
-    width: 660px;
-    height: 580px;
-    border-radius: 10px;
-}
-
-#footer{
-    background-color: Black;
-    width: 1920px;
-    height: 140px;
-    clear : left;
-    float: bottom;
-    position: absolute;
+    margin: 20px;
     text-align: center;
-    transform: translate(0,2115px);
-    color: white;
-    font: 18px/60px '';
+    font-size: 15px;
+}
+
+#SE_contents #content4 #sub1 ul li a {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+#SE_contents #content4 #sub1 ul li a img {
+    width: 200px;
+    height: 150px;
+    object-fit: contain;
+}
+
+#SE_contents #content4 #sub2 {
+    background-color: violet;
+    width: 580px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+#SE_contents #content4 #sub2 ul {
+    background-color: #fff;
+    width: 540px;
+    height: 460px;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: left;
+    font-size: 30px;
+}
+
+#SE_contents #content4 #sub2 ul li a {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+#SE_contents #content4 #sub2 ul li a img {
+    width: 500px;
+    height: 300px;
+    object-fit: contain;
+}
+
+#SE_contents #content5 {
+    height: 560px;
+    display: flex;
+}
+
+#SE_contents #content5 #sub3 {
+    background-color: violet;
+    width: 580px;
+    height: 500px;
+    border-radius: 10px;
+    margin-right: 40px;
+}
+
+#SE_contents #content5 #sub3 ul {
+    background-color: white;
+    width: 540px;
+    height: 460px;
+    border-radius: 10px;
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#SE_contents #content5 #sub3 ul li a {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+#SE_contents #content5 #sub3 ul li a img {
+    width: 500px;
+    height: 350px;
+    object-fit: contain;
+}
+
+#SE_contents #content5 #sub4 {
+    background-color: violet;
+    width: 580px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+#SE_contents #content5 #sub4 ul {
+    background-color: white;
+    width: 540px;
+    height: 460px;
+    border-radius: 10px;
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#SE_contents #content5 #sub4 ul li a {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+#SE_contents #content5 #sub4 ul li a img {
+    width: 500px;
+    height: 350px;
+    object-fit: contain;
+    text-align: center;
 }

@@ -23,4 +23,8 @@
         ceo,industries,slogan,
         content
     </sql>
+        
+    <select id="selectCompanyDetail" parameterType="String" resultMap="BaseResultMap">
+        SELECT * FROM company WHERE comName = #{comName}
+    </select>
 </mapper>
