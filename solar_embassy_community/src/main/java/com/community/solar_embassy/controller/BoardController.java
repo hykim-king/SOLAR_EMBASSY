@@ -1,14 +1,16 @@
 package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.BoardDto;
+
+import com.community.solar_embassy.dto.Reply;
+import com.community.solar_embassy.service.BoardService;
+import com.community.solar_embassy.service.ReplyService;
+
 import com.community.solar_embassy.dto.Galaxy;
 import com.community.solar_embassy.dto.Users;
 import com.community.solar_embassy.service.BoardService;
 import com.community.solar_embassy.service.GalaxyService;
-import com.twy.tripwithyou_spring.dto.ReplyDto;
-import com.twy.tripwithyou_spring.dto.UploadDto;
-import com.twy.tripwithyou_spring.dto.UploadPreferDto;
-import com.twy.tripwithyou_spring.dto.UserDto;
+
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ public class BoardController {
     @Autowired
     BoardService boardService;
     @Autowired
+    ReplyService replyService;
+
     GalaxyService galaxyService;
 
     @GetMapping("/boardList.do")
@@ -52,6 +56,7 @@ public class BoardController {
         model.addAttribute("galaxyNo", galaxyNo);
         return "/boardWrite";
     }
+
 
     @PostMapping("/boardWrite.do")
     public String boardWrite(BoardDto board) throws Exception {
@@ -108,6 +113,7 @@ public class BoardController {
 //            return "redirect:/board/boardDetail?boardNo="+board.getBoardNo();
 //        }
 //    }
+
 //    @GetMapping("/updateBoard/{boardNo}")
 //    public String update(
 //            @PathVariable int boardNo,
@@ -140,6 +146,7 @@ public class BoardController {
     }
 
     //    @RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)  //삭제요청
+
 //    public String deleteBoard(BoardDto board) throws Exception {
 //        boardService.deleteBoard(board.getBoardNo());      //게시글 삭제
 //        return "redirect:/board/boardList";  //삭제완료 후 게시판 목록으로

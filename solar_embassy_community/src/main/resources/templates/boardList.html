@@ -88,69 +88,72 @@ layout:decorate="~{/layout}"> -->
                     <div class="text-center">
                         <div id="user_info_bgc2" class="">
 
+
                             <h2 class="mt-3">(일간 추천을 가장 많이받은 게시글?)</h2>
                         </div>
 
-                        <div id="user_info_bgc3" class="">
-                            <h2 class="mt-3">(주간 추천을 가장 많이받은 게시글?)</h2>
 
-                        </div>
-                    </div>
-
-                    <div id="boardList_table_btn" class="mb-2">
-                        <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
-                        <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}"
-                           class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
-                    </div>
-
-                    <div id="boardList_table">
-                        <table class="table table-light">
-                            <colgroup>
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                            </colgroup>
-                            <thead class="table-success">
-                            <tr>
-                                <th scope="col" class="text-center">글번호</th>
-                                <th scope="col" class="text-center">구분(주제)</th>
-                                <th scope="col" class="text-center">제목</th>
-                                <th scope="col" class="text-center">작성자</th>
-                                <th scope="col" class="text-center">추천수</th>
-                                <th scope="col" class="text-center">조회수</th>
-                                <th scope="col" class="text-center">작성일</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:if="${#lists.size(list)} > 0" th:each="list_n:${list}" class="text-center">
-                                <td th:text="${list_n.boardNo}"></td>
-                                <td class="title">
-                                    <a href="/board/boardDetail?boardNo=" th:attrappend="href=${list_n.boardNo}"
-                                       th:text="${list_n.boardTag}" style="color:#000;"></a>
-                                </td>
-                                <td th:text="${list_n.title}" th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]" style="cursor: pointer"></td>
-                                <td th:text="${list_n.userId}"></td>
-                                <td th:text="${(list_n.likes ==null)?0:list_n.likes}"></td>
-                                <td th:text="${(list_n.views ==null)?0:list_n.views}"></td>
-                                <td th:text="${#dates.format(list_n.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
-                            </tr>
-                            <tr th:unless="${#lists.size(list)} > 0">
-                                <td colspan="8">조회된 결과가 없습니다.</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div>
+                        <h2 class="mt-3">(일간 추천을 가장 많이받은 게시글?)</h2>
                     </div>
 
                 </div>
 
+                <div id="boardList_table_btn" class="mb-2">
+                    <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
+                    <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}"
+                       class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
+                </div>
+
+                <div id="boardList_table">
+                    <table class="table table-light table-hover">
+
+                        <colgroup>
+                            <col style="width:max-content">
+                            <col style="width:max-content">
+                            <col style="width:max-content">
+                            <col style="width:max-content">
+                            <col style="width:max-content">
+                            <col style="width:max-content">
+                        </colgroup>
+                        <thead class="table-success">
+                        <tr>
+                            <th scope="col" class="text-center">글번호</th>
+                            <th scope="col" class="text-center">제목</th>
+                            <th scope="col" class="text-center">작성자</th>
+                            <th scope="col" class="text-center">추천수</th>
+                            <th scope="col" class="text-center">조회수</th>
+                            <th scope="col" class="text-center">작성일</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:if="${#lists.size(list)} > 0" th:each="board:${list}" class="text-center">
+                            <td th:text="${board.boardNo}"></td>
+                            <td class="title" style="display: flex">
+                                <a th:href="@{/board/{boardNo}/boardDetail.do (boardNo=${board.boardNo})}"
+                                   th:switch="${board.boardTag}" style="font-weight: bold;">
+                                    <span th:case="1">[일상]</span>
+                                    <span th:case="2">[유머]</span>
+                                    <span th:case="3">[예약]</span>
+                                    <span th:case="4">[후기]</span>
+                                </a>
+                                <th:block th:text="${board.title}"></th:block>
+                            </td>
+                            <td th:text="${board.user.nickname}"></td>
+                            <td th:text="${(board.likes ==null)?0:board.likes}"></td>
+                            <td th:text="${(board.views ==null)?0:board.views}"></td>
+                            <td th:text="${#dates.format(board.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+
+                        </tr>
+                        <tr th:unless="${#lists.size(list)} > 0">
+                            <td colspan="8">조회된 결과가 없습니다.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
+
             <footer id="SE_footer">
                 <p>
                 </p>
@@ -161,6 +164,7 @@ layout:decorate="~{/layout}"> -->
                 <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
             </footer>
         </div>
+
     </div>
 </div>
 </body>

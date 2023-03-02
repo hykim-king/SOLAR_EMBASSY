@@ -20,6 +20,7 @@ public class BoardDto implements Serializable {
     private String userId;
     private Users user;
 
+
     private Integer boardTag;
 
     private String title;

@@ -18,15 +18,17 @@
         <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
         <result property="views" column="views" jdbcType="INTEGER"/>
         <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById" fetchType="lazy"/>
+
     </resultMap>
+
     <!--게시글 목록-->
+
     <select id="selectBoardList" resultType="com.community.solar_embassy.dto.BoardDto">
         <![CDATA[
         SELECT boardNo, boardTag, title, userId, likes, views
         FROM board
         WHERE state = 0
         ORDER BY boardNo DESC
-        LIMIT 9
         ]]>
     </select>
     <!--게시글 등록-->
@@ -37,6 +39,7 @@
                           boardTag,
                           title,
                           contents,
+                          postTime,
                           likes,
                           views,
                           userId)
@@ -49,14 +52,9 @@
                 #{userId})
         ]]>
    </insert>
-    <!--게시글 상세-->
-    <select id="selectBoardDetail" parameterType="int" resultType="BoardDto">
-        SELECT  /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
-        FROM board
-        WHERE boardNo = #{boardNo}
-          AND state = 0
-    </select>
 
+
+    <!--게시글 상세-->
     <select id="findAll" resultMap="BaseResultMap">
         SELECT *
         FROM board
@@ -75,6 +73,12 @@
     </select>
     <select id="selectEnd" resultType="java.lang.Integer">
         SELECT boardNo FROM board ORDER BY boardNo DESC LIMIT 1
+    </select>
+    <select id="selectBoardDetail" resultType="com.community.solar_embassy.dto.BoardDto">
+        SELECT *
+        FROM board
+        WHERE boardNo = #{boardNo}
+          AND state = 0
     </select>
     <!--수정, 삭제-->
     <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto" >
@@ -107,3 +111,5 @@
         ]]>
     </delete>
 </mapper>
+
+

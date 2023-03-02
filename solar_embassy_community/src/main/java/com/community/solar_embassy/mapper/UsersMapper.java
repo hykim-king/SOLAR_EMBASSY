@@ -7,29 +7,32 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface UsersMapper {
-    Users findByUserIdAndPw(String userId, String passwords); // 로그인 : 비밀번호 단계
 
-    int updateLogin(String userId);
+public interface UsersMapper extends CRUD<Users,String> {
 
-    List<Users> findAll();
+        Users findByUserIdAndPw(String userId, String passwords); // 로그인 : 비밀번호 단계
 
-    List<Users> findPaging(PagingDto paging);
+        int updateLogin(String userId);
 
-    Users findById(String userId); // 회원정보 찾기 + 로그인 : 아이디 단계
+        List<Users> findAll();
 
-    int insert(Users user);
+        List<Users> findPaging(PagingDto paging);
 
-    int update(Users user);
+        Users findById(String userId); // 회원정보 찾기 + 로그인 : 아이디 단계
 
-    int delete(String userId);
+        int insert(Users user);
 
-    int getPoints(int cPoint, int ePoint, String userId);
+        int update(Users user);
 
-    int expUp(int exp,String userId);
-    int levelUp(Users users);
+        int delete(String userId);
+
+        int getPoints(int cPoint, int ePoint, String userId);
+
+        int expUp(int exp, String userId);
+
+        int levelUp(Users users);
+
 }
-
 
 
 

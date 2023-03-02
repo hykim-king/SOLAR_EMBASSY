@@ -63,8 +63,7 @@ public class UserController {
     }
 
     @GetMapping("signup_normal.do")
-    public String signup_normal(
-    ) {
+    public String signup_normal() {
         return "/user/signup/signup_normal";
     }
 

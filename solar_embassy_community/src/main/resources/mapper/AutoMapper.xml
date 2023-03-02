@@ -5,39 +5,33 @@
 <mapper namespace="com.community.solar_embassy.mapper.AutoMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Auto">
-            <id property="autoNo" column="autoNo" jdbcType="INTEGER"/>
-            <id property="autoName" column="autoName" jdbcType="VARCHAR"/>
-            <id property="codeName" column="codeName" jdbcType="VARCHAR"/>
-            <result property="detailName" column="detailName" jdbcType="VARCHAR"/>
-            <result property="optionName" column="optionName" jdbcType="VARCHAR"/>
-            <result property="comNo" column="comNo" jdbcType="INTEGER"/>
-            <result property="comName" column="comName" jdbcType="VARCHAR"/>
-            <result property="autoType" column="autoType" jdbcType="VARCHAR"/>
-            <result property="releaseDate" column="releaseDate" jdbcType="DATE"/>
-            <result property="seat" column="seat" jdbcType="INTEGER"/>
-            <result property="mpg" column="mpg" jdbcType="DOUBLE"/>
-            <result property="disp" column="disp" jdbcType="DOUBLE"/>
-            <result property="price" column="price" jdbcType="INTEGER"/>
-            <result property="autoEngine" column="autoEngine" jdbcType="VARCHAR"/>
+        <id property="autoNo" column="autoNo" jdbcType="INTEGER"/>
+        <id property="autoName" column="autoName" jdbcType="VARCHAR"/>
+        <id property="codeName" column="codeName" jdbcType="VARCHAR"/>
+        <result property="comNo" column="comNo" jdbcType="INTEGER"/>
+        <result property="comName" column="comName" jdbcType="VARCHAR"/>
+        <result property="autoType" column="autoType" jdbcType="VARCHAR"/>
+        <result property="releaseDate" column="releaseDate" jdbcType="DATE"/>
+        <result property="seat" column="seat" jdbcType="INTEGER"/>
+        <result property="mpg" column="mpg" jdbcType="DOUBLE"/>
+        <result property="disp" column="disp" jdbcType="DOUBLE"/>
+        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="autoEngine" column="autoEngine" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         autoNo,autoName,codeName,
-        detailName,optionName,comNo,
-        comName,autoType,releaseDate,
-        seat,mpg,disp,
+        comNo,comName,autoType,
+        releaseDate,seat,mpg,disp,
         price,autoEngine
     </sql>
     <insert id="insert">
-        INSERT INTO auto(autoName, codeName, detailName, optionName, comNo, comName, autoType, releaseDate, seat, mpg,
+        INSERT INTO auto(autoName, codeName, comNo, comName, autoType, releaseDate, seat, mpg,
                          disp, price, autoEngine)
-        VALUES (#{autoName}, #{codeName}, #{detailName}, #{optionName}, #{comNo}, #{comName}, #{autoType},
+        VALUES (#{autoName}, #{codeName}, #{comNo}, #{comName}, #{autoType},
                 #{releaseDate}, #{seat}, #{mpg}, #{disp}, #{price}, #{autoEngine})
     </insert>
-    <select id="selectAutoList" resultType="com.community.solar_embassy.dto.Auto">
+    <select id="selectByAutoNo" resultType="com.community.solar_embassy.dto.Auto">
         SELECT * FROM auto WHERE autoNo= #{autoNo}
-    </select>
-    <select id="selectByAutoName" resultType="com.community.solar_embassy.dto.Auto">
-        SELECT * FROM auto WHERE autoName= #{autoName}
     </select>
 </mapper>

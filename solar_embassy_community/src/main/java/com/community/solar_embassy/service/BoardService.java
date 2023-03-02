@@ -21,3 +21,5 @@ public interface BoardService {
     List<BoardDto> hotList(int endNo);
     int lastNo();
 }
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+    #reply_reg {
+        background-color: #F0FFFF;
+
+        border-bottom: 2px solid #00008B;
+        border-top: 2px solid #00008B;
+    }
+</style>
+<!--댓글 등록-->
+<form id="reply_reg" name="replyRegisterForm" enctype="multipart/form-data" class="p-4 form"
+      th:if="${session.loginUser!=null}" method="post" action="/reply/register.do">
+    <div class="mb-3">
+        <input class="form-control text-center" type="text" th:value="${session.loginUser.nickname}"
+               aria-label="Disabled input example" readonly
+               style="width: 15%;">
+        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+        <input type="hidden" name="boardNo" th:value="${boardNo}">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                  name="contents"></textarea>
+    </div>
+    <div id="reply_reg_btn">
+        <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>
+        <button type="submit" class="btn btn-secondary btn-sm float-end">등록</button>
+    </div>
+</form>
+<!--댓글 등록 end-->
+</html>

@@ -21,6 +21,7 @@ public interface BoardMapper {
 
     int deleteBoard(int board_no) throws Exception;
 
+
     int count(BoardDto board ) throws Exception;
 
     List<BoardDto> selectBoardListBySize(int size);
@@ -34,7 +35,6 @@ public interface BoardMapper {
 
     BoardPreferViewDto countPreferById(int boardNo);
 }
-
 
 
 

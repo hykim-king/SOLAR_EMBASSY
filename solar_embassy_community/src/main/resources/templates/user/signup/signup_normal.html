@@ -52,12 +52,39 @@ layout:decorate="~{/layout}"> -->
                             </div>
                         </div>
 
+<<<<<<< HEAD
                         <div class="title_container">
                             <h2>PW 확인</h2>
                             <div class="input_container">
                                 <input type="password" name="passwords_check">
                                 <p style="color: red" th:if="passwords==passwords_check">입력하신 비밀번호가 다릅니다</p>
                             </div>
+=======
+                    </div>
+                    <div class="title_container">
+                        <h2>PW 확인</h2>
+                        <div class="input_container">
+                            <input type="password" name="passwords_check">
+                            <p style="color: red" th:if=".passwords==.passwords_check">입력하신 비밀번호가 다릅니다</p>
+
+                        </div>
+                    </div>
+                    <div class="title_container">
+                        <h2>전화번호(휴대폰) 입력</h2>
+                        <div class="input_container">
+                            <input type="text" name="tell" placeholder="(-)는 빼고 입력해주세요">
+
+                        </div>
+                    </div>
+
+                    <div class="title_container">
+                        <h2>닉네임 입력</h2>
+
+                        <div class="input_container">
+                            <input type="text" name="nickname">
+                            <button type="button" onclick="location.href='#'">중복확인</button>
+                            <p>사용가능한 닉네임 입니다</p>
+>>>>>>> 0f0d3dba957e65ce21110bb800f8fffbcb655289
                         </div>
 
                         <div class="title_container">
