@@ -19,11 +19,8 @@ layout:decorate="~{/layout}"> -->
 </head>
 <body>
 <div id="SE_container">
-    <header id="SE_header">
-        <h6>메인이미지</h6>
-        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'">
-    </header>
 
+    <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
@@ -32,67 +29,62 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
-            <div id="content1">
-                <div id="btn">
-                    <span id="autogalaxy"><a href="?">자동차 갤럭시</a></span>
-                    <span id="autopedia"><a href="?">자동차 백과</a></span>
-                </div>
-            </div>
+            <th:block th:insert="/galaxy/autoGalaxyNavbar"></th:block>
 
             <div id="content2">
                 <div id="autobrand">
-                    <div><a href="/galaxy/comDetail.do?comName=현대자동차"><img src="/img/autopedia/hyundai.png" alt=""><br>현대</a></div>
-                    <div><a href=""><img src="/img/autopedia/kia.png" alt=""><br>기아</a></div>
-                    <div><a href="#"><img src="/img/autopedia/genesis.jpg" alt=""><br>제네시스</a></div>
-                    <div><a href="#"><img src="/img/autopedia/Chevrolet.png" alt=""><br>쉐보레</a></div>
-                    <div><a href="#"><img src="/img/autopedia/RS.png" alt=""><br>르노코리아</a></div>
-                    <div><a href="#"><img src="/img/autopedia/ssangyong.png" alt=""><br>쌍용</a></div>
-                    <div><a href="#"><img src="/img/autopedia/daechang.png" alt=""><br>대창</a></div>
-                    <div><a href="#"><img src="/img/autopedia/maiv.png" alt=""><br>마이브</a></div>
-                    <div><a href="#"><img src="/img/autopedia/dpeco.png" alt=""><br>디피코</a></div>
-                    <div><a href="#"><img src="/img/autopedia/edison.png" alt=""><br>에디슨</a></div>
-                    <div><a href="#"><img src="/img/autopedia/cevo.png" alt=""><br>쎄보</a></div>
-                    <div><a href="#"><img src="/img/autopedia/tatadaewoo.svg" alt=""><br>타타대우</a></div>
-                    <div><a href="#"><img src="/img/autopedia/masta.png" alt=""><br>마스타</a></div>
-                    <div><a href="#"><img src="/img/autopedia/vivamobility.png" alt=""><br>비바모빌리티</a></div>
-                    <div><a href="#"><img src="/img/autopedia/evon.gif" alt=""><br>이비온</a></div>
-                    <div><a href="/galaxy/comDetail.do?comName=메르세데스-벤츠"><img src="/img/autopedia/benz.jpg" alt=""><br>벤츠</a></div>
-                    <div><a href="#"><img src="/img/autopedia/BMW.png" alt=""><br>BMW</a></div>
-                    <div><a href="#"><img src="/img/autopedia/audi.jpg" alt=""><br>아우디</a></div>
-                    <div><a href="#"><img src="/img/autopedia/volkswagen.png" alt=""><br>폭스바겐</a></div>
-                    <div><a href="/galaxy/comDetail.do?comName=포르쉐"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></div>
-                    <div><a href="#"><img src="/img/autopedia/toyota.png" alt=""><br>토요타</a></div>
-                    <div><a href="#"><img src="/img/autopedia/lexus.png" alt=""><br>렉서스</a></div>
-                    <div><a href="#"><img src="/img/autopedia/nissan.jpg" alt=""><br>닛산</a></div>
-                    <div><a href="#"><img src="/img/autopedia/infinity.png" alt=""><br>인피니티</a></div>
-                    <div><a href="#"><img src="/img/autopedia/honda.png" alt=""><br>혼다</a></div>
-                    <div><a href="#"><img src="/img/autopedia/cadillac.jpg" alt=""><br>캐딜락</a></div>
-                    <div><a href="#"><img src="/img/autopedia/jeep.png" alt=""><br>지프</a></div>
-                    <div><a href="#"><img src="/img/autopedia/Ford.jpg" alt=""><br>포드</a></div>
-                    <div><a href="#"><img src="/img/autopedia/lincoln.png" alt=""><br>링컨</a></div>
-                    <div><a href="#"><img src="/img/autopedia/TESLA.webp" alt=""><br>테슬라</a></div>
-                    <div><a href="#"><img src="/img/autopedia/ferrari.png" alt=""><br>페라리</a></div>
-                    <div><a href="#"><img src="/img/autopedia/LandRover.png" alt=""><br>랜드로버</a></div>
-                    <div><a href="#"><img src="/img/autopedia/fiat.jpg" alt=""><br>피아트</a></div>
-                    <div><a href="#"><img src="/img/autopedia/maserati.png" alt=""><br>마세라티</a></div>
-                    <div><a href="#"><img src="/img/autopedia/volvo.png" alt=""><br>볼보</a></div>
-                    <div><a href="#"><img src="/img/autopedia/Polestar.png" alt=""><br>폴스타</a></div>
-                    <div><a href="#"><img src="/img/autopedia/Jaguar.png" alt=""><br>재규어</a></div>
-                    <div><a href="#"><img src="/img/autopedia/mini.png" alt=""><br>미니</a></div>
-                    <div><a href="#"><img src="/img/autopedia/Bentley.png" alt=""><br>벤틀리</a></div>
-                    <div><a href="#"><img src="/img/autopedia/mclaren.svg" alt=""><br>맥라렌</a></div>
-                    <div><a href="#"><img src="/img/autopedia/lamborghini.png" alt=""><br>람보르기니</a></div>
-                    <div><a href="#"><img src="/img/autopedia/citroen.png" alt=""><br>시트로엥</a></div>
-                    <div><a href="#"><img src="/img/autopedia/peugeot.png" alt=""><br>푸조</a></div>
-                    <div><a href="#"><img src="/img/autopedia/gmc.png" alt=""><br>GMC</a></div>
-                    <div><a href="#"><img src="/img/autopedia/DS.png" alt=""><br>DS</a></div>
-                    <div><a href="#"><img src="/img/autopedia/Isuzu.png" alt=""><br>이스즈</a></div>
-                    <div><a href="#"><img src="/img/autopedia/astonmartin.png" alt=""><br>애스턴마틴</a></div>
-                    <div><a href="#"><img src="/img/autopedia/lotus.webp" alt=""><br>로터스</a></div>
-                    <div><a href="#"><img src="/img/autopedia/rollsroyce.png" alt=""><br>롤스로이스</a></div>
-                    <div><a href="#"><img src="/img/autopedia/dongfeng.png" alt=""><br>둥펑</a></div>
-                    <div><a href="#"><img src="/img/autopedia/iveco.jpg" alt=""><br>이베코</a></div>
-                    <div><a href="#"><img src="/img/autopedia/koenigsegg.png" alt=""><br>코닉세그</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=1"><img src="/img/autopedia/hyundai.png" alt=""><br>현대</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=2"><img src="/img/autopedia/kia.png" alt=""><br>기아</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=3"><img src="/img/autopedia/genesis.jpg" alt=""><br>제네시스</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=4"><img src="/img/autopedia/Chevrolet.png" alt=""><br>쉐보레</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=5"><img src="/img/autopedia/RS.png" alt=""><br>르노코리아</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=6"><img src="/img/autopedia/ssangyong.png" alt=""><br>쌍용</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=7"><img src="/img/autopedia/daechang.png" alt=""><br>대창</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=8"><img src="/img/autopedia/maiv.png" alt=""><br>마이브</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=9"><img src="/img/autopedia/dpeco.png" alt=""><br>디피코</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=10"><img src="/img/autopedia/edison.png" alt=""><br>에디슨</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=11"><img src="/img/autopedia/cevo.png" alt=""><br>쎄보</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=12"><img src="/img/autopedia/tatadaewoo.svg" alt=""><br>타타대우</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=13"><img src="/img/autopedia/masta.png" alt=""><br>마스타</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=14"><img src="/img/autopedia/vivamobility.png" alt=""><br>비바모빌리티</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=15"><img src="/img/autopedia/evon.gif" alt=""><br>이비온</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=16"><img src="/img/autopedia/benz.jpg" alt=""><br>벤츠</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=17"><img src="/img/autopedia/BMW.png" alt=""><br>BMW</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=18"><img src="/img/autopedia/audi.jpg" alt=""><br>아우디</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=19"><img src="/img/autopedia/volkswagen.png" alt=""><br>폭스바겐</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=20"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=21"><img src="/img/autopedia/toyota.png" alt=""><br>토요타</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=22"><img src="/img/autopedia/lexus.png" alt=""><br>렉서스</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=23"><img src="/img/autopedia/nissan.jpg" alt=""><br>닛산</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=24"><img src="/img/autopedia/infinity.png" alt=""><br>인피니티</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=25"><img src="/img/autopedia/honda.png" alt=""><br>혼다</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=26"><img src="/img/autopedia/cadillac.jpg" alt=""><br>캐딜락</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=27"><img src="/img/autopedia/jeep.png" alt=""><br>지프</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=28"><img src="/img/autopedia/Ford.jpg" alt=""><br>포드</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=29"><img src="/img/autopedia/lincoln.png" alt=""><br>링컨</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=30"><img src="/img/autopedia/TESLA.webp" alt=""><br>테슬라</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=31"><img src="/img/autopedia/ferrari.png" alt=""><br>페라리</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=32"><img src="/img/autopedia/LandRover.png" alt=""><br>랜드로버</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=33"><img src="/img/autopedia/fiat.jpg" alt=""><br>피아트</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=34"><img src="/img/autopedia/maserati.png" alt=""><br>마세라티</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=35"><img src="/img/autopedia/volvo.png" alt=""><br>볼보</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=36"><img src="/img/autopedia/Polestar.png" alt=""><br>폴스타</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=37"><img src="/img/autopedia/Jaguar.png" alt=""><br>재규어</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=38"><img src="/img/autopedia/mini.png" alt=""><br>미니</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=39"><img src="/img/autopedia/Bentley.png" alt=""><br>벤틀리</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=40"><img src="/img/autopedia/mclaren.svg" alt=""><br>맥라렌</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=41"><img src="/img/autopedia/lamborghini.png" alt=""><br>람보르기니</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=42"><img src="/img/autopedia/citroen.png" alt=""><br>시트로엥</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=43"><img src="/img/autopedia/peugeot.png" alt=""><br>푸조</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=44"><img src="/img/autopedia/gmc.png" alt=""><br>GMC</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=45"><img src="/img/autopedia/DS.png" alt=""><br>DS</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=46"><img src="/img/autopedia/Isuzu.png" alt=""><br>이스즈</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=47"><img src="/img/autopedia/astonmartin.png" alt=""><br>애스턴마틴</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=48"><img src="/img/autopedia/lotus.webp" alt=""><br>로터스</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=49"><img src="/img/autopedia/rollsroyce.png" alt=""><br>롤스로이스</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=50"><img src="/img/autopedia/dongfeng.png" alt=""><br>둥펑</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=51"><img src="/img/autopedia/iveco.jpg" alt=""><br>이베코</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=52"><img src="/img/autopedia/koenigsegg.png" alt=""><br>코닉세그</a></div>
                 </div>
                 <div id="autotype">
                     <dl>

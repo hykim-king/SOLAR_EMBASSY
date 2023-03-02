@@ -32,44 +32,28 @@ layout:decorate="~{/layout}"> -->
       <!--메뉴 + 오른쪽 사이드-->
       <th:block th:insert="/menuAndAside"></th:block>
       <!--메뉴 end-->
-
-        <div id="content1">
-          <div id="btn">
-            <span id="autogalaxy"><a href="?">자동차 갤럭시</a></span>
-            <span id="autopedia"><a href="?">자동차 백과</a></span>
-          </div>
-        </div>
+        <th:block th:insert="/galaxy/autoGalaxyNavbar"></th:block>
 
         <div id="content2">
           <div id="photo">
             <img src="/img/autopedia/grandeur.png" alt="">
           </div>
           <div id="inform">
+            <h2>차량 정보(*는 최고 기준)</h2> <br>
             차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
             코드명 : <span th:text="${auto.getCodeName()}"></span> <br>
             제조사 : <span th:text="${auto.getComName()}"></span> <br>
             차종 : <span th:text="${auto.getAutoType()}"></span> <br>
             출시일 : <span th:text="${#dates.format(auto.getReleaseDate(),'yyyy-MM-dd')}"></span> <br>
             탑승 인원 : <span th:text="${auto.getSeat()}"></span>인승 <br>
-            연비 : <span th:text="${auto.getMpg()}"></span>km <br>
+            연비* : <span th:text="${auto.getMpg()}"></span>km <br>
+            배기량* : <span th:text="${auto.getDisp()}"></span>cc <br>
+            가격* : <span th:text="${auto.getPrice()}"></span>만원 <br>
             차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
           </div>
         </div>
 
         <div id="content3">
-          <h1><strong>제원</strong></h1>
-          <br>
-          <h2 th:text="${auto.getDetailName()}"></h2>
-          <div id="data">
-            <ul>
-              <li th:text="${auto.getOptionName()}"></li>
-              <li th:text="${auto.getDisp()}"></li>
-              <li th:text="${auto.getPrice()}"></li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="content4">
           <span>
             <a href="#">
               <img src="/img/autopedia/kona1.jpg" alt="">
@@ -92,7 +76,7 @@ layout:decorate="~{/layout}"> -->
           </span>
         </div>
 
-        <div id="content5">
+        <div id="content4">
           <a href=""><img src="/img/autopedia/kona1.jpg" alt=""></a>
         </div>
       <section id="SE_contents2">
