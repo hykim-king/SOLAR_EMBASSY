@@ -17,8 +17,8 @@ public class AutoServiceImpl
     }
 
     @Override
-    public Auto detail(String autoName) {
-        return autoMapper.selectByAutoName(autoName);
+    public Auto detail(int autoNo) {
+        return autoMapper.selectByAutoNo(autoNo);
     }
 }
 
