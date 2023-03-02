@@ -33,9 +33,9 @@ public class AutoController {
 
     @GetMapping("/autoDetail.do")
     public ModelAndView autoDetail(
-            @RequestParam(name = "autoName") String autoName,
+            @RequestParam(name = "autoNo") int autoNo,
             ModelAndView model) throws Exception {
-        Auto auto = autoService.detail(autoName);
+        Auto auto = autoService.detail(autoNo);
         model.addObject("auto", auto);
         model.setViewName("/galaxy/autoDetail");
         return model;
@@ -51,3 +51,4 @@ public class AutoController {
         return model;
     }
 }
+
