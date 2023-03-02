@@ -15,7 +15,7 @@ layout:decorate="~{/layout}"> -->
     <!--원본 css-->
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/com_detail.css">
-    <title>자동차 정보</title>
+    <title th:text="${company.getComName()}"></title>
 </head>
 <body>
 <div id="SE_container">
@@ -32,17 +32,11 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
-
-            <div id="content1">
-                <div id="btn">
-                    <span id="autogalaxy"><a href="?">자동차 갤럭시</a></span>
-                    <span id="autopedia"><a href="?">자동차 백과</a></span>
-                </div>
-            </div>
+            <th:block th:insert="/galaxy/autoGalaxyNavbar"></th:block>
 
             <div id="content2">
                 <div id="photo">
-                    <img th:src="${company.getComImgName()}" alt="">
+                    <img th:src="${company.getComImgName()}" alt="" src="">
                 </div>
                 <div id="inform">
                     기업명 : <span th:text="${company.getComName()}"></span> <br>
