@@ -5,6 +5,10 @@ import com.community.solar_embassy.dto.Galaxy;
 import com.community.solar_embassy.dto.Users;
 import com.community.solar_embassy.service.BoardService;
 import com.community.solar_embassy.service.GalaxyService;
+import com.twy.tripwithyou_spring.dto.ReplyDto;
+import com.twy.tripwithyou_spring.dto.UploadDto;
+import com.twy.tripwithyou_spring.dto.UploadPreferDto;
+import com.twy.tripwithyou_spring.dto.UserDto;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,23 +70,15 @@ public class BoardController {
 //        return "redirect:/board/boardList.do";
 //    }
 
+
     @RequestMapping("/boardDetail")
     public String boardDetail(@RequestParam int boardNo, Model model) throws Exception {
         BoardDto board = boardService.selectBoardDetail(boardNo);
         board.setBoardNo(boardNo);
+
         model.addAttribute("board", board);
         return "/boardDetail";
     }
-
-    //     return "redirect:  (설정한 링크로 가는 것 ) / html로 가면 redirect 제외해야 함
-
-    //    @RequestMapping("/openBoardDetail")
-//    public ModelAndView openBoardDetail(@RequestParam int board_no) throws Exception{
-//        ModelAndView mv = new ModelAndView("/boardDetail");
-//        BoardDto board = boardService.selectBoardDetail(board_no);
-//        mv.addObject("board",board);
-//        return mv;
-//    }
 
     @GetMapping("/updateBoard/{boardNo}")
     public String updateBoard(@PathVariable int boardNo, Model model, HttpSession session) throws Exception {

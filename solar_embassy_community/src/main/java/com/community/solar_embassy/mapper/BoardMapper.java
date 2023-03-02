@@ -1,6 +1,7 @@
 package com.community.solar_embassy.mapper;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.BoardPreferViewDto;
 import com.community.solar_embassy.dto.PagingDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -30,6 +31,8 @@ public interface BoardMapper {
 
     List<BoardDto> selectHot(int endNo);
     int selectEnd();
+
+    BoardPreferViewDto countPreferById(int boardNo);
 }
 
 

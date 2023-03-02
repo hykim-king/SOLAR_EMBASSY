@@ -62,6 +62,18 @@
             <artifactId>mybatis-spring</artifactId>
             <version>3.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.bigdata6</groupId>
+            <artifactId>spring_mybatis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.twy</groupId>
+            <artifactId>tripwithyou_spring</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

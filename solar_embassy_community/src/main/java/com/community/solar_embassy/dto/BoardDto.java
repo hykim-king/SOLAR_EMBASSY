@@ -34,7 +34,9 @@ public class BoardDto implements Serializable {
 
     private int likes;
 
-    private Integer dislikes;
+    private int dislikes;
+
+    private BoardPreferViewDto boardPreferView;
 
     private int views;
 

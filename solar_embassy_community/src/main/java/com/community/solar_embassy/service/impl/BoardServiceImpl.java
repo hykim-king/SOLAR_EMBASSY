@@ -1,6 +1,7 @@
 package com.community.solar_embassy.service.impl;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.BoardPreferViewDto;
 import com.community.solar_embassy.mapper.BoardMapper;
 import com.community.solar_embassy.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDto selectBoardDetail(int boardNo) throws Exception {
-        // boardMapper.updateViews(board_no);             // 조회수 증가시키기
+         boardMapper.updateViews(boardNo);             // 조회수 증가시키기
         return boardMapper.selectBoardDetail(boardNo);
     }
 
