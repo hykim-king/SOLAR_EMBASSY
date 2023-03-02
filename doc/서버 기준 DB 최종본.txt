@@ -123,8 +123,6 @@ create table auto
     autoNo      int auto_increment comment '자동차 번호',
     autoName    varchar(20) charset latin1 not null comment '자동차명(통용)',
     codeName    varchar(20) charset latin1 not null comment '제조사코드명',
-    detailName  varchar(20) charset latin1 not null comment '제원명',
-    optionName  varchar(20) charset latin1 not null comment '세부제원명',
     comNo       int                        not null comment '제조사번호',
     comName     varchar(20) charset latin1 not null comment '제조사이름',
     autoType    varchar(10) charset latin1 null comment 'ex) 준중형',
