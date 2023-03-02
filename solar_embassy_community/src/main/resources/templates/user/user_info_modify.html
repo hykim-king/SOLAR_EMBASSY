@@ -50,51 +50,67 @@ layout:decorate="~{/layout}"> -->
                         <form id="user_info_modify">
                             <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                             <div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text text-white bg-gradient fs-4"
-                                          id="inputGroup-sizing-default"
-                                          style="background-color:#2B2851;">닉네임</span>
+                                <div class="input-group input-group-lg my-3">
+                                    <span class="input-group-text text-white d-inline-block lh-lg text-center bg-gradient fs-4"
+                                          style="background-color:#2B2851;width: 110px;">닉네임</span>
                                     <input type="text" class="form-control fs-4" aria-label="Sizing example input"
                                            aria-describedby="inputGroup-sizing-default"
                                            th:value="${session.loginUser.nickname}" name="nickname">
                                     <button type="submit" class="btn btn-lg fs-4 text-white"
-                                            style="background-color:#2B2851;" formmethod="post" formaction="/user/nickCheck">중복체크
+                                            style="background-color:#2B2851;" formmethod="post"
+                                            formaction="/user/nickCheck">중복체크
                                     </button>
                                 </div>
-<!--                                <div class="text-start" >-->
-<!--                                    <span th:if="${param.nickCheck==1}">중복된 닉네임 입니다.</span>                                                                                        -->
-<!--                                </div>-->
+                                <!--                                <div class="text-start" >-->
+                                <!--                                    <span th:if="${param.nickCheck==1}">중복된 닉네임 입니다.</span>                                                                                        -->
+                                <!--                                </div>-->
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control" th:value="${session.loginUser.email}"
-                                           aria-label="Username">
-                                    <span class="input-group-text">@</span>
-                                    <input type="text" class="form-control" placeholder="naver.com" aria-label="Server">
-                                    <button type="submit" class="btn btn-info btn-lg">인증확인</button>
+                                    <span class="input-group-text text-white d-inline-block lh-lg text-center bg-gradient fs-4"
+                                          style="background-color:#2B2851;width: 110px">이메일</span>
+                                    <input type="email" class="form-control" th:value="${session.loginUser.email}"
+                                           aria-label="Username" name="email">
+                                    <!--                                    <span class="input-group-text">@</span>-->
+                                    <!--                                    <input type="text" class="form-control" placeholder="naver.com" aria-label="Server">-->
+                                    <button type="submit" class="btn btn-lg fs-4 text-white"
+                                            style="background-color:#2B2851;" formmethod="post">인증확인
+                                    </button>
                                 </div>
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control" th:value="${session.loginUser.hp}">
-                                    <button type="submit" class="btn btn-info btn-lg">인증확인</button>
+                                    <span class="input-group-text text-white d-inline-block lh-lg text-center bg-gradient fs-4"
+                                          style="background-color:#2B2851;width: 110px">집전화</span>
+                                    <input type="tel" class="form-control" th:value="${session.loginUser.hp}" name="hp">
                                 </div>
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control" th:value="${session.loginUser.tel}">
-                                    <button type="submit" class="btn btn-info btn-lg">인증확인</button>
+                                    <span class="input-group-text text-white d-inline-block lh-lg text-center bg-gradient fs-4"
+                                          style="background-color:#2B2851;width: 110px">휴대폰</span>
+                                    <input type="tel" class="form-control" th:value="${session.loginUser.tel}"
+                                           name="tel">
+                                    <button type="submit" class="btn btn-lg fs-4 text-white"
+                                            style="background-color:#2B2851;" formmethod="post">인증확인
+                                    </button>
                                 </div>
                                 <input type="hidden" name="adminId" th:value="${session.loginUser.adminId}">
                                 <input type="hidden" name="profileImgNo" th:value="${session.loginUser.profileImgNo}">
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="date" class="form-control" th:value="${session.loginUser.birth}">
+                                    <span class="input-group-text text-white d-inline-block lh-lg text-center bg-gradient fs-4"
+                                          style="background-color:#2B2851;width: 110px">생년월일</span>
+                                    <input type="date" class="form-control" name="birth"
+                                           th:value="${#calendars.format(session.loginUser.birth, 'yyyy-MM-dd')}">
                                 </div>
                                 <div class="input-group input-group-lg my-3">
                                     <input type="password" class="form-control rounded" placeholder="새 비밀번호"
                                            name="passwords">
                                 </div>
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control rounded" placeholder="비밀번호 확인"
+                                    <input type="password" class="form-control rounded" placeholder="비밀번호 확인"
                                            name="passwords_C">
                                 </div>
 
-                                <button type="submit" class="btn btn-secondary btn-lg mt-5" formmethod="post" >확인</button>
-                                <button type="button" class="btn btn-secondary btn-lg mt-5 ms-5" formaction="/user/my_page.do">취소</button>
+                                <button type="submit" class="btn btn-secondary btn-lg mt-5" formmethod="post">확인
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-lg mt-5 ms-5"
+                                        formaction="/user/my_page.do">취소
+                                </button>
                             </div>
                         </form>
                     </div>

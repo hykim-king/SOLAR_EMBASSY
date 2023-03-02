@@ -16,6 +16,7 @@ public class Users implements Serializable {
     private String nickname;
 
     private String passwords;
+    private String passwords_C;
 
     private String email;
 

@@ -189,19 +189,24 @@ public class UserController {
     }
 
     @PostMapping("user_info_modify.do")
-    public String user_info_modify(@SessionAttribute Users loginUser, Users user) {
-        int modify = usersService.modify(user);
-        if (modify == 1) {
-            return "redirect:/user/my_page.do";
-        } else {
-            return "redirect:/user/user_info_modify.do";
+    public String user_info_modify(@SessionAttribute Users loginUser, Users user, HttpSession session) {
+        System.out.println(user.getPasswords());
+        System.out.println(user.getPasswords_C());
+        if (user.getPasswords()!=null&&user.getPasswords().equals(user.getPasswords_C())) {
+            int modify = usersService.modify(user);
+            if (modify == 1) {
+                Users loginUpdate = usersService.login(user.getUserId(),user.getPasswords());
+                session.setAttribute("loginUser",loginUpdate);
+                return "redirect:/user/my_page.do";
+            }
         }
+        return "redirect:/user/user_info_modify.do";
     }
 
     @PostMapping("nickCheck")
     public String nickCheck(String nickname, HttpSession session) {
         int check = usersService.findNick(nickname);
-        return "redirect:/user/user_info_modify.do?nickCheck="+check;
+        return "redirect:/user/user_info_modify.do?nickCheck=" + check;
     }
 
 }
