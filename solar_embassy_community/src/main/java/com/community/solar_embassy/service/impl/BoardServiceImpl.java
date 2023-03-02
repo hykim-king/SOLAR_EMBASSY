@@ -34,7 +34,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDto selectBoardDetail(int boardNo) throws Exception {
-        // boardMapper.updateViews(board_no);             // 조회수 증가시키기
+         boardMapper.updateViews(boardNo);             // 조회수 증가시키기
         return boardMapper.selectBoardDetail(boardNo);
     }
 

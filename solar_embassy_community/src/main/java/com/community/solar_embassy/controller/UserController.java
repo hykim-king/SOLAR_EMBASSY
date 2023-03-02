@@ -159,7 +159,12 @@ public class UserController {
     }
 
     @GetMapping("user_info_modify.do")
-    public void user_info_modify() {
+    public String user_info_modify(HttpSession session) {
+        if (session.getAttribute("loginUser") == null) {
+            return "redirect:user/login.do";
+        }else{
+            return "user/user_info_modify";
+        }
     }
 
 }

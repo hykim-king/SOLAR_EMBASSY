@@ -146,7 +146,6 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     width: 1200px;
     height: 2000px;
     margin: 0;
-    position: fixed;
     transform: translate(360px,50px);
 }
 
