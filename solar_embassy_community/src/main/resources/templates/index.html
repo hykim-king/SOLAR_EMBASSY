@@ -84,11 +84,15 @@ layout:decorate="~{/layout}"> -->
                     <div class="SE_ranking">
                         <!--Add board update soon...-->
                         <table class="table table-bordered">
+                            <colgroup>
+                                <col span="1" style="width: max-content;">
+                                <col span="1">
+                                <col span="1"style="width: max-content;">
+                            </colgroup>
                             <thead>
                             <tr class="text-center">
                                 <th>갤럭시</th>
                                 <th>제목</th>
-                                <th>날짜</th>
                                 <th>추천</th>
                             </tr>
                             </thead>
@@ -97,7 +101,7 @@ layout:decorate="~{/layout}"> -->
                                 <td th:text="${list_one.galaxy.galName}"></td>
                                 <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
                                     th:text="${list_one.title}" class="text-start"></td>
-                                <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
+<!--                                <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>-->
                                 <td th:text="${list_one.likes}" class="text-start"></td>
                             </tr>
                             </tbody>
@@ -112,10 +116,10 @@ layout:decorate="~{/layout}"> -->
                             <table class="table table-bordered">
                                 <thead>
                                 <tr class="text-center">
-                                    <th>번호</th>
-                                    <th>제목</th>
-                                    <th>날짜</th>
-                                    <th>조회수</th>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">날짜</th>
+                                    <th scope="col">조회수</th>
                                 </tr>
                                 </thead>
                                 <tbody>

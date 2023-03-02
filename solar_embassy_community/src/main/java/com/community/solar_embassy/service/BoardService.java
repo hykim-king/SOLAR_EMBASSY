@@ -20,4 +20,6 @@ public interface BoardService {
 
     List<BoardDto> hotList(int endNo);
     int lastNo();
+
+    List<BoardDto> BoardListByUserId(String userId);
 }

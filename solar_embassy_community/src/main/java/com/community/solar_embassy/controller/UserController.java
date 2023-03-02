@@ -1,20 +1,27 @@
 package com.community.solar_embassy.controller;
 
+import com.community.solar_embassy.dto.BoardDto;
 import com.community.solar_embassy.dto.Users;
+import com.community.solar_embassy.service.BoardService;
 import com.community.solar_embassy.service.UsersService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     private UsersService usersService;
+    private BoardService boardService;
 
-    public UserController(UsersService usersService) {
+    public UserController(UsersService usersService, BoardService boardService) {
         this.usersService = usersService;
+        this.boardService = boardService;
     }
 
     @GetMapping("login.do")
@@ -113,7 +120,11 @@ public class UserController {
     }
 
     @GetMapping("my_page.do")
-    public void my_page(HttpSession session) {
+    public String my_page(HttpSession session, Model model) {
+        Users user = (Users) session.getAttribute("loginUser");
+        List<BoardDto> myBoardList = boardService.BoardListByUserId(user.getUserId());
+        model.addAttribute("myBoards", myBoardList);
+        return "user/my_page";
     }
 
     @GetMapping("user_black.do")
@@ -158,13 +169,39 @@ public class UserController {
         }
     }
 
+    @PostMapping("pw_check.do")
+    public String pw_check(@RequestParam String passwords, HttpSession session, @SessionAttribute String redirectUri) {
+        Users user = (Users) session.getAttribute("loginUser");
+        if (user.getPasswords().equals(passwords)) {
+            return "redirect:/user/user_info_modify.do";
+        } else {
+            return "redirect:/user/pw_check.do";
+        }
+    }
+
     @GetMapping("user_info_modify.do")
     public String user_info_modify(HttpSession session) {
         if (session.getAttribute("loginUser") == null) {
-            return "redirect:user/login.do";
-        }else{
+            return "redirect:/user/login.do";
+        } else {
             return "user/user_info_modify";
         }
+    }
+
+    @PostMapping("user_info_modify.do")
+    public String user_info_modify(@SessionAttribute Users loginUser, Users user) {
+        int modify = usersService.modify(user);
+        if (modify == 1) {
+            return "redirect:/user/my_page.do";
+        } else {
+            return "redirect:/user/user_info_modify.do";
+        }
+    }
+
+    @PostMapping("nickCheck")
+    public String nickCheck(String nickname, HttpSession session) {
+        int check = usersService.findNick(nickname);
+        return "redirect:/user/user_info_modify.do?nickCheck="+check;
     }
 
 }

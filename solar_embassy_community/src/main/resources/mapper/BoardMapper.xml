@@ -76,6 +76,9 @@
     <select id="selectEnd" resultType="java.lang.Integer">
         SELECT boardNo FROM board ORDER BY boardNo DESC LIMIT 1
     </select>
+    <select id="selectListByUserId" resultType="com.community.solar_embassy.dto.BoardDto">
+        SELECT * FROM board WHERE userId= #{userId}
+    </select>
     <!--수정, 삭제-->
     <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto" >
         <![CDATA[

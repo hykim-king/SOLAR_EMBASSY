@@ -30,6 +30,8 @@ public interface BoardMapper {
 
     List<BoardDto> selectHot(int endNo);
     int selectEnd();
+
+    List<BoardDto> selectListByUserId(String userId);
 }
 
 

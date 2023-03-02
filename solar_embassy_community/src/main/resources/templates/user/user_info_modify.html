@@ -40,58 +40,69 @@ layout:decorate="~{/layout}"> -->
                         <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3">차단 목록 관리</button>
                     </div>
                     <div id="user_info_btn3">
-                        <button type="button" class="btn btn-outline-danger col-12 mt-5 ms-4 fs-3" onclick="location.href='/user/withdrawal.do'">회원 탈퇴</button>
+                        <button type="button" class="btn btn-outline-danger col-12 mt-5 ms-4 fs-3"
+                                onclick="location.href='/user/withdrawal.do'">회원 탈퇴
+                        </button>
                     </div>
                 </div>
                 <div id="user_info_bgc1">
                     <div id="user_info_bgc2">
-                        <div id="user_info_modify" >
+                        <form id="user_info_modify">
+                            <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                             <div>
-                                <div class="input-group input-group-lg mb-3">
-                                    <input type="text" class="form-control" placeholder="아이디" aria-label="id">
-                                    <button type="submit" class="btn btn-info btn-lg">중복체크</button>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-white bg-gradient fs-4"
+                                          id="inputGroup-sizing-default"
+                                          style="background-color:#2B2851;">닉네임</span>
+                                    <input type="text" class="form-control fs-4" aria-label="Sizing example input"
+                                           aria-describedby="inputGroup-sizing-default"
+                                           th:value="${session.loginUser.nickname}" name="nickname">
+                                    <button type="submit" class="btn btn-lg fs-4 text-white"
+                                            style="background-color:#2B2851;" formmethod="post" formaction="/user/nickCheck">중복체크
+                                    </button>
                                 </div>
-                                <div class="text-start">
-                                    <span>사용 가능한 아이디 입니다.</span>
-                                </div>
+<!--                                <div class="text-start" >-->
+<!--                                    <span th:if="${param.nickCheck==1}">중복된 닉네임 입니다.</span>                                                                                        -->
+<!--                                </div>-->
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control" placeholder="닉네임" aria-label="nickname">
-                                    <button type="submit" class="btn btn-info btn-lg">중복체크</button>
-                                </div>
-                                <div class="text-start">
-                                    <span>중복된 닉네임 입니다.</span>
-                                </div>
-                                <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control" placeholder="Email" aria-label="Username">
+                                    <input type="text" class="form-control" th:value="${session.loginUser.email}"
+                                           aria-label="Username">
                                     <span class="input-group-text">@</span>
                                     <input type="text" class="form-control" placeholder="naver.com" aria-label="Server">
                                     <button type="submit" class="btn btn-info btn-lg">인증확인</button>
                                 </div>
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control" placeholder="휴대폰번호" aria-label="phoenNum">
+                                    <input type="text" class="form-control" th:value="${session.loginUser.hp}">
                                     <button type="submit" class="btn btn-info btn-lg">인증확인</button>
                                 </div>
-                                <div class="input-group input-group-lg my-3 ">
-                                    <input type="text" class="form-control rounded" placeholder="현재 비밀번호" aria-label="nowPw">
+                                <div class="input-group input-group-lg my-3">
+                                    <input type="text" class="form-control" th:value="${session.loginUser.tel}">
+                                    <button type="submit" class="btn btn-info btn-lg">인증확인</button>
+                                </div>
+                                <input type="hidden" name="adminId" th:value="${session.loginUser.adminId}">
+                                <input type="hidden" name="profileImgNo" th:value="${session.loginUser.profileImgNo}">
+                                <div class="input-group input-group-lg my-3">
+                                    <input type="date" class="form-control" th:value="${session.loginUser.birth}">
                                 </div>
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control rounded" placeholder="새 비밀번호" aria-label="newPw">
+                                    <input type="password" class="form-control rounded" placeholder="새 비밀번호"
+                                           name="passwords">
                                 </div>
                                 <div class="input-group input-group-lg my-3">
-                                    <input type="text" class="form-control rounded" placeholder="비밀번호 확인" aria-label="newPwCheck">
+                                    <input type="text" class="form-control rounded" placeholder="비밀번호 확인"
+                                           name="passwords_C">
                                 </div>
 
-                                <button type="submit" class="btn btn-secondary btn-lg mt-5">확인</button>
-                                <button type="submit" class="btn btn-secondary btn-lg mt-5 ms-5">취소</button>
+                                <button type="submit" class="btn btn-secondary btn-lg mt-5" formmethod="post" >확인</button>
+                                <button type="button" class="btn btn-secondary btn-lg mt-5 ms-5" formaction="/user/my_page.do">취소</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
             </div>
             <!--여기까지-->
         </div>
-
 
 
     </div>

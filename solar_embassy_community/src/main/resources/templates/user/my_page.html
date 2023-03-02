@@ -85,45 +85,13 @@ layout:decorate="~{/layout}"> -->
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th class="text-center">자동차 갤럭시</th>
-                            <td class="text-center">125342</td>
-                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
-                            <td class="text-center">2023-02-03</td>
-                            <td class="text-center">500</td>
-                            <td class="text-center">300</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">자동차 갤럭시</th>
-                            <td class="text-center">125342</td>
-                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
-                            <td class="text-center">2023-02-03</td>
-                            <td class="text-center">500</td>
-                            <td class="text-center">300</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">자동차 갤럭시</th>
-                            <td class="text-center">125342</td>
-                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
-                            <td class="text-center">2023-02-03</td>
-                            <td class="text-center">500</td>
-                            <td class="text-center">300</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">자동차 갤럭시</th>
-                            <td class="text-center">125342</td>
-                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
-                            <td class="text-center">2023-02-03</td>
-                            <td class="text-center">500</td>
-                            <td class="text-center">300</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">자동차 갤럭시</th>
-                            <td class="text-center">125342</td>
-                            <td class="text-start">이거 틀잡는게 생각보다 힘드네요(100)</td>
-                            <td class="text-center">2023-02-03</td>
-                            <td class="text-center">500</td>
-                            <td class="text-center">300</td>
+                        <tr th:each="myBoard:${myBoards}">
+                            <th class="text-center" th:text="${myBoard.galaxy.galName}"></th>
+                            <td class="text-center" th:text="${myBoard.boardNo}"></td>
+                            <td class="text-start" th:text="${myBoard.title}"></td>
+                            <td class="text-center" th:text="${#calendars.format(myBoard.postTime, 'yyyy-MM-dd')}"></td>
+                            <td class="text-center" th:text="${myBoard.views}"></td>
+                            <td class="text-center" th:text="${myBoard.likes}"></td>
                         </tr>
                         </tbody>
                     </table>

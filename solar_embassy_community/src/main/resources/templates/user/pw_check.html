@@ -51,12 +51,14 @@ layout:decorate="~{/layout}"> -->
                             </div>
                             <div>
                                 <div class="input-group input-group-lg my-4">
-                                    <div class="input-group mb-3">
+                                    <form class="input-group mb-3" method="post" action="">
                                         <span class="input-group-text" id="basic-addon1">비밀번호</span>
-                                        <input type="text" class="form-control rounded-end" aria-label="Username">
+                                        <input type="text" class="form-control rounded-end" aria-label="Passwords"
+                                               name="passwords">
                                         <span><button type="submit"
-                                                      class="btn btn-info btn-lg mt-1 ms-3 fs-5" onclick="location.href='/user/user_info_modify.do'">확인</button></span>
-                                    </div>
+                                                      class="btn btn-info btn-lg mt-1 ms-3 fs-5"
+                                                      onclick="location.href='/user/user_info_modify.do'">확인</button></span>
+                                    </form>
                                 </div>
                                 <button type="submit" class="btn btn-secondary btn-lg mt-1 ms-3">취소</button>
 
