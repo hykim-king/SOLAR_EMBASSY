@@ -39,7 +39,6 @@ layout:decorate="~{/layout}"> -->
             <img src="/img/autopedia/grandeur.png" alt="">
           </div>
           <div id="inform">
-            <h2>차량 정보</h2> <br>
             차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
             코드명 : <span th:text="${auto.getCodeName()}"></span> <br>
             제조사 : <span th:text="${auto.getComName()}"></span> <br>
@@ -79,23 +78,14 @@ layout:decorate="~{/layout}"> -->
         <div id="content4">
           <a href=""><img src="/img/autopedia/kona1.jpg" alt=""></a>
         </div>
-      <section id="SE_contents2">
-        <div id="SE_banner1"><h1>배너자리</h1></div>
-      </section>
+        <section id="SE_contents2">
+          <div>Left_banner</div>
+        </section>
 
-      <section id="SE_contents3">
-        <div id="SE_banner2"><h1>배너자리</h1></div>
-      </section>
-
-      <footer id="SE_footer">
-        <p>
-        </p>
-        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-          <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-        <p>
-        </p>
-        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-      </footer>
+        <section id="SE_contents3">
+          <div>right_banner</div>
+        </section>
+        <th:block th:insert="/footer"></th:block>
     </div>
   </div>
 </div>
