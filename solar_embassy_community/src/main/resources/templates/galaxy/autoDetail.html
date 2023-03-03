@@ -39,16 +39,16 @@ layout:decorate="~{/layout}"> -->
             <img src="/img/autopedia/grandeur.png" alt="">
           </div>
           <div id="inform">
-            <h2>차량 정보(*는 최고 기준)</h2> <br>
+            <h2>차량 정보</h2> <br>
             차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
             코드명 : <span th:text="${auto.getCodeName()}"></span> <br>
             제조사 : <span th:text="${auto.getComName()}"></span> <br>
             차종 : <span th:text="${auto.getAutoType()}"></span> <br>
             출시일 : <span th:text="${#dates.format(auto.getReleaseDate(),'yyyy-MM-dd')}"></span> <br>
             탑승 인원 : <span th:text="${auto.getSeat()}"></span>인승 <br>
-            연비* : <span th:text="${auto.getMpg()}"></span>km <br>
-            배기량* : <span th:text="${auto.getDisp()}"></span>cc <br>
-            가격* : <span th:text="${auto.getPrice()}"></span>만원 <br>
+            연비 / 복합전비 : <span th:text="${auto.getMpg()}"></span>km/kWh <br>
+            배기량 / 배터리 용량 : <span th:text="${auto.getDisp()}"></span>cc/kWh <br>
+            가격 : <span th:text="${auto.getPrice()}"></span>만원 <br>
             차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
           </div>
         </div>
