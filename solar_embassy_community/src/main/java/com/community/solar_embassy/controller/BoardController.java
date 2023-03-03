@@ -1,10 +1,8 @@
 package com.community.solar_embassy.controller;
 
-import com.community.solar_embassy.dto.BoardDto;
-import com.community.solar_embassy.dto.Galaxy;
-import com.community.solar_embassy.dto.Users;
-import com.community.solar_embassy.service.BoardService;
-import com.community.solar_embassy.service.GalaxyService;
+import com.community.solar_embassy.dto.*;
+import com.community.solar_embassy.mapper.BoardPreferMapper;
+import com.community.solar_embassy.service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +22,14 @@ public class BoardController {
     BoardService boardService;
     @Autowired
     GalaxyService galaxyService;
+    @Autowired
+    ReplyService replyService;
+    @Autowired
+    BoardPreferService boardPreferService;
+    @Autowired
+    BoardPreferMapper boardPreferMapper;
+    @Autowired
+    UsersService usersService;
 
     @GetMapping("/boardList.do")
     public String boardList(Locale locale, Model model, @RequestParam int galaxyNo) throws Exception {
@@ -60,94 +66,64 @@ public class BoardController {
         }
     }
 
-    //    @PostMapping("/board/boardWrite")
-//    public String boardWrite(BoardDto board) throws Exception {
-//        boardService.insertBoard(board);
-//        return "redirect:/board/boardList.do";
-//    }
 
     @RequestMapping("/boardDetail")
-    public String boardDetail(@RequestParam int boardNo, Model model) throws Exception {
+    public String boardDetail(@RequestParam int boardNo, Model model, @SessionAttribute(required = false) Users loginUser) throws Exception {
         BoardDto board = boardService.selectBoardDetail(boardNo);
+        board.setUser(usersService.findById(board.getUserId()));
         board.setBoardNo(boardNo);
+        List<Reply> replyList = replyService.findByBoardNo(boardNo);
+        BoardPreferViewDto boardPreferView = new BoardPreferViewDto();
+        boardPreferView.setLikes(boardPreferMapper.countByBoardNoAndPreferIsTrue(boardNo));
+        boardPreferView.setDislikes(boardPreferMapper.countByBoardNoAndPreferIsFalse(boardNo));
+        if (loginUser != null) {
+            BoardPreferDto loginUserPrefer = boardPreferService.detail(boardNo, loginUser.getUserId());
+            boardPreferView.setLoginUserPrefer(loginUserPrefer);
+        }
+        board.setBoardPreferView(boardPreferView);
         model.addAttribute("board", board);
-        return "/boardDetail";
+        model.addAttribute("replyList", replyList);
+        List<BoardDto> list = boardService.boardListByGalaxy(board.getGalaxyNo());//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        for(BoardDto boardl:list){
+            boardl.setUser(usersService.findById(boardl.getUserId()));
+        }
+        model.addAttribute("list", list);
+
+        return "/boardDetail2";
     }
 
-    //     return "redirect:  (설정한 링크로 가는 것 ) / html로 가면 redirect 제외해야 함
-
-    //    @RequestMapping("/openBoardDetail")
-//    public ModelAndView openBoardDetail(@RequestParam int board_no) throws Exception{
-//        ModelAndView mv = new ModelAndView("/boardDetail");
-//        BoardDto board = boardService.selectBoardDetail(board_no);
-//        mv.addObject("board",board);
-//        return mv;
-//    }
 
     @GetMapping("/updateBoard/{boardNo}")
     public String updateBoard(@PathVariable int boardNo, Model model, HttpSession session) throws Exception {
         Users loginUser = (Users) session.getAttribute("loginUser");
-        if (loginUser == null){
+        if (loginUser == null) {
             return "redirect:/user/login.do";
         }
-        BoardDto board=boardService.selectBoardDetail(boardNo);
-        model.addAttribute("board",board);
+        BoardDto board = boardService.selectBoardDetail(boardNo);
+        model.addAttribute("board", board);
         return "updateBoard";
     }
 
     @PostMapping("/updateBoard/{boardNo}")
-    public String updateBoard(BoardDto board ) throws Exception {
+    public String updateBoard(BoardDto board) throws Exception {
         boardService.updateBoard(board);
-        return "redirect:/board/boardDetail?boardNo="+board.getBoardNo();
+        return "redirect:/board/boardDetail?boardNo=" + board.getBoardNo();
 //        return "redirect:/board/updateBoard"+board.getBoardNo();
     }
 
-    //    @RequestMapping(value = "/updateBoard", method = RequestMethod.POST)  // 수정요청
-//    public String updateBoard(BoardDto board) throws Exception {
-//        int update= boardService.updateBoard(board);         //게시글 수정
-//        int galaxyNo=galaxyService.findByNo(board.getGalaxyNo()).getGalaxyNo();
-//        if (update==1){
-//        return "redirect:/board/boardList.do?galaxyNo="+galaxyNo;  //수정완료 후 게시판 목록으로
-//        }else {
-//            return "redirect:/board/boardDetail?boardNo="+board.getBoardNo();
-//        }
-//    }
-//    @GetMapping("/updateBoard/{boardNo}")
-//    public String update(
-//            @PathVariable int boardNo,
-//            Model model,
-//            HttpSession session) {
-//        return "/updateBoard";
-//}
-//    @PutMapping("updateBoard")
-//    public String updateBoard(BoardDto board, @RequestParam int boardNo) throws Exception {
-//        int update = boardService.updateBoard(board);         //게시글 수정
-//        int galaxyNo = galaxyService.findByNo(board.getGalaxyNo()).getGalaxyNo();
-//        if (update == 1) {
-//            return "redirect:/board/boardDetail?boardNo=" + boardNo;  //수정완료 후 게시판 목록으로
-//        } else {
-//            return "redirect:/board/up" + boardNo;
-//        }
-//    }
 
     @RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)
-    public String deleteBoard(@RequestParam int boardNo,HttpSession session ) throws Exception {
+    public String deleteBoard(@RequestParam int boardNo, HttpSession session) throws Exception {
         int galaxyNo = boardService.selectBoardDetail(boardNo).getGalaxyNo();
         int delete = boardService.deleteBoard(boardNo);
         Users loginUser = (Users) session.getAttribute("loginUser");
-        if (loginUser == null){
+        if (loginUser == null) {
             return "redirect:/user/login.do";
-        }else if (delete != 1) {
+        } else if (delete != 1) {
             return "redirect:/board/boardDetail?boardNo=" + boardNo;
         }
         return "redirect:/board/boardList.do?galaxyNo=" + galaxyNo;
     }
-
-    //    @RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)  //삭제요청
-//    public String deleteBoard(BoardDto board) throws Exception {
-//        boardService.deleteBoard(board.getBoardNo());      //게시글 삭제
-//        return "redirect:/board/boardList";  //삭제완료 후 게시판 목록으로
-//    }
 
 
 }

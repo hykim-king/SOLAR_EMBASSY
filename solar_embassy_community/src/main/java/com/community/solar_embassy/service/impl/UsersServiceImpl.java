@@ -44,6 +44,11 @@ public class UsersServiceImpl implements UsersService {
         }
         return check;
     }
+
+    @Override
+    public Users findById(String userId) {
+        return usersMapper.findById(userId);
+    }
 }
 
 

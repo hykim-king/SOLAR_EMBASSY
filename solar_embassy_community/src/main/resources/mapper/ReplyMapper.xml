@@ -5,18 +5,20 @@
 <mapper namespace="com.community.solar_embassy.mapper.ReplyMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Reply">
-            <id property="replyNo" column="replyNo" jdbcType="INTEGER"/>
-            <id property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
-            <result property="boardNo" column="boardNo" jdbcType="INTEGER"/>
-            <result property="userId" column="userId" jdbcType="VARCHAR"/>
-            <result property="fkReplyNo" column="fkReplyNo" jdbcType="VARCHAR"/>
-            <result property="contents" column="contents" jdbcType="VARCHAR"/>
-            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
-            <result property="likes" column="likes" jdbcType="INTEGER"/>
-            <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
-            <result property="state" column="state" jdbcType="INTEGER"/>
-            <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
-            <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
+        <id property="replyNo" column="replyNo" jdbcType="INTEGER"/>
+        <id property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+        <result property="boardNo" column="boardNo" jdbcType="INTEGER"/>
+        <result property="userId" column="userId" jdbcType="VARCHAR"/>
+        <result property="fkReplyNo" column="fkReplyNo" jdbcType="VARCHAR"/>
+        <result property="contents" column="contents" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="likes" column="likes" jdbcType="INTEGER"/>
+        <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
+        <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
+        <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById"
+                     autoMapping="true" fetchType="lazy"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -30,15 +32,28 @@
         VALUES (#{boardNo}, #{userId}, #{fkReplyNo}, #{contents}, #{imgPath}, #{originImgName})
     </insert>
     <update id="updateReply">
-        UPDATE reply SET contents=#{contents}, imgPath=#{imgPath}, originImgName=#{originImgName}, updateTime=CURRENT_TIMESTAMP WHERE replyNo= #{replyNo}
+        UPDATE reply
+        SET contents=#{contents},
+            imgPath=#{imgPath},
+            originImgName=#{originImgName},
+            updateTime=CURRENT_TIMESTAMP
+        WHERE replyNo = #{replyNo}
     </update>
     <delete id="deleteById">
-        DELETE FROM reply WHERE replyNo= #{replyNo}
+        DELETE
+        FROM reply
+        WHERE replyNo = #{replyNo}
     </delete>
     <select id="findByBoardNo" resultType="com.community.solar_embassy.dto.Reply">
-        SELECT * FROM reply WHERE boardNo= #{boardNo}
+        SELECT *
+        FROM reply
+        WHERE boardNo = #{boardNo}
     </select>
     <select id="findAll" resultType="com.community.solar_embassy.dto.Reply">
-        SELECT * FROM reply
+        SELECT *
+        FROM reply
+    </select>
+    <select id="findAllByFkReplyNo" resultType="com.community.solar_embassy.dto.Reply">
+        SELECT * FROM reply WHERE fkReplyNo=#{replyNo}
     </select>
 </mapper>

@@ -187,20 +187,6 @@
         }
 
         /*  추가 css*/
-        #user_info_bgc1 {
-            margin-left: 2.5%;
-            margin-top: 0;
-            background-color: #DBE3FF;
-            width: 95%;
-            height: 70%;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        #head_info {
-            background-color: #f7f7f7;
-        }
-
         #likes {
             margin-top: 20px;
             position: relative;
@@ -208,43 +194,6 @@
             text-align: center;
         }
 
-        #reply {
-            border-bottom: 2px solid #00008B;
-        }
-
-        #reply_comment {
-            box-sizing: border-box;
-        }
-
-        #reply_reply_comment {
-            background-color: #F0FFFF;
-            border-top: 1px solid #D3D3D3;
-
-
-        }
-
-        #reply_reply_icon {
-            transform: rotate(135deg);
-        }
-
-
-        #reply_reg {
-            background-color: #F0FFFF;
-            border-bottom: 2px solid #00008B;
-            border-top: 2px solid #00008B;
-        }
-
-        #reply_reply_reg {
-            background-color: #F0FFFF;
-            border-top: 1px solid #D3D3D3;
-        }
-
-        #reply_list1 {
-            margin-top: 10px;
-            border: 3px solid #fffbfb;
-            height: 800px;
-            border-radius: 20px;
-        }
 
         #frm_div {
             margin-top: 20px;
@@ -269,12 +218,6 @@
             top: 15px;
 
         }
-
-        #reply_reply_reg_btn {
-
-        }
-
-
     </style>
 </head>
 <body>
@@ -303,7 +246,8 @@
                         <input id="boardNo" type="hidden" name="boardNo" th:value="${board.boardNo}">
                         <caption>게시글 상세 내용</caption>
                         <a href="#this" class="btn" id="list">목록으로</a>
-                        <a class="btn" id="edit" href="javascript:void(0)" th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (boardNo=${param.boardNo})}]]">수정</a>
+                        <a class="btn" id="edit" href="javascript:void(0)"
+                           th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (boardNo=${param.boardNo})}]]">수정</a>
                         <a href="#delete" class="btn" id="delete">삭제</a>
                         <tbody>
                         <tr>
@@ -344,84 +288,13 @@
                 </div>
             </div> <!--frm_div-->
             <!--댓글-->
-<!--            <ul class="list-group">-->
-<!--                <li class="list-group-item d-flex justify-content-between align-items-center">-->
-<!--                    A list item-->
-<!--                    <span class="badge bg-primary rounded-pill">14</span>-->
-<!--                </li>-->
-<!--                <li class="list-group-item d-flex justify-content-between align-items-center">-->
-<!--                    A second list item-->
-<!--                    <span class="badge bg-primary rounded-pill">2</span>-->
-<!--                </li>-->
-<!--                <li class="list-group-item d-flex justify-content-between align-items-center">-->
-<!--                    A third list item-->
-<!--                    <span class="badge bg-primary rounded-pill">1</span>-->
-<!--                </li>-->
-<!--            </ul>-->
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    A list item
+                    <span class="badge bg-primary rounded-pill">14</span>
+                </li>
+            </ul>
             <!--댓글 end-->
-            <!--전체 글 출력 -->
-<!--            <div class="accordion" id="accordionExample">-->
-<!--                <div class="accordion-item">-->
-<!--                    <h2 class="accordion-header" id="headingOne">-->
-<!--                        <button class="accordion-button" type="button" data-bs-toggle="collapse"-->
-<!--                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-<!--                            jj-->
-<!--                        </button>-->
-<!--                    </h2>-->
-<!--                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"-->
-<!--                         data-bs-parent="#accordionExample">-->
-<!--                        <div class="accordion-body">-->
-<!--                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the-->
-<!--                            collapse plugin adds the appropriate classes that we use to style each element. These-->
-<!--                            classes control the overall appearance, as well as the showing and hiding via CSS-->
-<!--                            transitions. You can modify any of this with custom CSS or overriding our default variables.-->
-<!--                            It's also worth noting that just about any HTML can go within the-->
-<!--                            <code>.accordion-body</code>, though the transition does limit overflow.-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="accordion-item">-->
-<!--                    <h2 class="accordion-header" id="headingTwo">-->
-<!--                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
-<!--                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
-<!--                            Accordion Item #2-->
-<!--                        </button>-->
-<!--                    </h2>-->
-<!--                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"-->
-<!--                         data-bs-parent="#accordionExample">-->
-<!--                        <div class="accordion-body">-->
-<!--                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until-->
-<!--                            the collapse plugin adds the appropriate classes that we use to style each element. These-->
-<!--                            classes control the overall appearance, as well as the showing and hiding via CSS-->
-<!--                            transitions. You can modify any of this with custom CSS or overriding our default variables.-->
-<!--                            It's also worth noting that just about any HTML can go within the-->
-<!--                            <code>.accordion-body</code>, though the transition does limit overflow.-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="accordion-item">-->
-<!--                    <h2 class="accordion-header" id="headingThree">-->
-<!--                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
-<!--                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">-->
-<!--                            Accordion Item #3-->
-<!--                        </button>-->
-<!--                    </h2>-->
-<!--                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"-->
-<!--                         data-bs-parent="#accordionExample">-->
-<!--                        <div class="accordion-body">-->
-<!--                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the-->
-<!--                            collapse plugin adds the appropriate classes that we use to style each element. These-->
-<!--                            classes control the overall appearance, as well as the showing and hiding via CSS-->
-<!--                            transitions. You can modify any of this with custom CSS or overriding our default variables.-->
-<!--                            It's also worth noting that just about any HTML can go within the-->
-<!--                            <code>.accordion-body</code>, though the transition does limit overflow.-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-            <!--전체 글 출력  end-->
-
-
         </div> <!--SE_contents-->
     </div> <!--SE_topline-->
 </div> <!--SE_container1-->
@@ -438,7 +311,7 @@
         $('#edit').on("click", function () {
             var frm = $('#frm')[0];
 
-            frm.action = "/board/updateBoard/"+boardNo;
+            frm.action = "/board/updateBoard/" + boardNo;
             frm.submit();
         });
 
@@ -448,6 +321,36 @@
             frm.submit();
         });
     });
+</script>
+<script th:inline="javascript">
+    async function boardPreferHandler(uploadNo,preferBtn){
+        let url=`/board/prefer/handler.do?boardNo=${boardNo}&preferBtn=${preferBtn}`;
+        let viewUrl=`/board/prefer/view.do?boardNo=`+boardNo;
+        const boardPreferContainer=document.getElementById("boardPreferContainer");
+        const resp=await fetch(url,{method:"PUT"});
+        if(resp.status===200){
+            const json=await resp.json();
+            if(json.state===1){
+                const resp=await fetch(viewUrl);
+                if(resp.status===200){
+                    let html=await resp.text();
+                    boardPreferContainer.innerHTML=html;
+                }else{
+                    alert("좋아요 싫어요 불러오기 실패(새로고침하세요.)");
+                }
+            }else{
+                alert("좋아요 싫어요 실패");
+            }
+        }else if(resp.status===400){
+            alert("로그인 하셔야 이용할 수 있습니다.");
+        }else if(resp.status===405){
+            alert("잘못된 경로를 이용하고 있습니다.")
+        }else if(resp.status===500){
+            alert("데이터베이스 서버 오류")
+        }
+
+    }
+
 </script>
 </body>
 </html>

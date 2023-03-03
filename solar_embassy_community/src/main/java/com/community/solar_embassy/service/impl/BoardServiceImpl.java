@@ -1,10 +1,12 @@
 package com.community.solar_embassy.service.impl;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.Reply;
 import com.community.solar_embassy.mapper.BoardMapper;
 import com.community.solar_embassy.mapper.GalaxyMapper;
 import com.community.solar_embassy.mapper.UsersMapper;
 import com.community.solar_embassy.service.BoardService;
+import com.community.solar_embassy.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,7 +61,11 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public List<BoardDto> boardListByGalaxy(int galaxyNo) {
-        return boardMapper.selectBoardListByGalaxy(galaxyNo);
+        List<BoardDto> boardList = boardMapper.selectBoardListByGalaxy(galaxyNo);
+        for(BoardDto board:boardList){
+            board.setUser(usersMapper.findById(board.getUserId()));
+        }
+        return boardList;
     }
 
     @Override

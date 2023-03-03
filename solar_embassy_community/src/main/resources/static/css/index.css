@@ -144,7 +144,7 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 #SE_contents {
     background-color: #f5f5f5;
     width: 1200px;
-    height: 2000px;
+    height: max-content;
     margin: 0;
     transform: translate(360px,50px);
 }

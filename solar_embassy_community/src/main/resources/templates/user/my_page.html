@@ -88,7 +88,8 @@ layout:decorate="~{/layout}"> -->
                         <tr th:each="myBoard:${myBoards}">
                             <th class="text-center" th:text="${myBoard.galaxy.galName}"></th>
                             <td class="text-center" th:text="${myBoard.boardNo}"></td>
-                            <td class="text-start" th:text="${myBoard.title}"></td>
+                            <td class="text-start" th:text="${myBoard.title}" style="cursor: pointer"
+                                th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${myBoard.boardNo})}]]"></td>
                             <td class="text-center" th:text="${#calendars.format(myBoard.postTime, 'yyyy-MM-dd')}"></td>
                             <td class="text-center" th:text="${myBoard.views}"></td>
                             <td class="text-center" th:text="${myBoard.likes}"></td>
@@ -226,7 +227,6 @@ layout:decorate="~{/layout}"> -->
             </div>
             <!--여기까지-->
         </div>
-
 
 
     </div>

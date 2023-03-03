@@ -13,4 +13,6 @@ public interface UsersService {
     int modify(Users user);
 
     int findNick(String nickname);
+
+    Users findById(String userId);
 }

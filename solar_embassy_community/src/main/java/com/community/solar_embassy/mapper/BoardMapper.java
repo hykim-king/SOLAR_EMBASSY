@@ -1,6 +1,7 @@
 package com.community.solar_embassy.mapper;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.BoardPreferViewDto;
 import com.community.solar_embassy.dto.PagingDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -18,7 +19,7 @@ public interface BoardMapper {
 
     int updateBoard(BoardDto board) throws Exception;
 
-    int deleteBoard(int board_no) throws Exception;
+    int deleteBoard(int boardNo) throws Exception;
 
     int count(BoardDto board ) throws Exception;
 
@@ -32,6 +33,8 @@ public interface BoardMapper {
     int selectEnd();
 
     List<BoardDto> selectListByUserId(String userId);
+    BoardPreferViewDto countPreferById(int boardNo);
+
 }
 
 

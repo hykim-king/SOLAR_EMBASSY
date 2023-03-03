@@ -17,7 +17,8 @@
         <result property="likes" column="likes" jdbcType="INTEGER"/>
         <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
         <result property="views" column="views" jdbcType="INTEGER"/>
-        <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById" fetchType="lazy"/>
+        <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById"
+                     fetchType="lazy"/>
     </resultMap>
     <!--게시글 목록-->
     <select id="selectBoardList" resultType="com.community.solar_embassy.dto.BoardDto">
@@ -51,7 +52,7 @@
    </insert>
     <!--게시글 상세-->
     <select id="selectBoardDetail" parameterType="int" resultType="BoardDto">
-        SELECT  /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
+        SELECT /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
         FROM board
         WHERE boardNo = #{boardNo}
           AND state = 0
@@ -62,30 +63,48 @@
         FROM board
     </select>
     <select id="selectBoardListByGalaxy" resultType="com.community.solar_embassy.dto.BoardDto">
-        SELECT * FROM board WHERE galaxyNo=#{galaxyNo}
+        SELECT *
+        FROM board
+        WHERE galaxyNo = #{galaxyNo}
     </select>
     <select id="selectBoardListBySize" resultType="com.community.solar_embassy.dto.BoardDto">
-        SELECT * FROM board ORDER BY postTime DESC LIMIT #{size}
+        SELECT *
+        FROM board
+        ORDER BY postTime DESC
+        LIMIT #{size}
     </select>
     <select id="selectBoardListByGalaxySize" resultType="com.community.solar_embassy.dto.BoardDto">
-        SELECT * FROM board WHERE galaxyNo= #{galaxyNo} ORDER BY postTime DESC LIMIT #{size}
+        SELECT *
+        FROM board
+        WHERE galaxyNo = #{galaxyNo}
+        ORDER BY postTime DESC
+        LIMIT #{size}
     </select>
     <select id="selectHot" resultType="com.community.solar_embassy.dto.BoardDto">
-        SELECT * FROM board WHERE boardNo >= #{endNo}-100 ORDER BY likes DESC, postTime DESC LIMIT 4
+        SELECT *
+        FROM board
+        WHERE boardNo >= #{endNo} - 100
+        ORDER BY likes DESC, postTime DESC
+        LIMIT 4
     </select>
     <select id="selectEnd" resultType="java.lang.Integer">
-        SELECT boardNo FROM board ORDER BY boardNo DESC LIMIT 1
+        SELECT boardNo
+        FROM board
+        ORDER BY boardNo DESC
+        LIMIT 1
     </select>
     <select id="selectListByUserId" resultType="com.community.solar_embassy.dto.BoardDto">
-        SELECT * FROM board WHERE userId= #{userId}
+        SELECT *
+        FROM board
+        WHERE userId = #{userId}
     </select>
     <!--수정, 삭제-->
-    <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto" >
+    <update id="updateBoard" parameterType="com.community.solar_embassy.dto.BoardDto">
         <![CDATA[
         UPDATE board
-        SET title    = #{title},
-            contents = #{contents},
-            userId   = #{userId},
+        SET title     = #{title},
+            contents  = #{contents},
+            userId    = #{userId},
             updateTime=CURRENT_TIMESTAMP,
             boardTag=#{boardTag},
             updaterId=#{userId}
@@ -97,7 +116,7 @@
     <update id="updateViews" parameterType="int">
         <![CDATA[
         UPDATE board
-        SET views = views+1
+        SET views = views + 1
         WHERE boardNo = #{boardNo}
         ]]>
     </update>
@@ -105,8 +124,23 @@
 
     <delete id="deleteBoard" parameterType="int">
         <![CDATA[
-        DELETE FROM board
-        WHERE boardNo = #{board_no}
+        DELETE
+        FROM board
+        WHERE boardNo = #{boardNo}
         ]]>
     </delete>
+    <resultMap id="BoardPreferViewMap" type="BoardPreferViewDto">
+        <association property="likes"
+                     select="com.community.solar_embassy.mapper.BoardPreferMapper.countByBoardNoAndPreferIsTrue"
+                     column="boardNo"/>
+        <association property="dislikes"
+                     select="com.community.solar_embassy.mapper.BoardPreferMapper.countByBoardNoAndPreferIsFalse"
+                     column="boardNo"/>
+
+    </resultMap>
+    <select id="countPreferById" resultMap="BoardPreferViewMap">
+        SELECT *
+        FROM board
+        WHERE boardNo = #{boardNo}
+    </select>
 </mapper>

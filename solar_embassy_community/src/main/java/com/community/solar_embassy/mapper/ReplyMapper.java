@@ -11,6 +11,7 @@ public interface ReplyMapper {
     int insertReply(Reply reply);
     int updateReply(Reply reply);
     List<Reply> findByBoardNo(int boardNo);
+    List<Reply> findAllByFkReplyNo(int replyNo);
     List<Reply> findAll();
 
 }
