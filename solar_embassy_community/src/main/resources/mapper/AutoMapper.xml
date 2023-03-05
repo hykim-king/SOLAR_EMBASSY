@@ -13,9 +13,9 @@
         <result property="autoType" column="autoType" jdbcType="VARCHAR"/>
         <result property="releaseDate" column="releaseDate" jdbcType="DATE"/>
         <result property="seat" column="seat" jdbcType="INTEGER"/>
-        <result property="mpg" column="mpg" jdbcType="DOUBLE"/>
-        <result property="disp" column="disp" jdbcType="DOUBLE"/>
-        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="mpg" column="mpg" jdbcType="VARCHAR"/>
+        <result property="disp" column="disp" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="VARCHAR"/>
         <result property="autoEngine" column="autoEngine" jdbcType="VARCHAR"/>
     </resultMap>
 

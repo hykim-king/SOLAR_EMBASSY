@@ -54,23 +54,23 @@ layout:decorate="~{/layout}"> -->
 
         <div id="content3">
           <span>
-            <a href="#">
-              <img src="/img/autopedia/kona1.jpg" alt="">
+            <a th:href="${auto.autoImgList.get(0).getAutoImgPath()}">
+              <img th:src="${auto.autoImgList.get(0).getAutoImgPath()}" alt="">
             </a>
           </span>
           <span>
             <a href="#">
-              <img src="/img/autopedia/kona2.jpg" alt="">
+              <img th:src="${auto.autoImgList.get(1).getAutoImgPath()}" alt="">
             </a>
           </span>
           <span>
             <a href="#">
-              <img src="/img/autopedia/kona3.jpg" alt="">
+              <img th:src="${auto.autoImgList.get(2).getAutoImgPath()}" alt="">
             </a>
           </span>
           <span>
             <a href="#">
-              <img src="/img/autopedia/kona4.jpg" alt="">
+              <img th:src="${auto.autoImgList.get(3).getAutoImgPath()}" alt="">
             </a>
           </span>
         </div>
