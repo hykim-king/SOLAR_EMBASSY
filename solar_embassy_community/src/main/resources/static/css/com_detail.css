@@ -5,7 +5,8 @@
     font-size: 20px;
     margin-top: 40px;
     display: flex;
-    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 15px dimgray;
 }
 
 #SE_contents #content2 #photo {
@@ -26,9 +27,16 @@
 
 #SE_contents #content2 #inform button {
     border-radius: 10px;
-    background-color: dodgerblue;
+    background: linear-gradient(-45deg, #a156ff, #23a6d5);
     margin-top: 10px;
     width: 350px;
+    border-style: none;
+}
+
+#SE_contents #content2 #inform button:hover{
+    text-decoration-line: blink;
+    color: #fff;
+    background: linear-gradient(-45deg, #23a6d5, #a156ff);
 }
 
 #SE_contents #content3 {
@@ -38,9 +46,7 @@
     margin-top: 20px;
     display: flex;
     font-size: 16px;
-}
-
-#SE_contents #content4 {
-    width: 1200px;
-    height: max-content;
+    box-shadow: 0 0 15px dimgray;
+    border-radius: 15px;
+    padding: 10px;
 }
