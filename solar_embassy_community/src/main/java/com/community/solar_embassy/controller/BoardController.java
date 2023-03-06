@@ -111,8 +111,13 @@ public class BoardController {
             return "redirect:/user/login.do";
         }
         BoardDto board = boardService.selectBoardDetail(boardNo);
+        board.setUser(usersService.findById(board.getUserId()));
+        board.setGalaxy(galaxyService.findByNo(board.getGalaxyNo()));
         model.addAttribute("board", board);
-        return "updateBoard";
+
+        List<Galaxy> galaxies = galaxyService.findAll();
+        model.addAttribute("galaxies", galaxies);
+        return "/boardUpdate";
     }
 
     @PostMapping("/updateBoard/{boardNo}")

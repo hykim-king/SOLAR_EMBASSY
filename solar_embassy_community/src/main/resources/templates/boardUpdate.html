@@ -77,20 +77,22 @@ layout:decorate="~{/layout}"> -->
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post" action="/board/boardUpdate.do">
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+                        <div th:text="${board.user.nickname}+'님의 작성글입니다.'"></div>
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    주제
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">잡담</a></li>
-                                    <li><a class="dropdown-item" href="#">정보</a></li>
-                                    <li><a class="dropdown-item" href="#">질문</a></li>
-                                    <li><a class="dropdown-item" href="#">기타</a></li>
-                                </ul>
+                                <select th:name="galaxyNo" class="btn btn-secondary dropdown-toggle">
+                                    <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}"
+                                            th:text="${galaxy.galName}" th:selected="${galaxy.galaxyNo} == ${board.galaxy.galaxyNo}"></option>
+                                </select>
+                                <select name="boardTag" class="btn btn-secondary dropdown-toggle">
+                                    <option value="1" selected>잡담</option>
+                                    <option value="2">정보</option>
+                                    <option value="3">질문</option>
+                                    <option value="4">기타</option>
+                                </select>
                             </div>
-                            <div>
-                                <input th:text="${board.title}" type="text" id="title" name="title" class="form-control"
+                            <div id="title_input1">
+                                <input type="text" placeholder="제목" id="title" name="title" class="form-control"
                                        aria-label="Text input with dropdown button" style="width: 600px">
                             </div>
                         </div>
@@ -109,17 +111,18 @@ layout:decorate="~{/layout}"> -->
                     </form>
 
 
+                    <footer id="SE_footer">
+                        <p>
+                        </p>
+                        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스
+                            문의</a> /
+                            <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                        <p>
+                        </p>
+                        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+                    </footer>
                 </div>
             </div>
-            <footer id="SE_footer">
-                <p>
-                </p>
-                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-                <p>
-                </p>
-                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-            </footer>
         </div>
     </div>
 </div>

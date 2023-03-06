@@ -95,9 +95,9 @@
                         <th:block th:include="/boardPrefer" th:with="prefer=${board.boardPreferView}"></th:block>
                     </div>
                     <!-- 좋아요/ 싫어요 버튼 end-->
-                    <div class="mb-4 text-end">
+                    <div class="mb-4 text-end" th:if="${session.loginUser.userId==board.userId}">
                         <button class="float-end btn btn-danger">삭제</button>
-                        <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]"
+                        <button th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (boardNo=${board.boardNo})}]]"
                                 class="float-end btn btn-warning me-2">수정
                         </button>
                     </div>
