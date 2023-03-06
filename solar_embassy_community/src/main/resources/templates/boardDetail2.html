@@ -214,6 +214,10 @@
             cloneForm.contents.value=null;//복사된 폼의 참조하는 부모 번호 정의
             let selector = "reReplyRegisterContainer" + replyNo;
             const reReplyRegisterContainer = document.getElementById(selector); //복사한 폼의 옮길 위치
+            if(reReplyRegisterContainer.contains(replyRegisterForm)){
+                reReplyRegisterContainer.innerHTML=""
+                return
+            }
             reReplyRegisterContainer.append(cloneForm);
         }
 
