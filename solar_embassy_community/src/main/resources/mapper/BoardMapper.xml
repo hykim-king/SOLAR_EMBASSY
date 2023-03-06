@@ -38,16 +38,12 @@
                           boardTag,
                           title,
                           contents,
-                          likes,
-                          views,
                           postTime,
                           userId)
         VALUES (#{galaxyNo},
                 #{boardTag},
                 #{title},
                 #{contents},
-                #{likes},
-                #{views},
                 CURRENT_TIMESTAMP,
                 #{userId})
         ]]>
@@ -108,7 +104,7 @@
         SET title     = #{title},
             contents  = #{contents},
             userId    = #{userId},
-            updateTime=CURRENT_TIMESTAMP,
+            updateTime=now(),
             boardTag=#{boardTag},
             updaterId=#{userId}
         WHERE boardNo = #{boardNo}

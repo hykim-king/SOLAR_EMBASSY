@@ -57,7 +57,8 @@ layout:decorate="~{/layout}"> -->
             background-color: #D1EDE1;
             height: max-content;
         }
-        #SE_footer{
+
+        #SE_footer {
             position: relative;
             top: 1800px;
 
@@ -84,7 +85,11 @@ layout:decorate="~{/layout}"> -->
                 <th:block th:if="${galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1" class="pt-1">
                     <div>
-                        <h1 class="mx-5 my-5 border-bottom-0"><strong><span th:text="${galaxy.galName}"></span>갤럭시</strong></h1>
+                        <h1 class="mx-5 my-2 border-bottom-0"
+                            style="background-color:#fdc1c2;padding: 30px;color:#ffffff;
+                            border-radius: 20px;text-shadow:1px 1px gray;font-size: 40px;">
+                            <strong><span
+                                    th:text="${galaxy.galName}"></span>갤럭시</strong></h1>
                     </div>
                     <div class="text-center">
                         <div id="user_info_bgc2" class="">
@@ -101,29 +106,29 @@ layout:decorate="~{/layout}"> -->
                     <div id="boardList_table_btn" class="mb-2">
                         <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
                         <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}"
-                           class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
+                           class="float-end btn btn-outline-dark btn-lg btn-primary text-light" style="font-weight: bolder;">글 쓰기</a>
                     </div>
 
                     <div id="boardList_table">
                         <table class="table table-light">
                             <colgroup>
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
-                                <col style="width:max-content">
+                                <col style="width:80px">
+                                <col style="width:110px">
+                                <col style="width:500px;">
+                                <col style="width:120px">
+                                <col style="width:80px">
+                                <col style="width:80px">
+                                <col style="width:190px">
                             </colgroup>
                             <thead class="table-success">
                             <tr>
-                                <th scope="col" class="text-center">글번호</th>
-                                <th scope="col" class="text-center">구분(주제)</th>
-                                <th scope="col" class="text-center">제목</th>
-                                <th scope="col" class="text-center">작성자</th>
-                                <th scope="col" class="text-center">추천수</th>
-                                <th scope="col" class="text-center">조회수</th>
-                                <th scope="col" class="text-center">작성일</th>
+                                <th scope="col" class="text-center" style="background-color:#c1aaaa;">글번호</th>
+                                <th scope="col" class="text-center" style="background-color:#c1aaaa;">구분(주제)</th>
+                                <th scope="col" class="text-center" style="background-color:#c1aaaa;">제목</th>
+                                <th scope="col" class="text-center" style="background-color:#c1aaaa;">작성자</th>
+                                <th scope="col" class="text-center" style="background-color:#c1aaaa;">추천수</th>
+                                <th scope="col" class="text-center" style="background-color:#c1aaaa;">조회수</th>
+                                <th scope="col" class="text-center" style="background-color:#c1aaaa;">작성일</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -133,7 +138,9 @@ layout:decorate="~{/layout}"> -->
                                     <a href="/board/boardDetail?boardNo=" th:attrappend="href=${list_n.boardNo}"
                                        th:text="${list_n.boardTag}" style="color:#000;"></a>
                                 </td>
-                                <td th:text="${list_n.title}+' ('+${list_n.replyList.size()}+')'" th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]" style="cursor: pointer"></td>
+                                <td th:text="${list_n.title}+' ('+${list_n.replyList.size()}+')'"
+                                    th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]"
+                                    style="cursor: pointer;text-align: left;text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
                                 <td th:text="${list_n.user.nickname}"></td>
                                 <td th:text="${(list_n.likes ==null)?0:list_n.likes}"></td>
                                 <td th:text="${(list_n.views ==null)?0:list_n.views}"></td>

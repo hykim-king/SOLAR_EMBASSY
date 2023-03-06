@@ -30,7 +30,7 @@ layout:decorate="~{/layout}"> -->
 
             <!--여기부터-->
             <div id="SE_content2">
-                <div class="earth_2"> <p>SOLAR EMBASSY에 오신 것을 환영합니다.</p></div>
+                <div class="earth_2"><p>SOLAR EMBASSY에 오신 것을 환영합니다.</p></div>
             </div>
 
             <div id="SE_content3">
@@ -81,19 +81,18 @@ layout:decorate="~{/layout}"> -->
                     <div class="SE_ranking_title"><a href="#">HOT 게시글</a></div>
                     <div class="SE_ranking">
                         <!--Add board update soon...-->
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" style="table-layout: fixed">
                             <colgroup>
-                                <col span="1" style="width: max-content;">
-                                <col span="1">
-                                <col span="1"style="width: max-content;">
+                                <col span="1" style="width: 80px;height: 40px">
+                                <col span="1" style="width: 280px;height: 40px">
+                                <col span="1" style="width: 40px;height: 40px">
                             </colgroup>
-
                             <tbody>
                             <tr th:if="${hotlist!=null}" th:each="list_one:${hotlist}" class="text-center">
                                 <td th:text="${list_one.galaxy.galName}"></td>
                                 <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
-                                    th:text="${list_one.title}" class="text-start"></td>
-<!--                                <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>-->
+                                    th:text="${list_one.title}" class="text-start" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></td>
+                                <!--                                <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>-->
                                 <td th:text="${list_one.likes}" class="text-start"></td>
                             </tr>
                             </tbody>
@@ -106,10 +105,19 @@ layout:decorate="~{/layout}"> -->
                         <div><a href=""><h3>최근 생성 된 게시글</h3></a></div>
                         <div class="SE_new_post">
                             <table class="table table-bordered">
+                                <colgroup>
+                                    <col span="1" style="width: 40px;">
+                                    <col span="1" style="width: 305px">
+                                    <col span="1" style="width: 100px">
+                                    <col span="1" style="width: 30px">
+                                </colgroup>
+
                                 <tbody>
-                                <tr th:if="${list!=null}"  th:each="list_one:${list}" class="text-center">
+                                <tr th:if="${list!=null}" th:each="list_one:${list}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
-                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
+                                        th:text="${list_one.title}" class="text-start"
+                                        style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
                                     <td th:text="${list_one.views}" class="text-start"></td>
                                 </tr>
@@ -122,10 +130,18 @@ layout:decorate="~{/layout}"> -->
                         <div><a href=""><h3>유머 갤럭시</h3></a></div>
                         <div class="SE_sub4_content">
                             <table class="table table-bordered">
+                                <colgroup>
+                                    <col span="1" style="width: 40px;">
+                                    <col span="1" style="width: 305px">
+                                    <col span="1" style="width: 100px">
+                                </colgroup>
+
                                 <tbody>
-                                <tr th:if="${list!=null}"  th:each="list_one:${list1}" class="text-center">
+                                <tr th:if="${list!=null}" th:each="list_one:${list1}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
-                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
+                                        th:text="${list_one.title}" class="text-start"
+                                        style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
                                 </tr>
                                 </tbody>
@@ -139,10 +155,18 @@ layout:decorate="~{/layout}"> -->
                         <div><a href=""><h3>여행 갤럭시</h3></a></div>
                         <div class="SE_board1">
                             <table class="table table-bordered">
+                                <colgroup>
+                                    <col span="1" style="width: 40px;">
+                                    <col span="1" style="width: 305px">
+                                    <col span="1" style="width: 100px">
+                                </colgroup>
+
                                 <tbody>
-                                <tr th:if="${list!=null}"  th:each="list_one:${list2}" class="text-center">
+                                <tr th:if="${list!=null}" th:each="list_one:${list2}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
-                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
+                                        th:text="${list_one.title}" class="text-start"
+                                        style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
                                 </tr>
                                 </tbody>
@@ -154,10 +178,18 @@ layout:decorate="~{/layout}"> -->
                         <div><a href=""><h3>자동차 갤럭시</h3></a></div>
                         <div class="SE_board2">
                             <table class="table">
+                                <colgroup>
+                                    <col span="1" style="width: 40px;">
+                                    <col span="1" style="width: 305px">
+                                    <col span="1" style="width: 100px">
+                                </colgroup>
+
                                 <tbody>
-                                <tr th:if="${list!=null}"  th:each="list_one:${list3}" class="text-center">
+                                <tr th:if="${list!=null}" th:each="list_one:${list3}" class="text-center">
                                     <td th:text="'[ '+${list_one.galaxyNo}+' ]'"></td>
-                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
+                                        th:text="${list_one.title}" class="text-start"
+                                        style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
                                 </tr>
                                 </tbody>
@@ -171,10 +203,18 @@ layout:decorate="~{/layout}"> -->
                         <div><a href=""><h3>게임 갤럭시</h3></a></div>
                         <div class="SE_board3">
                             <table class="table table-bordered">
+                                <colgroup>
+                                    <col span="1" style="width: 40px;">
+                                    <col span="1" style="width: 305px">
+                                    <col span="1" style="width: 100px">
+                                </colgroup>
+
                                 <tbody>
-                                <tr th:if="${list!=null}"  th:each="list_one:${list4}" class="text-center">
+                                <tr th:if="${list!=null}" th:each="list_one:${list4}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
-                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
+                                        th:text="${list_one.title}" class="text-start"
+                                        style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
                                 </tr>
                                 </tbody>
@@ -188,10 +228,18 @@ layout:decorate="~{/layout}"> -->
                         <div><a href=""><h3>캠핑 갤럭시</h3></a></div>
                         <div class="SE_board4">
                             <table class="table table-bordered">
+                                <colgroup>
+                                    <col span="1" style="width: 40px;">
+                                    <col span="1" style="width: 305px">
+                                    <col span="1" style="width: 100px">
+                                </colgroup>
+
                                 <tbody>
-                                <tr th:if="${list!=null}"  th:each="list_one:${list5}" class="text-center">
+                                <tr th:if="${list!=null}" th:each="list_one:${list5}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
-                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
+                                    <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
+                                        th:text="${list_one.title}" class="text-start"
+                                        style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
                                 </tr>
                                 </tbody>
