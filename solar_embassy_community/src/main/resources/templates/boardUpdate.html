@@ -48,11 +48,10 @@ layout:decorate="~{/layout}"> -->
             width: 95%;
         }
 
-        #textarea_btn{
+        #textarea_btn {
             margin-right: 30px;
             float: right;
         }
-
 
 
     </style>
@@ -70,17 +69,21 @@ layout:decorate="~{/layout}"> -->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
             <!--여기부터-->
-            <div id="SE_content3" style="height: calc(max-content+100px);">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+            <div id="SE_content3" style="height: calc(max-content+100px);">
+                <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
 
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post" action="/board/boardUpdate.do">
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
-                        <div th:text="${board.user.nickname}+'님의 작성글입니다.'"></div>
+                        <div style="margin: 30px;;padding: 20px;font-weight: bold;font-size: 20px; background-color:#6c747c;border-radius: 10px;color:white">
+                            " <span th:text="${board.user.nickname}"></span> " <span>님의 작성글입니다.</span>
+                        </div>
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
                                 <select th:name="galaxyNo" class="btn btn-secondary dropdown-toggle">
                                     <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}"
-                                            th:text="${galaxy.galName}" th:selected="${galaxy.galaxyNo} == ${board.galaxy.galaxyNo}"></option>
+                                            th:text="${galaxy.galName}"
+                                            th:selected="${galaxy.galaxyNo} == ${board.galaxy.galaxyNo}"></option>
                                 </select>
                                 <select name="boardTag" class="btn btn-secondary dropdown-toggle">
                                     <option value="1" selected>잡담</option>
@@ -91,7 +94,8 @@ layout:decorate="~{/layout}"> -->
                             </div>
                             <div id="title_input1">
                                 <input type="text" placeholder="제목" id="title" name="title" class="form-control"
-                                       aria-label="Text input with dropdown button" style="width: 600px" th:value="${board.title}">
+                                       aria-label="Text input with dropdown button" style="width: 600px"
+                                       th:value="${board.title}">
                             </div>
                         </div>
 
@@ -101,8 +105,10 @@ layout:decorate="~{/layout}"> -->
                             </div>
                             <div id="textarea_btn">
                                 <a href="/board/boardList.do" class="btn btn-Light">취소</a>
-                                <button type="submit" class="btn btn-danger"><a href="/board/boardDetail.do"></a>삭제</button>
-                                <button type="submit" class="btn btn-warning"><a href="/board/boardDetail.do"></a>수정</button>
+                                <button type="submit" class="btn btn-danger"><a href="/board/boardDetail.do"></a>삭제
+                                </button>
+                                <button type="submit" class="btn btn-warning"><a href="/board/boardDetail.do"></a>수정
+                                </button>
                             </div>
                         </div>
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
