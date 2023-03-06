@@ -32,7 +32,8 @@ public class ReplyServiceImpl
 
     @Override
     public int delete(Reply replyNo) {
-        return replyMapper.deleteById(replyNo);
+        int delete = replyMapper.makeBlankReply(replyNo);
+        return delete;
     }
 
 

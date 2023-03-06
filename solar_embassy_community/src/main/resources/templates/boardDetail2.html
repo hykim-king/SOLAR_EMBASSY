@@ -222,19 +222,22 @@
         }
 
         async function removeReply(replyNo) {
-            alert("정말로 삭제하시겠습니까?")
-            let url = "/reply/delete.do?replyNo=" + replyNo;
-            const resp = await fetch(url, {method: "DELETE"});
-            if (resp.status === 200) {
-                const json = await resp.json();
-                if (json.state === 1) {
-                    await loadReplyList();
-                    alert("삭제 성공!");
-                } else {
-                    alert("삭제할 레코드가 없습니다.");
-                }
+            if (!confirm("정말로 삭제하시겠습니까?")) {
+                return
             } else {
-                alert(`삭제 실패! ${resp.status}`);
+                let url = "/reply/delete.do?replyNo=" + replyNo;
+                const resp = await fetch(url, {method: "DELETE"});
+                if (resp.status === 200) {
+                    const json = await resp.json();
+                    if (json.state === 1) {
+                        await loadReplyList();
+                        alert("삭제 성공!");
+                    } else {
+                        alert("삭제할 레코드가 없습니다.");
+                    }
+                } else {
+                    alert(`삭제 실패! ${resp.status}`);
+                }
             }
         }
 
