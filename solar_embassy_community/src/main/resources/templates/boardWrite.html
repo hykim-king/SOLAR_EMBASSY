@@ -97,10 +97,9 @@ layout:decorate="~{/layout}"> -->
                         <div th:text="${session.loginUser.nickname}+'님의 작성글입니다.'"></div>
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
-                                <select th:name="galaxyNo" th:selected="${galaxyNo}"
-                                        class="btn btn-secondary dropdown-toggle">
+                                <select th:name="galaxyNo" class="btn btn-secondary dropdown-toggle">
                                     <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}"
-                                            th:text="${galaxy.galName}"></option>
+                                            th:text="${galaxy.galName}" th:selected="${galaxy.galaxyNo}==${param.galaxyNo}"></option>
                                 </select>
                                 <select name="boardTag" class="btn btn-secondary dropdown-toggle">
                                     <option value="1">일상</option>
