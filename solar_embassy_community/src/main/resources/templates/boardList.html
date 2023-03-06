@@ -133,7 +133,7 @@ layout:decorate="~{/layout}"> -->
                                        th:text="${list_n.boardTag}" style="color:#000;"></a>
                                 </td>
                                 <td th:text="${list_n.title}" th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]" style="cursor: pointer"></td>
-                                <td th:text="${list_n.userId}"></td>
+                                <td th:text="${list_n.user.nickname}"></td>
                                 <td th:text="${(list_n.likes ==null)?0:list_n.likes}"></td>
                                 <td th:text="${(list_n.views ==null)?0:list_n.views}"></td>
                                 <td th:text="${#dates.format(list_n.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>

@@ -68,6 +68,7 @@
         SELECT *
         FROM board
         WHERE galaxyNo = #{galaxyNo}
+        ORDER BY boardNo DESC
     </select>
     <select id="selectBoardListBySize" resultType="com.community.solar_embassy.dto.BoardDto">
         SELECT *
