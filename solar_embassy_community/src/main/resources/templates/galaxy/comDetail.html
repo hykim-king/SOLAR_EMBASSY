@@ -19,11 +19,8 @@ layout:decorate="~{/layout}"> -->
 </head>
 <body>
 <div id="SE_container">
-    <header id="SE_header">
-        <h6>메인이미지</h6>
-        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'">
-    </header>
 
+    <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
@@ -47,35 +44,14 @@ layout:decorate="~{/layout}"> -->
                     CEO : <span th:text="${company.getCeo()}"></span> <br>
                     업종 : <span th:text="${company.getIndustries()}"></span> <br>
                     슬로건 : <span th:text="${company.getSlogan()}"></span> <br>
+                    <button type="button" th:onclick="window.open([[@{'{link}'(link=${company.link})}]])">사이트</button>
                 </div>
             </div>
 
             <div id="content3">
                 <div th:text="${company.getContent()}"></div>
             </div>
-
-            <div id="content4">
-                <h1>시판중인 차량</h1>
-
-            </div>
-
-        <section id="SE_contents2">
-            <div id="SE_banner1"><h1>배너자리</h1></div>
-        </section>
-
-        <section id="SE_contents3">
-            <div id="SE_banner2"><h1>배너자리</h1></div>
-        </section>
-
-        <footer id="SE_footer">
-            <p>
-            </p>
-            <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-            <p>
-            </p>
-            <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-        </footer>
+            <th:block th:insert="/footer"></th:block>
         </div>
     </div>
 </div>

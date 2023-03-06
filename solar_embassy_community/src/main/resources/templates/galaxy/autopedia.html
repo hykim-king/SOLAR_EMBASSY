@@ -85,6 +85,8 @@ layout:decorate="~{/layout}"> -->
                     <div><a href="/galaxy/comDetail.do?comNo=50"><img src="/img/autopedia/dongfeng.png" alt=""><br>둥펑</a></div>
                     <div><a href="/galaxy/comDetail.do?comNo=51"><img src="/img/autopedia/iveco.jpg" alt=""><br>이베코</a></div>
                     <div><a href="/galaxy/comDetail.do?comNo=52"><img src="/img/autopedia/koenigsegg.png" alt=""><br>코닉세그</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=53"><img src="/img/autopedia/opel.svg" alt=""><br>오펠</a></div>
+                    <div><a href="/galaxy/comDetail.do?comNo=54"><img src="/img/autopedia/man.svg" alt=""><br>MAN</a></div>
                 </div>
                 <div id="autotype">
                     <dl>
@@ -164,46 +166,28 @@ layout:decorate="~{/layout}"> -->
                             <option value="2">제품명</option>
                         </select>
                         <input type="text" id="searcher" placeholder="검색어를 입력하세요">
-                        <button type="button">검색</button>
+                        <button type="button" onclick="location.href='/galaxy/autoSearch.do'">검색</button>
                     </div>
                 </form>
             </div>
-
-            <section id="SE_contents2">
-                <div id="SE_banner1"><h1>배너자리</h1></div>
-            </section>
-
-            <section id="SE_contents3">
-                <div id="SE_banner2"><h1>배너자리</h1></div>
-            </section>
-            <footer id="SE_footer">
-                <p>
-                </p>
-                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-                <p>
-                </p>
-                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-            </footer>
-
             <div id="content4">
                 <div id="sub1">
                     <ul>
-                        <li>New 국산차<br><a href="/galaxy/autoDetail.do?autoName=코나 N"><img src="/img/autopedia/kona.png" alt=""><br>코나 N(OS N)</a></li>
+                        <li>New 국산차<br><a href="/galaxy/autoDetail.do?autoNo=9"><img src="/img/autopedia/newkona.png" alt=""><br>The All New 코나</a></li>
                     </ul>
                     <ul>
-                        <li>New 수입차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/q4etron.png" alt=""><br>Q4 E-트론</a></li>
+                        <li>New 수입차<br><a href="/galaxy/autoDetail.do?autoNo=46"><img src="/img/autopedia/new7series.png" alt=""><br>New 7 시리즈</a></li>
                     </ul>
                     <ul>
-                        <li>Best 국산차<br><a href="/galaxy/autoDetail.do?autoName=그랜저"><img src="/img/autopedia/grandeur.png" alt=""><br>The All New 그랜저(CN7)</a></li>
+                        <li>Best 국산차<br><a href="/galaxy/autoDetail.do?autoNo=6"><img src="/img/autopedia/grandeur.png" alt=""><br>그랜저</a></li>
                     </ul>
                     <ul>
-                        <li>Best 수입차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/5series.png" alt=""><br>New 5시리즈(G31)</a></li>
+                        <li>Best 수입차<br><a href="/galaxy/autoDetail.do?autoNo=47"><img src="/img/autopedia/5series.png" alt=""><br>New 5시리즈</a></li>
                     </ul>
                 </div>
                 <div id="sub2">
                     <ul>
-                        <li>오늘의 추천 차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/polestar2.png" alt=""><br>폴스타 2<br>2022년 전기차 판매 순위 1위!</a></li>
+                        <li>오늘의 추천 차<br><a href="/galaxy/autoDetail.do?autoNo=48"><img src="/img/autopedia/polestar2.png" alt=""><br>폴스타 2<br><2022년 전기차 판매 순위 1위></a></li>
                     </ul>
                 </div>
             </div>
@@ -211,15 +195,16 @@ layout:decorate="~{/layout}"> -->
             <div id="content5">
                 <div id="sub3">
                     <ul>
-                        <li>가장 많이 즐겨찾는 차<br><a href="/galaxy/autoDetail.do"><img src="/img/autopedia/Cayenne.png" alt=""><br>The New 카이엔(9Y0)</a></li>
+                        <li>가장 많이 즐겨찾는 차<br><a href="/galaxy/autoDetail.do?autoNo=49"><img src="/img/autopedia/Cayenne.png" alt=""><br>The New 카이엔</a></li>
                     </ul>
                 </div>
                 <div id="sub4">
                     <ul>
-                        <li>가장 많이 즐겨찾는 브랜드<br><a href="/galaxy/comDetail.do?comName=포르쉐"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></li>
+                        <li>가장 많이 즐겨찾는 브랜드<br><a href="/galaxy/comDetail.do?comNo=20"><img src="/img/autopedia/porsche.png" alt=""><br>포르쉐</a></li>
                     </ul>
                 </div>
             </div>
+            <th:block th:insert="/footer"></th:block>
         </div>
     </div>
 </div>

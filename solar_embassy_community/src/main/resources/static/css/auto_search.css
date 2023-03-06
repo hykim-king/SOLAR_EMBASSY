@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: #5B8FB9;
+    height: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.SearchContainerMain { /* 그냥 네모 박스1 */
+    border: 1px solid #000;
+    height: 1400px;
+    background: linear-gradient(rgb(231, 195, 236), rgba(83, 211, 228, 0.506), rgba(71, 109, 205, 0.841), rgba(189, 103, 223, 0.87), rgb(241, 113, 139))
+}
+
+.SearchContainer1 { /* 그냥 네모 박스2 */
+    margin-top: 100px;
+    background-color: #5B8FB9;
+}
+
+.SearchWord { /* 사용자 검색어 */
+    font-weight: bolder;
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.SearchTag { /* 최근 날짜, 인기, 추천 form action문 */
+    display: flex;
+    /* border: 1px solid #000; */
+    justify-content: end;
+    font-size: 20px;
+}
+
+.SearchResult { /* 검색 결과창 */
+    background-color: #ffffff4d;
+}
+
+.SresulT { /* 검색 결과 객체의 제목 Title */
+    font-size: 34px;
+    color: #ffff;
+}
+
+.Sresultt { /* 검색 결과 객체의 내용 text */
+    height: 100px;
+    font-size: 24px;
+    color: black;
+
+}
+
+.pageContainer {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}

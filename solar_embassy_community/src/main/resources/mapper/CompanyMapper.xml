@@ -16,13 +16,14 @@
         <result property="slogan" column="slogan" jdbcType="VARCHAR"/>
         <result property="content" column="content" jdbcType="VARCHAR"/>
         <result property="comImgName" column="comImgName" jdbcType="VARCHAR"/>
+        <result property="link" column="link" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         comNo,comName,address,
         parentName,foundDate,founders,
         ceo,industries,slogan,
-        content,comImgName
+        content,comImgName,link
     </sql>
 
     <select id="selectCompanyDetail" parameterType="Integer" resultMap="BaseResultMap">

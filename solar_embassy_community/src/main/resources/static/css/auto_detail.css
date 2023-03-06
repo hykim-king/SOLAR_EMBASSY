@@ -5,11 +5,13 @@
     font-size: 20px;
     display: flex;
     border: 1px solid #000;
+    margin-top: 40px;
 }
 
 #SE_contents #content2 #photo {
     float: left;
     margin-left: 100px;
+    margin-top: 40px;
 }
 
 #SE_contents #content2 #photo img {
@@ -26,27 +28,23 @@
     height: max-content;
     border: 1px solid black;
     display: flex;
+    flex-wrap: wrap;
     margin-top: 40px;
 }
 
-#SE_contents #content3 span a img {
-    width: 250px;
-    height: 150px;
+#SE_contents #content3 span img {
+    width: 535px;
+    height: 300px;
     object-fit: contain;
     float: left;
-    margin: 25px;
+    margin: 30px;
 }
-
 #SE_contents #content4 {
     background-color: dimgray;
     width: 1200px;
     height: max-content;
+    border: 1px solid black;
     display: flex;
+    margin-top: 40px;
     padding: 40px;
 }
-
-#SE_contents #content4 span a img {
-    object-fit: contain;
-}
-
-
