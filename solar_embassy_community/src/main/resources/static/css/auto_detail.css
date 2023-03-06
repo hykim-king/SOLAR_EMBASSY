@@ -4,8 +4,9 @@
     height: max-content;
     font-size: 20px;
     display: flex;
-    border: 1px solid #000;
     margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px gray;
 }
 
 #SE_contents #content2 #photo {
@@ -23,28 +24,30 @@
 }
 
 #SE_contents #content3 {
-    background-color: dimgray;
+    background-color: skyblue;
     width: 1200px;
     height: max-content;
-    border: 1px solid black;
+    box-shadow: 0 0 15px gray;
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
+    border-radius: 15px;
 }
 
 #SE_contents #content3 span img {
     width: 535px;
     height: 300px;
-    object-fit: contain;
     float: left;
     margin: 30px;
+    border-radius: 10px;
 }
 #SE_contents #content4 {
     background-color: dimgray;
     width: 1200px;
     height: max-content;
-    border: 1px solid black;
+    box-shadow: 0 0 15px gray;
     display: flex;
     margin-top: 40px;
     padding: 40px;
+    border-radius: 10px;
 }

@@ -44,7 +44,7 @@ layout:decorate="~{/layout}"> -->
                     CEO : <span th:text="${company.getCeo()}"></span> <br>
                     업종 : <span th:text="${company.getIndustries()}"></span> <br>
                     슬로건 : <span th:text="${company.getSlogan()}"></span> <br>
-                    <button type="button" th:onclick="window.open([[@{'{link}'(link=${company.link})}]])">사이트</button>
+                    <button type="button" th:onclick="window.open([[@{'{link}'(link=${company.link})}]])"><span>사이트</span></button>
                 </div>
             </div>
 

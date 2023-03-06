@@ -632,11 +632,10 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 }
 
 #SE_autoNavbar{
-    background-color: hotpink;
+    background-color: royalblue;
     height: 80px;
     border-radius: 10px;
     display: flex;
-    border: 2px solid #000;
 }
 
 #SE_autoNavbar a {
