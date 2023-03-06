@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <!--<link rel="stylesheet" th:href="@{/css/board.css}"/>-->
-    <link rel="stylesheet" href="/css/index.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,335 +20,322 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-    <title>Insert title here</title>
+
     <style>
-        html {
-            overflow: scroll;
+        #user_info_bgc1 {
+            margin-left: 2.5%;
+            margin-top: 0;
+            background-color: #DBE3FF;
+            width: 95%;
+            height: 70%;
+            border-radius: 10px;
+            position: relative;
         }
 
-        html, body, div, h1, h2, a, form, table, caption, submit {
-            margin: 0;
-            outline: 0;
-            border: 0;
-            padding: 0;
-            font-size: 100%;
-            vertical-align: baseline;
-            background: transparent;
+        #head_info {
+            background-color: #f7f7f7;
         }
 
-        body {
-            font-size: 0.875em;
-            line-height: 1.5;
-            color: #666;
-            -webkit-text-size-adjust: none;
-            min-width: 320px;
-            font-family: 'NanumGothic', '나눔고딕', dotum, "Helvetica Neue", Helvetica, Verdana, Arial, Sans-Serief;
-        }
-
-        h1, h2, h3 {
-            font-size: 1.5em;
-        }
-
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        ul {
-            margin: 0;
-        }
-
-        input {
-            vertical-align: middle;
-        }
-
-        input:focus {
-            outline: 0;
-        }
-
-        caption {
-            display: none;
-            width: 0;
-            height: 0;
-            margin-top: -1px;
-            overflow: hidden;
-            visibility: hidden;
-            font-size: 0;
-            line-height: 0;
-        }
-
-        .container {
-            max-width: 1024px;
-            margin: 30px auto;
-        }
-
-        .board_list {
-            width: 100%;
-            border-top: 2px solid #252525;
-            border-bottom: 1px solid #ccc;
-            margin: 15px 0;
-            border-collapse: collapse;
-        }
-
-        .board_list thead th:first-child {
-            background-image: none;
-        }
-
-        .board_list thead th {
-            border-bottom: 1px solid #ccc;
-            padding: 13px 0;
-            color: #3b3a3a;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .board_list tbody td {
-            border-top: 1px solid #ccc;
-            padding: 13px 0;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .board_list tbody tr:first-child td {
-            border: none;
-        }
-
-        .board_list tbody tr:hover {
-            background: #ffff99;
-        }
-
-        .board_list tbody td.title {
-            text-align: left;
-            padding-left: 20px;
-        }
-
-        .board_list tbody td a {
-            display: inline-block
-        }
-
-        .board_detail {
-            width: 100%;
-            border-top: 2px solid #252525;
-            border-bottom: 1px solid #ccc;
-            border-collapse: collapse;
-        }
-
-        .board_detail tbody input {
-            width: 100%;
-        }
-
-        .board_detail tbody th {
-            text-align: left;
-            background: #f7f7f7;
-            color: #3b3a3a;
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .board_detail tbody th, .board_detail tbody td {
-            padding: 10px 15px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .board_detail tbody textarea {
-            width: 100%;
-            min-height: 170px
-        }
-
-        .btn {
-            margin: 5px;
-            padding: 5px 11px;
-            color: #fff !important;
-            display: inline-block;
-            background-color: #7D7F82;
-            vertical-align: middle;
-            border-radius: 0 !important;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:hover {
-            background: #6b9ab8;
-        }
-
-        .file_list a {
-            display: inherit !important;
-        }
-
-        a {
-            display: inline-block
-        }
-
-        #SE_contents {
-            background-color: #e7f1ff;
-        }
-
-        /*  추가 css*/
         #likes {
             margin-top: 20px;
-            position: relative;
-            left: 425px;
             text-align: center;
         }
 
-
-        #frm_div {
-            margin-top: 20px;
-            border: 3px solid #fffbfb;
-            padding: 10px;
-            border-radius: 20px;
-
+        #reply {
+            border-bottom: 2px solid #00008B;
         }
 
-        #list, #edit, #delete {
-            position: relative;
-            left: 900px;
-        }
-
-        #likes_btn1, #likes_btn2 {
-            position: relative;
-            left: 470px;
-        }
-
-        #tc, #cc {
-            position: relative;
-            top: 15px;
-
+        #rRegister {
+            border-top: 1px solid #D3D3D3;
         }
     </style>
+    <title>SOLAR EMBASSY</title>
 </head>
 <body>
-<div id="SE_container1">
-    <th:block th:insert="/mainImg"></th:block>
-    <div id="SE_topline">
-        <!--검색과 로그인 + 왼쪽 사이드-->
-        <th:block th:insert="/searchAndLogin"></th:block>
-        <!--검색과 로그인 end-->
-        <div id="SE_contents" style="z-index:2">
-            <!--메뉴 + 오른쪽 사이드-->
-            <th:block th:insert="/menuAndAside"></th:block>
-            <!--메뉴 end-->
-            <!--게시글 상세 화면 시작 -->
-            <th:block th:if="${galaxy.galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
-            <h2 style="text-align: center">게시글 상세 화면</h2>
-            <div id="frm_div">
-                <div id="frm">
-                    <table>
-                        <colgroup>
-                            <col width="18%">
-                            <col width="35%">
-                            <col width="15%">
-                            <col width="35%">
-                        </colgroup>
-                        <input id="galaxyNo" type="hidden" name="galaxyNo" th:value="${board.galaxyNo}">
-                        <input id="boardNo" type="hidden" name="boardNo" th:value="${board.boardNo}">
-                        <caption>게시글 상세 내용</caption>
-                        <a href="#this" class="btn" id="list">목록으로</a>
-                        <a class="btn" id="edit" href="javascript:void(0)"
-                           th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (boardNo=${param.boardNo})}]]">수정</a>
-                        <a href="#delete" class="btn" id="delete">삭제</a>
-                        <tbody>
-                        <tr>
-                            <th scope="row">글 번호</th>
-                            <td th:value="${board.boardNo}">
-                                <th:block th:text="${board.boardNo}"></th:block>
-                            <th scope="row">조회수</th>
-                            <td th:text="${board.views}"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">작성자</th>
-                            <td th:text="${board.userId}"></td>
-                            <th scope="row">작성일</th>
-                            <td th:text="${board.postTime}"></td>
-                        </tr>
-                        <tr id="tc">
-                            <th scope="row">제목</th>
-                            <td colspan="3"><input type="text" id="title" name="title" th:value="${board.title}"/></td>
-                        </tr>
-                        <tr id="cc">
-                            <th scope="row">내용</th>
-                            <td colspan="4" class="view_text">
-                                <textarea title="내용" id="contents" name="contents" th:text="${board.contents}"
-                                          style="margin-top: 15px"></textarea>
-                            </td>
-                        </tr>
-                        </tbody>
+<div id="SE_container">
+    <div>
+        <th:block th:insert="/mainImg"></th:block>
+        <div id="SE_topline">
+            <!--검색과 로그인 + 왼쪽 사이드-->
+            <th:block th:insert="/searchAndLogin"></th:block>
+            <!--검색과 로그인 end-->
+            <div id="SE_contents" style="z-index:2">
+                <!--메뉴 + 오른쪽 사이드-->
+                <th:block th:insert="/menuAndAside"></th:block>
+                <!--메뉴 end-->
 
-                    </table>
+                <!--여기부터-->
+                <div id="user_info_bgc1">
+                    <div>
+                        <h2 class="ms-5 pt-5"><strong>여행 갤럭시</strong></h2>
+                    </div>
+                    <input type="hidden" name="boardNo" th:value="${board.boardNo}" id="boardNo">
+                    <div id="head_info" class="px-4 py-2 mt-4 mb-3">
+                        <div class="fs-3">
+                            <span>[질문] </span>
+                            <span th:text="${board.title}"></span>
+                        </div>
+                        <div>
+                            <span th:text="${board.user.nickname}"> </span>
+                            <span> | </span>
+                            <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm')}"> </span>
+                            <span class="float-end" th:text="'댓글 ('+${replyList.size()}+')'"></span>
+                            <span class="float-end" th:text="'추천 : '+${board.boardPreferView.likes}+' | '"></span>
+                            <span class="float-end" th:text="'조회 : '+${board.views}+' | '"></span>
+                        </div>
+                    </div>
+
+                    <div id="main_content" class="p-5 text-wrap">
+                        <div th:utext="${board.contents}">
+
+                        </div>
+                    </div>
                     <!-- 좋아요/ 싫어요 버튼-->
                     <div id="likes">
-                        <button type="button" class="btn btn-danger btn-lg"><i class="bi bi-hand-thumbs-up"></i>
-                            <span> 3</span></button>
-                        <button type="button" class="btn btn-primary btn-lg"><i
-                                class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
+                        <th:block th:include="/boardPrefer" th:with="prefer=${board.boardPreferView}"></th:block>
                     </div>
                     <!-- 좋아요/ 싫어요 버튼 end-->
+                    <div class="mb-4 text-end">
+                        <button class="float-end btn btn-danger">삭제</button>
+                        <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]"
+                                class="float-end btn btn-warning me-2">수정
+                        </button>
+                    </div>
+
+                    <div id="reply" class="pt-4">
+                        <h4 class="ms-4"><i class="bi bi-chat-dots me-2"></i><span
+                                th:text="'댓글 ('+${replyList.size()}+')'"></span></h4>
+                    </div>
+
+                    <div id="replyListContainer">
+                        <th:block th:include="/reply/list"></th:block>
+                    </div>
+
+                    <div id="replyRegisterContainer" th:if="${session.loginUser!=null}">
+                        <th:block th:include="/reply/register"></th:block>
+                    </div>
+
+                    <div id="boardList_table_btn" class="mb-2 mt-3">
+                        <button class="btn btn-dark btn-sm" type="button">전체글</button>
+                        <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i
+                                class="bi bi-pencil"></i> 글 쓰기</a>
+                    </div>
+
+                    <div id="boardList_table">
+                        <table class="table table-light table-hover">
+                            <colgroup>
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                                <col style="width:max-content">
+                            </colgroup>
+                            <thead class="table-success">
+                            <tr>
+                                <th scope="col" class="text-center">글번호</th>
+                                <th scope="col" class="text-center">제목</th>
+                                <th scope="col" class="text-center">작성자</th>
+                                <th scope="col" class="text-center">추천수</th>
+                                <th scope="col" class="text-center">조회수</th>
+                                <th scope="col" class="text-center">작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:if="${#lists.size(list)} > 0" th:each="boardi:${list}" class="text-center">
+                                <td th:text="${boardi.boardNo}"></td>
+                                <td class="title" style="display: flex;cursor: pointer"
+                                    th:onclick="location.href=
+                                    [[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${boardi.boardNo})}]]">
+                                    <a
+                                            th:switch="${boardi.boardTag}" style="font-weight: bold;">
+                                        <span th:case="1">[일상]</span>
+                                        <span th:case="2">[유머]</span>
+                                        <span th:case="3">[예약]</span>
+                                        <span th:case="4">[후기]</span>
+                                    </a>
+                                    <th:block th:text="${boardi.title}"></th:block>
+                                </td>
+                                <td th:text="${boardi.user.nickname}"></td>
+                                <td th:text="${(boardi.likes ==null)?0:boardi.likes}"></td>
+                                <td th:text="${(boardi.views ==null)?0:boardi.views}"></td>
+                                <td th:text="${#dates.format(boardi.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
+
+                            </tr>
+                            <tr th:unless="${#lists.size(list)} > 0">
+                                <td colspan="8">조회된 결과가 없습니다.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <p class="text-center">(페이지네이션 자리)</p>
+                    </div>
+                    <footer id="SE_footer">
+                        <p>
+                        </p>
+                        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스
+                            문의</a> /
+                            <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                        <p>
+                        </p>
+                        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+                    </footer>
                 </div>
-            </div> <!--frm_div-->
-            <!--댓글-->
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    A list item
-                    <span class="badge bg-primary rounded-pill">14</span>
-                </li>
-            </ul>
-            <!--댓글 end-->
-        </div> <!--SE_contents-->
-    </div> <!--SE_topline-->
-</div> <!--SE_container1-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    const boardNo = document.getElementById("boardNo").value
-    $(document).ready(function () {
-        $('#list').on("click", function () {
-            const galaxyNo = document.getElementById("galaxyNo").value;
-            location.href = "/board/boardList.do?galaxyNo=" + Number(galaxyNo);
-        });
+            </div>
+        </div>
+    </div>
 
-        $('#edit').on("click", function () {
-            var frm = $('#frm')[0];
 
-            frm.action = "/board/updateBoard/" + boardNo;
-            frm.submit();
-        });
+<!--        <script>-->
+<!--            function rRegister_btn() {-->
+<!--                const con = document.getElementById("rRegister");-->
+<!--                if (con.style.display === 'none') {-->
+<!--                    con.style.display = 'block';-->
+<!--                } else {-->
+<!--                    con.style.display = 'none';-->
+<!--                }-->
+<!--            }-->
+<!--        </script>-->
 
-        $('#delete').on("click", function () {
-            var frm = $('#frm')[0];
-            location.href = "/board/deleteBoard?boardNo=" + Number(boardNo);
-            frm.submit();
-        });
-    });
-</script>
-<script th:inline="javascript">
-    async function boardPreferHandler(uploadNo,preferBtn){
-        let url=`/board/prefer/handler.do?boardNo=${boardNo}&preferBtn=${preferBtn}`;
-        let viewUrl=`/board/prefer/view.do?boardNo=`+boardNo;
-        const boardPreferContainer=document.getElementById("boardPreferContainer");
-        const resp=await fetch(url,{method:"PUT"});
-        if(resp.status===200){
-            const json=await resp.json();
-            if(json.state===1){
-                const resp=await fetch(viewUrl);
-                if(resp.status===200){
-                    let html=await resp.text();
-                    boardPreferContainer.innerHTML=html;
-                }else{
-                    alert("좋아요 싫어요 불러오기 실패(새로고침하세요.)");
-                }
-            }else{
-                alert("좋아요 싫어요 실패");
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        const replyListContainer = document.getElementById("replyListContainer");
+
+        function loadRegisterForm(replyNo) {
+            const replyRegisterForm = document.forms["replyRegisterForm"];
+            const cloneForm = replyRegisterForm.cloneNode(true); //등록폼 가져와서 복사
+            cloneForm.onsubmit = function (e) { //복사된 폼의 등록 이벤트 재정의
+                registerReply(e, cloneForm);
             }
-        }else if(resp.status===400){
-            alert("로그인 하셔야 이용할 수 있습니다.");
-        }else if(resp.status===405){
-            alert("잘못된 경로를 이용하고 있습니다.")
-        }else if(resp.status===500){
-            alert("데이터베이스 서버 오류")
+            cloneForm.fkReplyNo.value = replyNo; //복사된 폼의 참조하는 부모 번호 정의
+            let selector = "reReplyRegisterContainer" + replyNo;
+            const reReplyRegisterContainer = document.getElementById(selector); //복사한 폼의 옮길 위치
+            reReplyRegisterContainer.append(cloneForm);
         }
 
-    }
+        async function removeReply(replyNo) {
+            let url = "/reply/delete.do?replyNo=" + replyNo;
+            const resp = await fetch(url, {method: "DELETE"});
+            if (resp.status === 200) {
+                const json = await resp.json();
+                if (json.state === 1) {
+                    await loadReplyList();
+                    alert("삭제 성공!");
+                } else {
+                    alert("삭제할 레코드가 없습니다.");
+                }
+            } else {
+                alert(`삭제 실패! ${resp.status}`);
+            }
+        }
 
-</script>
+        function init() {
+            const pageBtns = replyListContainer.querySelectorAll(".uk-pagination a");
+            const replyRegisterForm = document.forms["replyRegisterForm"];
+            pageBtns.forEach((btn) => {
+                btn.onclick = async (e) => {
+                    e.preventDefault();
+                    let url = "/reply/"+[[${param.boardNo}]]+"/list.do"
+                    const resp = await fetch(url);
+                    const html = await resp.text();
+                    replyListContainer.innerHTML = html;
+                    init();
+                }
+            });
+            replyRegisterForm.onsubmit = function (e) {
+                registerReply(e, replyRegisterForm);
+            };
+        }
+
+        init();
+
+        async function registerReply(e, replyRegisterForm) {
+            e.preventDefault();
+            let url = "/reply/register.do";
+            const formData = new FormData(replyRegisterForm);
+            //let queryString="?userId="+replyRegisterForm.userId.value+"&title="+replyRegisterForm.title.value;
+            //post 통신으로 하더라도 fetch 로 통신시 파라미터를 queryString 을 생성해서 통신해야 한다.!!
+            //multipart/form-data 로 전달할때는 new FormData(formNode)를 넣으면 자동으로 파라미터 생성
+            const resp = await fetch(url, {method: "POST", body: formData});
+            const json = await resp.json();
+            console.log(json);
+            if (json.state === 1) {
+                await loadReplyList();
+            }
+        }
+
+        async function loadReplyList() {
+            const resp = await fetch("/reply/"+[[${param.boardNo}]]+"/list.do");
+            const html = await resp.text();
+            replyListContainer.innerHTML = html;
+            init();
+        }
+
+        async function loadReplyModifyForm(replyNo) {
+            let url = "/reply/modify.do?replyNo=" + replyNo;
+            let seletor = "replyContainer" + replyNo;
+            const replyContainer = document.getElementById(seletor);
+            const resp = await fetch(url);
+            if (resp.status === 200) {
+                let html = await resp.text();
+                replyContainer.innerHTML = html;
+            }
+        }
+
+        //node.onsubmit=modifyReply; //modifyReply.this == node
+        //node.onsubmit=function(event){modifyReply();}  //modifyReply.this == window
+        async function modifyReply(formNode) {
+            //console.log(formNode);
+            const formData = new FormData(formNode); //queryString 작성 필요 없음 (단!! multipart/form-data 만)
+            let url = "/reply/modify.do"
+            const resp = await fetch(url, {method: "PUT", body: formData});
+            if (resp.status === 200) {
+                const json = await resp.json();
+                if (json.state === 1) {
+                    await loadReplyList();
+                    alert("수정 성공");
+                } else {
+                    alert("이미 삭제된 레코드 입니다.");
+                }
+            } else {
+                alert("서버 오류 (" + resp.status + ")");
+            }
+        }
+
+        async function boardPreferHandler(uploadNo, preferBtn) {
+            let url = `/board/prefer/handler.do?boardNo=${boardNo}&preferBtn=${preferBtn}`;
+            let viewUrl = `/board/prefer/view.do?boardNo=` + boardNo;
+            const boardPreferContainer = document.getElementById("likes");
+            const resp = await fetch(url, {method: "PUT"});
+            if (resp.status === 200) {
+                const json = await resp.json();
+                if (json.state === 1) {
+                    const resp = await fetch(viewUrl);
+                    if (resp.status === 200) {
+                        let html = await resp.text();
+                        boardPreferContainer.innerHTML = html;
+                    } else {
+                        alert("좋아요 싫어요 불러오기 실패(새로고침하세요.)");
+                    }
+                } else {
+                    alert("좋아요 싫어요 실패");
+                }
+            } else if (resp.status === 400) {
+                alert("로그인 하셔야 이용할 수 있습니다.");
+            } else if (resp.status === 405) {
+                alert("잘못된 경로를 이용하고 있습니다.")
+            } else if (resp.status === 500) {
+                alert("데이터베이스 서버 오류")
+            }
+
+        }
+
+        /*]]>*/
+    </script>
+</div>
 </body>
 </html>
+
+

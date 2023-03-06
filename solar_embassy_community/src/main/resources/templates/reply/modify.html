@@ -8,7 +8,7 @@
 <!--댓글 수정-->
 <form th:onsubmit="event.preventDefault(); modifyReply(this);"
       name="replyModifyForm" enctype="multipart/form-data" action="/reply/modify.do" method="post"
-      class="p-4 form">
+      class="p-4 form" style="border-bottom: 1px solid #D3D3D3;">
     <input type="hidden" name="boardNo" th:value="${reply.boardNo}">
     <input type="hidden" name="fkReplyNo" th:value="${reply.fkReplyNo}">
     <input type="hidden" name="replyNo" th:value="${reply.replyNo}">

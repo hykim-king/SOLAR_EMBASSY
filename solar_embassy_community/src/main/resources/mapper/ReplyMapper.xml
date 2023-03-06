@@ -17,16 +17,6 @@
         <result property="state" column="state" jdbcType="INTEGER"/>
         <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
         <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
-        <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById"
-                     autoMapping="true" fetchType="lazy"/>
-        <collection property="rereplyList"
-                    autoMapping="true"
-                    javaType="java.util.ArrayList"
-                    ofType="Reply"
-                    select="findByFkReplyNo"
-                    column="replyNo"
-                    fetchType="lazy">
-        </collection>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -65,7 +55,7 @@
         SELECT * FROM reply WHERE fkReplyNo=#{replyNo}
     </select>
     <select id="findById" resultType="com.community.solar_embassy.dto.Reply">
-        SELECT * FROM solar_embassy.reply WHERE replyNo=#{replyNo}
+        SELECT * FROM reply WHERE replyNo=#{replyNo}
     </select>
     <select id="findByUserIdPaging" resultType="com.community.solar_embassy.dto.Reply">
 
@@ -74,10 +64,10 @@
 
     </select>
     <select id="countByBoardNo" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM solar_embassy.reply WHERE boardNo=#{boardNo}
+        SELECT COUNT(*) FROM reply WHERE boardNo=#{boardNo}
     </select>
     <select id="findByBoardNoPaging" resultType="com.community.solar_embassy.dto.Reply">
-        SELECT * FROM solar_embassy.reply
+        SELECT * FROM reply
         WHERE boardNo=#{boardNo}
         AND fkReplyNo IS NULL
         ORDER BY

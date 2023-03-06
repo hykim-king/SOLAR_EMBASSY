@@ -35,6 +35,10 @@ public class BoardController {
     public String boardList(Locale locale, Model model, @RequestParam int galaxyNo) throws Exception {
 //        List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         List<BoardDto> list = boardService.boardListByGalaxy(galaxyNo);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        for(BoardDto board:list){
+            List<Reply> replyList = replyService.findByBoardNo(board.getBoardNo());
+            board.setReplyList(replyList);
+        }
         model.addAttribute("list", list);
         model.addAttribute("galaxyNo", galaxyNo);
         Galaxy galaxy = galaxyService.findByNo(galaxyNo);
@@ -73,7 +77,11 @@ public class BoardController {
         BoardDto board = boardService.selectBoardDetail(boardNo);
         board.setUser(usersService.findById(board.getUserId()));
         board.setBoardNo(boardNo);
+        board.setGalaxy(galaxyService.findByNo(board.getGalaxyNo()));
         List<Reply> replyList = replyService.findByBoardNo(boardNo);
+        for(Reply reply:replyList){
+            reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
+        }
         BoardPreferViewDto boardPreferView = new BoardPreferViewDto();
         boardPreferView.setLikes(boardPreferMapper.countByBoardNoAndPreferIsTrue(boardNo));
         boardPreferView.setDislikes(boardPreferMapper.countByBoardNoAndPreferIsFalse(boardNo));
@@ -87,6 +95,7 @@ public class BoardController {
         List<BoardDto> list = boardService.boardListByGalaxy(board.getGalaxyNo());//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         for(BoardDto boardl:list){
             boardl.setUser(usersService.findById(boardl.getUserId()));
+            boardl.setReplyList(replyService.findByBoardNo(boardl.getBoardNo()));
         }
         model.addAttribute("list", list);
 

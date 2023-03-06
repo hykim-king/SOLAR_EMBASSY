@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @TableName board
@@ -40,6 +41,8 @@ public class BoardDto implements Serializable {
     private BoardPreferViewDto boardPreferView;
 
     private int views;
+
+    private List<Reply> replyList;
 
     private static final long serialVersionUID = 1L;
 }

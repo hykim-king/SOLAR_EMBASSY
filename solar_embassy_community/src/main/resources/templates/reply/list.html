@@ -5,26 +5,20 @@
         background-color: #F0FFFF;
         border-bottom: 1px solid #D3D3D3;
     }
-    #reply_reply_comment {
-        border-top: 1px solid #D3D3D3;
-    }
-    #reply_reply_icon {
-        transform: rotate(135deg);
-    }
 
-    #rRegister {
+    #reply_reply_comment {
         border-top: 1px solid #D3D3D3;
     }
 
 </style>
 <th:block th:each="reply:${replyList}">
-    <div th:id="'reply_comment'+${reply.replyNo}">
+    <div th:id="'replyContainer'+${reply.replyNo}">
         <div class="px-3 pt-3 pb-3">
             <span th:text="${reply.nickname}"> </span>
             <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
             <span><a href="javascript:void(0)" class="d-inline text-black"
-                     th:onclick="removeReply([[${reply.replyNo}]])"><i
-                    class="bi bi-x-square"></i></a></span>
+                     th:onclick="removeReply([[${reply.replyNo}]])">
+                <i class="bi bi-x-square"></i></a></span>
             <span>
                 <button type="button" class="btn btn-primary btn-sm float-end "><i
                         class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
@@ -36,98 +30,51 @@
             <p th:text="${reply.contents}"></p>
         </div>
 
+        <!--댓글리스트 end-->
         <div class="text-end me-3 mb-2">
-            <a class="text-black" style="display: inline;" href="javascript:void(0);"
+            <a class="text-black" style="display: inline;" href="javascript:void(0)"
                th:onclick="loadReplyModifyForm([[${reply.replyNo}]])">수정 |</a>
-            <a class="text-black" style="display: inline;" href="javascript:void(0);"
-                th:onclick="loadRegisterForm([[${reply.replyNo}]])">댓글</a>
+            <a class="text-black" style="display: inline;" href="javascript:void(0)"
+               th:onclick="loadRegisterForm( [[${reply.replyNo}]] )"> 댓글</a>
         </div>
 
-<!--        &lt;!&ndash;댓글 수정&ndash;&gt;-->
-<!--        <form id="#rModify" th:onsubmit="event.preventDefault(); modifyReply(this);"-->
-<!--              name="replyModifyForm" enctype="multipart/form-data" action="/reply/modify.do" method="post"-->
-<!--              class="p-4 form">-->
-<!--            <input type="hidden" name="boardNo" th:value="${reply.boardNo}">-->
-<!--            <input type="hidden" name="fkReplyNo" th:value="${reply.fkReplyNo}">-->
-<!--            <input type="hidden" name="replyNo" th:value="${reply.replyNo}">-->
-<!--            <input type="hidden" name="replyNo" th:value="${reply.imgPath}">-->
-<!--            <input type="hidden" name="replyNo" th:value="${reply.originImgName}">-->
-<!--            <div class="mb-3">-->
-<!--                <span  class="form-control text-center" type="text"-->
-<!--                       th:text="${session.loginUser.nickname}"-->
-<!--                       aria-label="Disabled input example" readonly-->
-<!--                       style="width: 15%;"></span>-->
-<!--                <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"-->
-<!--                          name="contents" th:text="${reply.contents}"></textarea>-->
-<!--            </div>-->
-<!--            <div id="reply_update_btn">-->
-<!--                <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>-->
-<!--                <button type="submit" class="btn btn-secondary btn-sm float-end">수정</button>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--        &lt;!&ndash;댓글 수정 end&ndash;&gt;-->
+        <!--대댓글 등록(1)-->
+        <form th:id="'reReplyRegisterContainer'+${reply.replyNo}"></form>
+        <!--대댓글 등록(1) end-->
 
+<!--        대댓글 리스트-->
+            <div id="reply_reply_comment">
+                <div th:each="reReply:${reply.reReplyList}">
+                    <div class="px-3 pt-3 pb-2">
+                                        <span>
+                                            <i class="bi bi-arrow-return-right fs-1"></i>
+                                        </span>
+                        <span class="ms-4" th:text="${reReply.nickname}"> </span>
+                        <span th:text="${#dates.format(reReply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
+                        <span ><a href="javascript:void(0)" class="d-inline text-black"
+                                 th:onclick="removeReply([[${reReply.replyNo}]])">
+                            <i class="bi bi-x-square"></i></a></span>
+                        <span>
+                                        <button type="button" class="btn btn-primary btn-sm float-end "><i
+                                                class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
+                                        <button type="button" class="btn btn-danger btn-sm float-end me-1"><i
+                                                class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
+                                        </span>
+                    </div>
 
+                    <div id="reply_reply_content" class="px-3" style="margin-left: 43px">
+                        <p th:text="${reReply.contents}"></p>
+                    </div>
 
-        <!--대댓글 리스트-->
-        <div id="reply_reply_comment">
-            <div class="" th:each="rereply:${reply.rereplyList}">
-                <div class="px-3 pt-3 pb-3">
-                                <span id="reply_reply_icon">
-                                    <i class="bi bi-reply-all fs-1"></i>
-                                </span>
-                    <span class="ms-4" th:text="${rereply.nickname}"> </span>
-                    <span th:text="${#dates.format(rereply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
-                    <span><a href="javascript:void(0)" class="d-inline text-black"
-                             th:onclick="removeReply([[${rereply.replyNo}]])"><i
-                            class="bi bi-x-square"></i></a></span>
-                    <span>
-                                <button type="button" class="btn btn-primary btn-sm float-end "><i
-                                        class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
-                                <button type="button" class="btn btn-danger btn-sm float-end me-1"><i
-                                        class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
-                                </span>
+                    <div class="text-end me-3" style="border-bottom: 1px solid #D3D3D3;">
+                        <span>수정</span>
+                    </div>
                 </div>
 
-                <div id="reply_reply_content" class="px-3" style="margin-left: 43px">
-                    <p th:text="${rereply.contents}"></p>
-                </div>
-
-                <div class="text-end me-3 mb-2">
-                    <span>수정</span>
-                </div>
             </div>
-        </div>
-        <!--대댓글 리스트 end-->
-        <!--대댓글 등록-->
-        <form id="rRegister" style="display: none" class="p-4 form" th:if="${session.loginUser!=null}"
-              method="post" action="/reply/register.do">
-            <div style="width: 75%;">
-                            <span class="ms-3">
-                                <i class="bi bi-reply-all fs-1"></i>
-                            </span>
-                <div class="mb-3" style="margin-left: 60px">
-                    <input class="form-control text-center" type="text"
-                           th:value="${session.loginUser.nickname}"
-                           aria-label="Disabled input example" readonly
-                           style="width: 15%;">
-                    <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
-                    <input type="hidden" name="boardNo" th:value="${boardNo}">
-                    <input type="hidden" name="fkReplyNo" th:value="${reply.replyNo}">
-                    <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
-                              name="contents"></textarea>
-                </div>
-                <div id="reply_reply_reg_btn" class="ms-5">
-                    <button type="button" class="btn btn-secondary btn-sm" style="margin-left: 30px">이미지
-                        첨부
-                    </button>
-                    <button type="submit" class="btn btn-secondary btn-sm float-end">등록</button>
-                </div>
-            </div>
-        </form>
-        <!--대댓글 등록 end-->
+<!--        대댓글 리스트 end-->
+
     </div>
-    <!--댓글리스트 end-->
 </th:block>
 
 </html>

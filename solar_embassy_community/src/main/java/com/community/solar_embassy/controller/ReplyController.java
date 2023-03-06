@@ -47,7 +47,7 @@ public class ReplyController {
                        Model model){
         List<Reply> replyList=replyService.findByBoardNo(boardNo);
         for(Reply reply:replyList){
-            reply.setRereplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
+            reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
         }
         model.addAttribute("replyList",replyList);
         return "/reply/list";
