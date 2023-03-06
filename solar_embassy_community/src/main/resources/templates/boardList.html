@@ -30,7 +30,7 @@ layout:decorate="~{/layout}"> -->
             margin-bottom: 40px;
             background-color: #FFC2C3;
             width: 40%;
-            height: 30%;
+            height: max-content;
             border-radius: 10px;
             display: inline-block;
 
@@ -42,7 +42,7 @@ layout:decorate="~{/layout}"> -->
             margin-bottom: 40px;
             background-color: #FFC2C3;
             width: 40%;
-            height: 30%;
+            height: max-content;
             border-radius: 10px;
             display: inline-block;
 
@@ -81,6 +81,7 @@ layout:decorate="~{/layout}"> -->
 
             <!--여기부터-->
             <div id="SE_content22">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+                <th:block th:if="${galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1" class="pt-1">
                     <div>
                         <h1 class="mx-5 my-5 border-bottom-0"><strong><span th:text="${galaxy.galName}"></span>갤럭시</strong></h1>
@@ -88,11 +89,11 @@ layout:decorate="~{/layout}"> -->
                     <div class="text-center">
                         <div id="user_info_bgc2" class="">
 
-                            <h2 class="mt-3">(일간 추천을 가장 많이받은 게시글?)</h2>
+                            <h2 class="mt-3">(일간 추천을 가장 많이받은 게시글)</h2>
                         </div>
 
                         <div id="user_info_bgc3" class="">
-                            <h2 class="mt-3">(주간 추천을 가장 많이받은 게시글?)</h2>
+                            <h2 class="mt-3">(주간 추천을 가장 많이받은 게시글)</h2>
 
                         </div>
                     </div>
@@ -133,7 +134,7 @@ layout:decorate="~{/layout}"> -->
                                        th:text="${list_n.boardTag}" style="color:#000;"></a>
                                 </td>
                                 <td th:text="${list_n.title}" th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]" style="cursor: pointer"></td>
-                                <td th:text="${list_n.userId}"></td>
+                                <td th:text="${list_n.user.nickname}"></td>
                                 <td th:text="${(list_n.likes ==null)?0:list_n.likes}"></td>
                                 <td th:text="${(list_n.views ==null)?0:list_n.views}"></td>
                                 <td th:text="${#dates.format(list_n.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>

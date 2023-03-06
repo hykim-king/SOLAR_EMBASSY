@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName admin
- */
 @Data
 public class Admin implements Serializable {
     private String adminId;

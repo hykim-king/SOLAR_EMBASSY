@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName reserve_list
- */
 @Data
 public class ReserveList implements Serializable {
     private Integer listNo;

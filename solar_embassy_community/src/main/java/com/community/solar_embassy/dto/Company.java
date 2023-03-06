@@ -28,9 +28,11 @@ public class Company implements Serializable {
 
     private String comImgName;
 
+    private String link;
+
     private static final long serialVersionUID = 1L;
 
-    public Company(String comName, String address, String parentName, Date foundDate, String founders, String ceo, String industries, String slogan, String content) {
+    public Company(String comName, String address, String parentName, Date foundDate, String founders, String ceo, String industries, String slogan, String content, String comImgName) {
         this.comName = comName;
         this.address = address;
         this.parentName = parentName;
@@ -40,6 +42,8 @@ public class Company implements Serializable {
         this.industries = industries;
         this.slogan = slogan;
         this.content = content;
+        this.comImgName = comImgName;
+        this.link = link;
     }
 
     public Company() {

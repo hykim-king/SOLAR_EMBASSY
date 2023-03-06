@@ -4,9 +4,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * @TableName auto_img
- */
 @Data
 public class AutoImg implements Serializable {
     private Integer autoImgNo;

@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName business
- */
 @Data
 public class Business implements Serializable {
     private Integer buNo;

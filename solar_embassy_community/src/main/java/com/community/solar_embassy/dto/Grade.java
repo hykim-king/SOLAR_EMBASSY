@@ -3,10 +3,6 @@ package com.community.solar_embassy.dto;
 import lombok.Data;
 
 import java.io.Serializable;
-
-/**
- * @TableName grade
- */
 @Data
 public class Grade implements Serializable {
     private Integer userLevel;

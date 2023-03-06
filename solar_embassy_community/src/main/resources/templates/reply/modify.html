@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+    #rModify {
+        border-top: 1px solid #D3D3D3;
+    }
+</style>
+<!--댓글 수정-->
+<form th:onsubmit="event.preventDefault(); modifyReply(this);"
+      name="replyModifyForm" enctype="multipart/form-data" action="/reply/modify.do" method="post"
+      class="p-4 form">
+    <input type="hidden" name="boardNo" th:value="${reply.boardNo}">
+    <input type="hidden" name="fkReplyNo" th:value="${reply.fkReplyNo}">
+    <input type="hidden" name="replyNo" th:value="${reply.replyNo}">
+    <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+    <input type="hidden" name="imgPath" th:value="${reply.imgPath}">
+    <input type="hidden" name="originImgName" th:value="${reply.originImgName}">
+    <div class="mb-3">
+        <span class="form-control text-center" type="text"
+               th:text="${session.loginUser.nickname}"
+               aria-label="Disabled input example" readonly
+              style="width: 15%;"></span>
+        <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"
+                  name="contents" th:text="${reply.contents}"></textarea>
+    </div>
+    <div id="reply_update_btn">
+        <button type="button" class="btn btn-secondary btn-sm">이미지 첨부</button>
+        <button type="submit" class="btn btn-secondary btn-sm float-end">수정</button>
+    </div>
+</form>
+<!--댓글 수정 end-->
+</html>

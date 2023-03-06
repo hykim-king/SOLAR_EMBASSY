@@ -1,17 +1,16 @@
 package com.community.solar_embassy.dto;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName board
- */
 @Data
 public class BoardDto implements Serializable {
     private Integer boardNo;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date postTime;
 
     private Integer galaxyNo;
@@ -32,9 +31,10 @@ public class BoardDto implements Serializable {
 
     private Integer state;
 
-    private int likes;
+    private Integer likes;
 
     private Integer dislikes;
+    private BoardPreferViewDto boardPreferView;
 
     private int views;
 

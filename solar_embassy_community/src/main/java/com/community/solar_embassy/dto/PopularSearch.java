@@ -5,9 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName popular_search
- */
+
 @Data
 public class PopularSearch implements Serializable {
     private Integer popKwdNo;

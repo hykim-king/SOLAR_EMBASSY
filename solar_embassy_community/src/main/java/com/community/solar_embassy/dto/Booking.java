@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName booking
- */
 @Data
 public class Booking implements Serializable {
     private Integer bokNo;

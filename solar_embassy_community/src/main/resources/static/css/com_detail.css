@@ -1,33 +1,3 @@
-#SE_contents #content1{
-    background-color: hotpink;
-    height: 80px;
-    display: flex;
-    border-radius: 10px;
-    border: 1px solid #000000;
-}
-
-#SE_contents #content1 #btn {
-    margin: 25px;
-    display: flex;
-    text-decoration: none;
-}
-
-#SE_contents #content1 #btn #autogalaxy a {
-    padding-left: 10px;
-    color: #fff;
-    float: left;
-    text-decoration: none;
-    font-size: 20px;
-}
-
-#SE_contents #content1 #btn #autopedia a {
-    padding-left: 30px;
-    color: #fff;
-    float: left;
-    text-decoration: none;
-    font-size: 20px;
-}
-
 #SE_contents #content2 {
     background-color: white;
     width: 1200px;
@@ -45,11 +15,20 @@
 }
 
 #SE_contents #content2 #photo img {
+    width: 350px;
+    height: 200px;
     object-fit: contain;
 }
 
 #SE_contents #content2 #inform {
-    margin-left: 300px;
+    margin-left: 150px;
+}
+
+#SE_contents #content2 #inform button {
+    border-radius: 10px;
+    background-color: dodgerblue;
+    margin-top: 10px;
+    width: 350px;
 }
 
 #SE_contents #content3 {

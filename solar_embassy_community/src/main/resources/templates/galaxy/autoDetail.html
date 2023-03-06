@@ -15,15 +15,12 @@ layout:decorate="~{/layout}"> -->
   <!--원본 css-->
   <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="/css/auto_detail.css">
-  <title>자동차 정보</title>
+  <title>자동차 백과</title>
 </head>
 <body>
 <div id="SE_container">
-  <header id="SE_header">
-    <h6>메인이미지</h6>
-    <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'">
-  </header>
 
+  <th:block th:insert="/mainImg"></th:block>
   <div id="SE_topline">
     <!--검색과 로그인 + 왼쪽 사이드-->
     <th:block th:insert="/searchAndLogin"></th:block>
@@ -32,17 +29,11 @@ layout:decorate="~{/layout}"> -->
       <!--메뉴 + 오른쪽 사이드-->
       <th:block th:insert="/menuAndAside"></th:block>
       <!--메뉴 end-->
-
-        <div id="content1">
-          <div id="btn">
-            <span id="autogalaxy"><a href="?">자동차 갤럭시</a></span>
-            <span id="autopedia"><a href="?">자동차 백과</a></span>
-          </div>
-        </div>
+      <th:block th:insert="/galaxy/autoGalaxyNavbar"></th:block>
 
         <div id="content2">
           <div id="photo">
-            <img src="/img/autopedia/grandeur.png" alt="">
+            <img th:src="${auto.getAutoImgName()}" alt="">
           </div>
           <div id="inform">
             차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
@@ -51,67 +42,24 @@ layout:decorate="~{/layout}"> -->
             차종 : <span th:text="${auto.getAutoType()}"></span> <br>
             출시일 : <span th:text="${#dates.format(auto.getReleaseDate(),'yyyy-MM-dd')}"></span> <br>
             탑승 인원 : <span th:text="${auto.getSeat()}"></span>인승 <br>
-            연비 : <span th:text="${auto.getMpg()}"></span>km <br>
+            연비 / 복합전비 : <span th:text="${auto.getMpg()}"></span>km/kWh <br>
+            배기량 / 배터리 용량 : <span th:text="${auto.getDisp()}"></span>cc/kWh <br>
+            가격 : <span th:text="${auto.getPrice()}"></span>만원 <br>
             차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
           </div>
         </div>
 
         <div id="content3">
-          <h1><strong>제원</strong></h1>
-          <br>
-          <h2 th:text="${auto.getDetailName()}"></h2>
-          <div id="data">
-            <ul>
-              <li th:text="${auto.getOptionName()}"></li>
-              <li th:text="${auto.getDisp()}"></li>
-              <li th:text="${auto.getPrice()}"></li>
-            </ul>
-          </div>
+          <span><img th:src="${auto.autoImgList.get(0).getAutoImgPath()}" alt=""></span>
+          <span><img th:src="${auto.autoImgList.get(1).getAutoImgPath()}" alt=""></span>
+          <span><img th:src="${auto.autoImgList.get(2).getAutoImgPath()}" alt=""></span>
+          <span><img th:src="${auto.autoImgList.get(3).getAutoImgPath()}" alt=""></span>
         </div>
 
         <div id="content4">
-          <span>
-            <a href="#">
-              <img src="/img/autopedia/kona1.jpg" alt="">
-            </a>
-          </span>
-          <span>
-            <a href="#">
-              <img src="/img/autopedia/kona2.jpg" alt="">
-            </a>
-          </span>
-          <span>
-            <a href="#">
-              <img src="/img/autopedia/kona3.jpg" alt="">
-            </a>
-          </span>
-          <span>
-            <a href="#">
-              <img src="/img/autopedia/kona4.jpg" alt="">
-            </a>
-          </span>
+          <iframe width="1120" height="560" th:src="@{'https://www.youtube.com/embed/{autoVideo}' (autoVideo=${auto.getAutoVideo()})}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-
-        <div id="content5">
-          <a href=""><img src="/img/autopedia/kona1.jpg" alt=""></a>
-        </div>
-      <section id="SE_contents2">
-        <div id="SE_banner1"><h1>배너자리</h1></div>
-      </section>
-
-      <section id="SE_contents3">
-        <div id="SE_banner2"><h1>배너자리</h1></div>
-      </section>
-
-      <footer id="SE_footer">
-        <p>
-        </p>
-        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-          <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-        <p>
-        </p>
-        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-      </footer>
+        <th:block th:insert="/footer"></th:block>
     </div>
   </div>
 </div>

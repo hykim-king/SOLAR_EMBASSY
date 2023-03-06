@@ -28,6 +28,8 @@ public interface UsersMapper {
 
     int expUp(int exp,String userId);
     int levelUp(Users users);
+
+    Users findByNickname(String nickname);
 }
 
 

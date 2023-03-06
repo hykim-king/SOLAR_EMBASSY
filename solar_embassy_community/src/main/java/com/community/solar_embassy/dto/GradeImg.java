@@ -4,9 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * @TableName grade_img
- */
+
 @Data
 public class GradeImg implements Serializable {
     private String grade;

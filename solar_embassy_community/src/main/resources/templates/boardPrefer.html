@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:with="boardNo=${(param.boardNo!=null)?param.boardNo:boardNo}">
+    <button th:href="@{'/boardDetail.do'(boardNo=${param.boardNo},preferBtn=true)}"
+            th:onclick="boardPreferHandler([[${param.boardNo}]],true)"
+            th:classappend="${(prefer.loginUserPrefer!=null&&prefer.loginUserPrefer.prefer)?'bt-active':''}"
+            type="button" class="btn btn-danger btn-lg"><i class="bi bi-hand-thumbs-up"></i>
+        <span class="" th:text="${prefer.likes}"></span>
+    </button>
+    <button th:href="@{'/boardDetail.do'(boardNo=${param.boardNo},preferBtn=false)}"
+            th:onclick="boardPreferHandler([[${param.boardNo}]],false)"
+            th:classappend="${(prefer.loginUserPrefer!=null&&prefer.loginUserPrefer.prefer)?'bt-active':''}"
+            type="button" class="btn btn-primary btn-lg"><i class="bi bi-hand-thumbs-down"></i>
+        <span class="" th:text="${prefer.dislikes}"></span>
+    </button>
+</th:block>
+</html>

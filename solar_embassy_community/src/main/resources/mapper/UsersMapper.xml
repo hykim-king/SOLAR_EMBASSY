@@ -72,6 +72,9 @@
     <select id="findById" resultType="com.community.solar_embassy.dto.Users">
         SELECT * FROM users WHERE userId= #{userId}
     </select>
+    <select id="findByNickname" resultType="com.community.solar_embassy.dto.Users">
+        SELECT * FROM users WHERE nickname=#{nickname}
+    </select>
     <update id="getPoints">
         UPDATE users
         SET cPoint=cPoint + #{cPoint},

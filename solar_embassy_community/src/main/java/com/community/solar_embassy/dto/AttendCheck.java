@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName attend_check
- */
 @Data
 public class AttendCheck implements Serializable {
     private Integer checkNo;

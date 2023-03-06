@@ -5,9 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName letter
- */
+
 @Data
 public class Letter implements Serializable {
     private Integer letterNo;

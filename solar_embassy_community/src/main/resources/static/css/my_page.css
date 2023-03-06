@@ -1,20 +1,34 @@
+/*마이 페이지*/
 #my_page {
-    /*마이 페이지*/
-    background-color: #C3C0EB;
-    width: 100%;
-    height: 90%;
+    background-color: #5292f6;
+    box-shadow: 0 4px 0 0 #565c93;
+    border-radius:0 0 15px 15px;
+    width: 1200px;
+    height: 45px;
+    font-size: 20px;
+    border-style: none;
     display: flex;
+    transform: translate(0,-80px);
 }
+
+/*제목*/
+#my_pageT{
+    font: 30px/70px'';
+    font-weight: bold;
+    margin-left: 10px;
+}
+
 
 #my_page_btn {
     /*  마이페이지 버튼  */
+    transform: translate(-150px,90px);
     width: 15%;
-
+    margin: 10px 0 0 20px;
 }
 
 #my_page_table {
+    transform: translate(-150px,90px);
     margin-left: 60px;
     margin-top: 20px;
-    width: 75%;
 
 }

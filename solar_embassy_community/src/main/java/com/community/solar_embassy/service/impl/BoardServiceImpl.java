@@ -1,8 +1,12 @@
 package com.community.solar_embassy.service.impl;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.Reply;
 import com.community.solar_embassy.mapper.BoardMapper;
+import com.community.solar_embassy.mapper.GalaxyMapper;
+import com.community.solar_embassy.mapper.UsersMapper;
 import com.community.solar_embassy.service.BoardService;
+import com.community.solar_embassy.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +18,10 @@ public class BoardServiceImpl implements BoardService {
 
     @Autowired
     BoardMapper boardMapper;
+    @Autowired
+    UsersMapper usersMapper;
+    @Autowired
+    GalaxyMapper galaxyMapper;
 
     @Override
     public List<BoardDto> selectBoardList() throws Exception {
@@ -53,7 +61,11 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public List<BoardDto> boardListByGalaxy(int galaxyNo) {
-        return boardMapper.selectBoardListByGalaxy(galaxyNo);
+        List<BoardDto> boardList = boardMapper.selectBoardListByGalaxy(galaxyNo);
+        for(BoardDto board:boardList){
+            board.setUser(usersMapper.findById(board.getUserId()));
+        }
+        return boardList;
     }
 
     @Override
@@ -64,6 +76,16 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public int lastNo() {
         return boardMapper.selectEnd();
+    }
+
+    @Override
+    public List<BoardDto> BoardListByUserId(String userId) {
+        List<BoardDto> boardList = boardMapper.selectListByUserId(userId);
+        for (BoardDto board:boardList){
+            board.setUser(usersMapper.findById(userId));
+            board.setGalaxy(galaxyMapper.findGalaxy(board.getGalaxyNo()));
+        }
+        return boardList;
     }
 
     @Override

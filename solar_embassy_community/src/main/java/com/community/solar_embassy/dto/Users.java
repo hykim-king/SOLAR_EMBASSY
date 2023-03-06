@@ -6,9 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName users
- */
+
 @Data
 public class Users implements Serializable {
     private String userId;
@@ -16,6 +14,7 @@ public class Users implements Serializable {
     private String nickname;
 
     private String passwords;
+    private String passwords_C;
 
     private String email;
 

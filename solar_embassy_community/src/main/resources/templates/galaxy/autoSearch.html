@@ -1,0 +1,89 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+          crossorigin="anonymous"></script>
+  <!--원본 css-->
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/auto_search.css">
+  <title>자동차 백과</title>
+</head>
+<body>
+<div id="SE_container">
+
+  <th:block th:insert="/mainImg"></th:block>
+  <div id="SE_topline">
+    <!--검색과 로그인 + 왼쪽 사이드-->
+    <th:block th:insert="/searchAndLogin"></th:block>
+    <!--검색과 로그인 end-->
+    <div id="SE_contents" style="z-index:2">
+      <!--메뉴 + 오른쪽 사이드-->
+      <th:block th:insert="/menuAndAside"></th:block>
+      <!--메뉴 end-->
+      <th:block th:insert="/galaxy/autoGalaxyNavbar"></th:block>
+        <div class="SearchContainer1">
+          <span class="SearchWord"> {% searchword %} 로 검색하셨습니다.</span>
+          <div class="SearchTag">
+            <form action="" method="POST">
+              <input type="checkbox" name="ages" id="today" value="">
+              <label for="today">최신날짜순</label>
+              <input type="checkbox" name="ages" id="popular" value="">
+              <label for="popular">인기순</label>
+              <input type="checkbox" name="ages" id="manner" value="">
+              <label for="manner">추천순</label>
+            </form>
+          </div>
+          <div class="SearchResult">
+            <!-- 이부분은 for문 돌리셔야 할 것 같아요 -->
+            <ul>
+              <div>
+                <li class="SresulT">자동차</li>
+                <div class="Sresultt">
+                  <p>{% searchContent1 %}</p>
+                </div>
+              </div>
+              <div>
+                <li class="SresulT">제조사</li>
+                <div class="Sresultt">
+                  <p>{% searchContent2 %}</p>
+                </div>
+              </div>
+              <div>
+                <li class="SresulT">제목</li>
+                <div class="Sresultt">
+                  <p>{% searchContent3 %}</p>
+                </div>
+              </div>
+              <div>
+                <li class="SresulT">댓글</li>
+                <div class="Sresultt">
+                  <p>{% searchContent4 %}</p>
+                </div>
+              </div>
+              <div>
+                <li class="SresulT">사용자</li>
+                <div class="Sresultt">
+                  <p>{% searchContent5 %}</p>
+                </div>
+              </div>
+            </ul>
+            <div class="pageContainer">
+              <p>[1],[2],[3]</p>
+            </div>
+          </div>
+          <th:block th:insert="/footer"></th:block>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

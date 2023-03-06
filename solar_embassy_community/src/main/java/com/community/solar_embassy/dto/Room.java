@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName room
- */
 @Data
 public class Room implements Serializable {
     private String buTell;

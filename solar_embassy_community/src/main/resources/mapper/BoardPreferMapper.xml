@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.community.solar_embassy.mapper.BoardPreferMapper">
+    <resultMap id="BoardPreferMap" type="com.community.solar_embassy.dto.BoardPreferDto">
+        <id property="boardPreferNo" column="boardPreferNo"/>
+        <result property="boardNo" column="boardNo"/>
+        <result property="prefer" column="prefer"/>
+        <result property="userId" column="userId"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="boardPreferNo">
+        INSERT INTO board_prefer (boardNo, prefer, userId) VALUE (#{boardNo},#{prefer},#{userId})
+    </insert>
+    <update id="update">
+        UPDATE board_prefer SET prefer=#{prefer} WHERE boardPreferNo=#{boardPreferNo}
+    </update>
+    <delete id="delete">
+        DELETE FROM board_prefer WHERE boardPreferNo=#{boardPreferNo}
+    </delete>
+    <select id="countByBoardNoAndPreferIsTrue" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM board_prefer WHERE boardNo=#{boardNo} AND prefer=true;
+    </select>
+    <select id="countByBoardNoAndPreferIsFalse" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM board_prefer WHERE boardNo=#{boardNo} AND prefer=false;
+    </select>
+
+    <select id="findByBoardNoAndUserId" resultMap="BoardPreferMap">
+        SELECT * FROM board_prefer WHERE boardNo=#{boardNo} AND userId=#{userId}
+    </select>
+
+</mapper>

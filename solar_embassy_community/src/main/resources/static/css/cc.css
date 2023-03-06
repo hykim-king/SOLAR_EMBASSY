@@ -1,0 +1,301 @@
+html,body{background-color: #fff; height: 100%; max-width: 1920px; margin: 0 auto;}
+ul{list-style: none;}
+a{text-decoration: none; color: #fff; display: block;}
+
+/*전체 영역*/
+#CC_help{
+    width: 1200px;
+    height: 800px;
+    position: relative;
+    transform: translate(0,-80px);
+}
+
+/*제목*/
+#CC_title{
+    width:1200px;
+    height: 80px;
+    background-color: blue;
+    position: relative;
+    transform: translate(0,0px);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 0 0 #7B86FFFF;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*문의 방법을 선택해주세요 font*/
+#CC_titleP{
+    font-size: 50px;
+    color: #000;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/*메뉴 1영역*/
+#CC_menu{
+    background-color: #fff;
+    width: 1000px;
+    height: 350px;
+    position: relative;
+    display: flex;
+    padding: 70px 20px 0 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #0c4363;
+    justify-content: space-between;
+    transform: translate(100px,50px);
+}
+
+
+/*E-Mail로 문의하기*/
+#help1{
+    width: 260px;
+    height: 200px;
+    background-color:#F5E280AA;
+    border-radius: 15px;
+    padding: 30px 10px 0 10px;
+    box-shadow: 6px -10px #3766ff;
+}
+
+#help1>a{
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+#help1>a>img{
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 10px #d9d9d9;
+}
+
+/*Kakao 1:1 채팅으로 문의하기*/
+#help2{
+    width: 260px;
+    height: 200px;
+    background-color: #efff3c;
+    border-radius: 15px;
+    padding: 30px 10px 0 10px;
+    box-shadow: 6px -10px #731e09;
+}
+
+#help2>a{
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+#help2>a>img{
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 10px #d9d9d9;
+}
+
+/*SOLAR EMBASSY 공식 카페*/
+#help3{
+    width: 260px;
+    height: 200px;
+    background-color: #60d976;
+    border-radius: 15px;
+    padding: 30px 10px 0 10px;
+    box-shadow: 6px -10px #d9d9d9;
+}
+
+#help3>a{
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+#help3>a>img{
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 10px #d9d9d9;
+}
+
+
+/*메뉴2 영역*/
+#CC_menu2{
+    background-color: #f1f5ff;
+    width: 1000px;
+    height: 200px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #0c4363;
+    transform: translate(100px,100px);
+}
+
+/*메뉴2 첫째줄*/
+#CC_2_1{
+    width: 980px;
+    order: 1;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 20px 50px 0 50px;
+}
+
+/*마이페이지*/
+#help5{
+    width: 200px;
+    height: 60px;
+    background-color: #80A7F5AA;
+    border-radius: 5px;
+    box-shadow: 4px 4px #2c0074;
+}
+
+/*마이페이지 font*/
+#help5>a{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+/*ID 찾기*/
+#help6{
+    width: 200px;
+    height: 60px;
+    background-color: #80A7F5AA;
+    border-radius: 5px;
+    box-shadow: 4px 4px #2c0074;
+}
+
+/*ID 찾기 font*/
+#help6>a{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+/*PW 찾기*/
+#help7{
+    width: 200px;
+    height: 60px;
+    background-color: #80A7F5AA;
+    border-radius: 5px;
+    box-shadow: 4px 4px #2c0074;
+}
+
+/*PW 찾기 font*/
+#help7>a{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+/*메뉴2 둘째줄*/
+#CC_2_2{
+    width: 980px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 20px 50px 0 50px;
+
+}
+
+/*서비스 안내*/
+#help8{
+    width: 200px;
+    height: 60px;
+    background-color: #80A7F5AA;
+    border-radius: 5px;
+    box-shadow: 4px 4px #2c0074;
+}
+
+/*서비스 안내 font*/
+#help8>a{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+/*이용약관*/
+#help9{
+    width: 200px;
+    height: 60px;
+    background-color: #80A7F5AA;
+    border-radius: 5px;
+    box-shadow: 4px 4px #2c0074;
+}
+
+/*이용약관 font*/
+#help9>a{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+/*개인정보 취급방침*/
+#help10{
+    width: 200px;
+    height: 60px;
+    background-color: #80A7F5AA;
+    border-radius: 5px;
+    box-shadow: 4px 4px #2c0074;
+}
+
+/*개인정보 취급방침 font*/
+#help10>a{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+
+/*고객센터 상담이용안내*/
+#CC_guide {
+    background-color: #68a5fd;
+    width: 1000px;
+    height: 380px;
+    border-radius: 15px;
+    position: relative;
+    transform: translate(100px, 180px);
+    padding: 40px 20px 0 20px;
+    box-shadow: 4px 4px #2c0074;
+}
+
+#CC_guide>p {
+    font-size: 22px;
+    text-align: center;
+    color: #000;
+}
+
+/*footer 영역*/
+#SE_footer1{
+    background-color: Black;
+    width: 1920px;
+    height: 200px;
+    float: left;
+    position: relative;
+    transform: translate(0,1900px);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+#SE_footer1>p{font-size: 16px; color: white;}
+#SE_footer1 a{margin-top: 20px; display: inline-block;}
