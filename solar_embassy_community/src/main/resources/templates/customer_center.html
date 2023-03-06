@@ -1,0 +1,93 @@
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/cc.css">
+
+    <title>SOLAR EMBASSY</title>
+
+</head>
+
+<body>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
+            <section id="CC_help">
+                <div id="CC_title">SOLAR EMBASSY 고객샌터</div>
+                <p id="CC_titleP">문의 방법을 선택해주세요.</p>
+
+                <div id="CC_menu">
+                    <div id="help1">
+                        <a href="mailto:mall@solarembassy.com"><img src="/img/mail.jpg">
+                            <br>E-Mail로 문의하기</a>
+                    </div>
+                    <div id="help2">
+                        <a href="https://open.kakao.com/o/sImhIr4e">
+                            <img src="/img/kakao.jpg">
+                            <br>카카오톡으로 1:1 문의하기</a>
+                    </div>
+                    <div id="help3">
+                        <a href="https://cafe.naver.com/solarembassy">
+                            <img src="/img/cafe.jpg">
+                            <br>SOLAR EMBASSY 공식 카페</a>
+                    </div>
+                </div>
+
+                <div id="CC_menu2">
+                    <div id="CC_2_1">
+                        <div id="help5"><a href="#">마이페이지</a></div>
+                        <div id="help6"><a href="/user/find_id.do">ID 찾기</a></div>
+                        <div id="help7"><a href="/user/find_pw_security.do">PW 찾기</a></div>
+                    </div>
+
+                    <div id="CC_2_2">
+                        <div id="help8"><a href="/introduce">서비스 안내</a></div>
+                        <div id="help9"><a href="/user_rules">이용약관</a></div>
+                        <div id="help10"><a href="/personal">개인정보 취급방침</a></div>
+                    </div>
+                </div>
+
+                <div id="CC_guide">
+                    <p><b>고객센터 상담 이용 시간 안내 : 평일 09:00 ~ 17:50</b></p>
+                    <p><b>점심 시간 : 12:00 ~ 13:00 ( 토, 일 및 법정 공휴일 휴무)</b></p>
+                    <br>
+                    <p>위 사항을 양지하여주시고, 이용하시는데 불편함 없으시길 바랍니다.</p>
+                    <br>
+                    <p>고객 여러분의 의견 하나하나의 귀 기울이며,</p>
+                    <p>한반 다가갈 수 있는 SOLAR EMBASSY가 되도록 노력하겠습니다.</p>
+                    <br>
+                    <p>감사합니다.</p>
+                </div>
+            </section>
+        </div>
+        <footer id="SE_footer1">
+            <p>
+            <h3><a href="/introduce">서비스 소개</a> / <a href="/user_rules">이용약관</a> / <a href="/personal">개인정보
+                취급방침</a>
+                / <a href="https://open.kakao.com/o/sImhIr4e">비즈니스 문의</a> / <a
+                        href="https://cafe.naver.com/solarembassy">SNS</a>
+                / <a href="mailto:mall@solarembassy.com">이메일</a> / <a href="/customer_center">고객샌터</a></h3></p>
+            <p>
+            <h3>Copyright (c) <a href="https://github.com/hykim-king/SOLAR_EMBASSY">www.solarembassy.com</a> All
+                rights reserved.</h3></p>
+            <p>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 SOLAR EMBASSY의 입장과 다를 수 있습니다.<img
+                    src="/img/loadcat.gif"></a></p>
+        </footer>
+    </div>
+</body>
+</html>

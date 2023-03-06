@@ -51,6 +51,11 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public int withdrawal(Users loginUser) {
+        return usersMapper.delete(loginUser.getUserId());
+    }
+
+    @Override
     public int expUp(String userId) {
         return usersMapper.expUp(5,userId);
     }

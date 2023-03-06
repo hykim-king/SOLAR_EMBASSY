@@ -88,7 +88,7 @@
         FROM board
         WHERE boardNo >= #{endNo} - 100
         ORDER BY likes DESC, postTime DESC
-        LIMIT 4
+        LIMIT 5
     </select>
     <select id="selectEnd" resultType="java.lang.Integer">
         SELECT boardNo

@@ -64,6 +64,16 @@ public class UserController {
     public void withdrawal() {
     }
 
+    @PostMapping("withdrawal.do")
+    public String withdrawal(HttpSession session) {
+        int withdrawal = usersService.withdrawal((Users) (session.getAttribute("loginUser")));
+        if (withdrawal == 1) {
+            return "redirect:/";
+        }else {
+            return "redirect:/user/withdrawal.do";
+        }
+    }
+
     @GetMapping("signup.do")
     public String signup() {
         return "/user/signup/signup";
@@ -192,11 +202,11 @@ public class UserController {
     public String user_info_modify(@SessionAttribute Users loginUser, Users user, HttpSession session) {
         System.out.println(user.getPasswords());
         System.out.println(user.getPasswords_C());
-        if (user.getPasswords()!=null&&user.getPasswords().equals(user.getPasswords_C())) {
+        if (user.getPasswords() != null && user.getPasswords().equals(user.getPasswords_C())) {
             int modify = usersService.modify(user);
             if (modify == 1) {
-                Users loginUpdate = usersService.login(user.getUserId(),user.getPasswords());
-                session.setAttribute("loginUser",loginUpdate);
+                Users loginUpdate = usersService.login(user.getUserId(), user.getPasswords());
+                session.setAttribute("loginUser", loginUpdate);
                 return "redirect:/user/my_page.do";
             }
         }

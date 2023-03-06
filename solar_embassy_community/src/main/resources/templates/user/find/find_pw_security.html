@@ -1,7 +1,3 @@
-<!-- xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{/layout}"> -->
-
 <html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +5,7 @@ layout:decorate="~{/layout}"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
@@ -31,9 +28,9 @@ layout:decorate="~{/layout}"> -->
 
             <!--여기부터-->
             <div class="find_pw_security_container">
-                <h1 class="find_pw_security_text" style="color: rgb(0, 0, 0);">비밀번호 찾기</h1>
+                <h1 class="find_pw_security_text" style="color: rgb(0, 0, 0);">PW 찾기</h1>
                 <div class="find_pw_security_container2">
-                    <img src="/img/security.jpg">
+                    <img src="/img/security.gif">
                     <div class="find_pw_security_content">
                         <p>PW를 찾기 위해 ID를 입력해주세요.</p>
                         <div class="find_pw_security_input">
@@ -44,13 +41,11 @@ layout:decorate="~{/layout}"> -->
                         </div>
                     </div>
                     <div class="find_pw_security_content_3">
-                        <div class="find_pw_security_content_3-1" ><a href="/user/find_id.do">아이디가 기억이 나지 않는다면 아이디 찾기로 이동하세요.</a></div>
+                        <div class="find_pw_security_content_3-1" ><a href="/user/find_id.do">→ID가 기억이 나지 않는다면?</a></div>
                     </div>
                     <div class="find_pw_security_content_4">
-                        <form action="" method="POST">
-                            <button id="cancel" onclick="location.href='/'">취소</button>
-                            <button id="service_center">고객센터</button>
-                        </form>
+                        <button id="cancel" onclick="location.href='/'">취소</button>
+                        <button id="service_center" onclick="location.href='/customer_center'">고객센터</button>
                     </div>
                 </div>
             </div>

@@ -17,4 +17,6 @@ public interface UsersService {
     Users findById(String userId);
 
     int expUp(String userId);
+
+    int withdrawal(Users loginUser);
 }
