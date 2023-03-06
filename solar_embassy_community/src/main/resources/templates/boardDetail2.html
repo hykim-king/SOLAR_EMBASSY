@@ -210,7 +210,8 @@
             cloneForm.onsubmit = function (e) { //복사된 폼의 등록 이벤트 재정의
                 registerReply(e, cloneForm);
             }
-            cloneForm.fkReplyNo.value = replyNo; //복사된 폼의 참조하는 부모 번호 정의
+            cloneForm.fkReplyNo.value = replyNo;
+            cloneForm.contents.value=null;//복사된 폼의 참조하는 부모 번호 정의
             let selector = "reReplyRegisterContainer" + replyNo;
             const reReplyRegisterContainer = document.getElementById(selector); //복사한 폼의 옮길 위치
             reReplyRegisterContainer.append(cloneForm);
