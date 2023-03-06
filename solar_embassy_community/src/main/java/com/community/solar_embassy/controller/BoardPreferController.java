@@ -29,7 +29,7 @@ public class BoardPreferController {
     }
 
     @RequestMapping(path = "/handler.do", method = {RequestMethod.PUT})
-    public @ResponseBody AjaxStateHandler handler(int boardNo,
+    public @ResponseBody AjaxStateHandler handler(@RequestParam int boardNo,
                                                   boolean preferBtn,
                                                   @SessionAttribute Users loginUser) {
         AjaxStateHandler ajaxStateHandler = new AjaxStateHandler();
