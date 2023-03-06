@@ -55,5 +55,4 @@ public class AutoController {
     @GetMapping("autoSearch.do")
     public void search(HttpSession session) {
     }
->>>>>>> 2dec74e60829a2df9427c164c6d466c5cc2b58cb
 }
