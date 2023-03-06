@@ -24,6 +24,13 @@
     margin-left: 150px;
 }
 
+#SE_contents #content2 #inform button {
+    border-radius: 10px;
+    background-color: dodgerblue;
+    margin-top: 10px;
+    width: 350px;
+}
+
 #SE_contents #content3 {
     width: 1200px;
     background-color: #fff;
