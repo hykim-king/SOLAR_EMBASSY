@@ -71,7 +71,7 @@ layout:decorate="~{/layout}"> -->
             <!--여기부터-->
             <div id="SE_content3" style="height: calc(max-content+100px);">
                 <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
-
+                <th:block th:if="${board.galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post">
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
