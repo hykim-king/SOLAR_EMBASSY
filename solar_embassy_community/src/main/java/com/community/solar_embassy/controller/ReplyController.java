@@ -75,7 +75,7 @@ public class ReplyController {
     public String modify(@RequestParam int replyNo,
                          @SessionAttribute Users loginUser,
                          Model model) {
-        List<Reply> reply = replyService.findByFkReplyNo(replyNo);
+        Reply reply = replyService.findOne(replyNo);
         model.addAttribute("reply", reply);
         return "/reply/modify";
     }
