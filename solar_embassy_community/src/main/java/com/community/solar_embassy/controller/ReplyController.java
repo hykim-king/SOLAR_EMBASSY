@@ -45,7 +45,7 @@ public class ReplyController {
     public String list(@PathVariable int boardNo,
                        HttpServletRequest req,
                        Model model){
-        List<Reply> replyList=replyService.findByBoardNo(boardNo);
+        List<Reply> replyList=replyService.findFirstByBoardNo(boardNo);
         for(Reply reply:replyList){
             reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
         }

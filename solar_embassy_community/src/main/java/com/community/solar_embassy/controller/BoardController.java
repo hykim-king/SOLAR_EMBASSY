@@ -77,8 +77,9 @@ public class BoardController {
         BoardDto board = boardService.selectBoardDetail(boardNo);
         board.setUser(usersService.findById(board.getUserId()));
         board.setBoardNo(boardNo);
+        board.setReplyList(replyService.findByBoardNo(boardNo));
         board.setGalaxy(galaxyService.findByNo(board.getGalaxyNo()));
-        List<Reply> replyList = replyService.findByBoardNo(boardNo);
+        List<Reply> replyList = replyService.findFirstByBoardNo(boardNo);
         for(Reply reply:replyList){
             reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
         }

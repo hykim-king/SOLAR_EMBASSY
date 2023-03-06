@@ -70,12 +70,5 @@
         SELECT * FROM reply
         WHERE boardNo=#{boardNo}
         AND fkReplyNo IS NULL
-        ORDER BY
-        <choose>
-            <when test="paging.orderField==null">boardNo</when>
-            <otherwise>${paging.orderField}</otherwise>
-        </choose>
-        ${paging.direct}
-        LIMIT #{paging.startRow},#{paging.rows}
     </select>
 </mapper>

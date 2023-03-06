@@ -14,7 +14,7 @@
 <th:block th:each="reply:${replyList}">
     <div th:id="'replyContainer'+${reply.replyNo}">
         <div class="px-3 pt-3 pb-3">
-            <span th:text="${reply.nickname}"> </span>
+            <span th:text="${reply.user.nickname}"> </span>
             <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
             <span><a href="javascript:void(0)" class="d-inline text-black"
                      th:onclick="removeReply([[${reply.replyNo}]])">

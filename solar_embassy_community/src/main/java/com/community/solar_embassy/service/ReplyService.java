@@ -13,4 +13,5 @@ public interface ReplyService  {
     List<Reply> findByBoardNo(int boardNo);
     List<Reply> findByFkReplyNo(int replyNo);
 
+    List<Reply> findFirstByBoardNo(int boardNo);
 }

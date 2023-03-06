@@ -79,7 +79,7 @@
                             <span th:text="${board.user.nickname}"> </span>
                             <span> | </span>
                             <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm')}"> </span>
-                            <span class="float-end" th:text="'댓글 ('+${replyList.size()}+')'"></span>
+                            <span class="float-end" th:text="'댓글 ('+${board.replyList.size()}+')'"></span>
                             <span class="float-end" th:text="'추천 : '+${board.boardPreferView.likes}+' | '"></span>
                             <span class="float-end" th:text="'조회 : '+${board.views}+' | '"></span>
                         </div>
@@ -104,7 +104,7 @@
 
                     <div id="reply" class="pt-4">
                         <h4 class="ms-4"><i class="bi bi-chat-dots me-2"></i><span
-                                th:text="'댓글 ('+${replyList.size()}+')'"></span></h4>
+                                th:text="'댓글 ('+${board.replyList.size()}+')'"></span></h4>
                     </div>
 
                     <div id="replyListContainer">

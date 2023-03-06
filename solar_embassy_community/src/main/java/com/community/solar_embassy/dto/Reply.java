@@ -22,7 +22,7 @@ public class Reply implements Serializable {
 
     private String nickname;
 
-    private String fkReplyNo;
+    private Integer fkReplyNo;
 
     private String contents;
 
