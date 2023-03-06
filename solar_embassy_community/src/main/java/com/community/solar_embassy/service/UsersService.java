@@ -15,4 +15,6 @@ public interface UsersService {
     int findNick(String nickname);
 
     Users findById(String userId);
+
+    int expUp(String userId);
 }

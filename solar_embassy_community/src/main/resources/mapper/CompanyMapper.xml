@@ -30,4 +30,3 @@
         SELECT * FROM company WHERE comNo = #{comNo}
     </select>
 </mapper>
-

@@ -49,6 +49,11 @@ public class UsersServiceImpl implements UsersService {
     public Users findById(String userId) {
         return usersMapper.findById(userId);
     }
+
+    @Override
+    public int expUp(String userId) {
+        return usersMapper.expUp(5,userId);
+    }
 }
 
 

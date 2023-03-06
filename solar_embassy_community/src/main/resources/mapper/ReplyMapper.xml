@@ -19,6 +19,14 @@
         <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
         <association property="user" column="userId" select="com.community.solar_embassy.mapper.UsersMapper.findById"
                      autoMapping="true" fetchType="lazy"/>
+        <collection property="rereplyList"
+                    autoMapping="true"
+                    javaType="java.util.ArrayList"
+                    ofType="Reply"
+                    select="findByFkReplyNo"
+                    column="replyNo"
+                    fetchType="lazy">
+        </collection>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -28,8 +36,8 @@
         state,imgPath,originImgName
     </sql>
     <insert id="insertReply">
-        INSERT INTO reply(boardNo, userId, fkReplyNo, contents, imgPath, originImgName)
-        VALUES (#{boardNo}, #{userId}, #{fkReplyNo}, #{contents}, #{imgPath}, #{originImgName})
+        INSERT INTO reply(boardNo, userId, fkReplyNo, contents, imgPath, originImgName,postTime)
+        VALUES (#{boardNo}, #{userId}, #{fkReplyNo}, #{contents}, #{imgPath}, #{originImgName},current_timestamp)
     </insert>
     <update id="updateReply">
         UPDATE reply
@@ -55,5 +63,29 @@
     </select>
     <select id="findAllByFkReplyNo" resultType="com.community.solar_embassy.dto.Reply">
         SELECT * FROM reply WHERE fkReplyNo=#{replyNo}
+    </select>
+    <select id="findById" resultType="com.community.solar_embassy.dto.Reply">
+        SELECT * FROM solar_embassy.reply WHERE replyNo=#{replyNo}
+    </select>
+    <select id="findByUserIdPaging" resultType="com.community.solar_embassy.dto.Reply">
+
+    </select>
+    <select id="countByUserId" resultType="java.lang.Integer">
+
+    </select>
+    <select id="countByBoardNo" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM solar_embassy.reply WHERE boardNo=#{boardNo}
+    </select>
+    <select id="findByBoardNoPaging" resultType="com.community.solar_embassy.dto.Reply">
+        SELECT * FROM solar_embassy.reply
+        WHERE boardNo=#{boardNo}
+        AND fkReplyNo IS NULL
+        ORDER BY
+        <choose>
+            <when test="paging.orderField==null">boardNo</when>
+            <otherwise>${paging.orderField}</otherwise>
+        </choose>
+        ${paging.direct}
+        LIMIT #{paging.startRow},#{paging.rows}
     </select>
 </mapper>

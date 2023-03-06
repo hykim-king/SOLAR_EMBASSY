@@ -97,27 +97,16 @@ layout:decorate="~{/layout}"> -->
                         <div th:text="${session.loginUser.nickname}+'님의 작성글입니다.'"></div>
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
-                                <select th:name="galaxyNo" th:selected="${galaxyNo}"
-                                        class="btn btn-secondary dropdown-toggle">
+                                <select th:name="galaxyNo" class="btn btn-secondary dropdown-toggle">
                                     <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}"
-                                            th:text="${galaxy.galName}"></option>
+                                            th:text="${galaxy.galName}" th:selected="${galaxy.galaxyNo} == ${galaxyNo}"></option>
                                 </select>
                                 <select name="boardTag" class="btn btn-secondary dropdown-toggle">
-                                    <option value="1">일상</option>
-                                    <option value="2">유머</option>
-                                    <option value="3">예약</option>
-                                    <option value="4">후기</option>
+                                    <option value="1" selected>잡담</option>
+                                    <option value="2">정보</option>
+                                    <option value="3">질문</option>
+                                    <option value="4">기타</option>
                                 </select>
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
-                                   id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    주제
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">잡담</a></li>
-                                    <li><a class="dropdown-item" href="#">정보</a></li>
-                                    <li><a class="dropdown-item" href="#">질문</a></li>
-                                    <li><a class="dropdown-item" href="#">기타</a></li>
-                                </ul>
                             </div>
                             <div id="title_input1">
                                 <input type="text" placeholder="제목" id="title" name="title" class="form-control"

@@ -40,6 +40,7 @@
                           contents,
                           likes,
                           views,
+                          postTime,
                           userId)
         VALUES (#{galaxyNo},
                 #{boardTag},
@@ -47,11 +48,12 @@
                 #{contents},
                 #{likes},
                 #{views},
+                CURRENT_TIMESTAMP,
                 #{userId})
         ]]>
    </insert>
     <!--게시글 상세-->
-    <select id="selectBoardDetail" parameterType="int" resultType="BoardDto">
+    <select id="selectBoardDetail" parameterType="int" resultType="com.community.solar_embassy.dto.BoardDto">
         SELECT /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
         FROM board
         WHERE boardNo = #{boardNo}
@@ -66,6 +68,7 @@
         SELECT *
         FROM board
         WHERE galaxyNo = #{galaxyNo}
+        ORDER BY boardNo DESC
     </select>
     <select id="selectBoardListBySize" resultType="com.community.solar_embassy.dto.BoardDto">
         SELECT *
