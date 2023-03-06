@@ -2,7 +2,7 @@
 *{margin:0; padding:0;}
 html,body{background-color: #fff; height: 100%; max-width: 1920px; margin: 0 auto;}
 ul{list-style: none;}
-a{text-decoration: none; color: #fff; display: block;}
+a{text-decoration: none; color: #fff; display: inline-block;}
 
 /*메인 컨테이너*/
 #SE_container{
@@ -146,7 +146,6 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     width: 1200px;
     height: 2000px;
     margin: 0;
-    position: fixed;
     transform: translate(360px,50px);
 }
 

@@ -1,6 +1,7 @@
 package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.Users;
+import com.community.solar_embassy.google.GoogleLoginResponse;
 import com.community.solar_embassy.service.UsersService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -162,4 +163,14 @@ public class UserController {
     public void user_info_modify() {
     }
 
+    // 구글 로그인 페이지로 이동
+    @GetMapping("google_login")
+    public String google_login() {
+        return "/user/google_login";
+    }
+
+    // 구글 로그인 정보 가져오기
+
 }
+
+

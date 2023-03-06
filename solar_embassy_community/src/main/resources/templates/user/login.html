@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="384353138780-d327tn438uoqloo7flo6rrddrro8hn95.apps.googleusercontent.com">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta charset="UTF-8">
   <title>Login Page</title>
   <link rel="stylesheet" href="/css/login.css">
-
 
   <style>
 
@@ -39,6 +41,8 @@
   <span></span>
   <input type="password" placeholder="PASSWORD" name="passwords">
 
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <a href="#" onClick="signOut();">Sign out</a>
   <button class="btn" type="submit" formmethod="POST">로그인</button>
   <button class="btn2" type="button" onclick="location.href='/'">취  소</button>
 
@@ -47,8 +51,7 @@
     <a href="https://www.naver.com"><img src="/img/sns_login_btn_2.png" alt="naver"></a>
     <a href="https://www.facebook.com"><img src="/img/sns_login_btn_3.png" alt="fb"></a>
     <a href="https://www.apple.com"><img src="/img/sns_login_btn_4.png" alt="apple"></a>
-    <a href="https://google.com"><img src="/img/sns_login_btn_5.png" alt="gg"></a>
-
+    <a href="/user/google_login"><img src="/img/sns_login_btn_5.png" alt="gg"></a>
   </div>
   <p>
     <label>
@@ -65,3 +68,4 @@
 
 </body>
 </html>
+

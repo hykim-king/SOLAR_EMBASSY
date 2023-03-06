@@ -2,21 +2,119 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/index.css">
   <title>Title</title>
+  <style>
+    #SE_contents {
+      height: 3010px;
+      background-color: #e7f1ff;
+    }
+
+    #SE_footer{
+      position: relative;
+      top: 2220px;
+
+    }
+    #form{
+      border-style: groove;
+      border-color: #A3C7D6;
+      border-radius: 30px;
+      text-align: center;
+      position: relative;
+      top: 350px;
+      left: 200px;
+      box-sizing: border-box;
+      width: 800px;
+      height: 600px;
+      padding: 15px;
+    }
+    #no{
+      padding: 10px;
+      font-size: 30px;
+    }
+    #writer1{
+      padding: 10px;
+      font-size: 30px;
+    }
+    #postTime1{
+      padding: 10px;
+      font-size: 30px;
+    }
+    #title1{
+      padding: 10px;
+      font-size: 30px;
+    }
+    #content1{
+      padding: 10px;
+      font-size: 30px;
+    }
+    #boardNo, #writer, #postTime, #title, #content{
+      text-align: center;
+      font-size: 25px;
+    }
+    #content{
+      padding: 20px 0px 0px 20px;
+    }
+  </style>
 </head>
 <body>
+  <div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+    <div id="SE_topline">
+      <!--검색과 로그인 + 왼쪽 사이드-->
+      <th:block th:insert="/searchAndLogin"></th:block>
+      <!--검색과 로그인 end-->
+      <div id="SE_contents" style="z-index:2">
+        <!--메뉴 + 오른쪽 사이드-->
+        <th:block th:insert="/menuAndAside"></th:block>
+        <!--메뉴 end-->
+        <form method="post" id="form" >
+          <div class="mb-3 mt-3" id="no">
+            <!--글 번호 출력-->
+            <label for="boardNo" class="form-label">글 번호</label> <input type="text"
+               class="form-control" id="boardNo" name="boardNo" th:value="${board.boardNo}"  readonly>
+          </div>
+          <div class="mb-3 mt-3" id="writer1">
+            <!--작성자 출력-->
+            <label for="writer" class="form-label" style="padding: 5px">작성자</label> <input type="text"
+               class="form-control" id="writer" name="writer" th:value="${board.userId}"  readonly>
+          </div>
+          <!--작성일-->
+          <div class="mb-3" id="postTime1">
+            <label for="postTime" class="form-label">작성일시</label> <input
+                  type="text" class="form-control" id="postTime" name="postTime"
+                  th:value="${#dates.format(board.postTime,'yyyy-MM-dd')}"  disabled>
+          </div>
+          <!--제목-->
+          <div class="mb-3" id="title1">
+            <label for="title" class="form-label" style="padding: 28px">제목</label><input
+                  type="text" class="form-control" id="title" name="title" th:value="${board.title}">
+          </div>
+          <!--내용-->
+          <div class="mb-3" id="content1">
+            <label for="content" class="form-label" style="margin-top: -10px">내용</label>
+            <textarea class="form-control" id="content" name="content" style="margin-left: 38px" th:text="${board.contents}"></textarea>
+          </div>
+          <a href="list" class="btn btn-outline-secondary" style="margin-top: 30px">list</a>
+          <button class="btn btn-outline-warning">modify</button>
+        </form>
+        <!--푸터-->
+        <footer id="SE_footer">
+          <p>
+          </p>
+          <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
+            <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+          <p>
+          </p>
+          <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+        </footer>
 
-<form method="post" id="form" >
-  <input type="hidden" name="boardNo" th:value="${board.boardNo}">
-  <input type="hidden" name="userId" th:value="${board.userId}">
-  <input type="hidden" name="boardTag" th:value="${board.boardTag}">
-  제목 : <input type="text" name="title" th:value="${board.title}"><br>
-  내용: <label>
-  <textarea name="contents" th:text="${board.contents}"></textarea>
-</label>
-  <input type="submit" value="저장" id="updateConfirmBtn">
-</form>
+      </div>
 
+    </div>
+
+
+  </div><!--SE_container end-->
 </body>
 </html>
 <script th:inline="javascript">

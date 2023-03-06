@@ -2,9 +2,12 @@ package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.BoardDto;
 import com.community.solar_embassy.dto.Galaxy;
+import com.community.solar_embassy.dto.Room;
 import com.community.solar_embassy.dto.Users;
+import com.community.solar_embassy.service.BoardImgService;
 import com.community.solar_embassy.service.BoardService;
 import com.community.solar_embassy.service.GalaxyService;
+import com.community.solar_embassy.service.RoomService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +27,10 @@ public class BoardController {
     BoardService boardService;
     @Autowired
     GalaxyService galaxyService;
+    @Autowired
+    RoomService roomService;
+    @Autowired
+    BoardImgService boardImgService;
 
     @GetMapping("/boardList.do")
     public String boardList(Locale locale, Model model, @RequestParam int galaxyNo) throws Exception {
@@ -36,6 +43,22 @@ public class BoardController {
         return "/boardList";
     }
 
+    @GetMapping("/camping.do")
+    public String camping(@RequestParam int galaxyNo, Model model) throws Exception {
+        BoardDto board = boardService.selectBoardDetail(galaxyNo);
+        board.setBoardNo(galaxyNo);
+        model.addAttribute("board", board);
+        if (galaxyNo==5){
+            List<Room> roomList = roomService.selectRoomList();
+            model.addAttribute("roomList",roomList);
+        }
+        List<BoardDto> campList = boardService.boardListByGalaxy(galaxyNo);
+        for(BoardDto boardn:campList){
+            boardn.setBoardImg(boardImgService.selectOne(boardn.getBoardNo()));
+        }
+        model.addAttribute("list",campList);
+        return "/camping";
+    }
 
     @GetMapping("/boardWrite.do")
     public String boardWrite(Locale locale, Model model, HttpSession session, @RequestParam int galaxyNo) throws Exception {

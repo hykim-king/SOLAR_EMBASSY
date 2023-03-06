@@ -38,5 +38,7 @@ public class BoardDto implements Serializable {
 
     private int views;
 
+    private BoardImg boardImg;
+
     private static final long serialVersionUID = 1L;
 }

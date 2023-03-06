@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="384353138780-d327tn438uoqloo7flo6rrddrro8hn95.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+<div id="g_id_onload"
+     data-client_id="384353138780-d327tn438uoqloo7flo6rrddrro8hn95.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
+<div class="g_id_signin" data-type="icon" data-shape="circle" ></div>
+
+<script>
+    function handleCredentialResponse(response) {
+        // decodeJwtResponse() is a custom function defined by you
+        // to decode the credential response.
+        const responsePayload = parseJwt(response.credential);
+
+        console.log("ID: " + responsePayload.sub);
+        console.log('Full Name: ' + responsePayload.name);
+        console.log('Given Name: ' + responsePayload.given_name);
+        console.log('Family Name: ' + responsePayload.family_name);
+        console.log("Image URL: " + responsePayload.picture);
+        console.log("Email: " + responsePayload.email);
+    };
+
+    function parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    };
+<!--<script>-->
+<!--  function handleCredentialResponse(response) {-->
+<!--    const responsePayload = parseJwt(response.credential);-->
+<!--    responsePayload.family_name = undefined;-->
+<!--    responsePayload.given_name = undefined;-->
+<!--    console.log("ID: " + responsePayload.sub);-->
+<!--    console.log('Full Name: ' + responsePayload.name);-->
+<!--    console.log('Given Name: ' + responsePayload.given_name);-->
+<!--    console.log('Family Name: ' + responsePayload.family_name);-->
+<!--    console.log("Image URL: " + responsePayload.picture);-->
+<!--    console.log("Email: " + responsePayload.email);-->
+<!--  }-->
+<!--  function parseJwt (token) {-->
+<!--    var base64Url = token.split('.')[1];-->
+// <!--    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');-->
+// <!--    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {-->
+// <!--      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);-->
+// <!--    }).join(''));-->
+//
+// <!--    return JSON.parse(jsonPayload);-->
+// <!--  };-->
+// <!--  let google;-->
+// <!--  google.accounts.id.renderButton = function (elementById, param2) {-->
+//
+// <!--  };-->
+// <!--  window.onload = function () {-->
+// <!--    let google;-->
+// <!--    google.accounts = undefined;-->
+// <!--    google.accounts.id.initialize({-->
+// <!--      client_id: "384353138780-d327tn438uoqloo7flo6rrddrro8hn95.apps.googleusercontent.com",-->
+// <!--      callback: handleCredentialResponse-->
+// <!--    });-->
+// <!--    google.accounts.id.renderButton(-->
+// <!--            document.getElementById("buttonDiv"),-->
+// <!--            { theme: "outline", size: "large" }  // customization attributes-->
+<!--    );-->
+// <!--    google.accounts.id.prompt(); // also display the One Tap dialog-->
+<!--  }-->
+<!--  gapi.auth2.getAuthInstance = function () {-->
+<!--    return undefined;-->
+<!--  };-->
+
+<!--  auth2.signOut = function () {-->
+
+<!--  };-->
+
+<!--  function signOut() {-->
+<!--    var auth2 = gapi.auth2.getAuthInstance();-->
+<!--    auth2.signOut().then(function () {-->
+<!--      console.log('User signed out.');-->
+<!--    });-->
+<!--  }-->
+</script>
+<!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+</body>
+</html>

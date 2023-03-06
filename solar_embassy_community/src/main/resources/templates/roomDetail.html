@@ -299,11 +299,10 @@
                             <col width="15%">
                             <col width="35%">
                         </colgroup>
-                        <input id="galaxyNo" type="hidden" name="galaxyNo" th:value="${board.galaxyNo}">
-                        <input id="boardNo" type="hidden" name="boardNo" th:value="${board.boardNo}">
+                        <input id="boardNo" type="hidden" name="boardNo" th:value="${room.roomNo}">
                         <caption>게시글 상세 내용</caption>
                         <a href="#this" class="btn" id="list">목록으로</a>
-                        <a class="btn" id="edit" href="javascript:void(0)" th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (roomNo=${param.roomNo})}]]">수정</a>
+                        <a class="btn" id="edit" href="javascript:void(0)" th:onclick="location.href=[[@{'/room/updateRoom/{roomNo}' (roomNo=${param.roomNo})}]]">수정</a>
                         <a href="#delete" class="btn" id="delete">삭제</a>
                         <tbody>
                         <tr>
@@ -326,7 +325,7 @@
                         <tr id="cc">
                             <th scope="row">내용</th>
                             <td colspan="4" class="view_text">
-                                <textarea title="내용" id="contents" name="contents" th:text="${room.info}"
+                                <textarea title="내용" id="contents" name="contents" th:text="${room.contents}"
                                           style="margin-top: 15px"></textarea>
                             </td>
                         </tr>

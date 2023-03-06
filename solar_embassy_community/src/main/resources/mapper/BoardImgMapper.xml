@@ -16,4 +16,7 @@
         boardImgNo,boardNo,imagePath,
         originImgName,postTime
     </sql>
+    <select id="findByBoardNo" resultType="com.community.solar_embassy.dto.BoardImg">
+        SELECT * FROM board_img WHERE boardNo= #{boardNo}
+    </select>
 </mapper>

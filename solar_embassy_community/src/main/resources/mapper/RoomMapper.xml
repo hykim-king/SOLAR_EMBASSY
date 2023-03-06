@@ -26,13 +26,91 @@
             <result property="buCode" column="buCode" jdbcType="INTEGER"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        buTell,postTime,licenseName,
-        licenseNum,roomNo,title,
-        address,roCount,price,
-        checkin,checkout,info,
-        updaterId,updateTime,imgPath,
-        sourceImgName,saveImgName,buNo,
-        buCode
-    </sql>
+<!--    <sql id="Base_Column_List">-->
+<!--        buTell,postTime,licenseName,-->
+<!--        licenseNum,roomNo,title,-->
+<!--        address,roCount,price,-->
+<!--        checkin,checkout,info,-->
+<!--        updaterId,updateTime,imgPath,-->
+<!--        sourceImgName,saveImgName,buNo,-->
+<!--        buCode-->
+<!--    </sql>-->
+<!--    게시글 목록 -->
+    <select id="selectRoomList" resultType="com.community.solar_embassy.dto.Room">
+        <![CDATA[
+        SELECT *
+        FROM room
+        WHERE state = 0
+        ORDER BY roomNo DESC
+#         LIMIT 12
+        ]]>
+    </select>
+    <!--게시글 등록-->
+    <insert id="insertRoom" useGeneratedKeys="true" keyProperty="buTell" keyColumn="buTell"
+            parameterType="com.community.solar_embassy.dto.Room">
+        <![CDATA[
+        INSERT INTO room(title,
+                          address,
+                          roCount,
+                          price,
+                          info,
+                          buCode,
+                         postTime)
+        VALUES (#{title},
+                #{address},
+                #{roCount},
+                #{price},
+                #{info},
+                #{buCode},
+                #{postTime})
+        ]]>
+   </insert>
+    <!--게시글 상세-->
+    <select id="selectRoomDetail" parameterType="int" resultType="com.community.solar_embassy.dto.Room">
+        SELECT  /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
+        FROM room
+        WHERE roomNo = #{roomNo}
+          AND state = 0
+    </select>
+    <select id="findAll" resultType="com.community.solar_embassy.dto.Room">
+        SELECT *FROM room
+    </select>
+    <select id="selectRoomListByBusiness" resultType="com.community.solar_embassy.dto.Room">
+        SELECT * FROM room WHERE buNo=#{buNo}
+    </select>
+    <select id="selectBoardListBySize" resultType="com.community.solar_embassy.dto.Room">
+        SELECT * FROM room ORDER BY postTime DESC LIMIT #{size}
+    </select>
+    <select id="selectRoomListByBusinessSize" resultType="com.community.solar_embassy.dto.Room">
+        SELECT * FROM room WHERE buNo= #{roomNo} ORDER BY postTime DESC LIMIT #{size}
+    </select>
+    <!--수정, 삭제-->
+    <update id="updateRoom" parameterType="com.community.solar_embassy.dto.Room" >
+        <![CDATA[
+        UPDATE room
+        SET title    = #{title},
+            info = #{info},
+            buTell   = #{buTell},
+            updateTime=CURRENT_TIMESTAMP,
+            buCode=#{buCode},
+            updaterId=#{userId}
+        WHERE roomNo = #{roomNo}
+          AND state = 0
+        ]]>
+    </update>
+    <!--게시글 조회 수 증가-->
+    <update id="updateViews" parameterType="int">
+        <![CDATA[
+        UPDATE room
+        SET views = views+1
+        WHERE roomNo = #{roomNo}
+        ]]>
+    </update>
+    <delete id="deleteRoom" parameterType="int">
+        <![CDATA[
+        DELETE FROM room
+        WHERE roomNo = #{roomNo}
+        ]]>
+    </delete>
+
 </mapper>
