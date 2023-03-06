@@ -55,5 +55,9 @@ public class IndexController {
     public String personal(){
         return "3. personal";
     }
+    @GetMapping("customer_center")
+    public String customer_center() {
+        return "customer_center";
+    }
 
 }

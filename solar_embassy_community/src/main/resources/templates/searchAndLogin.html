@@ -21,8 +21,8 @@
                 onclick="location.href='/user/signup.do'">회원가입
         </button>
         <button type="button" >
-            <span onclick="location.href='/user/find_id.do'">ID</span>/
-            <span onclick="location.href='/user/find_pw_security.do'">PW 찾기</span>
+            <span onclick="location.href='/user/find_id.do'" STYLE="color: #1edc56">ID</span>/
+            <span onclick="location.href='/user/find_pw_security.do'" STYLE="color: #a156ff">PW 찾기</span>
         </button>
     </div>
 </form>
@@ -36,7 +36,7 @@
     </label>
 
     <div class="SE_sidebar_profile">
-        <img src="/img/1.png" alt="userIMG" width="200px"
+        <img src="/img/profile.gif" alt="userIMG" width="200px"
              height="200px" class="rounded-circle" th:if="${session.loginUser!=null}">
         <ul>
             <li><a th:if="${session.loginUser!=null}" th:text="${session.loginUser.nickname}"></a></li>

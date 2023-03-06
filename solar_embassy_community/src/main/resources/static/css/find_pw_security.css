@@ -1,10 +1,17 @@
+a{text-decoration: none;}
+
 /* PW찾기 제목 영역 */
 .find_pw_security_container{
-    background: #78b7eac4;
-    border-radius: 15px;
+    background-color: #5292f6;
+    box-shadow: 0 4px 0 0 #565c93;
+    border-radius:0 0 15px 15px;
+    font-size: 40px;
+    height: 100px;
     position: relative;
     transform: translate(0, -100%);
 }
+
+
 
 /* PW 찾기 text*/
 .find_pw_security_text{
@@ -15,7 +22,7 @@
 
 /* PW찾기 영역*/
 .find_pw_security_container2{
-    background: #dadada;
+    background: #e7e7e7;
     border-radius: 15px;
     margin-left:50px;
     margin-right:50px;
@@ -28,13 +35,17 @@
 
 /*삽입 이미지 설정*/
 .find_pw_security_container2>img{
-    margin: 30px 0 20px 380px;
+    transform: translate(70%, 5%);
+    width: 450px;
+    opacity: 0.7;
+    box-shadow: 1px 1px 15px #cfdeff;
+    border-radius: 15px;
 }
 
 
 /*PW를 ~해주세요. 입력 관련 영역*/
 .find_pw_security_content{
-    margin: 100px 0 50px 0;
+    margin: 80px 0 50px 0;
     text-align: center;
     font-size: 30px;
 }
@@ -80,15 +91,23 @@
     100% {background-position: 0% 50%;}
 }
 
-/* 아이디 기억나지 ~ 하세요 */
+/* ID가 기억나지 않는다면? */
 .find_pw_security_content_3{
     margin: 0 auto;
     text-align: center;
+    width: 220px;
+    transform: translate(-80px,-40px);
 }
 .find_pw_security_content_3-1>a{
     font-weight: bold;
-    font-size: 20px;
-    color: #0a58ca;
+    font-size: 16px;
+    color: #000000;
+}
+
+.find_pw_security_content_3-1>a:hover{
+    font-weight: bold;
+    font-size: 16px;
+    color: #6abe82;
 }
 
 /*버튼 영역*/

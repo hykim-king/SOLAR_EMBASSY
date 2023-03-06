@@ -22,7 +22,7 @@
 #SE_signupAria{
     margin: 0 auto;
     width: 800px;
-    height: 1000px;
+    height: max-content;
     background-color: #fff;
     padding: 10px 70px 10px 0;
     transform: translate(0,5%);

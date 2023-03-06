@@ -87,7 +87,7 @@ a{text-decoration: none; color: #fff; display: block;}
     width: 80px;
     height: 20px;
     color: white;
-    font-size: 10px;
+    font-size: 13px;
     border-radius: 5px;
     background-color: #000;
 }
@@ -115,7 +115,7 @@ input[id="menuicon"]:checked + label span {background:#fff;} /*x 아이콘 색�
 input[id="menuicon"]:checked + label span:nth-child(1) {top:50%;transform:translateY(-50%) rotate(45deg);} /*첫줄 x형태로 변형*/
 input[id="menuicon"]:checked + label span:nth-child(2) {opacity:0;} /* 가운데줄*/
 input[id="menuicon"]:checked + label span:nth-child(3) {bottom:50%;transform:translateY(50%) rotate(-45deg);}/*셋째줄 X형태로 변형*/
-div[class="SE_sidebar_profile"] {width:360px;height:600px; background: rgb(74, 99, 153); border-bottom: 3px solid darkblue; border-right: 2px solid darkblue; position:fixed; top: -2000px;z-index:1;;} /*프로필 영역*/
+div[class="SE_sidebar_profile"] {width:360px;height:600px; background: #4A6399FF; border-bottom: 3px solid #00008BFF; border-right: 2px solid 00008BFF; position:fixed; top: -2000px;z-index:1;} /*프로필 영역*/
 input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 
 
@@ -129,23 +129,23 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 
 /*프로필 사진*/
 .SE_sidebar_profile>img{
-    padding-top:20px;
-    border:2px solid #fff;
+    box-shadow: 0 0 5px #f5f5f5;
     background-color: #fff;
 }
 
 /*프로필 내부 설정 값.*/
 .SE_sidebar_profile>ul{
     padding: 10px;
-    font: 15px/50px'';
+    font: 18px/50px'';
 }
 
 /*메인 컨테이너*/
 #SE_contents {
     background-color: #f5f5f5;
     width: 1200px;
-    height: max-content;
+    height: 2000px;
     margin: 0;
+    position: fixed;
     transform: translate(360px,50px);
 }
 
@@ -178,12 +178,17 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     font: 20px/60px'';
 }
 
+.SE_top_menu>a{
+    color: #0e76ff;
+    text-shadow: 0.8px 0.8px #3ADCFFAB;
+    text-decoration: none;
+}
 /*메뉴 이미지*/
 .SE_top_menu>img{margin-top: 10px;}
 
 /*드롭 다운 위치*/
 .SE_sub_menu{
-    background-color: #2c0074;
+    background-color: #2249a8;
     margin-top: -10px;
     width: 100%;
     height: 0;
@@ -198,12 +203,15 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     border-bottom: 2px solid #fff;
     box-sizing: border-box;
     font: 18px/60px '';
+
     padding: 0;
 }
+.SE_sub_menu>li>a{text-decoration: none;}
 
 /*하위 메뉴들의 hover*/
 .SE_top_menu.SE_top_menu:hover{
-    background-color: gainsboro;
+    background-color: #4a6399;
+    text-decoration: none;
     font: 18px/60px '';
     height: 100%;
 }
@@ -216,8 +224,7 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 
 /*하위 메뉴 각 항목의 hover*/
 .SE_sub_menu>li:hover{
-    background-color: #da60ab;
-    transition-duration: 0.3s;
+    background-color: #7097EFFC;
 }
 
 /*우측 임시 사이드 바*/
@@ -231,124 +238,43 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 }
 
 
-/*컨텐츠 이미지가 삽입되는 구역*/
+/*컨텐츠*/
 #SE_contents #SE_content2 {
-    background-image:url("/img/contents_IMG.png"); /*이미지 여기에 삽입*/
+    background: url("/img/space.gif") round;
     width: 1200px;
     height: 270px;
     position: relative;
     transform: translate(0,-30%);
 }
 
-/*공지사항*/
-#SE_content2 .s1{
+/*지구 값*/
+.earth_2 {
+    width: 150px;
+    height: 150px;
+    background-image: url(/img/world_5.png);
+    background-size: cover;
+    border-radius: 50%;
     position: absolute;
-    transform: translate(125px, 150px);
+    margin: 30px 0 0 550px;
+    box-shadow: -30px -20px 0 0 #00000026 inset, -70px -30px 0 0 #00000019 inset, 5px 5px 0 0 #FFFFFF33 inset;
+    -webkit-animation: rotationEarth 40s infinite linear;
 }
 
-#SE_content2 .s1>a{
-    font-size: 20px;
-    text-align: center;
-    color: yellow;
+@-webkit-keyframes rotationEarth {
+    from {background-position: left center;}
+    to {background-position: -396px center;}
 }
 
-#SE_content2 .s1>a:hover{
-    font-size: 22px;
+#SE_content2>.earth_2>p {
+    width: 1200px;
+    font-size: 40px;
     font-weight: bold;
-    color: greenyellow;
+    color: #FFFFFFD7;
+    transform: translate(-300px, 50px);
+    text-shadow: 1px 1px #5486ff;
 }
 
-/*출석체크*/
-#SE_content2 .s2{
-    position: absolute;
-    transform: translate(340px, 50px);
-}
-
-#SE_content2 .s2>a{
-    font-size: 20px;
-    text-align: center;
-    color: #000;
-}
-
-#SE_content2 .s2>a:hover{
-    font-size: 22px;
-    font-weight: bold;
-    color: yellow;
-}
-
-/*NEW!*/
-#SE_content2 .s3{
-    position: absolute;
-    transform: translate(455px, 190px);
-}
-
-#SE_content2 .s3>a{
-    font-size: 20px;
-    text-align: center;
-    color: #DC143CFF;
-}
-
-#SE_content2 .s3>a:hover{
-    font-size: 22px;
-    font-weight: bold;
-    color: indigo;
-}
-
-/*이벤트*/
-#SE_content2 .s4{
-    position: absolute;
-    transform: translate(665px, 130px);
-}
-
-#SE_content2 .s4>a{
-    font-size: 20px;
-    text-align: center;
-    color: purple;
-}
-
-#SE_content2 .s4>a:hover{
-    font-size: 22px;
-    font-weight: bold;
-    color: navy;
-}
-
-/*여행*/
-#SE_content2 .s5{
-    position: absolute;
-    transform: translate(960px, 50px);
-}
-
-#SE_content2 .s5>a{
-    font-size: 20px;
-    text-align: center;
-    color:#000;
-}
-
-#SE_content2 .s5>a:hover{
-    font-size: 22px;
-    font-weight: bold;
-    color: crimson;
-}
-
-/*Autopidia*/
-#SE_content2 .s6{
-    position: absolute;
-    transform: translate(1055px, 190px);
-}
-
-#SE_content2 .s6>a{
-    font-size: 20px;
-    text-align: center;
-    color: blue;
-}
-
-#SE_content2 .s6>a:hover{
-    font-size: 22px;
-    font-weight: bold;
-    color: aqua;
-}
-
-/*BEST, 오늘의, 실시간 표시영역*/
+/*주요 갤럭시, HOT 영역*/
 #SE_contents #SE_content3 {
     width: 1200px;
     height: 280px;
@@ -358,34 +284,40 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     z-index: 1;
 }
 
-/*BEST 플래닛*/
-#SE_BEST_list{
-    background-color:#022c79d2;
+/*주요갤럭시*/
+#SE_Major{
+    background-color: #0c4363;
     width: 760px;
     height: 260px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px 2px #a5a5a5;
+    margin-top: 10px;
+
 }
 
-/*인기 BEST 제목*/
-#SE_BEST_list_title {
-    height: 30px;
-    margin: 10px 0 0 10px;
+/*주요 겔럭시 제목*/
+#SE_Major_title>p{
+    font: 20px/60px'';
+    color: #2fffc8;
+    margin-left: 10px;
+
 }
 
 /*섬네일들 영역 */
 #SE_thumbnails{
     width: 760px;
     height: 210px;
-    margin-top: 10px;
     position: absolute;
     display: flex;
     justify-content: space-between;
+    transform: translate(0,-20px);
 }
+#SE_thumbnails>a{text-decoration: none;}
 
-/* 각 섬네일 */
-#SE_thumbnails .SE_BEST{
-    background-color: #8078f0;
+
+/* 각 섬네일 전체 영역 */
+#SE_thumbnails .SE_thumb{
+    background-color: #5360f5;
     width: 160px;
     height: 190px;
     display: flex;
@@ -393,27 +325,38 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     margin: 10px 10px 0 10px;
 }
 
-/* 섬네일 이미지 부분.*/
-#SE_thumbnails .SE_BEST .BEST_thumbnail{
-    background-color: white;
+/* 섬네일 이미지 영역.*/
+#SE_thumbnails .SE_thumb .SE_tA{
     width: 150px;
     height: 130px;
     display: flex;
     margin: 5px 0 0 5px;
 }
 
-/* 섬네일 내용 부분.*/
-#SE_thumbnails .SE_BEST .BEST_substance{
+/*섬네일 이미지*/
+#SE_thumbnails .SE_thumb .SE_tA>img{
+    border-radius: 5px;
     width: 150px;
-    height: 50px;
+    height: 150px;
     display: flex;
-    margin-top: 130px;
-    text-align: center;
 }
 
-/*오늘의, 실시간 순위 플래닛*/
+/* 섬네일 내용 부분*/
+#SE_thumbnails .SE_thumb .SE_tA .Major_T>p{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: #000;
+    transform: translate(-150px, 150px);
+}
+/*hover*/
+#SE_thumbnails .SE_thumb:hover{background-color: #fff; box-shadow: 1px 1px 8px #2fffc8;}
+#SE_thumbnails .SE_thumb .SE_tA .Major_T>p:hover{color: #05c07b;}
+
+/*Hot 게시글*/
 #SE_content3 #SE_sub2 {
-    background-color: plum;
+    background-color: #ffc062;
     width: 420px;
     height: 260px;
     margin-top: 10px;
@@ -427,16 +370,13 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 
 /*제목*/
 #SE_sub2 .SE_ranking_title{
-    font-size: 20px;
+    font: 20px/20px'';
     border-radius: 5px;
     margin: 10px 0 0 20px;
     float: left;
-    display: flex;
-    color: #fff;/*중간에 | 때문에 사용.*/
-    justify-content: space-between;
 }
 
-/*인기순위 내용*/
+/*Hot 게시글*/
 #SE_sub2 .SE_ranking {
     background-color: white;
     width: 400px;
@@ -491,54 +431,19 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     position: absolute;
     transform: translate(590px, 0);
 }
-
-/* 분류별 플래닛 게시판 선택 영역 */
-#SE_sub4>ul{
-    background-color:#83aeff;
-    width: 570px;
+/*제목*/
+#SE_sub4>div>a {
     height: 30px;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 0;
-    border-radius: 8px;
-    z-index: 1;
-}
-
-/* 분류별 플래닛 게시판 선택 라인*/
-#SE_sub4>ul>li{
-    width: 85px;
-    height: 30px;
-    margin-left: 10px;
-    float: left;
-    text-align: center;
-    transition-duration: 0.3s;
-}
-
-/* 분류별 플래닛 게시판 선택 라인 글자*/
-#SE_sub4>ul>li>a{
-    color: blue;
-    font: 15px/30px'';
-}
-
-/* 분류별 플래닛 게시판 각 항목 hover*/
-#SE_sub4>ul>li:hover{
-    background-color: #f595e8e8;
-    border-radius: 5px;
-}
-
-/* 분류별 플래닛 게시판 선택 라인 글자 hover*/
-#SE_sub4>ul>li>a:hover{
-    color: #A52A2AFF;
-    font: 16px/30px'';
+    margin: 10px 0 0 10px;
 }
 
 /*내용영역*/
 #SE_sub4 .SE_sub4_content{
     background-color: white;
     width: 570px;
-    height: 270px;
+    height: 280px;
     border-radius: 5px;
-    margin: 10px 0 0 10px;
+    margin: 0 0 0 10px;
 }
 /*게임, 애완동물 갤 영역*/
 #SE_content5 {
@@ -686,7 +591,7 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     width:340px;
     height: 900px;
     border-radius: 10px;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     margin: 300px 10px 0 10px;
 }
 
@@ -703,7 +608,7 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     width:340px;
     height: 900px;
     border-radius: 10px;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     position: absolute;
     margin: 300px 10px 0 10px;
 }
@@ -718,7 +623,6 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     transform: translate(-360px,380px);
     text-align: center;
     color: white;
-    font: 16px/60px '';
     z-index: 2;
 }
 
@@ -728,11 +632,10 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 }
 
 #SE_autoNavbar{
-    background-color: royalblue;
+    background-color: hotpink;
     height: 80px;
     border-radius: 10px;
     display: flex;
-    box-shadow: 0 0 15px dimgray;
 }
 
 #SE_autoNavbar a {
@@ -741,4 +644,5 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     font-size: 20px;
     cursor: pointer;
     margin: 25px;
+
 }

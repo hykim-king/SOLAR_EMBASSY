@@ -1,7 +1,3 @@
-<!-- xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{/layout}"> -->
-
 <html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -33,13 +29,13 @@ layout:decorate="~{/layout}"> -->
             <div id="content1_signup">
                 <div id="SE_title"><p>서비스 회원가입</p></div>
                 <div id="SE_signupAria">
-                    <form action="/user/signup_normal.do" method="post">
+                    <form action="/user/signup_normal.do" method="post" name="frm">
 
                         <div class="title_container" id="userId">
                             <h2>ID입력<small> - 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</small></h2>
                             <div class="input_container">
-                                <input type="text" name="userId" placeholder="ID 입력">
-                                <button type="button" onclick="location.href='#userId'">중복확인</button>
+                                <input type="text" name="userId" placeholder="ID 입력" size="20">
+                                <button type="button" onclick="return idCheck()">중복확인</button>
                                 <p>이미 사용중인 ID입니다</p>
                             </div>
                         </div>
@@ -90,17 +86,11 @@ layout:decorate="~{/layout}"> -->
                                 <p>이미 사용중인 EMAIL입니다</p>
                             </div>
                         </div>
-                        <div class="title_container">
-                            <h2>생년월일 입력</h2>
-                            <div class="input_container">
-                                <input type="date" name="birth">
-                            </div>
-                        </div>
-                        <input type="hidden" name="profileImgNo" value="0">
-
+                        <input type="hidden" name="birth">
+                        <input type="hidden" name="profileImgNo">
                         <div id="buttons">
                             <button id="next">가입하기</button>
-                            <button id="cancel" onclick="location.href='/'">취소</button>
+                            <button id="cancel"><a href="/">취소</a></button>
                         </div>
                     </form>
                 </div>

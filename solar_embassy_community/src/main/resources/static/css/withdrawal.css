@@ -1,23 +1,30 @@
 .modifycontainer { /* 회원 탈퇴 관리 페이지 */
     height: 800px;
     background: #cf95ff;
-    border: 1px solid rgb(255, 255, 255);
+    position: relative;
+    transform: translate(0, -90px);
 }
 
 .account-withdrawal { /* 회원 탈퇴 text */
-    margin-top: 20px;
     margin-left: 10px;
+    margin-top: 20px;
 }
 
 .a-warning { /* 회원 탈퇴전 경고문 a는 account 약자입니다*/
-    margin-top: 15px;
+    background-color: #fff;
     padding-left: 38px;
-    height: 200px;
+    width: 1100px;
+    height: 250px;
     font-size: 15px;
+    box-shadow: 0 0 15px #0c4363;
+    border-radius: 15px;
+    position: relative;
+    transform: translate(50px, 60px);
 }
 
 .auh { /* 탈퇴전 이유와 희망사항 인풋 창 start*/
-    border: 1px solid #ffffff;
+    transform: translate(50px, 60px);
+
 }
 
 .auh-t {
@@ -28,6 +35,7 @@
 .a-user-hope {
     height: 300px;
     margin-left: 15px;
+    border-collapse: collapse;
 }
 
 .a-user-hope2 {
@@ -39,13 +47,15 @@
 .a-user-hope3 {
     margin-top: 15px;
     width: 500px;
-    border: 1px solid #000;
+    box-shadow: 0 0 15px #0c4363;
     height: 150px;
     background: #ffffff;
     border-radius: 15px;
 }
 
+/*사이트 빈도수가 낮아서 탈퇴*/
 .a-user-hope3-1 {
+    font-size: 18px;
     margin-top: 5px;
     margin-left: 5px;
     border-style: none;
@@ -59,9 +69,9 @@
 
 .a-agree { /* 탈퇴동의 start */
     margin-top: 10px;
-    font-family: 'Inter';
+    font-family: 'Inter', serif;
     font-style: normal;
-    color: #ffffff;
+    color: #000000;
     text-align: center;
 }
 
@@ -78,7 +88,7 @@
     box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
 }
 
-.a-cancell { /* 탈퇴동의 end */
+.a-cancel { /* 탈퇴동의 end */
     position: absolute;
     left: 52%;
     width: 100px;
