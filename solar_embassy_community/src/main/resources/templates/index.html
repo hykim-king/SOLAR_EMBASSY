@@ -89,7 +89,7 @@ layout:decorate="~{/layout}"> -->
                             </colgroup>
 
                             <tbody>
-                            <tr th:each="list_one:${hotlist}" class="text-center">
+                            <tr th:if="${hotlist!=null}" th:each="list_one:${hotlist}" class="text-center">
                                 <td th:text="${list_one.galaxy.galName}"></td>
                                 <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
                                     th:text="${list_one.title}" class="text-start"></td>
@@ -107,7 +107,7 @@ layout:decorate="~{/layout}"> -->
                         <div class="SE_new_post">
                             <table class="table table-bordered">
                                 <tbody>
-                                <tr th:each="list_one:${list}" class="text-center">
+                                <tr th:if="${list!=null}"  th:each="list_one:${list}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
                                     <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
@@ -123,7 +123,7 @@ layout:decorate="~{/layout}"> -->
                         <div class="SE_sub4_content">
                             <table class="table table-bordered">
                                 <tbody>
-                                <tr th:each="list_one:${list1}" class="text-center">
+                                <tr th:if="${list!=null}"  th:each="list_one:${list1}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
                                     <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
@@ -140,7 +140,7 @@ layout:decorate="~{/layout}"> -->
                         <div class="SE_board1">
                             <table class="table table-bordered">
                                 <tbody>
-                                <tr th:each="list_one:${list2}" class="text-center">
+                                <tr th:if="${list!=null}"  th:each="list_one:${list2}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
                                     <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
@@ -155,7 +155,7 @@ layout:decorate="~{/layout}"> -->
                         <div class="SE_board2">
                             <table class="table">
                                 <tbody>
-                                <tr th:each="list_one:${list3}" class="text-center">
+                                <tr th:if="${list!=null}"  th:each="list_one:${list3}" class="text-center">
                                     <td th:text="'[ '+${list_one.galaxyNo}+' ]'"></td>
                                     <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
@@ -172,7 +172,7 @@ layout:decorate="~{/layout}"> -->
                         <div class="SE_board3">
                             <table class="table table-bordered">
                                 <tbody>
-                                <tr th:each="list_one:${list4}" class="text-center">
+                                <tr th:if="${list!=null}"  th:each="list_one:${list4}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
                                     <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>
@@ -189,7 +189,7 @@ layout:decorate="~{/layout}"> -->
                         <div class="SE_board4">
                             <table class="table table-bordered">
                                 <tbody>
-                                <tr th:each="list_one:${list5}" class="text-center">
+                                <tr th:if="${list!=null}"  th:each="list_one:${list5}" class="text-center">
                                     <td th:text="${list_one.boardNo}"></td>
                                     <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]" th:text="${list_one.title}" class="text-start"></td>
                                     <td th:text="${#dates.format(list_one.postTime,'yyyy-MM-dd')}"></td>

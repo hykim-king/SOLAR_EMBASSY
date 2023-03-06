@@ -32,7 +32,12 @@ public class ReplyServiceImpl
 
     @Override
     public int delete(Reply replyNo) {
-        int delete = replyMapper.makeBlankReply(replyNo);
+        int delete = 0;
+        if (replyNo.getFkReplyNo() == null) {
+            delete = replyMapper.makeBlankReply(replyNo);
+        } else {
+            delete = replyMapper.deleteById(replyNo);
+        }
         return delete;
     }
 
@@ -41,7 +46,9 @@ public class ReplyServiceImpl
     public List<Reply> findByBoardNo(int boardNo) {
         List<Reply> replyList = replyMapper.findByBoardNo(boardNo);
         for (Reply reply : replyList) {
-            reply.setNickname(usersMapper.findById(reply.getUserId()).getNickname());
+            if (reply.getUserId() != null) {
+                reply.setNickname(usersMapper.findById(reply.getUserId()).getNickname());
+            }
         }
         return replyList;
 
@@ -59,7 +66,7 @@ public class ReplyServiceImpl
     @Override
     public List<Reply> findFirstByBoardNo(int boardNo) {
         List<Reply> replyList = replyMapper.findByBoardNoPaging(boardNo);
-        for (Reply reply:replyList){
+        for (Reply reply : replyList) {
             reply.setUser(usersMapper.findById(reply.getUserId()));
         }
         return replyList;
