@@ -116,8 +116,11 @@
                     </div>
 
                     <div id="boardList_table_btn" class="mb-2 mt-3">
-                        <button class="btn btn-dark btn-sm" type="button">전체글</button>
-                        <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i
+                        <button class="btn btn-dark btn-sm" type="button" th:onclick="location.href=
+                        [[@{'/board/boardList.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}]]">전체글
+                        </button>
+                        <a th:href="@{'/board/boardWrite.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}"
+                           class="float-end btn btn-dark btn-sm"><i
                                 class="bi bi-pencil"></i> 글 쓰기</a>
                     </div>
 
@@ -168,9 +171,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div>
-                        <p class="text-center">(페이지네이션 자리)</p>
-                    </div>
                     <footer id="SE_footer">
                         <p>
                         </p>
@@ -211,11 +211,11 @@
                 registerReply(e, cloneForm);
             }
             cloneForm.fkReplyNo.value = replyNo;
-            cloneForm.contents.value=null;//복사된 폼의 참조하는 부모 번호 정의
+            cloneForm.contents.value = null;//복사된 폼의 참조하는 부모 번호 정의
             let selector = "reReplyRegisterContainer" + replyNo;
             const reReplyRegisterContainer = document.getElementById(selector); //복사한 폼의 옮길 위치
-            if(reReplyRegisterContainer.contains(replyRegisterForm)){
-                reReplyRegisterContainer.innerHTML=""
+            if (reReplyRegisterContainer.contains(replyRegisterForm)) {
+                reReplyRegisterContainer.innerHTML = ""
                 return
             }
             reReplyRegisterContainer.append(cloneForm);
@@ -311,7 +311,7 @@
         }
 
         async function boardPreferHandler(boardNo, preferBtn) {
-            let url = "/board/prefer/handler.do?boardNo="+ boardNo + "&preferBtn="+preferBtn;
+            let url = "/board/prefer/handler.do?boardNo=" + boardNo + "&preferBtn=" + preferBtn;
             let viewUrl = "/board/prefer/view.do?boardNo=" + boardNo;
             const boardPreferContainer = document.getElementById("likes");
             const resp = await fetch(url, {method: "PUT"});

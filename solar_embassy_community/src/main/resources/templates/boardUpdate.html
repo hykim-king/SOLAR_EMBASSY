@@ -73,7 +73,7 @@ layout:decorate="~{/layout}"> -->
                 <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
 
                 <div id="user_info_bgc1" class="pt-1">
-                    <form id="frm" name="frm" method="post" action="/board/boardUpdate.do">
+                    <form id="frm" name="frm" method="post">
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                         <div style="margin: 30px;;padding: 20px;font-weight: bold;font-size: 20px; background-color:#6c747c;border-radius: 10px;color:white">
                             " <span th:text="${board.user.nickname}"></span> " <span>님의 작성글입니다.</span>
@@ -104,14 +104,11 @@ layout:decorate="~{/layout}"> -->
                                 <textarea th:text="${board.contents}" id="summernote" name="contents"></textarea>
                             </div>
                             <div id="textarea_btn">
-                                <a href="/board/boardList.do" class="btn btn-Light">취소</a>
-                                <button type="submit" class="btn btn-danger"><a href="/board/boardDetail.do"></a>삭제
-                                </button>
-                                <button type="submit" class="btn btn-warning"><a href="/board/boardDetail.do"></a>수정
-                                </button>
+                                <a th:href="@{'/board/boardList.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}"
+                                   class="btn btn-Light border-dark">취소</a>
+                                <button type="submit" class="btn btn-warning">수정</button>
                             </div>
                         </div>
-                        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                     </form>
 
 
