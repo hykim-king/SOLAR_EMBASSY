@@ -4,8 +4,8 @@
             <img src="/img/n1.gif" alt="navIMG" width="20px" height="20px">
             <a href="#">메인 메뉴</a>
             <ul class="SE_sub_menu">
-                <li><a href="#">메인 홈</a></li>
-                <li><a href="#">마이 페이지</a></li>
+                <li><a href="/">메인 홈</a></li>
+                <li th:if="${session.loginUser!=null}"><a href="/user/my_page.do">마이 페이지</a></li>
             </ul>
         </li>
 

@@ -60,20 +60,18 @@ layout:decorate="~{/layout}"> -->
 </head>
 <body>
 <div id="SE_container">
-
-
     <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
         <!--검색과 로그인 end-->5
-        <div id="SE_contents" style="z-index:2">
+        <div id="SE_contents" style="z-index:2;transform: translate(360px,30px);height: max-content;">
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
-
             <!--여기부터-->
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+            <div id="SE_content3" style="height: calc(max-content+100px);">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+
                 <div id="user_info_bgc1" class="pt-1">
                     <form id="frm" name="frm" method="post" action="/board/boardUpdate.do">
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
@@ -107,21 +105,21 @@ layout:decorate="~{/layout}"> -->
                                 <button type="submit" class="btn btn-warning"><a href="/board/boardDetail.do"></a>수정</button>
                             </div>
                         </div>
-                        <input type="hidden" name="usreId" th:value="${session.loginUser.userId}">
+                        <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
                     </form>
 
 
-                    <footer id="SE_footer">
-                        <p>
-                        </p>
-                        <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스
-                            문의</a> /
-                            <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-                        <p>
-                        </p>
-                        <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-                    </footer>
                 </div>
+                <footer id="SE_footer" style="transform: translate(-360px,100px);">
+                    <p>
+                    </p>
+                    <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스
+                        문의</a> /
+                        <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                    <p>
+                    </p>
+                    <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+                </footer>
             </div>
         </div>
     </div>
