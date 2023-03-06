@@ -222,6 +222,7 @@
         }
 
         async function removeReply(replyNo) {
+            alert("정말로 삭제하시겠습니까?")
             let url = "/reply/delete.do?replyNo=" + replyNo;
             const resp = await fetch(url, {method: "DELETE"});
             if (resp.status === 200) {
