@@ -20,7 +20,7 @@ public class Reply implements Serializable {
 
     private String nickname;
 
-    private String fkReplyNo;
+    private Integer fkReplyNo;
 
     private String contents;
 
@@ -36,7 +36,7 @@ public class Reply implements Serializable {
 
     private String originImgName;
 
-    private List<Reply> rereplyList;
+    private List<Reply> reReplyList;
 
     private static final long serialVersionUID = 1L;
 

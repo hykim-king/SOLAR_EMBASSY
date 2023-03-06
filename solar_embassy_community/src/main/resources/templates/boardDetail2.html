@@ -65,10 +65,9 @@
                 <!--메뉴 end-->
 
                 <!--여기부터-->
-                <th:block th:if="${galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1">
                     <div>
-                        <h2 class="ms-5 pt-5"><strong th:text="${board.galaxy.getGalName()}"> 갤럭시</strong></h2>
+                        <h2 class="ms-5 pt-5"><strong>여행 갤럭시</strong></h2>
                     </div>
                     <input type="hidden" name="boardNo" th:value="${board.boardNo}" id="boardNo">
                     <div id="head_info" class="px-4 py-2 mt-4 mb-3">
@@ -80,7 +79,7 @@
                             <span th:text="${board.user.nickname}"> </span>
                             <span> | </span>
                             <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm')}"> </span>
-                            <span class="float-end" th:text="'댓글 ('+${replyList.size()}+')'"></span>
+                            <span class="float-end" th:text="'댓글 ('+${board.replyList.size()}+')'"></span>
                             <span class="float-end" th:text="'추천 : '+${board.boardPreferView.likes}+' | '"></span>
                             <span class="float-end" th:text="'조회 : '+${board.views}+' | '"></span>
                         </div>
@@ -105,23 +104,20 @@
 
                     <div id="reply" class="pt-4">
                         <h4 class="ms-4"><i class="bi bi-chat-dots me-2"></i><span
-                                th:text="'댓글 ('+${replyList.size()}+')'"></span></h4>
+                                th:text="'댓글 ('+${board.replyList.size()}+')'"></span></h4>
                     </div>
 
                     <div id="replyListContainer">
                         <th:block th:include="/reply/list"></th:block>
                     </div>
 
-                    <div th:if="${session.loginUser!=null}" id="replyRegisterContainer">
+                    <div id="replyRegisterContainer" th:if="${session.loginUser!=null}">
                         <th:block th:include="/reply/register"></th:block>
                     </div>
 
                     <div id="boardList_table_btn" class="mb-2 mt-3">
-                        <button class="btn btn-dark btn-sm" type="button"
-                                th:onclick="location.href=[[@{'/board/boardList.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}]]">
-                            전체글
-                        </button>
-                        <a th:href="'/board/boardWrite.do?galaxyNo='+${board.galaxyNo}" class="float-end btn btn-dark btn-sm"><i
+                        <button class="btn btn-dark btn-sm" type="button">전체글</button>
+                        <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i
                                 class="bi bi-pencil"></i> 글 쓰기</a>
                     </div>
 
@@ -158,7 +154,7 @@
                                         <span th:case="3">[예약]</span>
                                         <span th:case="4">[후기]</span>
                                     </a>
-                                    <th:block th:text="${boardi.title}"></th:block>
+                                    <th:block th:text="${boardi.title}+' ('+${boardi.replyList.size()}+')'"></th:block>
                                 </td>
                                 <td th:text="${boardi.user.nickname}"></td>
                                 <td th:text="${(boardi.likes ==null)?0:boardi.likes}"></td>
@@ -190,9 +186,23 @@
             </div>
         </div>
     </div>
+
+
+    <!--        <script>-->
+    <!--            function rRegister_btn() {-->
+    <!--                const con = document.getElementById("rRegister");-->
+    <!--                if (con.style.display === 'none') {-->
+    <!--                    con.style.display = 'block';-->
+    <!--                } else {-->
+    <!--                    con.style.display = 'none';-->
+    <!--                }-->
+    <!--            }-->
+    <!--        </script>-->
+
     <script th:inline="javascript">
+        /*<![CDATA[*/
         const replyListContainer = document.getElementById("replyListContainer");
-        const boardNo = document.getElementById("boardNo").value
+        const boardNo = document.getElementById("boardNo")
 
         function loadRegisterForm(replyNo) {
             const replyRegisterForm = document.forms["replyRegisterForm"];
@@ -200,7 +210,8 @@
             cloneForm.onsubmit = function (e) { //복사된 폼의 등록 이벤트 재정의
                 registerReply(e, cloneForm);
             }
-            cloneForm.fkReplyNo.value = replyNo; //복사된 폼의 참조하는 부모 번호 정의
+            cloneForm.fkReplyNo.value = replyNo;
+            cloneForm.contents.value=null;//복사된 폼의 참조하는 부모 번호 정의
             let selector = "reReplyRegisterContainer" + replyNo;
             const reReplyRegisterContainer = document.getElementById(selector); //복사한 폼의 옮길 위치
             reReplyRegisterContainer.append(cloneForm);
@@ -212,50 +223,14 @@
             if (resp.status === 200) {
                 const json = await resp.json();
                 if (json.state === 1) {
-                    alert("댓글을 삭제 하였습니다.");
-                } else {
-                    alert("댓글이 이미 삭제되었습니다.");
-                }
-            } else {
-                alert(`댓글 삭제에 실패했습니다.! ${resp.status}`);
-            }
-        }
-
-        async function loadReplyModifyForm(replyNo) {
-            let url = "/reply/modify.do?replyNo=" + replyNo;
-            let selector = "reply_comment" + replyNo;
-            const replyContainer = document.getElementById(selector);
-            const resp = await fetch(url);
-            if (resp.status === 200) {
-                let html = await resp.text();
-                console.log(html)
-                replyContainer.innerHTML = html;
-            }
-        }
-
-
-        async function modifyReply(formNode) {
-            const formData = new FormData(formNode); //queryString 작성 필요 없음 (단!! multipart/form-data 만)
-            let url = "/reply/modify.do"
-            const resp = await fetch(url, {method: "post"});
-            if (resp.status === 200) {
-                const json = await resp.json();
-                if (json.state === 1) {
                     await loadReplyList();
-                    alert("수정 성공");
+                    alert("삭제 성공!");
                 } else {
-                    alert("이미 삭제된 레코드 입니다.");
+                    alert("삭제할 레코드가 없습니다.");
                 }
             } else {
-                alert("서버 오류 (" + resp.status + ")");
+                alert(`삭제 실패! ${resp.status}`);
             }
-        }
-
-        async function loadReplyList() {
-            const resp = await fetch("/reply/[[${boardNo}]]/list.do");
-            const html = await resp.text();
-            replyListContainer.innerHTML = html;
-            init();
         }
 
         function init() {
@@ -264,9 +239,7 @@
             pageBtns.forEach((btn) => {
                 btn.onclick = async (e) => {
                     e.preventDefault();
-                    let btnUrl = e.target.href;
-                    let queryString = btnUrl.split("?")[1];
-                    let url = "/reply/[[${boardNo}]]/list.do?" + queryString;
+                    let url = "/reply/" + [[${param.boardNo}]] + "/list.do"
                     const resp = await fetch(url);
                     const html = await resp.text();
                     replyListContainer.innerHTML = html;
@@ -284,42 +257,58 @@
             e.preventDefault();
             let url = "/reply/register.do";
             const formData = new FormData(replyRegisterForm);
+            console.log(formData.get("fkReplyNo"))
             //let queryString="?userId="+replyRegisterForm.userId.value+"&title="+replyRegisterForm.title.value;
             //post 통신으로 하더라도 fetch 로 통신시 파라미터를 queryString 을 생성해서 통신해야 한다.!!
             //multipart/form-data 로 전달할때는 new FormData(formNode)를 넣으면 자동으로 파라미터 생성
             const resp = await fetch(url, {method: "POST", body: formData});
             const json = await resp.json();
-            console.log(json);
-            if (json.state == 1) {
+            if (json.state === 1) {
                 await loadReplyList();
             }
         }
 
-    </script>
+        async function loadReplyList() {
+            const resp = await fetch("/reply/" + [[${param.boardNo}]] + "/list.do");
+            const html = await resp.text();
+            replyListContainer.innerHTML = html;
+            init();
+        }
 
-    <script>
-        function rModify_btn() {
-            const con = document.getElementById("rModify");
-            if (con.style.display === 'none') {
-                con.style.display = 'block';
-            } else {
-                con.style.display = 'none';
+        async function loadReplyModifyForm(replyNo) {
+            let url = "/reply/modify.do?replyNo=" + replyNo;
+            let selector = "replyContainer" + replyNo;
+            const replyContainer = document.getElementById(selector);
+            const resp = await fetch(url);
+            if (resp.status === 200) {
+                let html = await resp.text();
+                replyContainer.innerHTML = html;
             }
         }
 
-        function rRegister_btn() {
-            const con = document.getElementById("rRegister");
-            if (con.style.display === 'none') {
-                con.style.display = 'block';
+        //node.onsubmit=modifyReply; //modifyReply.this == node
+        //node.onsubmit=function(event){modifyReply();}  //modifyReply.this == window
+        async function modifyReply(formNode) {
+            //console.log(formNode);
+            const formData = new FormData(formNode); //queryString 작성 필요 없음 (단!! multipart/form-data 만)
+            let url = "/reply/modify.do"
+            const resp = await fetch(url, {method: "PUT", body: formData});
+            if (resp.status === 200) {
+                const json = await resp.json();
+                if (json.state === 1) {
+                    await loadReplyList();
+                    alert("수정 성공");
+                } else {
+                    alert("이미 삭제된 레코드 입니다.");
+                }
             } else {
-                con.style.display = 'none';
+                alert("서버 오류 (" + resp.status + ")");
             }
         }
-    </script>
-    <script th:inline="javascript">
-        async function boardPreferHandler(uploadNo, preferBtn) {
-            let url = `/board/prefer/handler.do?boardNo=${boardNo}&preferBtn=${preferBtn}`;
-            let viewUrl = `/board/prefer/view.do?boardNo=` + boardNo;
+
+        async function boardPreferHandler(boardNo, preferBtn) {
+            let url = "/board/prefer/handler.do?boardNo="+ boardNo + "&preferBtn="+preferBtn;
+            let viewUrl = "/board/prefer/view.do?boardNo=" + boardNo;
             const boardPreferContainer = document.getElementById("likes");
             const resp = await fetch(url, {method: "PUT"});
             if (resp.status === 200) {
@@ -345,6 +334,7 @@
 
         }
 
+        /*]]>*/
     </script>
 </div>
 </body>

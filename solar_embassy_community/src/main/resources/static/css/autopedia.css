@@ -3,8 +3,9 @@
     width: 1200px;
     height: max-content;
     font-size: small;
-    border: 1px solid black;
+    box-shadow: 0 0 15px dimgray;
     margin-top: 40px;
+    border-radius: 15px;
 }
 
 #SE_contents #content2 #autobrand {
@@ -63,11 +64,13 @@
 }
 
 #SE_contents #content3 {
-    background-color: aqua;
+    background: linear-gradient(rgb(231, 195, 236), rgba(83, 211, 228, 0.506), rgba(71, 109, 205, 0.841), rgba(189, 103, 223, 0.87), rgb(241, 113, 139));
     width: 1200px;
     height: 100px;
     margin-top: 40px;
     text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 15px dimgray;
 }
 
 #SE_contents #content3 form div {
@@ -80,13 +83,15 @@
     height: 30px;
     font-size: 11px;
     margin: 0;
+    border-radius: 5px;
 }
 
 #SE_contents #content3 #searcher {
     width: 500px;
     height: 30px;
-    font-size: 11px;
+    font-size: 10px;
     margin: 0;
+    border-radius: 5px;
 }
 
 #SE_contents #content3 button {
@@ -96,6 +101,7 @@
     color: white;
     margin: 0;
     background-color: #364959;
+    border-radius: 5px;
 }
 
 #SE_contents #content4 {
@@ -105,13 +111,14 @@
 }
 
 #SE_contents #content4 #sub1 {
-    background-color: violet;
+    background-color: dodgerblue;
     width: 580px;
     height: 500px;
     border-radius: 10px;
     margin-right: 40px;
     display: flex;
     flex-wrap: wrap;
+    box-shadow: 0 0 15px dimgray;
 }
 
 #SE_contents #content4 #sub1 ul {
@@ -137,10 +144,11 @@
 }
 
 #SE_contents #content4 #sub2 {
-    background-color: violet;
+    background-color: skyblue;
     width: 580px;
     height: 500px;
     border-radius: 10px;
+    box-shadow: 0 0 15px dimgray;
 }
 
 #SE_contents #content4 #sub2 ul {
@@ -171,11 +179,12 @@
 }
 
 #SE_contents #content5 #sub3 {
-    background-color: violet;
+    background-color: deepskyblue;
     width: 580px;
     height: 500px;
     border-radius: 10px;
     margin-right: 40px;
+    box-shadow: 0 0 15px dimgray;
 }
 
 #SE_contents #content5 #sub3 ul {
@@ -201,10 +210,11 @@
 }
 
 #SE_contents #content5 #sub4 {
-    background-color: violet;
+    background-color: salmon;
     width: 580px;
     height: 500px;
     border-radius: 10px;
+    box-shadow: 0 0 15px dimgray;
 }
 
 #SE_contents #content5 #sub4 ul {

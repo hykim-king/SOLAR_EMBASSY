@@ -55,6 +55,15 @@ public class ReplyServiceImpl
         return replyList;
     }
 
+    @Override
+    public List<Reply> findFirstByBoardNo(int boardNo) {
+        List<Reply> replyList = replyMapper.findByBoardNoPaging(boardNo);
+        for (Reply reply:replyList){
+            reply.setUser(usersMapper.findById(reply.getUserId()));
+        }
+        return replyList;
+    }
+
 }
 
 

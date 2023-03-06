@@ -45,9 +45,9 @@ public class ReplyController {
     public String list(@PathVariable int boardNo,
                        HttpServletRequest req,
                        Model model){
-        List<Reply> replyList=replyService.findByBoardNo(boardNo);
+        List<Reply> replyList=replyService.findFirstByBoardNo(boardNo);
         for(Reply reply:replyList){
-            reply.setRereplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
+            reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
         }
         model.addAttribute("replyList",replyList);
         return "/reply/list";
