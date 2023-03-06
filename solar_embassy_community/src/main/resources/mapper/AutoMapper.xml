@@ -17,19 +17,21 @@
         <result property="disp" column="disp" jdbcType="VARCHAR"/>
         <result property="price" column="price" jdbcType="VARCHAR"/>
         <result property="autoEngine" column="autoEngine" jdbcType="VARCHAR"/>
+        <result property="autoImgName" column="autoImgName" jdbcType="VARCHAR"/>
+        <result property="autoVideo" column="autoVideo" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         autoNo,autoName,codeName,
         comNo,comName,autoType,
         releaseDate,seat,mpg,disp,
-        price,autoEngine
+        price,autoEngine,autoImgName,autoVideo
     </sql>
     <insert id="insert">
         INSERT INTO auto(autoName, codeName, comNo, comName, autoType, releaseDate, seat, mpg,
-                         disp, price, autoEngine)
+                         disp, price, autoEngine, autoImgName)
         VALUES (#{autoName}, #{codeName}, #{comNo}, #{comName}, #{autoType},
-                #{releaseDate}, #{seat}, #{mpg}, #{disp}, #{price}, #{autoEngine})
+                #{releaseDate}, #{seat}, #{mpg}, #{disp}, #{price}, #{autoEngine}, #{autoImgName}, #{autoVideo})
     </insert>
     <select id="selectByAutoNo" resultType="com.community.solar_embassy.dto.Auto">
         SELECT * FROM auto WHERE autoNo= #{autoNo}

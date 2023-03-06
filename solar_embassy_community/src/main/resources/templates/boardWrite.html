@@ -88,7 +88,7 @@ layout:decorate="~{/layout}"> -->
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
-
+            <th:block th:if="${galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
             <!--여기부터-->
             <div id="SE_content22">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
                 <div id="user_info_bgc1" class="pt-1">

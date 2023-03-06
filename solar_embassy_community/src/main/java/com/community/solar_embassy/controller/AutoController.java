@@ -3,6 +3,7 @@ package com.community.solar_embassy.controller;
 import com.community.solar_embassy.dto.*;
 import com.community.solar_embassy.service.AutoService;
 import com.community.solar_embassy.service.CompanyService;
+import jakarta.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,7 @@ public class AutoController {
     private Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     public AutoController(AutoService autoService, CompanyService companyService
-                          ) {
+    ) {
         this.autoService = autoService;
         this.companyService = companyService;
     }
@@ -50,5 +51,8 @@ public class AutoController {
         model.setViewName("/galaxy/comDetail");
         return model;
     }
-}
 
+    @GetMapping("autoSearch.do")
+    public void search(HttpSession session) {
+    }
+}

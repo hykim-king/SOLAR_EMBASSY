@@ -26,7 +26,3 @@ public class AutoServiceImpl
         return auto;
     }
 }
-
-
-
-

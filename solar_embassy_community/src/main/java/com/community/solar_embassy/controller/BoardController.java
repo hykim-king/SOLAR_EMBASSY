@@ -125,6 +125,4 @@ public class BoardController {
         }
         return "redirect:/board/boardList.do?galaxyNo=" + galaxyNo;
     }
-
-
 }

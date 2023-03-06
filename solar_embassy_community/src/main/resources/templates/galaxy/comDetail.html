@@ -19,11 +19,8 @@ layout:decorate="~{/layout}"> -->
 </head>
 <body>
 <div id="SE_container">
-    <header id="SE_header">
-        <h6>메인이미지</h6>
-        <img id="SE_img1" src="/img/solar_embassy_main.png" alt="" onclick="location.href='/'">
-    </header>
 
+    <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
@@ -47,29 +44,13 @@ layout:decorate="~{/layout}"> -->
                     CEO : <span th:text="${company.getCeo()}"></span> <br>
                     업종 : <span th:text="${company.getIndustries()}"></span> <br>
                     슬로건 : <span th:text="${company.getSlogan()}"></span> <br>
+                    <button type="button" th:onclick="window.open([[@{'{link}'(link=${company.link})}]])">사이트</button>
                 </div>
             </div>
 
             <div id="content3">
                 <div th:text="${company.getContent()}"></div>
             </div>
-
-            <div id="content4">
-                <h2>시판중인 차량</h2>
-                <ul>
-                    <li>
-                        <a th:href="'/galaxy/autoDetail.do?autoNo='+${company.getComNo()}"></a>
-                    </li>
-                </ul>
-            </div>
-
-            <section id="SE_contents2">
-                <div>Left_banner</div>
-            </section>
-
-            <section id="SE_contents3">
-                <div>right_banner</div>
-            </section>
             <th:block th:insert="/footer"></th:block>
         </div>
     </div>
