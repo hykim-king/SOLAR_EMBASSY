@@ -240,7 +240,8 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
 
 /*컨텐츠*/
 #SE_contents #SE_content2 {
-    background: url("/img/space.gif") round;
+    background-image: url("/img/space.gif") ;
+    background-size: 1200px 270px;
     width: 1200px;
     height: 270px;
     position: relative;
