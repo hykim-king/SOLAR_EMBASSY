@@ -116,7 +116,10 @@
                     </div>
 
                     <div id="boardList_table_btn" class="mb-2 mt-3">
-                        <button class="btn btn-dark btn-sm" type="button">전체글</button>
+                        <button class="btn btn-dark btn-sm" type="button"
+                                th:onclick="location.href=[[@{'/board/boardList.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}]]">
+                            전체글
+                        </button>
                         <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i
                                 class="bi bi-pencil"></i> 글 쓰기</a>
                     </div>

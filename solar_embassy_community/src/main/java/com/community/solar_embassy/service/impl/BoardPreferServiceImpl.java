@@ -40,7 +40,8 @@ public class BoardPreferServiceImpl implements BoardPreferService {
 
     @Override
     public int register(BoardPreferDto boardPrefer) {
-        return boardPreferMapper.insert(boardPrefer);
+        int insert = boardPreferMapper.insert(boardPrefer);
+        return insert;
     }
 
     @Override

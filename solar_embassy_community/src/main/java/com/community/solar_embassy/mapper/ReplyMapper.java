@@ -13,6 +13,12 @@ public interface ReplyMapper {
     List<Reply> findByBoardNo(int boardNo);
     List<Reply> findAllByFkReplyNo(int replyNo);
     List<Reply> findAll();
+    List<Reply> findByBoardNoPaging(int boardNo);
+    Reply findById(int replyNo );
+    List<Reply> findByUserIdPaging(String userId); //유저 상세에서 작성한 댓글 리스트
+    int countByUserId(String userId);
+
+    int countByBoardNo(int boardNo);
 
 }
 

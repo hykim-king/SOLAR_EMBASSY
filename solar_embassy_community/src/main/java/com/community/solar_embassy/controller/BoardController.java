@@ -60,6 +60,7 @@ public class BoardController {
         int insert = boardService.insertBoard(board);
         System.out.println(insert);
         if (insert == 1) {
+            int exp = usersService.expUp(board.getUserId());
             return "redirect:/board/boardList.do?galaxyNo=" + board.getGalaxyNo();
         } else {
             return "redirect:/board/boardWrite.do";
