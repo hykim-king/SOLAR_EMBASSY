@@ -237,7 +237,7 @@
             pageBtns.forEach((btn) => {
                 btn.onclick = async (e) => {
                     e.preventDefault();
-                    let url = "/reply/"+[[${param.boardNo}]]+"/list.do"
+                    let url = "/reply/" + [[${param.boardNo}]] + "/list.do"
                     const resp = await fetch(url);
                     const html = await resp.text();
                     replyListContainer.innerHTML = html;
@@ -255,19 +255,19 @@
             e.preventDefault();
             let url = "/reply/register.do";
             const formData = new FormData(replyRegisterForm);
+            console.log(formData.get("fkReplyNo"))
             //let queryString="?userId="+replyRegisterForm.userId.value+"&title="+replyRegisterForm.title.value;
             //post 통신으로 하더라도 fetch 로 통신시 파라미터를 queryString 을 생성해서 통신해야 한다.!!
             //multipart/form-data 로 전달할때는 new FormData(formNode)를 넣으면 자동으로 파라미터 생성
             const resp = await fetch(url, {method: "POST", body: formData});
             const json = await resp.json();
-            console.log(json);
             if (json.state === 1) {
                 await loadReplyList();
             }
         }
 
         async function loadReplyList() {
-            const resp = await fetch("/reply/"+[[${param.boardNo}]]+"/list.do");
+            const resp = await fetch("/reply/" + [[${param.boardNo}]] + "/list.do");
             const html = await resp.text();
             replyListContainer.innerHTML = html;
             init();
@@ -275,8 +275,8 @@
 
         async function loadReplyModifyForm(replyNo) {
             let url = "/reply/modify.do?replyNo=" + replyNo;
-            let seletor = "replyContainer" + replyNo;
-            const replyContainer = document.getElementById(seletor);
+            let selector = "replyContainer" + replyNo;
+            const replyContainer = document.getElementById(selector);
             const resp = await fetch(url);
             if (resp.status === 200) {
                 let html = await resp.text();

@@ -16,7 +16,7 @@
         <result property="dislikes" column="dislikes" jdbcType="INTEGER"/>
         <result property="state" column="state" jdbcType="INTEGER"/>
         <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
-        <result property="originImgName" column="origin_img_name" jdbcType="VARCHAR"/>
+        <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -25,7 +25,7 @@
         updateTime,likes,dislikes,
         state,imgPath,originImgName
     </sql>
-    <insert id="insertReply">
+    <insert id="insertReply" parameterType="Reply" useGeneratedKeys="true" keyProperty="replyNo">
         INSERT INTO reply(boardNo, userId, fkReplyNo, contents, imgPath, originImgName,postTime)
         VALUES (#{boardNo}, #{userId}, #{fkReplyNo}, #{contents}, #{imgPath}, #{originImgName},current_timestamp)
     </insert>
