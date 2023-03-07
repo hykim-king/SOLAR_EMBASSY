@@ -47,7 +47,7 @@ public class UserController {
             session.setAttribute("msg", "아이디나 비밀번호를 확인하세요!");
             return "redirect:/user/login.do";
         } else {
-            if (redirectUri == null) {
+            if (redirectUri == null || redirectUri.equals("http://localhost:8888/user/signup_normal.do")) {
                 return "redirect:/";
             }
             session.removeAttribute("redirectUri");
@@ -70,7 +70,7 @@ public class UserController {
         int withdrawal = usersService.withdrawal((Users) (session.getAttribute("loginUser")));
         if (withdrawal == 1) {
             return "redirect:/";
-        }else {
+        } else {
             return "redirect:/user/withdrawal.do";
         }
     }

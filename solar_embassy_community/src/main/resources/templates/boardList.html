@@ -19,7 +19,6 @@
             height: 1500px;
             border-radius: 10px;
             position: relative;
-            transform: translate(0,-80px);
         }
 
         #user_info_bgc2 {
@@ -131,9 +130,16 @@
                             <tbody>
                             <tr th:if="${#lists.size(list)} > 0" th:each="list_n:${list}" class="text-center">
                                 <td th:text="${list_n.boardNo}"></td>
-                                <td class="title">
-                                    <a href="/board/boardDetail?boardNo=" th:attrappend="href=${list_n.boardNo}"
-                                       th:text="${list_n.boardTag}" style="color:#000;"></a>
+                                <td class="title" style="display: flex;cursor: pointer"
+                                    th:onclick="location.href=
+                                    [[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]">
+                                    <a
+                                            th:switch="${list_n.boardTag}" style="font-weight: bold;width: 100%;text-align:center;">
+                                        <span th:case="1">[잡담] </span>
+                                        <span th:case="2">[정보] </span>
+                                        <span th:case="3">[질문] </span>
+                                        <span th:case="4">[기타] </span>
+                                    </a>
                                 </td>
                                 <td th:text="${list_n.title}+' ('+${list_n.replyList.size()}+')'"
                                     th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]"
