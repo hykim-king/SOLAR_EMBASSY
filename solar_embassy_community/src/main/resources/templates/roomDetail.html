@@ -61,7 +61,7 @@
             height: 250px;
             float: left;
             position: relative;
-            transform: translate(0,2000px);
+            transform: translate(-100px,2000px);
             text-align: center;
             z-index: 2;
             color: white;
@@ -105,6 +105,21 @@
             object-fit: cover;
             cursor: pointer;
         }
+        img{
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            font: inherit;
+            vertical-align: baseline;
+            overflow-clip-margin: content-box;
+            overflow: clip;
+        }
+        *{
+            box-sizing: border-box;
+            resize: none;
+            outline: 0px;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        }
 
     </style>
     <title>SOLAR EMBASSY</title>
@@ -123,8 +138,8 @@
 
             <!--여기부터-->
             <div id="SE_content22">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
-                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);" th:if="${roomList!=null}"
-                     th:each="room:${roomList}">
+                <h2>캠핑 로그 상세</h2>
+                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);" >
                     <div class="swiper-slide swiper-slide-active" style="width: 530px;"><img
                             src="https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium__a96ef9dc19.jpg"
                             data-src="https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium__a96ef9dc19.jpg"

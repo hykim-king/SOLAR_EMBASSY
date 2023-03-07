@@ -6,6 +6,7 @@
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.RoomImg">
             <id property="imgNo" column="imgNo" jdbcType="INTEGER"/>
+            <id property="roomNo" column="roomNo" jdbcType="INTEGER"/>
             <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
             <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
             <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
@@ -14,7 +15,10 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        imgNo,buTell,imgPath,
+        imgNo,roomNo,buTell,imgPath,
         sourceImgName,saveImgName,postTime
     </sql>
+    <select id="findByRoomNo" resultType="com.community.solar_embassy.dto.RoomImg">
+        SELECT * FROM roomImg WHERE roomNo= #{roomNo}
+    </select>
 </mapper>

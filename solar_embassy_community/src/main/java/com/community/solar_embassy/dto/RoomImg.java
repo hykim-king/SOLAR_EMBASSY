@@ -8,6 +8,7 @@ import java.util.Date;
 @Data
 public class RoomImg implements Serializable {
     private Integer imgNo;
+    private Integer roomNo;
 
     private String buTell;
 
