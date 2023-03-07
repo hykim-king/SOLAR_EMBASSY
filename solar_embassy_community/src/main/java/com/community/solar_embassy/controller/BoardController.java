@@ -1,5 +1,13 @@
 package com.community.solar_embassy.controller;
 
+import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.Galaxy;
+import com.community.solar_embassy.dto.Room;
+import com.community.solar_embassy.dto.Users;
+import com.community.solar_embassy.service.BoardImgService;
+import com.community.solar_embassy.service.BoardService;
+import com.community.solar_embassy.service.GalaxyService;
+import com.community.solar_embassy.service.RoomService;
 import com.community.solar_embassy.dto.*;
 import com.community.solar_embassy.mapper.BoardPreferMapper;
 import com.community.solar_embassy.service.*;
@@ -23,6 +31,10 @@ public class BoardController {
     @Autowired
     GalaxyService galaxyService;
     @Autowired
+    RoomService roomService;
+    @Autowired
+    BoardImgService boardImgService;
+    @Autowired
     ReplyService replyService;
     @Autowired
     BoardPreferService boardPreferService;
@@ -35,7 +47,7 @@ public class BoardController {
     public String boardList(Locale locale, Model model, @RequestParam int galaxyNo) throws Exception {
 //        List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         List<BoardDto> list = boardService.boardListByGalaxy(galaxyNo);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        for(BoardDto board:list){
+        for (BoardDto board : list) {
             List<Reply> replyList = replyService.findByBoardNo(board.getBoardNo());
             board.setReplyList(replyList);
         }
@@ -46,6 +58,33 @@ public class BoardController {
         return "/boardList";
     }
 
+    @GetMapping("/camping.do")
+    public String camping(@RequestParam int galaxyNo, Model model) throws Exception {
+        List<Room> roomList = null;
+        if (galaxyNo == 5) { // galaxyNo ==5 || galaxyNo == 10
+            roomList = roomService.selectRoomList();
+            for (Room room : roomList) {
+                if (room.getImgPath() == null) {
+                    room.setImgPath("/img/camping/중량캠핑숲.jpeg");
+                }
+            }
+        }else{
+            System.out.println("갤럭시가 없습니다");
+            return "redirect:/";
+        }
+        model.addAttribute("roomList", roomList);
+        List<BoardDto> boardList = boardService.boardListByGalaxy(galaxyNo);
+        for (BoardDto board : boardList) {
+            board.setBoardNo(galaxyNo);
+        }
+        model.addAttribute("boardList", boardList);
+        List<BoardDto> campList = boardService.boardListByGalaxy(galaxyNo);
+        for (BoardDto boardn : campList) {
+            boardn.setBoardImg(boardImgService.selectOne(boardn.getBoardNo()));
+        }
+        model.addAttribute("list", campList);
+        return "/camping";
+    }
 
     @GetMapping("/boardWrite.do")
     public String boardWrite(Locale locale, Model model, HttpSession session, @RequestParam int galaxyNo) throws Exception {
@@ -96,7 +135,7 @@ public class BoardController {
         model.addAttribute("replyList", replyList);
 
         List<BoardDto> list = boardService.boardListByGalaxy(board.getGalaxyNo());//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        for(BoardDto boardl:list){
+        for (BoardDto boardl : list) {
             boardl.setUser(usersService.findById(boardl.getUserId()));
             boardl.setReplyList(replyService.findByBoardNo(boardl.getBoardNo()));
         }

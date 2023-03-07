@@ -5,34 +5,123 @@
 <mapper namespace="com.community.solar_embassy.mapper.RoomMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Room">
-            <id property="buTell" column="buTell" jdbcType="VARCHAR"/>
-            <id property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
-            <result property="licenseName" column="licenseName" jdbcType="VARCHAR"/>
-            <result property="licenseNum" column="licenseNum" jdbcType="VARCHAR"/>
-            <result property="roomNo" column="roomNo" jdbcType="INTEGER"/>
-            <result property="title" column="title" jdbcType="VARCHAR"/>
-            <result property="address" column="address" jdbcType="VARCHAR"/>
-            <result property="roCount" column="roCount" jdbcType="VARCHAR"/>
-            <result property="price" column="price" jdbcType="VARCHAR"/>
-            <result property="checkin" column="checkin" jdbcType="TIMESTAMP"/>
-            <result property="checkout" column="checkout" jdbcType="TIMESTAMP"/>
-            <result property="info" column="info" jdbcType="VARCHAR"/>
-            <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
-            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
-            <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
-            <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
-            <result property="saveImgName" column="saveImgName" jdbcType="VARCHAR"/>
-            <result property="buNo" column="buNo" jdbcType="INTEGER"/>
-            <result property="buCode" column="buCode" jdbcType="INTEGER"/>
+        <id property="buTell" column="buTell" jdbcType="VARCHAR"/>
+        <id property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+        <result property="licenseName" column="licenseName" jdbcType="VARCHAR"/>
+        <result property="licenseNum" column="licenseNum" jdbcType="VARCHAR"/>
+        <result property="roomNo" column="roomNo" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="roCount" column="roCount" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="VARCHAR"/>
+        <result property="checkin" column="checkin" jdbcType="TIMESTAMP"/>
+        <result property="checkout" column="checkout" jdbcType="TIMESTAMP"/>
+        <result property="info" column="info" jdbcType="VARCHAR"/>
+        <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
+        <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
+        <result property="saveImgName" column="saveImgName" jdbcType="VARCHAR"/>
+        <result property="buNo" column="buNo" jdbcType="INTEGER"/>
+        <result property="buCode" column="buCode" jdbcType="INTEGER"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        buTell,postTime,licenseName,
-        licenseNum,roomNo,title,
-        address,roCount,price,
-        checkin,checkout,info,
-        updaterId,updateTime,imgPath,
-        sourceImgName,saveImgName,buNo,
-        buCode
-    </sql>
+    <!--    <sql id="Base_Column_List">-->
+    <!--        buTell,postTime,licenseName,-->
+    <!--        licenseNum,roomNo,title,-->
+    <!--        address,roCount,price,-->
+    <!--        checkin,checkout,info,-->
+    <!--        updaterId,updateTime,imgPath,-->
+    <!--        sourceImgName,saveImgName,buNo,-->
+    <!--        buCode-->
+    <!--    </sql>-->
+    <!--    게시글 목록 -->
+    <select id="selectRoomList" resultType="com.community.solar_embassy.dto.Room">
+        <![CDATA[
+        SELECT *
+        FROM room
+        WHERE state = 0
+        ORDER BY roomNo DESC
+#         LIMIT 12
+        ]]>
+    </select>
+    <!--게시글 등록-->
+    <insert id="insertRoom" useGeneratedKeys="true" keyProperty="buTell" keyColumn="buTell"
+            parameterType="com.community.solar_embassy.dto.Room">
+        <![CDATA[
+        INSERT INTO room(buTell,
+                         roomNo,
+                         title,
+                         address,
+                         roCount,
+                         price,
+                         info,
+                         buCode,
+                         postTime)
+        VALUES (#{buTell},
+                #{roomNo},
+                #{title},
+                #{address},
+                #{roCount},
+                #{price},
+                #{info},
+                #{buCode},
+                now())
+        ]]>
+   </insert>
+    <!--게시글 상세-->
+    <select id="selectRoomDetail" parameterType="int" resultType="com.community.solar_embassy.dto.Room">
+        SELECT  /* board_no, title, contents, views, coalesce(to_char(post_time,'YYYY-MM-DD HH24:MI'),'') LOG_TIME as post_time, user_id */*
+        FROM room
+        WHERE roomNo = #{roomNo}
+          AND state = 0
+    </select>
+    <select id="findAll" resultType="com.community.solar_embassy.dto.Room">
+        SELECT *FROM room
+    </select>
+    <select id="selectRoomListByBusiness" resultType="com.community.solar_embassy.dto.Room">
+        SELECT * FROM room WHERE buNo=#{buNo}
+    </select>
+    <select id="selectBoardListBySize" resultType="com.community.solar_embassy.dto.Room">
+        SELECT * FROM room ORDER BY postTime DESC LIMIT #{size}
+    </select>
+    <select id="selectRoomListByBusinessSize" resultType="com.community.solar_embassy.dto.Room">
+        SELECT * FROM room WHERE buNo= #{roomNo} ORDER BY postTime DESC LIMIT #{size}
+    </select>
+    <select id="lastRoom" resultType="com.community.solar_embassy.dto.Room">
+        SELECT * FROM room ORDER BY roomNo DESC LIMIT 1
+    </select>
+    <!--수정, 삭제-->
+    <update id="updateRoom" parameterType="com.community.solar_embassy.dto.Room" >
+        <![CDATA[
+        UPDATE room
+        SET buTell = #{buTell},
+            roomNo = #{roomNo},
+            title    = #{title},
+            address =#{address},
+            roCount= #{roCount},
+            price=#{price},
+            info = #{info},
+            buCode=#{buCode},
+            updaterId=#{userId},
+            updateTime=CURRENT_TIMESTAMP
+        WHERE roomNo = #{roomNo}
+          AND state = 0
+        ]]>
+    </update>
+    <!--게시글 조회 수 증가-->
+    <update id="updateViews" parameterType="int">
+        <![CDATA[
+        UPDATE room
+        SET views = views+1
+        WHERE roomNo = #{roomNo}
+        ]]>
+    </update>
+    <delete id="deleteRoom" parameterType="int">
+        <![CDATA[
+        DELETE FROM room
+        WHERE roomNo = #{roomNo}
+        ]]>
+    </delete>
+
 </mapper>

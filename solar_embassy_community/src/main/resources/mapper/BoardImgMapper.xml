@@ -5,15 +5,18 @@
 <mapper namespace="com.community.solar_embassy.mapper.BoardImgMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.BoardImg">
-            <id property="boardImgNo" column="boardImgNo" jdbcType="INTEGER"/>
-            <result property="boardNo" column="boardNo" jdbcType="INTEGER"/>
-            <result property="imagePath" column="imagePath" jdbcType="VARCHAR"/>
-            <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
-            <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+        <id property="boardImgNo" column="boardImgNo" jdbcType="INTEGER"/>
+        <result property="boardNo" column="boardNo" jdbcType="INTEGER"/>
+        <result property="imagePath" column="imagePath" jdbcType="VARCHAR"/>
+        <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
+        <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         boardImgNo,boardNo,imagePath,
         originImgName,postTime
     </sql>
+    <select id="findByBoardNo" resultType="com.community.solar_embassy.dto.BoardImg">
+        SELECT * FROM board_img WHERE boardNo= #{boardNo}
+    </select>
 </mapper>

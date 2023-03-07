@@ -5,12 +5,12 @@
 <mapper namespace="com.community.solar_embassy.mapper.RoomImgMapper">
 
     <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.RoomImg">
-            <id property="imgNo" column="imgNo" jdbcType="INTEGER"/>
-            <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
-            <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
-            <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
-            <result property="saveImgName" column="saveImgName" jdbcType="VARCHAR"/>
-            <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+        <id property="imgNo" column="imgNo" jdbcType="INTEGER"/>
+        <result property="buTell" column="buTell" jdbcType="VARCHAR"/>
+        <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
+        <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
+        <result property="saveImgName" column="saveImgName" jdbcType="VARCHAR"/>
+        <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
