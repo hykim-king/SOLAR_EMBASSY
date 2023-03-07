@@ -46,6 +46,7 @@ layout:decorate="~{/layout}"> -->
           배기량 / 배터리 용량 : <span th:text="${auto.getDisp()}"></span>cc/kWh <br>
           가격 : <span th:text="${auto.getPrice()}"></span>만원 <br>
           차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
+          <button type="button" th:onclick="window.open([[@{'{link}'(link=${auto.link})}]])"><span>관련 사이트</span></button>
         </div>
       </div>
 

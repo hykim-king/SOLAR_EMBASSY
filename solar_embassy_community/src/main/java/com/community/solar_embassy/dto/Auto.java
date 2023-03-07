@@ -25,6 +25,7 @@ public class Auto implements Serializable {
     private String autoEngine;
     private String autoImgName;
     private String autoVideo;
+    private String Link;
     private static final long serialVersionUID = 1L;
 
     private List<AutoImg> autoImgList;

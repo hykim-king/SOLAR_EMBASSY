@@ -65,7 +65,7 @@ public class BoardController {
             roomList = roomService.selectRoomList();
             for (Room room : roomList) {
                 if (room.getImgPath() == null) {
-                    room.setImgPath("/img/camping/중량캠핑숲.jpeg");
+                    room.setImgPath("/img/camping/동화힐링캠프 글램핑.jpeg");
                 }
             }
         }else{

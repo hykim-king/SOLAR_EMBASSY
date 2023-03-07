@@ -23,6 +23,20 @@
     margin-left: 300px;
 }
 
+#SE_contents #content2 #inform button {
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #a156ff, #23a6d5);
+    margin-top: 10px;
+    width: 350px;
+    border-style: none;
+}
+
+#SE_contents #content2 #inform button:hover{
+    text-decoration-line: blink;
+    color: #fff;
+    background: linear-gradient(-45deg, #23a6d5, #a156ff);
+}
+
 #SE_contents #content3 {
     background-color: skyblue;
     width: 1200px;
