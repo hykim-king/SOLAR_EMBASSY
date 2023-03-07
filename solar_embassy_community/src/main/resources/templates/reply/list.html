@@ -68,7 +68,7 @@
                          style="width: 16px;height: 16px;"> <span
                           th:text="${reReply.user.nickname}+${(reReply.userId==board.userId)?' (작성자)':''}"> </span>
                     <span th:text="${#dates.format(reReply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
-                    <span><a href="javascript:void(0)" class="d-inline text-black"
+                    <span th:if="${session.loginUser!=null&&session.loginUser.userId==reReply.userId}"><a href="javascript:void(0)" class="d-inline text-black"
                              th:onclick="removeReply([[${reReply.replyNo}]])">
                             <i class="bi bi-x-square"></i></a></span>
                     <span>

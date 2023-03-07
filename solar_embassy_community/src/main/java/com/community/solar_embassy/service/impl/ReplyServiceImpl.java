@@ -42,7 +42,8 @@ public class ReplyServiceImpl
     @Override
     public int delete(Reply replyNo) {
         int delete = 0;
-        if (replyNo.getFkReplyNo() == null) {
+        List<Reply> replyList = replyMapper.findAllByFkReplyNo(replyNo.getReplyNo());
+        if (replyNo.getFkReplyNo() == null && replyList!=null) {
             delete = replyMapper.makeBlankReply(replyNo);
         } else {
             delete = replyMapper.deleteById(replyNo);
