@@ -1,10 +1,9 @@
 package com.community.solar_embassy.service.impl;
 
-import com.community.solar_embassy.dto.BoardDto;
-import com.community.solar_embassy.dto.BoardPreferDto;
-import com.community.solar_embassy.dto.Reply;
 import com.community.solar_embassy.dto.Users;
-import com.community.solar_embassy.mapper.*;
+import com.community.solar_embassy.mapper.GradeMapper;
+import com.community.solar_embassy.mapper.ProfileImgMapper;
+import com.community.solar_embassy.mapper.UsersMapper;
 import com.community.solar_embassy.service.UsersService;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +16,11 @@ public class UsersServiceImpl implements UsersService {
     private UsersMapper usersMapper;
     private ProfileImgMapper profileImgMapper;
     private GradeMapper gradeMapper;
-    private BoardMapper boardMapper;
-    private ReplyMapper replyMapper;
-    private BoardPreferMapper boardPreferMapper;
 
-    public UsersServiceImpl(UsersMapper usersMapper, ProfileImgMapper profileImgMapper,
-                            GradeMapper gradeMapper, BoardMapper boardMapper, ReplyMapper replyMapper,
-                            BoardPreferMapper boardPreferMapper) {
+    public UsersServiceImpl(UsersMapper usersMapper, ProfileImgMapper profileImgMapper, GradeMapper gradeMapper) {
         this.usersMapper = usersMapper;
         this.profileImgMapper = profileImgMapper;
         this.gradeMapper = gradeMapper;
-        this.boardMapper = boardMapper;
-        this.replyMapper = replyMapper;
-        this.boardPreferMapper = boardPreferMapper;
     }
 
     @Override
@@ -53,7 +44,7 @@ public class UsersServiceImpl implements UsersService {
         Users findResult = usersMapper.findByNickname(nickname);
         int check = 0;
         if (findResult != null) {
-            check = 1;
+            check=1;
         }
         return check;
     }
@@ -68,56 +59,21 @@ public class UsersServiceImpl implements UsersService {
     }
 
     private void levelUpdate(Users user) {
-        if (user.getGrade().getTotalExp() <= user.getExp()) {
+        if(user.getGrade().getTotalExp()<=user.getExp()){
             usersMapper.levelUp(user);
-            user = usersMapper.findById(user.getUserId());
+            user=usersMapper.findById(user.getUserId());
             levelUpdate(user);
         }
     }
 
     @Override
     public int withdrawal(Users loginUser) {
-        List<BoardDto> boardList = boardMapper.selectListByUserId(loginUser.getUserId());
-        if (boardList != null) {
-            for (BoardDto board : boardList) {
-                Users userInfo = usersMapper.findById(board.getUserId());
-                userInfo.setUserId("1234");
-                board.setUser(userInfo);
-                board.setUserId("1234");
-                try {
-                    boardMapper.updateBoard(board);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        List<BoardPreferDto> preferList = boardPreferMapper.findByUserId(loginUser.getUserId());
-        if (preferList != null) {
-            for (BoardPreferDto boardPrefer : preferList) {
-                if (boardPrefer != null) {
-                    boardPreferMapper.delete(boardPrefer.getBoardNo());
-                }
-            }
-        }
-        List<Reply> replyList = replyMapper.findByUserIdPaging(loginUser.getUserId());
-        if (replyList != null) {
-            for (Reply reply : replyList) {
-                if (reply != null) {
-                    if (reply.getFkReplyNo() == null) {
-                        replyMapper.makeBlankReply(reply);
-                    } else {
-                        replyMapper.deleteById(reply);
-                    }
-                }
-            }
-        }
-        int delete = usersMapper.delete(loginUser.getUserId());
-        return delete;
+        return usersMapper.delete(loginUser.getUserId());
     }
 
     @Override
     public int expUp(String userId) {
-        return usersMapper.expUp(5, userId);
+        return usersMapper.expUp(5,userId);
     }
 }
 
