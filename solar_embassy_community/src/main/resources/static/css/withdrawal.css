@@ -1,18 +1,23 @@
 .modifycontainer { /* 회원 탈퇴 관리 페이지 */
-    height: 800px;
-    background: #cf95ff;
+    background-color: #0eabff;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #000;
     position: relative;
-    transform: translate(0, -90px);
+    transform: translate(0,-80px);
+    border-radius: 0 0 15px 15px;
 }
 
-.account-withdrawal { /* 회원 탈퇴 text */
+/* 회원 탈퇴 text */
+.account-withdrawal {
     margin-left: 10px;
     margin-top: 20px;
 }
 
 .a-warning { /* 회원 탈퇴전 경고문 a는 account 약자입니다*/
     background-color: #fff;
-    padding-left: 38px;
+    padding: 10px;
     width: 1100px;
     height: 250px;
     font-size: 15px;
@@ -22,12 +27,13 @@
     transform: translate(50px, 60px);
 }
 
-.auh { /* 탈퇴전 이유와 희망사항 인풋 창 start*/
-    transform: translate(50px, 60px);
-
+.auh { /* 탈퇴전 이유와 인풋 창 start*/
+    transform: translate(50px, 70px);
+    width: 1100px;
 }
 
 .auh-t {
+    font-size: 18px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -35,41 +41,31 @@
 .a-user-hope {
     height: 300px;
     margin-left: 15px;
+    font-size: 18px;
     border-collapse: collapse;
 }
 
 .a-user-hope2 {
     position: absolute;
-    bottom: 30%;
-    left: 50%;
-}
-
-.a-user-hope3 {
-    margin-top: 15px;
-    width: 500px;
-    box-shadow: 0 0 15px #0c4363;
-    height: 150px;
-    background: #ffffff;
-    border-radius: 15px;
-}
-
-/*사이트 빈도수가 낮아서 탈퇴*/
-.a-user-hope3-1 {
+    transform: translate(700px,-300px);
     font-size: 18px;
-    margin-top: 5px;
-    margin-left: 5px;
-    border-style: none;
-    width: 300px;
 }
 
-.a-user-hope4 { /* 탈퇴전 이유와 희망사항 인풋 창 end*/
-    margin-top: 15px;
-    text-align: end;
+.a-user-hope3>input{
+    background: #ffffff;
+    width: 400px;
+    padding: 20px 0 130px 10px;
+    height: 150px;
+    margin-top: 10px;
+    position: absolute;
+    border: none;
+    box-shadow: 0 0 15px #0c4363;
+    border-radius: 15px;
 }
 
 .a-agree { /* 탈퇴동의 start */
     margin-top: 10px;
-    font-family: 'Inter', serif;
+    font-size: 18px;
     font-style: normal;
     color: #000000;
     text-align: center;
@@ -81,17 +77,28 @@
 }
 
 .a-confirm {
-    position: absolute;
-    left: 43%;
-    width: 100px;
-    height: 35px;
-    box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
+    background-color: #ff8075;
+    color:#ffff;
+    width: 150px;
+    height: 45px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ffacaa;
+    margin-right: 25px;
 }
 
 .a-cancel { /* 탈퇴동의 end */
-    position: absolute;
-    left: 52%;
-    width: 100px;
-    height: 35px;
-    box-shadow: inset -4px -5px 4px rgba(0, 0, 0, 0.25);
+    background-color: #A084DC;
+    color:#ffff;
+    width: 150px;
+    height: 45px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-style: none;
+    border-radius: 5px;
+    margin-left: 25px;
 }

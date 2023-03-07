@@ -48,11 +48,10 @@ layout:decorate="~{/layout}"> -->
             width: 95%;
         }
 
-        #textarea_btn{
+        #textarea_btn {
             margin-right: 30px;
             float: right;
         }
-
 
 
     </style>
@@ -60,38 +59,43 @@ layout:decorate="~{/layout}"> -->
 </head>
 <body>
 <div id="SE_container">
-
-
     <th:block th:insert="/mainImg"></th:block>
     <div id="SE_topline">
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
         <!--검색과 로그인 end-->5
-        <div id="SE_contents" style="z-index:2">
+        <div id="SE_contents" style="z-index:2;transform: translate(360px,30px);height: max-content;">
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
-
             <!--여기부터-->
-            <div id="SE_content2">  <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+            <div id="SE_content3" style="height: calc(max-content+100px);">
+                <!--컨텐츠 img영역. SE_content2에 background에 이미지를 삽입하는 방식으로 제작.-->
+                <th:block th:if="${board.galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1" class="pt-1">
-                    <form id="frm" name="frm" method="post" action="/board/boardUpdate.do">
+                    <form id="frm" name="frm" method="post">
                         <input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+                        <div style="margin: 30px;;padding: 20px;font-weight: bold;font-size: 20px; background-color:#6c747c;border-radius: 10px;color:white">
+                            " <span th:text="${board.user.nickname}"></span> " <span>님의 작성글입니다.</span>
+                        </div>
                         <div id="title_input" class="dropdown">
                             <div class="me-2">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    주제
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">잡담</a></li>
-                                    <li><a class="dropdown-item" href="#">정보</a></li>
-                                    <li><a class="dropdown-item" href="#">질문</a></li>
-                                    <li><a class="dropdown-item" href="#">기타</a></li>
-                                </ul>
+                                <select th:name="galaxyNo" class="btn btn-secondary dropdown-toggle">
+                                    <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}"
+                                            th:text="${galaxy.galName}"
+                                            th:selected="${galaxy.galaxyNo} == ${board.galaxy.galaxyNo}"></option>
+                                </select>
+                                <select name="boardTag" class="btn btn-secondary dropdown-toggle">
+                                    <option value="1" selected>잡담</option>
+                                    <option value="2">정보</option>
+                                    <option value="3">질문</option>
+                                    <option value="4">기타</option>
+                                </select>
                             </div>
-                            <div>
-                                <input th:text="${board.title}" type="text" id="title" name="title" class="form-control"
-                                       aria-label="Text input with dropdown button" style="width: 600px">
+                            <div id="title_input1">
+                                <input type="text" placeholder="제목" id="title" name="title" class="form-control"
+                                       aria-label="Text input with dropdown button" style="width: 600px"
+                                       th:value="${board.title}">
                             </div>
                         </div>
 
@@ -100,26 +104,26 @@ layout:decorate="~{/layout}"> -->
                                 <textarea th:text="${board.contents}" id="summernote" name="contents"></textarea>
                             </div>
                             <div id="textarea_btn">
-                                <a href="/board/boardList.do" class="btn btn-Light">취소</a>
-                                <button type="submit" class="btn btn-danger"><a href="/board/boardDetail.do"></a>삭제</button>
-                                <button type="submit" class="btn btn-warning"><a href="/board/boardDetail.do"></a>수정</button>
+                                <a th:href="@{'/board/boardList.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}"
+                                   class="btn btn-Light border-dark">취소</a>
+                                <button type="submit" class="btn btn-warning">수정</button>
                             </div>
                         </div>
-                        <input type="hidden" name="usreId" th:value="${session.loginUser.userId}">
                     </form>
 
 
                 </div>
+                <footer id="SE_footer" style="transform: translate(-360px,100px);">
+                    <p>
+                    </p>
+                    <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스
+                        문의</a> /
+                        <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
+                    <p>
+                    </p>
+                    <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
+                </footer>
             </div>
-            <footer id="SE_footer">
-                <p>
-                </p>
-                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /
-                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>
-                <p>
-                </p>
-                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>
-            </footer>
         </div>
     </div>
 </div>

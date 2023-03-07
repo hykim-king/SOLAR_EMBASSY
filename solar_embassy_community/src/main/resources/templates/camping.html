@@ -231,6 +231,7 @@ layout:decorate="~{/layout}"> -->
             text-align: center;
 
         }
+
         /*캠핑장 소개*/
 
         #section2 {
@@ -317,36 +318,44 @@ layout:decorate="~{/layout}"> -->
             object-fit: cover;
             opacity: 1;
         }
-        #price{
+
+        #price {
             position: relative;
             left: 1000px;
             font-size: 15px;
         }
-        #Magazine{
+
+        #Magazine {
             font-size: 20px;
         }
+
         #Magazine_text {
             font-size: 15px;
         }
+
         /*캠핑 스타*/
-        #section4{
+        #section4 {
             margin-top: 35px;
             height: max-content;
         }
-        #section4_title{
+
+        #section4_title {
             margin-left: 10px;
         }
+
         #camp_text1 {
             position: relative;
             bottom: 100px;
             left: 500px;
             font-size: 15px;
         }
-        #camp_img{
-            height:100px;
+
+        #camp_img {
+            height: 100px;
             width: 100px;
         }
-        #log_img{
+
+        #log_img {
             position: relative;
             left: 40px;
             top: 40px;
@@ -448,7 +457,8 @@ layout:decorate="~{/layout}"> -->
                            uk-toggle="" aria-expanded="false">
                             <div class="card city-card-style hoverable z-depth-2" style="margin:0;">
                                 <div class="card-image imgbox"><img th:src="${room.imgPath}" id="camp_img" alt="city"
-                                                                    loading="lazy"></div><br>
+                                                                    loading="lazy"></div>
+                                <br>
                                 <div class="city-card-contents-div">
                                     <li class="city-card-contents-title">
                                         <div class="citynamefont"><b><span th:text="${room.title}"></span></b><br><h6
@@ -456,7 +466,7 @@ layout:decorate="~{/layout}"> -->
                                                 th:text="${room.address}"></span></h6></div>
                                     </li>
                                     <li>
-                                       <span id="price" th:text="${room.price}+'원'"></span>
+                                        <span id="price" th:text="${room.price}+'원'"></span>
                                     </li>
                                 </div>
                             </div>
@@ -483,7 +493,8 @@ layout:decorate="~{/layout}"> -->
                             <img class="article-thumbnail"
                                  src="https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium_01_00c90336e3.jpeg"
                                  alt="애견 캠퍼 분들 주목! 윈드스크린 추천"></div>
-                        <p class="sc-iIPllB fMNqxb typography-headline typography-medium" id="Magazine_text">애견 캠퍼 분들 주목! 윈드스크린 추천</p>
+                        <p class="sc-iIPllB fMNqxb typography-headline typography-medium" id="Magazine_text">애견 캠퍼 분들
+                            주목! 윈드스크린 추천</p>
                         <div class="sc-hNKHps iXseoj">
                             <img size="24"
                                  src="https://campingagains3.s3.ap-northeast-2.amazonaws.com/thumbnail_968_A346_E_61_FD_4878_AF_42_C423_C726_E2_F7_6c16519fa9.jpeg"
@@ -513,13 +524,24 @@ layout:decorate="~{/layout}"> -->
                            th:href="@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${board.boardNo})}"
                            uk-toggle="" aria-expanded="false">
                             <div class="card city-card-style hoverable z-depth-2" style="margin:0;">
-                                <div class="card-image imgbox"><img th:src="${board.boardImg.imagePath}+${board.boardImg.originImgName}" id="log_img" alt="city"
-                                                                    loading="lazy"></div><br>
+                                <div class="card-image imgbox">
+                                    <th:block th:if="${board.boardImg!=null}">
+                                        <img th:src="${board.boardImg.imagePath}+${board.boardImg.originImgName}"
+                                             id="log_img" alt="city" loading="lazy">
+                                    </th:block>
+                                    <th:block th:if="${board.boardImg==null}">
+                                        <img src="/img/camping/첫%20캠핑.jpeg"
+                                             id="log_img" alt="city" loading="lazy">
+                                    </th:block>
+                                </div>
+                                <br>
                                 <li class="city-card-contents-title" id="camp_text1">
-                                    <div class="citynamefont"><b><p>작성자: <span id="userId" th:text="${board.userId}"></span></p>
-                                        <p>제목:  <span id="title" th:text="${board.title}"></span></p>
-                                        <p>내용: <span th:text="${board.contents}"></span></b><br></p> <p >작성일자:  <span
-                                            th:text="${#dates.format(board.postTime,'yyyy-MM-dd')}"></span></div></p>
+                                    <div class="citynamefont"><b><p>작성자: <span id="userId"
+                                                                               th:text="${board.userId}"></span></p>
+                                        <p>제목: <span id="title" th:text="${board.title}"></span></p>
+                                        <p>내용: <span th:text="${board.contents}"></span></b><br></p> <p>작성일자: <span
+                                            th:text="${#dates.format(board.postTime,'yyyy-MM-dd')}"></span></div>
+                                    </p>
                                 </li>
                             </div>
                         </a>
@@ -527,15 +549,15 @@ layout:decorate="~{/layout}"> -->
                 </div>
             </section>
             <!--캠핑 로그 end-->
-<!--            <footer id="SE_footer">-->
-<!--                <p>-->
-<!--                </p>-->
-<!--                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /-->
-<!--                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>-->
-<!--                <p>-->
-<!--                </p>-->
-<!--                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>-->
-<!--            </footer>-->
+            <!--            <footer id="SE_footer">-->
+            <!--                <p>-->
+            <!--                </p>-->
+            <!--                <h3><a href="#">서비스 소개</a> / <a href="#">이용약관</a> / <a href="#">개인정보 취급방침</a> /<a href="#">비즈니스 문의</a> /-->
+            <!--                    <a href="#">SNS</a> / <a href="#">이메일</a> /<a href="#">연락처</a></h3>-->
+            <!--                <p>-->
+            <!--                </p>-->
+            <!--                <h3>Copyright (c) <a href="#">www.solarembassy.com</a> All rights reserved.</h3>-->
+            <!--            </footer>-->
         </div>
     </div>
 </div>

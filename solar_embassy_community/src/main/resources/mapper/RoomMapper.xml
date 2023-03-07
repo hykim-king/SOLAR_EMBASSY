@@ -95,12 +95,16 @@
     <update id="updateRoom" parameterType="com.community.solar_embassy.dto.Room" >
         <![CDATA[
         UPDATE room
-        SET title    = #{title},
+        SET buTell = #{buTell},
+            roomNo = #{roomNo},
+            title    = #{title},
+            address =#{address},
+            roCount= #{roCount},
+            price=#{price},
             info = #{info},
-            buTell   = #{buTell},
-            updateTime=CURRENT_TIMESTAMP,
             buCode=#{buCode},
-            updaterId=#{userId}
+            updaterId=#{userId},
+            updateTime=CURRENT_TIMESTAMP
         WHERE roomNo = #{roomNo}
           AND state = 0
         ]]>

@@ -37,6 +37,18 @@
             updateTime=CURRENT_TIMESTAMP
         WHERE replyNo = #{replyNo}
     </update>
+    <update id="makeBlankReply">
+        UPDATE reply
+        SET userId=null,
+            contents=null,
+            imgPath=null,
+            originImgName=null,
+            updateTime=CURRENT_TIMESTAMP,
+            likes=null,
+            dislikes=null,
+            state=-1
+        WHERE replyNo = #{replyNo}
+    </update>
     <delete id="deleteById">
         DELETE
         FROM reply

@@ -13,26 +13,38 @@
 </style>
 <th:block th:each="reply:${replyList}">
     <div th:id="'replyContainer'+${reply.replyNo}">
-        <div class="px-3 pt-3 pb-3">
-            <span th:text="${reply.user.nickname}+${(reply.userId==board.userId)?' (작성자)':''}"></span>
-            <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
-            <span><a href="javascript:void(0)" class="d-inline text-black"
-                     th:onclick="removeReply([[${reply.replyNo}]])">
+        <th:block th:if="${reply.contents!=null}">
+            <div class="px-3 pt-3 pb-3">
+                <span th:text="${reply.user.nickname}+${(reply.userId==board.userId)?' (작성자)':''}"></span>
+                <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
+                <span th:if="${reply.userId==session.loginUser.userId}"><a href="javascript:void(0)"
+                                                                           class="d-inline text-black"
+                                                                           th:onclick="removeReply([[${reply.replyNo}]])">
                 <i class="bi bi-x-square"></i></a></span>
-            <span>
+                <span>
                 <button type="button" class="btn btn-primary btn-sm float-end "><i
                         class="bi bi-hand-thumbs-down"></i><span> 0</span></button>
-                <button type="button" class="btn btn-danger btn-sm float-end me-1"><i
-                        class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
+                <button type="button" class="btn btn-danger btn-sm float-end me-1"><i class="bi bi-hand-thumbs-up"></i> <span> 3</span></button>
             </span>
-        </div>
-        <div id="reply_content" class="px-3">
-            <p th:text="${reply.contents}"></p>
-        </div>
-
+            </div>
+            <div id="reply_content" class="px-3">
+                <p th:text="${reply.contents}"></p>
+            </div>
+        </th:block>
+        <th:block th:if="${reply.contents==null}">
+            <div class="px-3 pt-3 pb-3">
+                <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
+                <span>
+            </span>
+            </div>
+            <div id="blank_reply_content" class="px-3">
+                <p>삭제된 댓글입니다.</p>
+            </div>
+        </th:block>
         <!--댓글리스트 end-->
         <div class="text-end me-3 mb-2">
-            <a class="text-black" style="display: inline;" href="javascript:void(0)"
+            <a class="text-black" th:if="${session.loginUser.userId==reply.userId}" style="display: inline;"
+               href="javascript:void(0)"
                th:onclick="loadReplyModifyForm([[${reply.replyNo}]])">수정 |</a>
             <a class="text-black" style="display: inline;" href="javascript:void(0)"
                th:onclick="loadRegisterForm( [[${reply.replyNo}]] )"> 댓글</a>
@@ -50,7 +62,8 @@
                                         <span>
                                             <i class="bi bi-arrow-return-right fs-1"></i>
                                         </span>
-                    <span class="ms-4" th:text="${reReply.nickname}+${(reReply.userId==board.userId)?' (작성자)':''}"> </span>
+                    <span class="ms-4"
+                          th:text="${reReply.nickname}+${(reReply.userId==board.userId)?' (작성자)':''}"> </span>
                     <span th:text="${#dates.format(reReply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
                     <span><a href="javascript:void(0)" class="d-inline text-black"
                              th:onclick="removeReply([[${reReply.replyNo}]])">

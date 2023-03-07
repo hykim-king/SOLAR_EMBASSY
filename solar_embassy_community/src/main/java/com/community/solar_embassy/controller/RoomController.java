@@ -73,7 +73,7 @@ public class RoomController {
         int insert = roomService.insertRoom(room);
         System.out.println(insert);
         if (insert == 1) {
-            return "redirect:/room/roomList.do?galaxyNo=" + room.getRoomNo();
+            return "redirect:/room/roomList.do?galaxyNo=5";
         } else {
             return "redirect:/room/roomWrite.do";
         }

@@ -47,7 +47,7 @@ public class BoardController {
     public String boardList(Locale locale, Model model, @RequestParam int galaxyNo) throws Exception {
 //        List<BoardDto> list = boardService.selectBoardList();//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         List<BoardDto> list = boardService.boardListByGalaxy(galaxyNo);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        for(BoardDto board:list){
+        for (BoardDto board : list) {
             List<Reply> replyList = replyService.findByBoardNo(board.getBoardNo());
             board.setReplyList(replyList);
         }
@@ -60,23 +60,29 @@ public class BoardController {
 
     @GetMapping("/camping.do")
     public String camping(@RequestParam int galaxyNo, Model model) throws Exception {
-        BoardDto board = boardService.selectBoardDetail(galaxyNo);
-        board.setBoardNo(galaxyNo);
-        model.addAttribute("board", board);
-        if (galaxyNo >=5 ){ // galaxyNo ==5 || galaxyNo == 10
-            List<Room> roomList = roomService.selectRoomList();
-            for(Room room:roomList){
-                if (room.getImgPath() == null){
+        List<Room> roomList = null;
+        if (galaxyNo == 5) { // galaxyNo ==5 || galaxyNo == 10
+            roomList = roomService.selectRoomList();
+            for (Room room : roomList) {
+                if (room.getImgPath() == null) {
                     room.setImgPath("/img/camping/중량캠핑숲.jpeg");
                 }
             }
-            model.addAttribute("roomList",roomList);
+        }else{
+            System.out.println("갤럭시가 없습니다");
+            return "redirect:/";
         }
+        model.addAttribute("roomList", roomList);
+        List<BoardDto> boardList = boardService.boardListByGalaxy(galaxyNo);
+        for (BoardDto board : boardList) {
+            board.setBoardNo(galaxyNo);
+        }
+        model.addAttribute("boardList", boardList);
         List<BoardDto> campList = boardService.boardListByGalaxy(galaxyNo);
-        for(BoardDto boardn:campList){
+        for (BoardDto boardn : campList) {
             boardn.setBoardImg(boardImgService.selectOne(boardn.getBoardNo()));
         }
-        model.addAttribute("list",campList);
+        model.addAttribute("list", campList);
         return "/camping";
     }
 
@@ -113,7 +119,7 @@ public class BoardController {
         board.setReplyList(replyService.findByBoardNo(boardNo));
         board.setGalaxy(galaxyService.findByNo(board.getGalaxyNo()));
         List<Reply> replyList = replyService.findFirstByBoardNo(boardNo);
-        for(Reply reply:replyList){
+        for (Reply reply : replyList) {
             reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
         }
         BoardPreferViewDto boardPreferView = new BoardPreferViewDto();
@@ -127,7 +133,7 @@ public class BoardController {
         model.addAttribute("board", board);
         model.addAttribute("replyList", replyList);
         List<BoardDto> list = boardService.boardListByGalaxy(board.getGalaxyNo());//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        for(BoardDto boardl:list){
+        for (BoardDto boardl : list) {
             boardl.setUser(usersService.findById(boardl.getUserId()));
             boardl.setReplyList(replyService.findByBoardNo(boardl.getBoardNo()));
         }
@@ -144,8 +150,13 @@ public class BoardController {
             return "redirect:/user/login.do";
         }
         BoardDto board = boardService.selectBoardDetail(boardNo);
+        board.setUser(usersService.findById(board.getUserId()));
+        board.setGalaxy(galaxyService.findByNo(board.getGalaxyNo()));
         model.addAttribute("board", board);
-        return "updateBoard";
+
+        List<Galaxy> galaxies = galaxyService.findAll();
+        model.addAttribute("galaxies", galaxies);
+        return "/boardUpdate";
     }
 
     @PostMapping("/updateBoard/{boardNo}")

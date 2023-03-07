@@ -20,6 +20,7 @@ public interface ReplyMapper {
 
     int countByBoardNo(int boardNo);
 
+    int makeBlankReply(Reply replyNo);
 }
 
 

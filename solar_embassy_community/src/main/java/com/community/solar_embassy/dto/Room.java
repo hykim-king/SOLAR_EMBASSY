@@ -21,7 +21,7 @@ public class Room implements Serializable {
 
     private String address;
 
-    private String roCount;
+    private String  roCount;
 
     private String price;
 

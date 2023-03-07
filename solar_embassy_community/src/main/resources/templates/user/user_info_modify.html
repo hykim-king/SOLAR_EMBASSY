@@ -1,7 +1,3 @@
-<!-- xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{/layout}"> -->
-
 <html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -34,13 +30,14 @@ layout:decorate="~{/layout}"> -->
             <div id="user_info">
                 <div id="user_info_btn">
                     <div id="user_info_btn1">
-                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3 ">회원 정보 수정</button>
+                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3 " style="background-color: #d1d1d1">회원 정보 수정</button>
                     </div>
                     <div id="user_info_btn2">
-                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3">차단 목록 관리</button>
+                        <button type="button" class="btn btn-outline-dark col-12 mt-5 ms-4 fs-3 " style="background-color: #d1d1d1"
+                                onclick="location.href='/user/user_black.do'">차단 목록 관리</button>
                     </div>
                     <div id="user_info_btn3">
-                        <button type="button" class="btn btn-outline-danger col-12 mt-5 ms-4 fs-3"
+                        <button type="button" class="btn btn-outline-danger col-12 mt-5 ms-4 fs-3" style="background-color: #a52834"
                                 onclick="location.href='/user/withdrawal.do'">회원 탈퇴
                         </button>
                     </div>

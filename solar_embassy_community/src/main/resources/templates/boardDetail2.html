@@ -65,9 +65,10 @@
                 <!--메뉴 end-->
 
                 <!--여기부터-->
+                <th:block th:if="${board.galaxyNo==3}" th:insert="/galaxy/autoGalaxyNavbar"></th:block>
                 <div id="user_info_bgc1">
                     <div>
-                        <h2 class="ms-5 pt-5"><strong>여행 갤럭시</strong></h2>
+                        <h2 class="ms-5 pt-5"><strong><span th:text="${board.galaxy.galName}"></span> 갤럭시</strong></h2>
                     </div>
                     <input type="hidden" name="boardNo" th:value="${board.boardNo}" id="boardNo">
                     <div id="head_info" class="px-4 py-2 mt-4 mb-3">
@@ -95,9 +96,9 @@
                         <th:block th:include="/boardPrefer" th:with="prefer=${board.boardPreferView}"></th:block>
                     </div>
                     <!-- 좋아요/ 싫어요 버튼 end-->
-                    <div class="mb-4 text-end">
+                    <div class="mb-4 text-end" th:if="${session.loginUser!=null&&session.loginUser.userId==board.userId}">
                         <button class="float-end btn btn-danger">삭제</button>
-                        <button th:onclick="location.href=[[@{'/board/{boardNo}/boardUpdate.do' (boardNo=${boardNo})}]]"
+                        <button th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (boardNo=${board.boardNo})}]]"
                                 class="float-end btn btn-warning me-2">수정
                         </button>
                     </div>
@@ -116,8 +117,11 @@
                     </div>
 
                     <div id="boardList_table_btn" class="mb-2 mt-3">
-                        <button class="btn btn-dark btn-sm" type="button">전체글</button>
-                        <a href="/board/boardWrite.do" class="float-end btn btn-dark btn-sm"><i
+                        <button class="btn btn-dark btn-sm" type="button" th:onclick="location.href=
+                        [[@{'/board/boardList.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}]]">전체글
+                        </button>
+                        <a th:href="@{'/board/boardWrite.do?galaxyNo={galaxyNo}' (galaxyNo=${board.galaxyNo})}"
+                           class="float-end btn btn-dark btn-sm"><i
                                 class="bi bi-pencil"></i> 글 쓰기</a>
                     </div>
 
@@ -149,10 +153,10 @@
                                     [[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${boardi.boardNo})}]]">
                                     <a
                                             th:switch="${boardi.boardTag}" style="font-weight: bold;">
-                                        <span th:case="1">[일상]</span>
-                                        <span th:case="2">[유머]</span>
-                                        <span th:case="3">[예약]</span>
-                                        <span th:case="4">[후기]</span>
+                                        <span th:case="1">[잡담] </span>
+                                        <span th:case="2">[정보] </span>
+                                        <span th:case="3">[질문] </span>
+                                        <span th:case="4">[기타] </span>
                                     </a>
                                     <th:block th:text="${boardi.title}+' ('+${boardi.replyList.size()}+')'"></th:block>
                                 </td>
@@ -167,9 +171,6 @@
                             </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div>
-                        <p class="text-center">(페이지네이션 자리)</p>
                     </div>
                     <footer id="SE_footer">
                         <p>
@@ -211,29 +212,33 @@
                 registerReply(e, cloneForm);
             }
             cloneForm.fkReplyNo.value = replyNo;
-            cloneForm.contents.value=null;//복사된 폼의 참조하는 부모 번호 정의
+            cloneForm.contents.value = null;//복사된 폼의 참조하는 부모 번호 정의
             let selector = "reReplyRegisterContainer" + replyNo;
             const reReplyRegisterContainer = document.getElementById(selector); //복사한 폼의 옮길 위치
-            if(reReplyRegisterContainer.contains(replyRegisterForm)){
-                reReplyRegisterContainer.innerHTML=""
+            if (reReplyRegisterContainer.contains(replyRegisterForm)) {
+                reReplyRegisterContainer.innerHTML = ""
                 return
             }
             reReplyRegisterContainer.append(cloneForm);
         }
 
         async function removeReply(replyNo) {
-            let url = "/reply/delete.do?replyNo=" + replyNo;
-            const resp = await fetch(url, {method: "DELETE"});
-            if (resp.status === 200) {
-                const json = await resp.json();
-                if (json.state === 1) {
-                    await loadReplyList();
-                    alert("삭제 성공!");
-                } else {
-                    alert("삭제할 레코드가 없습니다.");
-                }
+            if (!confirm("정말로 삭제하시겠습니까?")) {
+                return
             } else {
-                alert(`삭제 실패! ${resp.status}`);
+                let url = "/reply/delete.do?replyNo=" + replyNo;
+                const resp = await fetch(url, {method: "DELETE"});
+                if (resp.status === 200) {
+                    const json = await resp.json();
+                    if (json.state === 1) {
+                        await loadReplyList();
+                        alert("삭제 성공!");
+                    } else {
+                        alert("삭제할 레코드가 없습니다.");
+                    }
+                } else {
+                    alert(`삭제 실패! ${resp.status}`);
+                }
             }
         }
 
@@ -311,7 +316,7 @@
         }
 
         async function boardPreferHandler(boardNo, preferBtn) {
-            let url = "/board/prefer/handler.do?boardNo="+ boardNo + "&preferBtn="+preferBtn;
+            let url = "/board/prefer/handler.do?boardNo=" + boardNo + "&preferBtn=" + preferBtn;
             let viewUrl = "/board/prefer/view.do?boardNo=" + boardNo;
             const boardPreferContainer = document.getElementById("likes");
             const resp = await fetch(url, {method: "PUT"});
