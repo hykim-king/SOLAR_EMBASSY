@@ -5,9 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @TableName board_img
- */
 @Data
 public class BoardImg implements Serializable {
     private Integer boardImgNo;

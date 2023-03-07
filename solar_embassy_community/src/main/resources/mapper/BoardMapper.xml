@@ -27,7 +27,7 @@
         FROM board
         WHERE state = 0
         ORDER BY boardNo DESC
-        LIMIT 9
+            LIMIT 9
         ]]>
     </select>
     <!--게시글 등록-->
@@ -70,27 +70,27 @@
         SELECT *
         FROM board
         ORDER BY postTime DESC
-        LIMIT #{size}
+            LIMIT #{size}
     </select>
     <select id="selectBoardListByGalaxySize" resultType="com.community.solar_embassy.dto.BoardDto">
         SELECT *
         FROM board
         WHERE galaxyNo = #{galaxyNo}
         ORDER BY postTime DESC
-        LIMIT #{size}
+            LIMIT #{size}
     </select>
     <select id="selectHot" resultType="com.community.solar_embassy.dto.BoardDto">
         SELECT *
         FROM board
         WHERE boardNo >= #{endNo} - 100
         ORDER BY likes DESC, postTime DESC
-        LIMIT 5
+            LIMIT 5
     </select>
     <select id="selectEnd" resultType="java.lang.Integer">
         SELECT boardNo
         FROM board
         ORDER BY boardNo DESC
-        LIMIT 1
+            LIMIT 1
     </select>
     <select id="selectListByUserId" resultType="com.community.solar_embassy.dto.BoardDto">
         SELECT *
