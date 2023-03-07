@@ -16,4 +16,6 @@ public interface ReplyService  {
     List<Reply> findFirstByBoardNo(int boardNo);
 
     Reply findOne(int replyNo);
+
+    List<Reply> findByUserId(String userId);
 }

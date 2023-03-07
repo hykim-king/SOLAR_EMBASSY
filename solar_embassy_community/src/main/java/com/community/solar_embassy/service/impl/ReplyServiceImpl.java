@@ -123,6 +123,17 @@ public class ReplyServiceImpl
         return replyMapper.findById(replyNo);
     }
 
+    @Override
+    public List<Reply> findByUserId(String userId) {
+        List<Reply> replyList = replyMapper.findByUserIdPaging(userId);
+        for (Reply reply : replyList) {
+            if (reply != null) {
+                reply.setUser(usersMapper.findById(reply.getUserId()));
+            }
+        }
+        return replyList;
+    }
+
 }
 
 

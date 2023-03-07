@@ -1,8 +1,10 @@
 package com.community.solar_embassy.controller;
 
 import com.community.solar_embassy.dto.BoardDto;
+import com.community.solar_embassy.dto.Reply;
 import com.community.solar_embassy.dto.Users;
 import com.community.solar_embassy.service.BoardService;
+import com.community.solar_embassy.service.ReplyService;
 import com.community.solar_embassy.service.UsersService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -18,10 +20,12 @@ public class UserController {
 
     private UsersService usersService;
     private BoardService boardService;
+    private ReplyService replyService;
 
-    public UserController(UsersService usersService, BoardService boardService) {
+    public UserController(UsersService usersService, BoardService boardService, ReplyService replyService) {
         this.usersService = usersService;
         this.boardService = boardService;
+        this.replyService = replyService;
     }
 
     @GetMapping("login.do")
@@ -134,6 +138,8 @@ public class UserController {
         Users user = (Users) session.getAttribute("loginUser");
         List<BoardDto> myBoardList = boardService.BoardListByUserId(user.getUserId());
         model.addAttribute("myBoards", myBoardList);
+        List<Reply> replyList = replyService.findByUserId(user.getUserId());
+        model.addAttribute("myReplyList",replyList);
         return "user/my_page";
     }
 
