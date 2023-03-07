@@ -1,240 +1,83 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    background-color: #5B8FB9;
-    height: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-}
-
-ul {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-#container { /*메인 컨테이너*/
-    width: 1920px;
-    background-color: #5B8FB9;
-    margin: 0 auto;
+/* 전체영역 */
+.SearchContainerMain {
+    background: #f5f5f5;
+    height: 2100px;
+    border-radius: 0 0 15px 15px;
     position: relative;
-    transform: translate(0, 0);
+    transform: translate(0,-80px);
 }
 
-header { /*헤더*/
-    width: 100%;
-    height: 415px;
-    background-color: black;
-    text-align: center;
-    margin: 0 auto;
+/* 검색결과 영역*/
+.SearchContainer1 {
+    background-color: #47a1ff;
+    width: 96%;
+    height: 2050px;
+    color: #fff;
+    margin-left: 2%;
     position: relative;
+    border-radius: 15px;
+    transform: translate(0, 20px);
 }
 
-#img1 { /*메인 서비스 이미지*/
-    width: 1200px;
-    position: absolute;
-    transform: translate(-50%, 0%);
-    height: 355px;
-}
-
-#topline { /*검색창, 로그인의 공간*/
-    width: 100%;
-    height: 50px;
-    position: relative;
-    background-color: black;
-}
-
-#search-bar { /*검색입력 칸*/
-    width: 240px;
-    height: 40px;
-    font-size: 11px;
-    position: absolute;
-    float: left;
-    transform: translate(720px, -10px);
-    margin: 0;
-    border-radius: 5px;
-}
-
-#btn { /*검색 버튼*/
-    width: 60px;
-    height: 40px;
-    font-size: 11px;
-    color: white;
-    position: absolute;
-    margin: 0;
-    float: left;
-    transform: translate(960px, -10px);
-    border-radius: 5px;
-    background-color: #364959;
-}
-
-#login { /*로그인 공간 */
-    width: 300px;
-    height: 40px;
-    position: absolute;
-    transform: translate(1260px, 10px);
-    background-color: #333125;
-    border-radius: 5px;
-}
-
-.logbtn { /*로그인 공간 안의 버튼 3개.*/
-    margin: 10px 0 0 10px;
-    width: 80px;
-    height: 20px;
-    color: white;
-    font-size: 11px;
-    border-radius: 5px;
-    background-color: #364959;
-    border: 2px solid #0D3360;
-}
-
-#left-sidebar { /*좌측 사이드바*/
-    background-color: #5164AA;
-    width: 360px;
-    height: 80px;
-    position: absolute;
-    float: top;
-    transform: translate(0, 60%);
-}
-
-#contents { /*메인 컨테이너*/
-    width: 1200px;
-    background-color: #5B8FB9;
-    margin-left: 360px;
-    float: left;
-    position: absolute;
-    transform: translate(0, 48px);
-}
-
-#contents #content1 { /*NAV BAR 메인 메뉴 공간.*/
-    background-color: #826BCE;
-    width: 1200px;
-    height: 80px;
-    float: top;
-    position: relative;
-    transform: translate(0, 0);
-}
-
-#menu_wrap { /*Nav bar 크기*/
-    width: 1200px;
-    height: 100%;
-    margin: 0 auto;
-}
-
-.top_menu { /*Nav bar 각 메뉴*/
-    padding: 0;
-    margin: 0 auto;
-    width: 200px;
-    height: 100%;
-    background-color: #645CBB;
-    float: left;
-    text-align: center;
-    font: 20px/100px '';
-    transition-duration: 0.3s;
-}
-
-.sub_menu { /*드롭 다운 위치*/
-    margin-top: 10px;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    background-color: #A084DC;
-    transition-duration: 0.3s;
-}
-
-.sub_menu > li { /*드롭다운 하위메뉴*/
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid #0d6efd;
-    box-sizing: border-box;
-    font: 18px/80px '';
-}
-
-.top_menu.top_menu:hover { /*하위 메뉴 hover*/
-    font: 18px/70px '';
-    height: 100%;
-    background-color: #BFACE2;
-}
-
-.top_menu:hover > .sub_menu { /*하위 메뉴 늘어나는 길이 hover*/
-    height: 320px;
-}
-
-.sub_menu > li:hover { /*하위 메뉴 각 항목 hover*/
-    background-color: #EBC7E6;
-    transition-duration: 0.5s;
-}
-
-#right-sidebar {
-    background-color: #5164AA;
-    width: 360px;
-    height: 80px;
-    position: absolute;
-    transform: translate(1200px, -80px);
-    float: top;
-}
-
-.SearchContainerMain { /* 그냥 네모 박스1 */
-    border: 1px solid #000;
-    height: 1400px;
-    background: linear-gradient(rgb(231, 195, 236), rgba(83, 211, 228, 0.506), rgba(71, 109, 205, 0.841), rgba(189, 103, 223, 0.87), rgb(241, 113, 139))
-}
-
-.SearchContainer1 { /* 그냥 네모 박스2 */
-    margin-top: 100px;
-}
-
-.SearchWord { /* 사용자 검색어 */
+/* 사용자 검색어 */
+.SearchContainer1>span {
+    margin-left: 20px;
     font-weight: bolder;
     font-size: 40px;
-    color: #ffffff;
 }
 
-.SearchTag { /* 최근 날짜, 인기, 추천 form action문 */
+/* 검색 필터 설정 영역*/
+.SearchTag {
     display: flex;
-    /* border: 1px solid #000; */
+    border-bottom: 3px solid #08fd08;
     justify-content: end;
+    margin-right: 15px;
     font-size: 20px;
 }
 
-.SearchResult { /* 검색 결과창 */
-    background-color: #ffffff4d;
+/* 검색 결과영역 */
+.SearchResult {
+    height: 1965px;
 }
 
-.SresulT { /* 검색 결과 객체의 제목 Title */
-    font-size: 34px;
-    color: #ffff;
+/* 검색 결과 객체의 제목 Title */
+.SresulT {
+    background-color: #cfdeff;
+    width: 1110px;
+    font-size: 30px;
+    color: black;
+    border-bottom: 2px solid #d9d9d9;
+    border-radius:  15px 15px 0 0;
+    margin: 20px 0 0 10px;
+    padding: 10px;
 }
 
-.Sresultt { /* 검색 결과 객체의 내용 text */
+/* 검색 결과 객체의 내용 text */
+.Sresultt {
+    background-color: #f1f6ff;
+    width: 1110px;
     height: 100px;
     font-size: 24px;
-    color: black;
-
+    color: #6e6e6e;
+    border-radius: 0 0 15px 15px;
+    margin: 0 0 5px 10px;
+    padding: 10px;
 }
 
+/*검색 페이지 이동 */
 .pageContainer {
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
+    width: 1150px;
+    height: 30px;
+    float: left;
+    position: relative;
+    transform: translate(0,100px);
+    text-align: center;
+    background-color: #6e00c7;
 }
 
-
-#footer { /*footer 영역*/
-    background-color: Black;
-    width: 1920px;
-    height: 140px;
-    clear: left;
-    float: bottom;
-    position: absolute;
-    text-align: center;
-    transform: translate(0, 2115px);
+/*검색 페이지 이동 text*/
+.pageContainer>a{
+    font-size: 24px;
     color: white;
-    font: 18px/60px '';
+    display: inline-block;
 }
