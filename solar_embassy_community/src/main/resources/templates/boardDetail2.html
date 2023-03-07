@@ -96,7 +96,7 @@
                         <th:block th:include="/boardPrefer" th:with="prefer=${board.boardPreferView}"></th:block>
                     </div>
                     <!-- 좋아요/ 싫어요 버튼 end-->
-                    <div class="mb-4 text-end" th:if="${session.loginUser.userId==board.userId}">
+                    <div class="mb-4 text-end" th:if="${session.loginUser!=null&&session.loginUser.userId==board.userId}">
                         <button class="float-end btn btn-danger">삭제</button>
                         <button th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (boardNo=${board.boardNo})}]]"
                                 class="float-end btn btn-warning me-2">수정
@@ -153,10 +153,10 @@
                                     [[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${boardi.boardNo})}]]">
                                     <a
                                             th:switch="${boardi.boardTag}" style="font-weight: bold;">
-                                        <span th:case="1">[일상]</span>
-                                        <span th:case="2">[유머]</span>
-                                        <span th:case="3">[예약]</span>
-                                        <span th:case="4">[후기]</span>
+                                        <span th:case="1">[잡담] </span>
+                                        <span th:case="2">[정보] </span>
+                                        <span th:case="3">[질문] </span>
+                                        <span th:case="4">[기타] </span>
                                     </a>
                                     <th:block th:text="${boardi.title}+' ('+${boardi.replyList.size()}+')'"></th:block>
                                 </td>

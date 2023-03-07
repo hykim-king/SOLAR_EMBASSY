@@ -182,7 +182,7 @@
 
                                 <tbody>
                                 <tr th:if="${list!=null}" th:each="list_one:${list3}" class="text-center">
-                                    <td th:text="'[ '+${list_one.galaxyNo}+' ]'"></td>
+                                    <td th:text="${list_one.boardNo}"></td>
                                     <td th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_one.boardNo})}]]"
                                         th:text="${list_one.title}" class="text-start"
                                         style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
