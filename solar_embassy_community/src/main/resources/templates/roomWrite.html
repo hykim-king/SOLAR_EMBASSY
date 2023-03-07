@@ -28,9 +28,9 @@ layout:decorate="~{/layout}"> -->
         #user_info_bgc1 {
             margin-left: 2.5%;
             margin-top: 30px;
-            background-color: #9389c7;
+            background-color: #e7f1ff;
             width: 95%;
-            height: 800px;
+            height: 900px;
             border-radius: 10px;
             position: relative;
         }
@@ -54,8 +54,8 @@ layout:decorate="~{/layout}"> -->
         }
 
         #SE_contents {
-            height: 900px;
-            background-color: #9389c7;
+            height: 1100px;
+            background-color: #e7f1ff;
         }
 
         #SE_footer {
@@ -63,12 +63,16 @@ layout:decorate="~{/layout}"> -->
             font-size: 5em;
         }
 
-        #title_input1 {
-            margin-left: 10px;
-        }
-
         #SE_content22 {
             margin-top: 100px;
+        }
+        #buTell_t, #address_t, #roCount_t, #price_t, #info_t, #buCode_t{
+            text-align: center;
+            margin-top: 10px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: white;
+            border-radius: 5px;
         }
 
 
@@ -100,27 +104,59 @@ layout:decorate="~{/layout}"> -->
                                 <select th:name="galaxyNo" th:selected="${galaxyNo}"
                                         class="btn btn-secondary dropdown-toggle">
                                     <option th:value="${galaxy.galaxyNo}" th:each="galaxy:${galaxies}"
-                                            th:text="${galaxy.galName}"></option>
+                                            th:text="${galaxy.galName}" th:selected="${galaxy.galaxyNo}==5"></option>
                                 </select>
                                 <select name="boardTag" class="btn btn-secondary dropdown-toggle">
                                     <option value="1">캠핑</option>
                                     <option value="2">낚시</option>
                                 </select>
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
-                                   id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    주제
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">잡담</a></li>
-                                    <li><a class="dropdown-item" href="#">정보</a></li>
-                                    <li><a class="dropdown-item" href="#">질문</a></li>
-                                    <li><a class="dropdown-item" href="#">기타</a></li>
-                                </ul>
+                                <div id="buTell_t">
+                                    <span >사업자 연락처</span>
+                                </div>
+                                <div id="address_t">
+                                    <span >주소</span>
+                                </div>
+                                <div id="roCount_t">
+                                    <span >인원 수</span>
+                                </div>
+                                <div id="price_t">
+                                    <span >가격</span>
+                                </div>
+                                <div id="info_t">
+                                    <span >객실 상세 정보</span>
+                                </div>
+                                <div id="buCode_t">
+                                    <span >숙소 종류</span>
+                                </div>
+<!--                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"-->
+<!--                                   id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                    주제-->
+<!--                                </a>-->
+<!--                                <ul class="dropdown-menu">-->
+<!--                                    <li><a class="dropdown-item" href="#">잡담</a></li>-->
+<!--                                    <li><a class="dropdown-item" href="#">정보</a></li>-->
+<!--                                    <li><a class="dropdown-item" href="#">질문</a></li>-->
+<!--                                    <li><a class="dropdown-item" href="#">기타</a></li>-->
+<!--                                </ul>-->
                             </div>
                             <div id="title_input1">
                                 <input type="text" placeholder="제목" id="title" name="title" class="form-control"
                                        aria-label="Text input with dropdown button" style="width: 600px">
+                                <input type="text" placeholder="사업자연락처" id="buTell" name="buTell" class="form-control"
+                                       style="width: 600px">
+                                <input type="text" placeholder="주소" id="address" name="address" class="form-control"
+                                       style="width: 600px">
+                                <input type="text" placeholder="인원수" id=" roCount" name=" roCount" class="form-control"
+                                       style="width: 600px">
+                                <input type="text" placeholder="가격" id="price" name="price" class="form-control"
+                                       style="width: 600px">
+                                <input type="text" placeholder="객실 상세 정보" id="info" name="info" class="form-control"
+                                       style="width: 600px">
+                                <input type="text" placeholder="숙소 종류" id="buCode" name="buCode" class="form-control"
+                                       style="width: 600px">
                             </div>
+
+
                         </div>
 
                         <div>

@@ -34,6 +34,9 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public int insertRoom(Room room) throws Exception {
+        int lastRoomNo = roomMapper.lastRoom().getRoomNo();
+        System.out.println(lastRoomNo);
+        room.setRoomNo(lastRoomNo+1);
         int insert = roomMapper.insertRoom(room);
         return insert;
     }

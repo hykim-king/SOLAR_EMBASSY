@@ -22,6 +22,8 @@ public interface RoomMapper {
     List<Room> selectRoomListByBusinessSize(int roomNo, int size);
 
     List<Room> findAll();
+
+    Room lastRoom();
 }
 
 

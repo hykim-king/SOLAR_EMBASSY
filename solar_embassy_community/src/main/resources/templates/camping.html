@@ -17,7 +17,7 @@ layout:decorate="~{/layout}"> -->
 
     <style>
         html, body {
-            background-color: #5B8FB9;
+            background-color: #FFFFFF;
             height: 100%;
         }
 
@@ -170,6 +170,7 @@ layout:decorate="~{/layout}"> -->
         /*메인 + 푸터 */
         #SE_contents {
             height: 5000px;
+            background-color: #e7f1ff;
         }
 
         #SE_footer {
@@ -180,7 +181,7 @@ layout:decorate="~{/layout}"> -->
 
         /*내부 검색 관려 */
         .search {
-            background-color: #f5f5f5;
+            background-color: #e7f1ff;
             width: 1200px;
             height: 50px;
             display: flex;
@@ -217,9 +218,9 @@ layout:decorate="~{/layout}"> -->
 
         /*이벤트 */
         .section1 {
-            background-color: #f5f5f5;
+            background-color: #e7f1ff;
             width: 900px;
-            height: 500px;
+            height: max-content;
             margin-top: 10px;
             /*border-style: solid;*/
             border-color: cornsilk;
@@ -234,7 +235,7 @@ layout:decorate="~{/layout}"> -->
 
         #section2 {
             margin-top: 550px;
-            height: 900px;
+            height: max-content;
         }
 
         #city_img {
@@ -244,9 +245,10 @@ layout:decorate="~{/layout}"> -->
 
         /*    Magazine*/
         #section3 {
-            margin-top: 800px;
+            margin-top: 20px;
             padding: 20px 16px 0px;
             display: block;
+            height: max-content;
         }
 
         .ckhhmW { /*화살표 영역*/
@@ -328,7 +330,8 @@ layout:decorate="~{/layout}"> -->
         }
         /*캠핑 스타*/
         #section4{
-            margin-top: 40px;
+            margin-top: 35px;
+            height: max-content;
         }
         #section4_title{
             margin-left: 10px;
@@ -430,9 +433,14 @@ layout:decorate="~{/layout}"> -->
             <section id="section2">
                 <a href="">
                     <h2>캠핑장 소개</h2>
+                    <div id="boardList_table_btn1" class="mb-2">
+                        <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
+                        <a th:href="@{'/room/roomWrite.do?galaxyNo={galaxyNo}' (galaxyNo=${param.galaxyNo})}"
+                           class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
+                    </div>
                 </a>
                 <div class="row" id="campList">
-                    <div class="col s1 m4 l1" th:each="room:${roomList}">
+                    <div class="col s1 m4 l1" th:if="${roomList!=null}" th:each="room:${roomList}">
                         <input type="hidden">
                         <a onclick="roomDetail('지역')"
                            style="color:inherit!important;text-decoration: none!important;"
@@ -493,7 +501,7 @@ layout:decorate="~{/layout}"> -->
                     <h2>캠핑 로그</h2><br>
                     <div id="boardList_table_btn" class="mb-2">
                         <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
-                        <a th:href="@{'/room/roomWrite.do?galaxyNo={galaxyNo}' (galaxyNo=${param.galaxyNo})}"
+                        <a th:href="@{'/board/boardWrite.do?galaxyNo={galaxyNo}' (galaxyNo=${param.galaxyNo})}"
                            class="float-end btn btn-outline-dark btn-lg">글 쓰기</a>
                     </div>
                 </a>

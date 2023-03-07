@@ -64,6 +64,11 @@ public class ReplyServiceImpl
         return replyList;
     }
 
+    @Override
+    public Reply findOne(int replyNo) {
+        return replyMapper.findById(replyNo);
+    }
+
 }
 
 

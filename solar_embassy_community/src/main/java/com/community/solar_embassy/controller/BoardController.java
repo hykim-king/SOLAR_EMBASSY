@@ -34,6 +34,7 @@ public class BoardController {
     RoomService roomService;
     @Autowired
     BoardImgService boardImgService;
+    @Autowired
     ReplyService replyService;
     @Autowired
     BoardPreferService boardPreferService;
@@ -62,8 +63,13 @@ public class BoardController {
         BoardDto board = boardService.selectBoardDetail(galaxyNo);
         board.setBoardNo(galaxyNo);
         model.addAttribute("board", board);
-        if (galaxyNo==5){
+        if (galaxyNo >=5 ){ // galaxyNo ==5 || galaxyNo == 10
             List<Room> roomList = roomService.selectRoomList();
+            for(Room room:roomList){
+                if (room.getImgPath() == null){
+                    room.setImgPath("/img/camping/중량캠핑숲.jpeg");
+                }
+            }
             model.addAttribute("roomList",roomList);
         }
         List<BoardDto> campList = boardService.boardListByGalaxy(galaxyNo);
