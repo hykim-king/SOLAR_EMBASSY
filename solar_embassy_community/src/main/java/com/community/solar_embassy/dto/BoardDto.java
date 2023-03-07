@@ -7,9 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @TableName board
- */
 @Data
 public class BoardDto implements Serializable {
     private Integer boardNo;
@@ -42,6 +39,7 @@ public class BoardDto implements Serializable {
 
     private int views;
 
+    private BoardImg boardImg;
     private List<Reply> replyList;
 
     private static final long serialVersionUID = 1L;
