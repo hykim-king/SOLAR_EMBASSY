@@ -1,0 +1,443 @@
+create table admin
+(
+    adminId    varchar(20)                         not null
+        primary key,
+    adminLevel int                                 null,
+    department tinytext                            null,
+    regTime    timestamp default CURRENT_TIMESTAMP not null,
+    updateTime timestamp                           null
+);
+
+create table board
+(
+    boardNo    int auto_increment,
+    galaxyNo   int                                 null,
+    userId     tinytext                            null,
+    boardTag   int                                 null,
+    title      tinytext                            null,
+    contents   longtext                            null,
+    postTime   timestamp default CURRENT_TIMESTAMP not null,
+    updaterId  tinytext                            null,
+    updateTime timestamp                           null,
+    state      int       default 0                 null,
+    likes      int       default 0                 null,
+    dislikes   int       default 0                 null,
+    views      int       default 0                 null,
+    primary key (boardNo, postTime)
+)
+    partition by range (unix_timestamp(`postTime`)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table board_img
+(
+    boardImgNo    int auto_increment
+        primary key,
+    boardNo       int                                 not null,
+    imagePath     tinytext                            null,
+    originImgName tinytext                            null,
+    postTime      timestamp default CURRENT_TIMESTAMP not null
+);
+
+create table booking
+(
+    bokNo       int auto_increment,
+    buTell      varchar(12)                         not null,
+    buNo        int                                 not null,
+    userId      varchar(20)                         not null,
+    userName    varchar(20)                         null,
+    userPhone   varchar(12)                         not null,
+    address     varchar(255)                        not null,
+    startDate   timestamp                           not null,
+    endDate     timestamp                           not null,
+    bookingDate timestamp default CURRENT_TIMESTAMP not null,
+    checkin     timestamp                           not null,
+    checkout    timestamp                           not null,
+    payment     varchar(255)                        not null,
+    price       varchar(40)                         not null,
+    payDate     timestamp                           not null,
+    state       int                                 null,
+    bokCheck    varchar(100)                        null,
+    updaterId   varchar(20)                         null,
+    updateTime  timestamp                           null,
+    primary key (bokNo, bookingDate)
+)
+    partition by range (unix_timestamp(`bookingDate`)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table business
+(
+    buNo        int auto_increment
+        primary key,
+    buId        tinytext     null,
+    buPasswords tinytext     null,
+    buName      tinytext     null,
+    email       varchar(320) null,
+    phone       tinytext     null,
+    regDate     timestamp    null,
+    updateTime  timestamp    null,
+    state       int          null,
+    auth        int          null
+);
+
+create table company
+(
+    comNo      int auto_increment comment '제조사번호',
+    comName    varchar(20)  not null comment '제조사이름',
+    address    varchar(30)  null comment '제조사 주소',
+    parentName varchar(20)  null comment '모기업',
+    foundDate  date         null comment '제조사번호',
+    founders   varchar(20)  null comment '설립자',
+    ceo        varchar(20)  null comment 'CEO',
+    industries varchar(30)  null comment '대표업종',
+    slogan     varchar(50)  null comment '슬로건',
+    content    longtext     null comment '제조사 설명(내용)',
+    comImgName varchar(255) null,
+    link       varchar(255) null,
+    primary key (comNo, comName)
+)
+    charset = utf8mb4;
+
+create table auto
+(
+    autoNo      int auto_increment comment '자동차 번호',
+    autoName    varchar(20) charset utf8mb4 not null comment '자동차명(통용)',
+    codeName    varchar(20) charset utf8mb4 not null comment '제조사코드명',
+    comNo       int                         not null comment '제조사번호',
+    comName     varchar(20) charset utf8mb4 not null comment '제조사이름',
+    autoType    varchar(10) charset utf8mb4 null comment 'ex) 준중형',
+    releaseDate date                        null comment '출시일',
+    seat        int                         null comment '좌석수',
+    mpg         varchar(20)                 null comment '연비',
+    disp        varchar(20)                 null comment '배기량(CC)',
+    price       varchar(20)                 not null comment '가격',
+    autoEngine  varchar(20) charset utf8mb4 null comment '엔진 종류',
+    autoImgName varchar(255)                null,
+    autoVideo   varchar(500)                null,
+    link        varchar(255)                null,
+    primary key (autoNo, autoName, codeName),
+    constraint auto_company_comNo_fk
+        foreign key (comNo, comName) references company (comNo, comName)
+            on update cascade on delete cascade
+);
+
+create table auto_img
+(
+    autoImgNo     int auto_increment comment '자동차 이미지번호'
+        primary key,
+    autoNo        int                          null comment '자동차 번호',
+    autoImgPath   varchar(255) charset utf8mb4 null comment '이미지 경로',
+    sourceImgName varchar(255) charset utf8mb4 null comment '원본 이미지명',
+    constraint auto_img_auto_autoNo_fk
+        foreign key (autoNo) references auto (autoNo)
+);
+
+create table galaxy
+(
+    galaxyNo   int auto_increment
+        primary key,
+    adminId    varchar(20)                         null,
+    galName    tinytext                            null,
+    regTime    timestamp default CURRENT_TIMESTAMP not null,
+    updaterId  tinytext                            null,
+    updateTime timestamp                           null,
+    state      int                                 null,
+    constraint galaxy_admin_adminId_fk
+        foreign key (adminId) references admin (adminId)
+            on update cascade on delete set null
+);
+
+create table grade_img
+(
+    grade         varchar(20) not null
+        primary key,
+    imgPath       tinytext    null,
+    originImgName tinytext    null
+);
+
+create table grade
+(
+    userLevel int         not null
+        primary key,
+    grade     varchar(20) null,
+    totalExp  int         null,
+    constraint grade_grade_img_grade_fk
+        foreign key (grade) references grade_img (grade)
+            on update cascade on delete set null
+);
+
+create table popular_search
+(
+    popKwdNo   int auto_increment
+        primary key,
+    userId     varchar(20)                         not null,
+    licenseNum varchar(10)                         not null,
+    buTell     varchar(12)                         not null,
+    searchKw   varchar(100)                        not null,
+    searchTime timestamp default CURRENT_TIMESTAMP not null,
+    searchIp   varchar(50)                         null
+);
+
+create table reply
+(
+    replyNo       int auto_increment,
+    boardNo       int           not null,
+    userId        tinytext      null,
+    fkReplyNo     int           null,
+    contents      tinytext      null,
+    postTime      timestamp     not null,
+    updateTime    timestamp     null,
+    likes         int default 0 null,
+    dislikes      int default 0 null,
+    state         int default 0 null,
+    imgPath       tinytext      null,
+    originImgName tinytext      null,
+    primary key (replyNo, postTime)
+)
+    partition by range (unix_timestamp(`postTime`)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table reserveList
+(
+    listNo       int auto_increment,
+    bokNo        int         not null,
+    buTell       varchar(12) not null,
+    bokCheckDate timestamp   not null,
+    updaterId    varchar(20) null,
+    updateTime   timestamp   null,
+    primary key (listNo, bokCheckDate)
+)
+    partition by range (unix_timestamp(`bokCheckDate`)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table review
+(
+    reNo       int auto_increment,
+    bokNo      int                                 not null,
+    userId     varchar(20)                         not null,
+    postTime   timestamp default CURRENT_TIMESTAMP not null,
+    contents   longtext                            null,
+    state      int                                 null,
+    likes      int                                 null,
+    buComment  longtext                            null,
+    updaterId  varchar(20)                         null,
+    updateTime timestamp                           null,
+    primary key (reNo, postTime)
+)
+    partition by range (unix_timestamp(`postTime`)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table room
+(
+    buTell        varchar(12)                         not null,
+    licenseName   varchar(100)                        null,
+    licenseNum    varchar(10)                         null,
+    roomNo        int auto_increment,
+    title         varchar(255)                        not null,
+    address       varchar(255)                        not null,
+    roCount       varchar(20)                         not null,
+    price         varchar(40)                         not null,
+    checkin       timestamp                           null,
+    checkout      timestamp                           null,
+    info          longtext                            null,
+    postTime      timestamp default CURRENT_TIMESTAMP not null,
+    updaterId     varchar(20)                         null,
+    updateTime    timestamp                           null,
+    imgPath       varchar(100)                        null,
+    sourceImgName varchar(255)                        null,
+    saveImgName   varchar(255)                        null,
+    buNo          int                                 null,
+    buCode        int                                 null,
+    state         int       default 0                 null,
+    views         int                                 null,
+    primary key (roomNo, buTell, postTime)
+)
+    partition by range (unix_timestamp(`postTime`)) (
+        partition p202302 values less than (1675209600),
+        partition p202303 values less than (1677628800),
+        partition p202304 values less than (1680307200),
+        partition p202305 values less than (1682899200),
+        partition p202306 values less than (1685577600),
+        partition p202307 values less than (1688169600),
+        partition p202308 values less than (1690848000),
+        partition p202309 values less than (1693526400),
+        partition p202310 values less than (1696118400),
+        partition p202311 values less than (1698796800),
+        partition p202312 values less than (1701388800),
+        partition p1max values less than (MAXVALUE)
+        );
+
+create table roomImg
+(
+    imgNo         int auto_increment
+        primary key,
+    buTell        varchar(12)                         not null,
+    imgPath       varchar(100)                        null,
+    sourceImgName varchar(255)                        null,
+    saveImgName   varchar(255)                        null,
+    postTime      timestamp default CURRENT_TIMESTAMP not null,
+    roomNo        int                                 not null
+);
+
+create table users
+(
+    userId        varchar(20)                         not null
+        primary key,
+    nickname      tinytext                            null,
+    passwords     tinytext                            null,
+    email         varchar(320)                        null,
+    hp            tinytext                            null,
+    tel           tinytext                            null,
+    adminId       varchar(20)                         null,
+    regDate       timestamp default CURRENT_TIMESTAMP not null,
+    lastLoginTime timestamp                           null,
+    updateTime    timestamp                           null,
+    state         int       default 0                 null,
+    cPoint        int       default 0                 null,
+    ePoint        int       default 0                 null,
+    exp           int       default 0                 null,
+    userLevel     int       default 1                 null,
+    birth         date                                null,
+    profileImgNo  int                                 null,
+    constraint users_admin_adminId_fk
+        foreign key (adminId) references admin (adminId)
+            on update cascade on delete set null,
+    constraint users_grade_userLevel_fk
+        foreign key (userLevel) references grade (userLevel)
+            on update cascade on delete set null
+);
+
+create table attend_check
+(
+    checkNo    int auto_increment
+        primary key,
+    dayNo      int         null,
+    userId     varchar(20) null,
+    checkState int         null,
+    checkTime  timestamp   null,
+    cPoint     int         null,
+    ePoint     int         null,
+    constraint attend_check_users_userId_fk
+        foreign key (userId) references users (userId)
+);
+
+create table board_prefer
+(
+    boardPreferNo int auto_increment
+        primary key,
+    boardNo       int         null,
+    prefer        tinyint     null,
+    userId        varchar(20) not null,
+    constraint board_prefer_users_userId_fk
+        foreign key (userId) references users (userId)
+);
+
+create table letter
+(
+    letterNo     int auto_increment
+        primary key,
+    senderId     varchar(20)                         null,
+    receiverId   varchar(20)                         null,
+    title        tinytext                            null,
+    contents     longtext                            null,
+    sentTime     timestamp default CURRENT_TIMESTAMP not null,
+    readTime     timestamp                           null,
+    receiveState int                                 null,
+    receiverName tinytext                            null,
+    senderName   tinytext                            null,
+    constraint letter_users_userId_fk
+        foreign key (senderId) references users (userId)
+            on update cascade on delete set null,
+    constraint letter_users_userId_fk2
+        foreign key (receiverId) references users (userId)
+            on update cascade on delete set null
+);
+
+create table profile_img
+(
+    profileImgNo  int auto_increment
+        primary key,
+    userId        varchar(20)                         not null,
+    imgPath       tinytext                            null,
+    originImgName tinytext                            null,
+    saveImgName   tinytext                            null,
+    postTime      timestamp default CURRENT_TIMESTAMP not null,
+    updateTime    timestamp                           null,
+    constraint profile_img_users_userId_fk
+        foreign key (userId) references users (userId)
+);
+
+create table user_block
+(
+    blockNo    int auto_increment
+        primary key,
+    userId     varchar(20)                         not null,
+    blockObjId varchar(20)                         not null,
+    reason     tinytext                            null,
+    postTime   timestamp default CURRENT_TIMESTAMP not null,
+    updateTime timestamp                           null,
+    constraint user_block_users_userId_fk
+        foreign key (userId) references users (userId),
+    constraint user_block_users_userId_fk2
+        foreign key (blockObjId) references users (userId)
+);
+
