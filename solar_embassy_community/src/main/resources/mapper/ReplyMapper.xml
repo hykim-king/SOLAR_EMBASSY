@@ -70,7 +70,7 @@
         SELECT * FROM reply WHERE replyNo=#{replyNo}
     </select>
     <select id="findByUserIdPaging" resultType="com.community.solar_embassy.dto.Reply">
-
+        SELECT * FROM reply WHERE userId = #{userId}
     </select>
     <select id="countByUserId" resultType="java.lang.Integer">
 
