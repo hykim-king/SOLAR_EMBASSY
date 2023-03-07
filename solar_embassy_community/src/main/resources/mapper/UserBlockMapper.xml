@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.UserBlockMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.UserBlock">
+            <id property="blockNo" column="blockNo" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="VARCHAR"/>
+            <result property="blockObjId" column="blockObjId" jdbcType="VARCHAR"/>
+            <result property="reason" column="reason" jdbcType="VARCHAR"/>
+            <result property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        blockNo,userId,blockObjId,
+        reason,postTime,updateTime
+    </sql>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.RoomMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Room">
+            <id property="buTell" column="buTell" jdbcType="VARCHAR"/>
+            <id property="postTime" column="postTime" jdbcType="TIMESTAMP"/>
+            <result property="licenseName" column="licenseName" jdbcType="VARCHAR"/>
+            <result property="licenseNum" column="licenseNum" jdbcType="VARCHAR"/>
+            <result property="roomNo" column="roomNo" jdbcType="INTEGER"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="roCount" column="roCount" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="VARCHAR"/>
+            <result property="checkin" column="checkin" jdbcType="TIMESTAMP"/>
+            <result property="checkout" column="checkout" jdbcType="TIMESTAMP"/>
+            <result property="info" column="info" jdbcType="VARCHAR"/>
+            <result property="updaterId" column="updaterId" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+            <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
+            <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
+            <result property="saveImgName" column="saveImgName" jdbcType="VARCHAR"/>
+            <result property="buNo" column="buNo" jdbcType="INTEGER"/>
+            <result property="buCode" column="buCode" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        buTell,postTime,licenseName,
+        licenseNum,roomNo,title,
+        address,roCount,price,
+        checkin,checkout,info,
+        updaterId,updateTime,imgPath,
+        sourceImgName,saveImgName,buNo,
+        buCode
+    </sql>
+</mapper>

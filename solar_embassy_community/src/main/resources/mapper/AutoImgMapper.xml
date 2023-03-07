@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.AutoImgMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.AutoImg">
+            <id property="autoImgNo" column="autoImgNo" jdbcType="INTEGER"/>
+            <result property="autoNo" column="autoNo" jdbcType="INTEGER"/>
+            <result property="autoImgPath" column="autoImgPath" jdbcType="VARCHAR"/>
+            <result property="sourceImgName" column="sourceImgName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        autoImgNo,autoNo,autoImgPath,
+        sourceImgName
+    </sql>
+    <insert id="insert">
+INSERT INTO auto_img(autoNo, autoImgPath, sourceImgName) VALUES (#{autoNo}, #{autoImgPath}, #{sourceImgName})
+    </insert>
+    <update id="update">
+        UPDATE auto_img
+        SET autoNo=#{autoNo},
+            autoImgPath=#{autoImgPath},
+            sourceImgName=#{sourceImgName}
+        WHERE autoImgNo = #{autoImgNo}
+    </update>
+    <update id="resetImgNo">
+        ALTER TABLE auto_img AUTO_INCREMENT=#{autoImgNo}
+    </update>
+    <delete id="delete">
+        DELETE FROM auto_img WHERE autoImgNo= #{autoImgNo}
+    </delete>
+    <select id="selectAutoList" resultType="com.community.solar_embassy.dto.AutoImg">
+        SELECT * FROM auto_img WHERE autoNo= #{autoNo}
+    </select>
+    <select id="selectOne" resultType="com.community.solar_embassy.dto.AutoImg">
+        SELECT * FROM auto_img WHERE autoImgNo= #{autoImgNo}
+    </select>
+</mapper>

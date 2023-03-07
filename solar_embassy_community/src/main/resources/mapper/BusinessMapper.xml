@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.BusinessMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.Business">
+            <id property="buNo" column="buNo" jdbcType="INTEGER"/>
+            <result property="buId" column="buId" jdbcType="VARCHAR"/>
+            <result property="buPasswords" column="buPasswords" jdbcType="VARCHAR"/>
+            <result property="buName" column="buName" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="regDate" column="regDate" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="auth" column="auth" jdbcType="INTEGER"/>
+    </resultMap>
+
+<!--    <sql id="Base_Column_List">-->
+<!--        cr_num,bu_tell,bu_id,-->
+<!--        bu_passwords,bu_name,email,-->
+<!--        bu_title,bu_address,bu_code,-->
+<!--        cr_img_no,img_path,source_img_name,-->
+<!--        save_img_name,reg_date,update_time-->
+<!--    </sql>-->
+
+<!--    아이디 중복 확인 -->
+    <select id="getId" parameterType="com.community.solar_embassy.dto.BusinessDto" resultType="java.lang.Integer">
+        SELECT IFNULL(COUNT(*),0) FROM business
+        WHERE buId = #{buId}
+    </select>
+<!--    회원가입 -->
+    <insert id="addBusiness" parameterType="com.community.solar_embassy.dto.BusinessDto" useGeneratedKeys="true" keyProperty="buNo" keyColumn="buNo">
+        INSERT INTO business(buId, buPasswords, buName, email, phone, regDate, updateTime, state, auth)
+        VALUE(#{buId}, #{buPasswords}, #{buName}, #{email}, #{phone}, NOW(), #{updateTime}, 0, 1)
+        <!-- state(상태) 0 : 정상 이용 가능 1: 정지 계정  2: 회원탈퇴 -->
+    </insert>
+
+<!-- 로그인-->
+    <select id="login" parameterType="com.community.solar_embassy.dto.BusinessDto" resultType="com.community.solar_embassy.dto.BusinessDto">
+        SELECT * FROM business
+        WHERE buId = #{buId} AND buPasswords = #{buPasswords}
+
+    </select>
+
+</mapper>

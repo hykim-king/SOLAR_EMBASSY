@@ -1,0 +1,245 @@
+<!-- xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout}"> -->
+
+<html lang="ko" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <!--원본 css-->
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        #msg_main {
+            background-color: #A3C7D6;
+            border: 1px solid black;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            align-items: center;
+
+        }
+
+        #msg_main button {
+            margin-left: 10px;
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+        }
+
+        #msg_buttons {
+            border: 1px solid #000;
+            text-align: center;
+            height: 50px;
+        }
+
+        #msg_buttons button {
+            margin-top: 10px;
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+        }
+
+        #btn_edit {
+            margin-right: 50px;
+        }
+
+        #btn_send {
+            margin-left: 750px;
+        }
+
+        #board_main {
+            border: 1px solid #000;
+        }
+
+        #title {
+            /* border: 1px solid #000; */
+            width: 500px;
+            height: 30px;
+            text-align: center;
+        }
+
+        #caller {
+            /* border: 1px solid #000; */
+            width: 150px;
+            text-align: center;
+            margin-left: 150px;
+        }
+
+        #date {
+            /* border: 1px solid #000; */
+            margin-left: 200px;
+        }
+
+        #board_main div {
+            position: relative;
+            border: 1px solid #000;
+            display: flex;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+
+        }
+
+        #board_main input {
+            margin-left: 10px;
+            margin-right: 20px;
+        }
+
+        #board_main a {
+            /* border: 1px solid #000; */
+            width: 500px;
+            height: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            align-items: center;
+
+        }
+
+        #board_main h2 {
+            /* border: 1px solid #000; */
+            width: 150px;
+            text-align: center;
+            margin-left: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            align-items: center;
+        }
+
+        #board_main h3 {
+            /* border: 1px solid #000; */
+            margin-left: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <title>SOLAR EMBASSY</title>
+</head>
+<body>
+<div id="SE_container">
+    <th:block th:insert="/mainImg"></th:block>
+    x
+    <div id="SE_topline">
+        <!--검색과 로그인 + 왼쪽 사이드-->
+        <th:block th:insert="/searchAndLogin"></th:block>
+        <!--검색과 로그인 end-->
+        <div id="SE_contents" style="z-index:2">
+            <!--메뉴 + 오른쪽 사이드-->
+            <th:block th:insert="/menuAndAside"></th:block>
+            <!--메뉴 end-->
+
+            <!--여기부터-->
+            <div id="SE_content3" style="z-index:1">
+                <div id="msg_main">
+                    <h1>OO님의 받은 쪽지함입니다.(읽지 않은 쪽지:0통)</h1>
+                    <button id>모두 읽음</button>
+                </div>
+
+                <div id="msg_board">
+                    <div id="msg_buttons">
+                        <button id="btn_edit">수정</button>
+                        <button id="btn_delete">삭제</button>
+                        <button id="btn_send">쪽지 보내기</button>
+                    </div>
+
+                    <ul id="board_main">
+                        <li>
+                            <div id="board_title">
+                                <input type="checkbox" id="selectall">
+                                <h1 id="title">제목</h1>
+                                <h1 id="caller">보낸사람</h1>
+                                <h3 id="date">날짜</h3>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <input type="checkbox">
+                                <a href="">안녕하세요 에이콘 아카데미입니다</a>
+                                <h2>이름</h2>
+                                <h3>2023.02.05</h3>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <input type="checkbox">
+                                <a href="">안녕하세요 에이콘 아카데미입니다</a>
+                                <h2>이름</h2>
+                                <h3>2023.02.05</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <input type="checkbox">
+                                <a href="">안녕하세요 에이콘 아카데미입니다</a>
+                                <h2>이름</h2>
+                                <h3>2023.02.05</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <input type="checkbox">
+                                <a href="">안녕하세요 에이콘 아카데미입니다</a>
+                                <h2>이름</h2>
+                                <h3>2023.02.05</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <input type="checkbox">
+                                <a href="">안녕하세요 에이콘 아카데미입니다</a>
+                                <h2>이름</h2>
+                                <h3>2023.02.05</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <input type="checkbox">
+                                <a href="">안녕하세요 에이콘 아카데미입니다</a>
+                                <h2>이름</h2>
+                                <h3>2023.02.05</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <input type="checkbox">
+                                <a href="">안녕하세요 에이콘 아카데미입니다</a>
+                                <h2>이름</h2>
+                                <h3>2023.02.05</h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </section>
+            <!--여기까지-->
+
+            <section id="SE_contents2">
+                <div id="SE_banner1"><h1>우편함</h1>
+                    <h2>양자통신의 시대</h2>
+                    <a href="msg_send">쪽지보내기</a>
+                    <a href="msg_mysend">보낸 쪽지함</a>
+                    <a href="msg_receive">받은 쪽지함</a>
+                </div>
+            </section>
+
+            <section id="SE_contents3">
+                <div id="SE_banner2"><h1>배너자리</h1></div>
+            </section>
+        </div>
+        <th:block th:insert="/footer"></th:block>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+#signup_main {
+    width: 100%;
+    height: 1800px;
+    padding-top: 50px;
+    position: relative;
+    transform: translate(0,-80px);
+    background: linear-gradient(#FFF, #f5f5f5);
+}
+
+/*회원가입 제목 부분*/
+#signup_title {
+    background-color: #0a53be;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    transform: translate(0,-51px);
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    color: #fff;
+    padding-top: 20px;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 0 0 #7B86FFFF;
+}
+
+/* 이용약관*/
+.SE_rules{
+    background: linear-gradient(#FFFFFFFF, #DFDFFFFF);
+    width: 1150px;
+    height: 600px;
+    border-radius: 5px;
+    margin: 10px 25px 50px 25px;
+    position: relative;
+    font-size: 14px;
+    transform: translate(0,30px);
+    box-shadow: 0 0 4px #7B86FFFF;
+}
+
+.SE_rules>h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color:#0a58ca;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 스크롤바의 너비 */
+.SE_rules::-webkit-scrollbar {
+    width: 8px;
+}
+
+/*스크롤 설정*/
+.SE_rules::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #217af4; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+/*스크롤바 뒷 배경 색상*/
+.SE_rules::-webkit-scrollbar-track {
+    background: #217AF419;
+}
+
+/*회원 약관 범위*/
+#signup_intro {
+    margin-bottom: 100px;
+}
+
+/*프로모션 약관*/
+#promotion {
+    text-align: left;
+    width: 1150px;
+    height: 130px;
+    background: linear-gradient(#FFFFFFFF, #DFDFFFFF);
+    box-shadow: 0 0 4px #7B86FFFF;
+    position: relative;
+    transform: translate(0,-70px);
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+#promotion>p{
+    font-size: 14px;
+}
+
+/*체크박스 옆 텍스트*/
+.checkPoint{
+    margin: 10px 0 10px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c0074;
+}
+
+/*체크박스들*/
+.checkPoint input{
+    width: 18px;
+    height: 18px;
+    transform: translate(10px,4px);
+}
+
+/*버튼자리*/
+#buttons {
+    margin: 50px auto 0;
+}
+
+/*가입하기*/
+#next_n{
+    width: 100px;
+    height: 60px;
+    background-color: #6b9ab8;
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #a5a5a5;
+    margin-right: 50px;
+    position: absolute;
+    transform: translate(100px,0);
+}
+
+/*비즈니스 가입하기*/
+#next_b{
+    width: 100px;
+    height: 60px;
+    background-color: #5B8FB9;
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #a5a5a5;
+    margin-right: 50px;
+    position: absolute;
+    transform: translate(220px,0);
+}
+
+/*취소 버튼*/
+#cancel {
+    width: 100px;
+    height: 60px;
+    background-color: #BF7AF6;
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #a5a5a5;
+    position: absolute;
+    transform: translate(900px,0);
+}

@@ -27,8 +27,5 @@
     <select id="findByBoardNoAndUserId" resultMap="BoardPreferMap">
         SELECT * FROM board_prefer WHERE boardNo=#{boardNo} AND userId=#{userId}
     </select>
-    <select id="findByUserId" resultType="com.community.solar_embassy.dto.BoardPreferDto">
-        SELECT * FROM board_prefer WHERE userId = #{userId}
-    </select>
 
 </mapper>

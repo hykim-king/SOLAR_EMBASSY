@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>로그인</title>
+    <style>
+      #app {
+        margin: auto;
+        margin-top: 60px;
+        width: 60%;
+        border: 3px solid #8AC007FF;
+        padding: 10px;
+      }
+
+      table, th, td {
+        border: 1px solid #5ce5cb;
+      }
+    </style>
+</head>
+<body>
+  <h1>로그인</h1>
+  <div id="app">
+    <table>
+      <tr>
+        <td>아이디</td>
+        <td>
+          <input type="text" id="buId" placeholder="아이디" size="20" />
+        </td>
+      </tr>
+      <tr>
+        <td>비밀번호</td>
+        <td>
+          <input type="text" id="buPasswords" placeholder="비밀번호" size="20" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="button" id="login">로그인</button>
+          <a href="signup_business.html">회원가입</a>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+  <script>
+    $(document).ready(function (){
+      $("#login").click(function (){
+        $.ajax({
+          url: "http://localhost:8888/login",
+          type: "POST",
+          data: {
+            id: $("#buId").val(),
+            pw: $("#buPasswords").val()
+          },
+          success: function (json) {
+            if(json === ""){
+              alert("아이디 또는 비밀번호를 확인하세요");
+              $("#buId").val("");
+              $("#buPasswords").val("");
+            }else {
+              // 로그인 정보를 세션에 저장
+              sessionStorage.setItem("login",JSON.stringify(json));
+              alert(`${json.buName}님 환영합니다.`);
+              location.href ="src/main/resources/templates/index.html"
+            }
+          },
+          error: function (){
+            alert('error');
+          }
+        });
+      });
+    });
+
+  </script>
+
+</body>
+</html>

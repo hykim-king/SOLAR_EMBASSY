@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.AttendCheckMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.AttendCheck">
+        <id property="checkNo" column="checkNo" jdbcType="INTEGER"/>
+        <result property="dayNo" column="dayNo" jdbcType="INTEGER"/>
+        <result property="userId" column="userId" jdbcType="VARCHAR"/>
+        <result property="checkState" column="checkState" jdbcType="INTEGER"/>
+        <result property="checkTime" column="checkTime" jdbcType="TIMESTAMP"/>
+        <result property="cPoint" column="cPoint" jdbcType="INTEGER"/>
+        <result property="ePoint" column="ePoint" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        checkNo,dayNo,userId,
+        checkState,checkTime,cPoint,
+        ePoint
+    </sql>
+</mapper>

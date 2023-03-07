@@ -1,0 +1,86 @@
+/* ID찾기 제목 영역 */
+.find_id_result_container{
+    background: #78b7eac4;
+    border-radius: 15px;
+    position: relative;
+    transform: translate(0, -100%);
+}
+
+/* 전화번호로 찾은 아이디 찾기 결과 text*/
+.find_id_result_text{
+    font: 30px/70px'';
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/*결과 폼 전체 영역*/
+.find_id_result_container2{
+    background: #e6e9f8;
+    border-radius: 15px;
+    margin-left:50px;
+    margin-right:50px;
+    margin-top: 40px;
+    padding: 10px 0 0 30px;
+    height: 920px;
+    font-size:15px;
+}
+
+/*  ~님의 아이디는 ~ 입니다.text */
+.find_id_result_content{
+    margin: 200px 0 50px 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* 버튼영역 */
+.find_id_result_container_3{
+    text-align: center;
+    margin: 0 auto;
+    left:20%;
+    top:10%;
+}
+
+/*로그인 버튼*/
+.find_id_result_container_3 #login{
+    background-color: #325dff;
+    color:#ffff;
+    width: 150px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 5px;
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/*메인으로 버튼*/
+.find_id_result_container_3 #goMain{
+    background-color: #325dff;
+    color:#ffff;
+    width: 150px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 5px;
+}
+
+/*고객센터 버튼*/
+.find_id_result_container_3 #service_center{
+    background-color: #83aeff;
+    color:#ffff;
+    width: 150px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 5px;
+}

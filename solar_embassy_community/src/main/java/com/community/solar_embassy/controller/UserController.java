@@ -65,10 +65,9 @@ public class UserController {
     }
 
     @PostMapping("withdrawal.do")
-    public String withdrawal(@SessionAttribute Users loginUser,HttpSession session) {
-        int withdrawal = usersService.withdrawal(loginUser);
+    public String withdrawal(HttpSession session) {
+        int withdrawal = usersService.withdrawal((Users) (session.getAttribute("loginUser")));
         if (withdrawal == 1) {
-            session.removeAttribute("loginUser");
             return "redirect:/";
         } else {
             return "redirect:/user/withdrawal.do";

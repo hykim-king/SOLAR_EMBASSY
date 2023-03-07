@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.solar_embassy.mapper.GradeImgMapper">
+
+    <resultMap id="BaseResultMap" type="com.community.solar_embassy.dto.GradeImg">
+            <id property="grade" column="grade" jdbcType="VARCHAR"/>
+            <result property="imgPath" column="imgPath" jdbcType="VARCHAR"/>
+            <result property="originImgName" column="originImgName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        grade,imgPath,originImgName
+    </sql>
+    <insert id="insert">
+        INSERT INTO grade_img(grade, imgPath, originImgName)
+        VALUES (#{grade}, #{imgPath}, #{originImgName})
+    </insert>
+    <update id="changeGrade">
+        UPDATE grade_img SET grade=#{newGrade} WHERE grade=#{grade}
+    </update>
+    <update id="update">
+        UPDATE grade_img SET imgPath=#{imgPath},originImgName=#{originImgName} WHERE grade= #{grade}
+    </update>
+    <delete id="delete">
+        DELETE FROM grade_img WHERE grade= #{grade}
+    </delete>
+    <select id="findByGrade" resultType="com.community.solar_embassy.dto.GradeImg">
+        SELECT * FROM grade_img WHERE grade= #{grade}
+    </select>
+    <select id="findAll" resultType="com.community.solar_embassy.dto.GradeImg">
+        SELECT * FROM grade_img
+    </select>
+    <select id="findByPaging" resultType="com.community.solar_embassy.dto.GradeImg">
+        SELECT * FROM grade_img
+        <if test="orderField!=null">
+            ORDER BY ${orderField} ${direct}
+        </if>
+        LIMIT #{startRow}, #{rows}
+    </select>
+</mapper>
