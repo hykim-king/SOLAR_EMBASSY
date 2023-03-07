@@ -11,7 +11,7 @@
     }
 
 </style>
-<th:block th:each="reply:${replyList}">
+<th:block th:if="${replyList!=null}" th:each="reply:${replyList}">
     <div th:id="'replyContainer'+${reply.replyNo}">
         <th:block th:if="${reply.contents!=null}">
             <div class="px-3 pt-3 pb-3">
@@ -59,7 +59,7 @@
 
         <!--        대댓글 리스트-->
         <div id="reply_reply_comment">
-            <div th:each="reReply:${reply.reReplyList}">
+            <div th:if="${reply.reReplyList!=null}" th:each="reReply:${reply.reReplyList}">
                 <div class="px-3 pt-3 pb-2">
                                         <span>
                                             <i class="bi bi-arrow-return-right fs-1"></i>
