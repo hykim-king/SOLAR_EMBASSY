@@ -43,7 +43,7 @@ public class ReplyServiceImpl
     public int delete(Reply replyNo) {
         int delete = 0;
         List<Reply> replyList = replyMapper.findAllByFkReplyNo(replyNo.getReplyNo());
-        if (replyNo.getFkReplyNo() == null && replyList.get(0)!=null) {
+        if (replyNo.getFkReplyNo() == null) {
             delete = replyMapper.makeBlankReply(replyNo);
         } else {
             delete = replyMapper.deleteById(replyNo);
