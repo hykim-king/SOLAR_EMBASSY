@@ -39,7 +39,7 @@
     </update>
     <update id="makeBlankReply">
         UPDATE reply
-        SET userId=null,
+        SET userId=1234,
             contents=null,
             imgPath=null,
             originImgName=null,
