@@ -46,7 +46,7 @@ public class UserController {
             session.setAttribute("msg", "아이디나 비밀번호를 확인하세요!");
             return "redirect:/user/login.do";
         } else {
-            if (redirectUri == null) {
+            if (redirectUri == null || redirectUri.equals("/user/signup_normal.do")) {
                 return "redirect:/";
             }
             session.removeAttribute("redirectUri");
