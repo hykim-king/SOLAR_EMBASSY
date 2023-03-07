@@ -25,7 +25,7 @@ layout:decorate="~{/layout}"> -->
         <!--검색과 로그인 + 왼쪽 사이드-->
         <th:block th:insert="/searchAndLogin"></th:block>
         <!--검색과 로그인 end-->
-        <div id="SE_contents" style="z-index:2">
+        <div id="SE_contents" style="z-index:2;height: max-content;">
             <!--메뉴 + 오른쪽 사이드-->
             <th:block th:insert="/menuAndAside"></th:block>
             <!--메뉴 end-->
@@ -51,6 +51,19 @@ layout:decorate="~{/layout}"> -->
             <div id="content3">
                 <div th:text="${company.getContent()}"></div>
             </div>
+
+            <section id="SE_contents2">
+                <div>
+                    <a href="https://kartdrift.nexon.com/" target="_blank"><img src="/img/autopedia/banner1.png" alt=""></a>
+                </div>
+            </section>
+
+            <section id="SE_contents3">
+                <div>
+                    <a href="https://lp.jetbrains.com/academy/learn-kotlin/" target="_blank"><img src="/img/autopedia/banner2.png" alt=""></a>
+                </div>
+            </section>
+
             <th:block th:insert="/footer"></th:block>
         </div>
     </div>

@@ -31,35 +31,48 @@ layout:decorate="~{/layout}"> -->
       <!--메뉴 end-->
       <th:block th:insert="/galaxy/autoGalaxyNavbar"></th:block>
 
-        <div id="content2">
-          <div id="photo">
-            <img th:src="${auto.getAutoImgName()}" alt="">
-          </div>
-          <div id="inform">
-            차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
-            코드명 : <span th:text="${auto.getCodeName()}"></span> <br>
-            제조사 : <span th:text="${auto.getComName()}"></span> <br>
-            차종 : <span th:text="${auto.getAutoType()}"></span> <br>
-            출시일 : <span th:text="${#dates.format(auto.getReleaseDate(),'yyyy-MM-dd')}"></span> <br>
-            탑승 인원 : <span th:text="${auto.getSeat()}"></span>인승 <br>
-            연비 / 복합전비 : <span th:text="${auto.getMpg()}"></span>km/kWh <br>
-            배기량 / 배터리 용량 : <span th:text="${auto.getDisp()}"></span>cc/kWh <br>
-            가격 : <span th:text="${auto.getPrice()}"></span>만원 <br>
-            차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
-          </div>
+      <div id="content2">
+        <div id="photo">
+          <img th:src="${auto.getAutoImgName()}" alt="">
         </div>
+        <div id="inform">
+          차량 이름 : <span th:text="${auto.getAutoName()}"></span> <br>
+          코드명 : <span th:text="${auto.getCodeName()}"></span> <br>
+          제조사 : <span th:text="${auto.getComName()}"></span> <br>
+          차종 : <span th:text="${auto.getAutoType()}"></span> <br>
+          출시일 : <span th:text="${#dates.format(auto.getReleaseDate(),'yyyy-MM-dd')}"></span> <br>
+          탑승 인원 : <span th:text="${auto.getSeat()}"></span>인승 <br>
+          연비 / 복합전비 : <span th:text="${auto.getMpg()}"></span>km/kWh <br>
+          배기량 / 배터리 용량 : <span th:text="${auto.getDisp()}"></span>cc/kWh <br>
+          가격 : <span th:text="${auto.getPrice()}"></span>만원 <br>
+          차량 엔진 : <span th:text="${auto.getAutoEngine()}"></span> <br>
+        </div>
+      </div>
 
-        <div id="content3">
-          <span><img th:src="${auto.autoImgList.get(0).getAutoImgPath()}" alt=""></span>
-          <span><img th:src="${auto.autoImgList.get(1).getAutoImgPath()}" alt=""></span>
-          <span><img th:src="${auto.autoImgList.get(2).getAutoImgPath()}" alt=""></span>
-          <span><img th:src="${auto.autoImgList.get(3).getAutoImgPath()}" alt=""></span>
-        </div>
+      <div id="content3">
+        <span><img th:src="${auto.autoImgList.get(0).getAutoImgPath()}" alt=""></span>
+        <span><img th:src="${auto.autoImgList.get(1).getAutoImgPath()}" alt=""></span>
+        <span><img th:src="${auto.autoImgList.get(2).getAutoImgPath()}" alt=""></span>
+        <span><img th:src="${auto.autoImgList.get(3).getAutoImgPath()}" alt=""></span>
+      </div>
 
-        <div id="content4">
-          <iframe width="1120" height="560" th:src="@{'https://www.youtube.com/embed/{autoVideo}' (autoVideo=${auto.getAutoVideo()})}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div id="content4">
+        <iframe width="1120" height="560" th:src="@{'https://www.youtube.com/embed/{autoVideo}' (autoVideo=${auto.getAutoVideo()})}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+
+      <section id="SE_contents2">
+        <div>
+          <a href="https://kartdrift.nexon.com/" target="_blank"><img src="/img/autopedia/banner1.png" alt=""></a>
         </div>
-        <th:block th:insert="/footer"></th:block>
+      </section>
+
+      <section id="SE_contents3">
+        <div>
+          <a href="https://lp.jetbrains.com/academy/learn-kotlin/" target="_blank"><img src="/img/autopedia/banner2.png" alt=""></a>
+        </div>
+      </section>
+
+      <th:block th:insert="/footer"></th:block>
     </div>
   </div>
 </div>
