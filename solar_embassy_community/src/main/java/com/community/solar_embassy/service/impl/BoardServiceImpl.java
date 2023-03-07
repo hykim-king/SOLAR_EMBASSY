@@ -38,6 +38,8 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public int insertBoard(BoardDto board) throws Exception {
         int insert = boardMapper.insertBoard(board);
+        usersMapper.getPoints(50,50,board.getUserId());
+        usersMapper.expUp(10,board.getUserId());
         return insert;
     }
 

@@ -31,6 +31,8 @@ public class ReplyServiceImpl
 
     @Override
     public int register(Reply reply) {
+        usersMapper.expUp(1,reply.getUserId());
+        usersMapper.getPoints(10,10,reply.getUserId());
         return replyMapper.insertReply(reply);
     }
 
