@@ -111,7 +111,7 @@
                         <tbody>
                         <tr th:if="${myReplyList!=null}" th:each="myReply:${myReplyList}">
                             <td class="text-center" th:text="${myReply.replyNo}"></td>
-                            <td class="text-start" th:text="${myReply.contents}" th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardgit No}' (boardNo=${myReply.boardNo})}]]"></td>
+                            <td class="text-start" th:text="${myReply.contents}" th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${myReply.boardNo})}]]"></td>
                             <td class="text-center" th:text="${#calendars.format(myReply.postTime,'yyyy-MM-DD hh:mm:ss')}"></td>
                         </tr>
                         </tbody>
