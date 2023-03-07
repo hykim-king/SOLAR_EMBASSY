@@ -579,39 +579,48 @@ input[id="menuicon"]:checked + label + div {top:80px;} /*위치*/
     margin: 0 0 0 10px;
 }
 
-/*좌_공간 여백 (배너 자리)*/
+/* 좌우 배너 */
 #SE_contents2{
     width: 360px;
-    height: 2000px;
+    height: max-content;
     position: absolute;
-    transform: translate(-360px, -1616px);
+    transform: translate(-360px, -1600px);
 }
 
-/*좌_배너 (banner_left)*/
-#SE_contents2>div{
-    width:340px;
+#SE_contents2 div{
+    width: 340px;
     height: 900px;
     border-radius: 10px;
-    /*border: 1px solid #000;*/
+    border: 1px solid #000;
     margin: 300px 10px 0 10px;
 }
 
-/*우_공간 여백 (배너 자리)*/
+#SE_contents2 div a img {
+    width: 340px;
+    height: 900px;
+    border-radius: 10px;
+}
+
 #SE_contents3{
     width: 360px;
-    height: 2000px;
+    height: max-content;
     position: absolute;
-    transform: translate(1200px,-1616px);
+    transform: translate(1200px,-1600px);
 }
 
-/*우_배너 (banner_right)*/
-#SE_contents3 >div{
+#SE_contents3 div{
     width:340px;
     height: 900px;
     border-radius: 10px;
-    /*border: 1px solid #000;*/
+    border: 1px solid #000;
     position: absolute;
     margin: 300px 10px 0 10px;
+}
+
+#SE_contents3 div a img {
+    width: 340px;
+    height: 900px;
+    border-radius: 10px;
 }
 
 /*footer 영역*/
