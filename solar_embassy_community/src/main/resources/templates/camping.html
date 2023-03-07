@@ -539,7 +539,7 @@ layout:decorate="~{/layout}"> -->
                                     <div class="citynamefont"><b><p>작성자: <span id="userId"
                                                                                th:text="${board.userId}"></span></p>
                                         <p>제목: <span id="title" th:text="${board.title}"></span></p>
-                                        <p>내용: <span th:text="${board.contents}"></span></b><br></p> <p>작성일자: <span
+                                        <p>내용: <span th:utext="${board.contents}"></span></b><br></p> <p>작성일자: <span
                                             th:text="${#dates.format(board.postTime,'yyyy-MM-dd')}"></span></div>
                                     </p>
                                 </li>
