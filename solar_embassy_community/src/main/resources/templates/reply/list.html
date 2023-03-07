@@ -15,6 +15,8 @@
     <div th:id="'replyContainer'+${reply.replyNo}">
         <th:block th:if="${reply.contents!=null}">
             <div class="px-3 pt-3 pb-3">
+                <img th:src="${reply.user.grade.gradeImg.imgPath}+${reply.user.grade.gradeImg.originImgName}"
+                        style="width: 16px;height: 16px;">
                 <span th:text="${reply.user.nickname}+${(reply.userId==board.userId)?' (작성자)':''}"></span>
                 <span th:text="${#dates.format(reply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
                 <span th:if="${reply.userId==session.loginUser.userId}"><a href="javascript:void(0)"
@@ -43,7 +45,7 @@
         </th:block>
         <!--댓글리스트 end-->
         <div class="text-end me-3 mb-2">
-            <a class="text-black" th:if="${session.loginUser.userId==reply.userId}" style="display: inline;"
+            <a class="text-black" th:if="${session.loginUser!=null&&session.loginUser.userId==reply.userId}" style="display: inline;"
                href="javascript:void(0)"
                th:onclick="loadReplyModifyForm([[${reply.replyNo}]])">수정 |</a>
             <a class="text-black" style="display: inline;" href="javascript:void(0)"
@@ -62,8 +64,9 @@
                                         <span>
                                             <i class="bi bi-arrow-return-right fs-1"></i>
                                         </span>
-                    <span class="ms-4"
-                          th:text="${reReply.nickname}+${(reReply.userId==board.userId)?' (작성자)':''}"> </span>
+                    <img th:src="${reReply.user.grade.gradeImg.imgPath}+${reReply.user.grade.gradeImg.originImgName}"
+                         style="width: 16px;height: 16px;"> <span
+                          th:text="${reReply.user.nickname}+${(reReply.userId==board.userId)?' (작성자)':''}"> </span>
                     <span th:text="${#dates.format(reReply.postTime,'(yyyy-MM-dd hh:mm)')}"></span>
                     <span><a href="javascript:void(0)" class="d-inline text-black"
                              th:onclick="removeReply([[${reReply.replyNo}]])">
@@ -81,10 +84,11 @@
                 </div>
 
                 <div class="text-end me-3" style="border-bottom: 1px solid #D3D3D3;">
-                    <span>수정</span>
+                    <a class="text-black" th:if="${session.loginUser!=null&&session.loginUser.userId==reReply.userId}" style="display: inline;"
+                       href="javascript:void(0)"
+                       th:onclick="loadReplyModifyForm([[${reReply.replyNo}]])">수정</a>
                 </div>
             </div>
-
         </div>
         <!--        대댓글 리스트 end-->
 

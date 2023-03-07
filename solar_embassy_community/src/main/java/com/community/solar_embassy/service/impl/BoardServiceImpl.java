@@ -1,10 +1,7 @@
 package com.community.solar_embassy.service.impl;
 
-import com.community.solar_embassy.dto.BoardDto;
-import com.community.solar_embassy.dto.Reply;
-import com.community.solar_embassy.mapper.BoardMapper;
-import com.community.solar_embassy.mapper.GalaxyMapper;
-import com.community.solar_embassy.mapper.UsersMapper;
+import com.community.solar_embassy.dto.*;
+import com.community.solar_embassy.mapper.*;
 import com.community.solar_embassy.service.BoardService;
 import com.community.solar_embassy.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +19,10 @@ public class BoardServiceImpl implements BoardService {
     UsersMapper usersMapper;
     @Autowired
     GalaxyMapper galaxyMapper;
+    @Autowired
+    GradeMapper gradeMapper;
+    @Autowired
+    GradeImgMapper gradeImgMapper;
 
     @Override
     public List<BoardDto> selectBoardList() throws Exception {
@@ -42,19 +43,31 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDto selectBoardDetail(int boardNo) throws Exception {
-         boardMapper.updateViews(boardNo);             // 조회수 증가시키기
-        return boardMapper.selectBoardDetail(boardNo);
+        BoardDto board = boardMapper.selectBoardDetail(boardNo);
+        // userId로 user 정보 찾기
+        board.setUser(usersMapper.findById(board.getUserId()));
+        Users user = board.getUser();
+        // user 의 grade 정보 찾기
+        user.setGrade(gradeMapper.findByLevel(user.getUserLevel()));
+        Grade grade = user.getGrade();
+        // grade 의 grade img 찾기
+        grade.setGradeImg(gradeImgMapper.findByGrade(grade.getGrade()));
+        // 정보 업데이트
+        user.setGrade(grade);
+        board.setUser(user);
+        boardMapper.updateViews(boardNo);             // 조회수 증가시키기
+        return board;
     }
 
     @Override
     public int updateBoard(BoardDto board) throws Exception {
-       return boardMapper.updateBoard(board);
+        return boardMapper.updateBoard(board);
 
     }
 
     @Override
     public int deleteBoard(int boardNo) throws Exception {
-           return boardMapper.deleteBoard(boardNo);
+        return boardMapper.deleteBoard(boardNo);
 
     }
 
@@ -62,15 +75,25 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<BoardDto> boardListByGalaxy(int galaxyNo) {
         List<BoardDto> boardList = boardMapper.selectBoardListByGalaxy(galaxyNo);
-        for(BoardDto board:boardList){
+        for (BoardDto board : boardList) {
+            // userId로 user 정보 찾기
             board.setUser(usersMapper.findById(board.getUserId()));
+            Users user = board.getUser();
+            // user 의 grade 정보 찾기
+            user.setGrade(gradeMapper.findByLevel(user.getUserLevel()));
+            Grade grade = user.getGrade();
+            // grade 의 grade img 찾기
+            grade.setGradeImg(gradeImgMapper.findByGrade(grade.getGrade()));
+            // 정보 업데이트
+            user.setGrade(grade);
+            board.setUser(user);
         }
         return boardList;
     }
 
     @Override
     public List<BoardDto> boardListByGalaxySize(int galaxyNo, int size) {
-        return boardMapper.selectBoardListByGalaxySize(galaxyNo,size);
+        return boardMapper.selectBoardListByGalaxySize(galaxyNo, size);
     }
 
     @Override
@@ -81,7 +104,7 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<BoardDto> BoardListByUserId(String userId) {
         List<BoardDto> boardList = boardMapper.selectListByUserId(userId);
-        for (BoardDto board:boardList){
+        for (BoardDto board : boardList) {
             board.setUser(usersMapper.findById(userId));
             board.setGalaxy(galaxyMapper.findGalaxy(board.getGalaxyNo()));
         }

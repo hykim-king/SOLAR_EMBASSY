@@ -48,20 +48,20 @@
         #rRegister {
             border-top: 1px solid #D3D3D3;
         }
-        
-        #SE_footer1{
+
+        #SE_footer1 {
             background-color: Black;
             width: 1920px;
             height: 250px;
             float: left;
             position: relative;
-            transform: translate(0,2000px);
+            transform: translate(0, 2000px);
             text-align: center;
             z-index: 2;
             color: white;
         }
 
-        #SE_footer1 a{
+        #SE_footer1 a {
             margin-top: 30px;
             color: white;
             display: inline-block;
@@ -95,7 +95,9 @@
                             <span th:text="${board.title}"></span>
                         </div>
                         <div>
-                            <span th:text="${board.user.nickname}"> </span>
+                            <img th:src="${board.user.grade.gradeImg.imgPath}+${board.user.grade.gradeImg.originImgName}"
+                                 style="width: 16px;height: 16px;">
+                            <span th:text="${board.user.nickname}"></span>
                             <span> | </span>
                             <span th:text="${#calendars.format(board.postTime,'yyyy년 MM월 dd일 HH:mm')}"> </span>
                             <span class="float-end" th:text="'댓글 ('+${board.replyList.size()}+')'"></span>
@@ -114,7 +116,8 @@
                         <th:block th:include="/boardPrefer" th:with="prefer=${board.boardPreferView}"></th:block>
                     </div>
                     <!-- 좋아요/ 싫어요 버튼 end-->
-                    <div class="mb-4 text-end" th:if="${session.loginUser!=null&&session.loginUser.userId==board.userId}">
+                    <div class="mb-4 text-end"
+                         th:if="${session.loginUser!=null&&session.loginUser.userId==board.userId}">
                         <button class="float-end btn btn-danger">삭제</button>
                         <button th:onclick="location.href=[[@{'/board/updateBoard/{boardNo}' (boardNo=${board.boardNo})}]]"
                                 class="float-end btn btn-warning me-2">수정
@@ -178,7 +181,11 @@
                                     </a>
                                     <th:block th:text="${boardi.title}+' ('+${boardi.replyList.size()}+')'"></th:block>
                                 </td>
-                                <td th:text="${boardi.user.nickname}"></td>
+                                <td>
+<!--                                    <img th:src="${boardi.user.grade.gradeImg.imgPath}+${boardi.user.grade.gradeImg.originImgName}"-->
+<!--                                            style="width: 16px;height: 16px;">-->
+                                    <span th:text="${boardi.user.nickname}"></span>
+                                </td>
                                 <td th:text="${(boardi.likes ==null)?0:boardi.likes}"></td>
                                 <td th:text="${(boardi.views ==null)?0:boardi.views}"></td>
                                 <td th:text="${#dates.format(boardi.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
@@ -194,12 +201,18 @@
             </div>
         </div>
     </div>
-                    <footer id="SE_footer1">
-                        <br>
-                        <p><h3><a href="/introduce">서비스 소개</a> / <a href="/user_rules">이용약관</a> / <a href="/personal">개인정보 취급방침</a> / <a href="https://open.kakao.com/o/sImhIr4e">비즈니스 문의</a> / <a href="https://cafe.naver.com/solarembassy">SNS</a> / <a href="mailto:mall@solarembassy.com">이메일</a> / <a href="/customer_center">고객센터</a></h3></p>
-                        <p><h3>Copyright (c) <a href="https://github.com/hykim-king/SOLAR_EMBASSY">www.solarembassy.com</a> All rights reserved.</h3></p>
-                        <p>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 SOLAR EMBASSY의 입장과 다를 수 있습니다.<img src="/img/loadcat.gif"></a></p>
-                    </footer>
+    <footer id="SE_footer1">
+        <br>
+        <p>
+        <h3><a href="/introduce">서비스 소개</a> / <a href="/user_rules">이용약관</a> / <a href="/personal">개인정보 취급방침</a> / <a
+                href="https://open.kakao.com/o/sImhIr4e">비즈니스 문의</a> / <a
+                href="https://cafe.naver.com/solarembassy">SNS</a> / <a href="mailto:mall@solarembassy.com">이메일</a> / <a
+                href="/customer_center">고객센터</a></h3></p>
+        <p>
+        <h3>Copyright (c) <a href="https://github.com/hykim-king/SOLAR_EMBASSY">www.solarembassy.com</a> All rights
+            reserved.</h3></p>
+        <p>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 SOLAR EMBASSY의 입장과 다를 수 있습니다.<img src="/img/loadcat.gif"></a></p>
+    </footer>
 
 
     <!--        <script>-->

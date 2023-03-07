@@ -102,7 +102,8 @@
                     <div id="boardList_table_btn" class="mb-2">
                         <button class="btn btn-outline-dark btn-lg" type="button">전체글</button>
                         <a th:href="'/board/boardWrite.do?galaxyNo='+${galaxyNo}"
-                           class="float-end btn btn-outline-dark btn-lg btn-primary text-light" style="font-weight: bolder;">글 쓰기</a>
+                           class="float-end btn btn-outline-dark btn-lg btn-primary text-light"
+                           style="font-weight: bolder;">글 쓰기</a>
                     </div>
 
                     <div id="boardList_table">
@@ -111,7 +112,7 @@
                                 <col style="width:80px">
                                 <col style="width:110px">
                                 <col style="width:500px;">
-                                <col style="width:120px">
+                                <col style="width:150px">
                                 <col style="width:80px">
                                 <col style="width:80px">
                                 <col style="width:190px">
@@ -134,7 +135,8 @@
                                     th:onclick="location.href=
                                     [[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]">
                                     <a
-                                            th:switch="${list_n.boardTag}" style="font-weight: bold;width: 100%;text-align:center;">
+                                            th:switch="${list_n.boardTag}"
+                                            style="font-weight: bold;width: 100%;text-align:center;">
                                         <span th:case="1">[잡담] </span>
                                         <span th:case="2">[정보] </span>
                                         <span th:case="3">[질문] </span>
@@ -144,7 +146,10 @@
                                 <td th:text="${list_n.title}+' ('+${list_n.replyList.size()}+')'"
                                     th:onclick="location.href=[[@{'/board/boardDetail?boardNo={boardNo}' (boardNo=${list_n.boardNo})}]]"
                                     style="cursor: pointer;text-align: left;text-overflow: ellipsis;overflow: hidden;white-space: nowrap"></td>
-                                <td th:text="${list_n.user.nickname}"></td>
+                                <td><img
+                                        th:src="${list_n.user.grade.gradeImg.imgPath}+${list_n.user.grade.gradeImg.originImgName}"
+                                        style="width: 16px;height: 16px;"> <span
+                                        th:text="${list_n.user.nickname}"></span></td>
                                 <td th:text="${(list_n.likes ==null)?0:list_n.likes}"></td>
                                 <td th:text="${(list_n.views ==null)?0:list_n.views}"></td>
                                 <td th:text="${#dates.format(list_n.postTime,'yyyy-MM-dd hh:mm:ss')}"></td>
@@ -164,9 +169,16 @@
             </div>
             <footer id="SE_footer">
                 <br>
-                <p><h3><a href="/introduce">서비스 소개</a> / <a href="/user_rules">이용약관</a> / <a href="/personal">개인정보 취급방침</a> / <a href="https://open.kakao.com/o/sImhIr4e">비즈니스 문의</a> / <a href="https://cafe.naver.com/solarembassy">SNS</a> / <a href="mailto:mall@solarembassy.com">이메일</a> / <a href="/customer_center">고객센터</a></h3></p>
-                <p><h3>Copyright (c) <a href="https://github.com/hykim-king/SOLAR_EMBASSY">www.solarembassy.com</a> All rights reserved.</h3></p>
-                <p>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 SOLAR EMBASSY의 입장과 다를 수 있습니다.<img src="/img/loadcat.gif"></a></p>
+                <p>
+                <h3><a href="/introduce">서비스 소개</a> / <a href="/user_rules">이용약관</a> / <a href="/personal">개인정보 취급방침</a>
+                    / <a href="https://open.kakao.com/o/sImhIr4e">비즈니스 문의</a> / <a
+                            href="https://cafe.naver.com/solarembassy">SNS</a> / <a href="mailto:mall@solarembassy.com">이메일</a>
+                    / <a href="/customer_center">고객센터</a></h3></p>
+                <p>
+                <h3>Copyright (c) <a href="https://github.com/hykim-king/SOLAR_EMBASSY">www.solarembassy.com</a> All
+                    rights reserved.</h3></p>
+                <p>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 SOLAR EMBASSY의 입장과 다를 수 있습니다.<img src="/img/loadcat.gif"></a>
+                </p>
             </footer>
         </div>
     </div>

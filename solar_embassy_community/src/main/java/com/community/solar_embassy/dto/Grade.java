@@ -14,6 +14,7 @@ public class Grade implements Serializable {
     private String grade;
 
     private Integer totalExp;
+    private GradeImg gradeImg;
 
     public Grade() {
     }

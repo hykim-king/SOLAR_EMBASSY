@@ -75,14 +75,10 @@ public class BoardController {
     @RequestMapping("/boardDetail")
     public String boardDetail(@RequestParam int boardNo, Model model, @SessionAttribute(required = false) Users loginUser) throws Exception {
         BoardDto board = boardService.selectBoardDetail(boardNo);
-        board.setUser(usersService.findById(board.getUserId()));
         board.setBoardNo(boardNo);
         board.setReplyList(replyService.findByBoardNo(boardNo));
         board.setGalaxy(galaxyService.findByNo(board.getGalaxyNo()));
-        List<Reply> replyList = replyService.findFirstByBoardNo(boardNo);
-        for(Reply reply:replyList){
-            reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
-        }
+
         BoardPreferViewDto boardPreferView = new BoardPreferViewDto();
         boardPreferView.setLikes(boardPreferMapper.countByBoardNoAndPreferIsTrue(boardNo));
         boardPreferView.setDislikes(boardPreferMapper.countByBoardNoAndPreferIsFalse(boardNo));
@@ -92,7 +88,13 @@ public class BoardController {
         }
         board.setBoardPreferView(boardPreferView);
         model.addAttribute("board", board);
+
+        List<Reply> replyList = replyService.findFirstByBoardNo(boardNo);
+        for(Reply reply:replyList){
+            reply.setReReplyList(replyService.findByFkReplyNo(reply.getReplyNo()));
+        }
         model.addAttribute("replyList", replyList);
+
         List<BoardDto> list = boardService.boardListByGalaxy(board.getGalaxyNo());//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         for(BoardDto boardl:list){
             boardl.setUser(usersService.findById(boardl.getUserId()));
