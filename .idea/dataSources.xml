@@ -4,8 +4,15 @@
     <data-source source="LOCAL" name="@localhost" uuid="3afe1083-6d25-4a64-b803-eef36df66c5c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="solar_embassy@ls-46a1da224b7f14e2d3a315170ce11fbfdcd2e7b8.cqkusnvcl9ga.ap-northeast-2.rds.amazonaws.com" uuid="ccde4b74-00a3-499f-8ab5-7a261340e071">
+      <driver-ref>mysql_aurora</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://ls-46a1da224b7f14e2d3a315170ce11fbfdcd2e7b8.cqkusnvcl9ga.ap-northeast-2.rds.amazonaws.com:3306/solar_embassy</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
