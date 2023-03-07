@@ -22,7 +22,11 @@ public class ReplyServiceImpl
 
     @Override
     public int register(Reply reply) {
-        return replyMapper.insertReply(reply);
+        int register = replyMapper.insertReply(reply);
+        if (register==1){
+
+        }
+        return register;
     }
 
     @Override
