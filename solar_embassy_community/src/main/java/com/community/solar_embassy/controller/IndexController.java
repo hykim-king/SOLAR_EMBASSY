@@ -23,17 +23,17 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) throws Exception {
-        List<BoardDto> list = boardService.selectBoardListBySize(5);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list = boardService.selectBoardListBySize(7);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         int endNo = boardService.lastNo() ;
         List<BoardDto> hotlist = boardService.hotList(endNo);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         for(BoardDto boardDto:hotlist){
             boardDto.setGalaxy(galaxyService.findByNo(boardDto.getGalaxyNo()));
         }
-        List<BoardDto> list1 = boardService.boardListByGalaxySize(1,5);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        List<BoardDto> list2 = boardService.boardListByGalaxySize(2,5);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        List<BoardDto> list3 = boardService.boardListByGalaxySize(3,5);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        List<BoardDto> list4 = boardService.boardListByGalaxySize(4,5);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
-        List<BoardDto> list5 = boardService.boardListByGalaxySize(5,5);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list1 = boardService.boardListByGalaxySize(1,7);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list2 = boardService.boardListByGalaxySize(2,7);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list3 = boardService.boardListByGalaxySize(3,7);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list4 = boardService.boardListByGalaxySize(4,7);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
+        List<BoardDto> list5 = boardService.boardListByGalaxySize(5,7);//service를 이용하여 게시판 목록을 데이터베이스에서 조회한다.
         model.addAttribute("list", list);
         model.addAttribute("hotlist", hotlist);
         model.addAttribute("list1", list1);
